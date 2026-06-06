@@ -46,12 +46,16 @@ const _maxCandidatesToEvaluate = 12; // hard cap — keeps runtime predictable
 const _maxPerRun = 3;
 const _geminiDelaySec = 5; // inter-call delay (Gemini free tier = 15 req/min)
 
-// Star-range queries cover the full spectrum — each gets its own 1000-result
-// GitHub API window, so no repos are missed due to the 10-page cap.
+// Star-range queries — each gets its own 1000-result GitHub API window.
+// Splitting into narrow ranges ensures no repo is missed due to the 10-page cap.
 const _searchQueries = [
-  'flutter language:dart stars:>10000',
-  'flutter language:dart stars:1000..10000',
-  'flutter language:dart stars:100..1000',
+  'flutter language:dart stars:>50000',
+  'flutter language:dart stars:10000..50000',
+  'flutter language:dart stars:5000..10000',
+  'flutter language:dart stars:2000..5000',
+  'flutter language:dart stars:1000..2000',
+  'flutter language:dart stars:500..1000',
+  'flutter language:dart stars:100..500',
   'flutter language:dart stars:$_minStars..100',
 ];
 
