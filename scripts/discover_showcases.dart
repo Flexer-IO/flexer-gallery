@@ -13,6 +13,10 @@
 //   GH_TOKEN        PAT with repo scope on both repos
 //   GEMINI_API_KEY  Google AI Studio key (free, 15 req/min / 1M tokens/day)
 //   SHOWCASE_REPO   target repo (default: flexer-io/flexer-gallery)
+//
+// Optional env vars (workflow_dispatch inputs):
+//   TARGET_USER   GitHub username — evaluate all their Dart repos
+//   TARGET_REPO   Full repo URL or owner/name — evaluate only this repo
 
 import 'dart:convert';
 import 'dart:io';
@@ -23,19 +27,23 @@ final _ghToken = Platform.environment['GH_TOKEN']!;
 final _geminiKey = Platform.environment['GEMINI_API_KEY']!;
 final _showcaseRepo =
     Platform.environment['SHOWCASE_REPO'] ?? 'flexer-io/flexer-gallery';
+final _targetUser = Platform.environment['TARGET_USER'] ?? '';
+final _targetRepo = Platform.environment['TARGET_REPO'] ?? '';
 
 const _geminiModel = 'gemini-2.0-flash';
-const _minStars = 80;
+const _minStars = 30;
 const _maxCandidatesToEvaluate = 12; // hard cap — keeps runtime predictable
 const _maxPerRun = 3;
 const _geminiDelaySec = 5; // 15 req/min free tier = 1 per 4s minimum
 const _scoreThreshold = 7;
 
+// One broad query split into non-overlapping date ranges.
+// Each returns a distinct slice of the pool sorted by stars.
 const _searchQueries = [
-  'flutter in:name,description language:dart stars:>200 pushed:>2024-01-01',
-  'flutter in:name,description language:dart stars:>100 pushed:>2024-06-01',
-  'flutter ui in:name,description language:dart stars:>150 pushed:>2023-06-01',
-  'flutter animation in:name,description language:dart stars:>100 pushed:>2024-01-01',
+  'flutter language:dart stars:>30 pushed:2024-01-01..2026-12-31',
+  'flutter language:dart stars:>30 pushed:2022-01-01..2023-12-31',
+  'flutter language:dart stars:>30 pushed:2020-01-01..2021-12-31',
+  'flutter language:dart stars:>30 pushed:2018-01-01..2019-12-31',
 ];
 
 const _builtinPackages = {
@@ -146,6 +154,36 @@ Future<String?> _httpPost(
 }
 
 // ─── GitHub helpers ───────────────────────────────────────────────────────────
+
+Future<Map<String, dynamic>?> ghRepoInfo(String ownerRepo) async {
+  final raw = await _httpGet(
+    'https://api.github.com/repos/$ownerRepo',
+    _ghHeaders,
+  );
+  if (raw == null) return null;
+  return jsonDecode(raw) as Map<String, dynamic>;
+}
+
+Future<List<Map<String, dynamic>>> ghUserRepos(String username) async {
+  final url = Uri.https('api.github.com', '/users/$username/repos', {
+    'type': 'owner',
+    'per_page': '100',
+    'sort': 'updated',
+  }).toString();
+
+  final raw = await _httpGet(url, _ghHeaders);
+  if (raw == null) return [];
+  final list = jsonDecode(raw) as List;
+  return list
+      .cast<Map<String, dynamic>>()
+      .where(
+        (r) =>
+            r['language'] == 'Dart' &&
+            r['fork'] == false &&
+            (r['stargazers_count'] as int) >= _minStars,
+      )
+      .toList();
+}
 
 Future<List<Map<String, dynamic>>> ghSearch(String query) async {
   final url = Uri.https('api.github.com', '/search/repositories', {
@@ -641,43 +679,75 @@ Future<void> main() async {
   final submittedUrls = await alreadySubmittedUrls();
   print('Already submitted (all-time): ${submittedUrls.length} repos');
 
-  final seen = <String>{};
-  final candidates = <Map<String, dynamic>>[];
+  final List<Map<String, dynamic>> toEvaluate;
 
-  for (final query in _searchQueries) {
-    await Future<void>.delayed(const Duration(seconds: 2));
-    try {
-      final results = await ghSearch(query);
-      for (final repo in results) {
-        final fn = repo['full_name'] as String;
-        if (seen.contains(fn)) continue;
-        seen.add(fn);
-        if ((repo['stargazers_count'] as int) < _minStars) continue;
-        if (submittedUrls.contains(
-          (repo['html_url'] as String).replaceAll(RegExp(r'/$'), ''),
-        ))
-          continue;
-        if (repo['fork'] == true) continue;
-        final descWords = (repo['description'] as String? ?? '')
-            .toLowerCase()
-            .split(' ');
-        if (descWords.any(_skipDescriptionWords.contains)) continue;
-        candidates.add(repo);
-      }
-    } catch (e) {
-      print('  Search error: $e');
+  if (_targetRepo.isNotEmpty) {
+    // ── Targeted: single repo ──────────────────────────────────────────────
+    final ownerRepo = _targetRepo
+        .replaceFirst(RegExp(r'^https?://github\.com/'), '')
+        .replaceAll(RegExp(r'/$'), '');
+    print('Targeted repo: $ownerRepo');
+    final repo = await ghRepoInfo(ownerRepo);
+    if (repo == null) {
+      print('Could not fetch repo info for $ownerRepo — aborting.');
+      return;
     }
-  }
+    toEvaluate = [repo];
+  } else if (_targetUser.isNotEmpty) {
+    // ── Targeted: all Dart repos of a user ────────────────────────────────
+    print('Targeted user: $_targetUser');
+    final repos = await ghUserRepos(_targetUser);
+    final filtered = repos.where((r) {
+      final url = (r['html_url'] as String).replaceAll(RegExp(r'/$'), '');
+      return !submittedUrls.contains(url);
+    }).toList();
+    filtered.sort(
+      (a, b) => (b['stargazers_count'] as int).compareTo(
+        a['stargazers_count'] as int,
+      ),
+    );
+    toEvaluate = filtered.take(_maxCandidatesToEvaluate).toList();
+    print('User repos found: ${repos.length}, evaluating ${toEvaluate.length}');
+  } else {
+    // ── Broad automatic search ─────────────────────────────────────────────
+    final seen = <String>{};
+    final candidates = <Map<String, dynamic>>[];
 
-  // Sort by stars, then cap — runtime is now O(_maxCandidatesToEvaluate).
-  candidates.sort(
-    (a, b) =>
-        (b['stargazers_count'] as int).compareTo(a['stargazers_count'] as int),
-  );
-  final toEvaluate = candidates.take(_maxCandidatesToEvaluate).toList();
-  print(
-    'Candidates: ${candidates.length} found, evaluating top ${toEvaluate.length}',
-  );
+    for (final query in _searchQueries) {
+      await Future<void>.delayed(const Duration(seconds: 2));
+      try {
+        final results = await ghSearch(query);
+        for (final repo in results) {
+          final fn = repo['full_name'] as String;
+          if (seen.contains(fn)) continue;
+          seen.add(fn);
+          if ((repo['stargazers_count'] as int) < _minStars) continue;
+          if (submittedUrls.contains(
+            (repo['html_url'] as String).replaceAll(RegExp(r'/$'), ''),
+          ))
+            continue;
+          if (repo['fork'] == true) continue;
+          final descWords = (repo['description'] as String? ?? '')
+              .toLowerCase()
+              .split(' ');
+          if (descWords.any(_skipDescriptionWords.contains)) continue;
+          candidates.add(repo);
+        }
+      } catch (e) {
+        print('  Search error: $e');
+      }
+    }
+
+    candidates.sort(
+      (a, b) => (b['stargazers_count'] as int).compareTo(
+        a['stargazers_count'] as int,
+      ),
+    );
+    toEvaluate = candidates.take(_maxCandidatesToEvaluate).toList();
+    print(
+      'Candidates: ${candidates.length} found, evaluating top ${toEvaluate.length}',
+    );
+  }
 
   final libraryPubspec = await ghFile(_showcaseRepo, 'pubspec.yaml') ?? '';
 

@@ -4,6 +4,15 @@ on:
   schedule:
     - cron: '0 */6 * * *'
   workflow_dispatch:
+    inputs:
+      github_user:
+        description: 'GitHub username — evaluate all their Flutter repos'
+        required: false
+        default: ''
+      repo_url:
+        description: 'Single repo URL to evaluate directly (e.g. https://github.com/user/repo)'
+        required: false
+        default: ''
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
@@ -11,8 +20,6 @@ env:
 jobs:
   discover:
     runs-on: ubuntu-latest
-    # No timeout — script caps itself at _maxCandidatesToEvaluate=12.
-    # GitHub's default job timeout (6h) handles true hangs.
 
     steps:
       - name: Checkout
@@ -29,5 +36,7 @@ jobs:
           GH_TOKEN: ${{ secrets.SHOWCASE_DISCOVERY_PAT }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           SHOWCASE_REPO: flexer-io/flexer-gallery
+          TARGET_USER: ${{ github.event.inputs.github_user }}
+          TARGET_REPO: ${{ github.event.inputs.repo_url }}
 
         run: dart run scripts/discover_showcases.dart
