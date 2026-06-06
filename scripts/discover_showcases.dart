@@ -23,7 +23,6 @@
 //   SAMBANOVA_API_KEYS  cloud.sambanova.ai      — free
 //   NVIDIA_API_KEYS     build.nvidia.com        — 1000 credits/month free
 //   OPENROUTER_API_KEYS openrouter.ai           — free models available
-//   MISTRAL_API_KEYS    console.mistral.ai      — free tier
 //
 //   Example: GEMINI_API_KEYS=key1,key2,key3  GROQ_API_KEYS=key4,key5
 //
@@ -599,12 +598,6 @@ final _aiProviders = <_AiProvider>[
     keys: _envKeys('OPENROUTER_API_KEYS'),
     url: 'https://openrouter.ai/api/v1/chat/completions',
     model: 'meta-llama/llama-3.3-70b-instruct:free',
-  ),
-  _AiProvider(
-    name: 'Mistral',
-    keys: _envKeys('MISTRAL_API_KEYS'),
-    url: 'https://api.mistral.ai/v1/chat/completions',
-    model: 'mistral-small-latest',
   ),
 ].where((p) => p.hasKeys).toList();
 
