@@ -122,8 +122,10 @@ Future<String?> _httpPost(
     final client = HttpClient();
     try {
       final request = await client.postUrl(Uri.parse(url));
-      request.headers.set('content-type', 'application/json');
-      request.write(jsonEncode(body));
+      final encoded = utf8.encode(jsonEncode(body));
+      request.headers.set('content-type', 'application/json; charset=utf-8');
+      request.headers.set('content-length', encoded.length.toString());
+      request.add(encoded);
       final response = await request.close();
       final responseBody = await response.transform(utf8.decoder).join();
 
