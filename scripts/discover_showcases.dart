@@ -198,6 +198,72 @@ Future<bool> repoHasDart(String repo) async {
   return (jsonDecode(raw) as Map<String, dynamic>).containsKey('Dart');
 }
 
+// ─── Rejected-repo persistence ───────────────────────────────────────────────
+//
+// lib/.rejected in the gallery repo stores one full_name (owner/repo) per line.
+// Repos scored below threshold are appended so future runs skip them before
+// making any AI call.
+
+Future<(Set<String>, String)> fetchRejectedRepos() async {
+  final raw = await _httpGet(
+    'https://api.github.com/repos/$_showcaseRepo/contents/lib/.rejected',
+    _ghHeaders,
+  );
+  if (raw == null) return (<String>{}, '');
+  try {
+    final data = jsonDecode(raw) as Map<String, dynamic>;
+    final sha = data['sha'] as String? ?? '';
+    final encoded = (data['content'] as String? ?? '').replaceAll('\n', '');
+    final decoded = utf8.decode(base64.decode(encoded));
+    final repos = decoded
+        .split('\n')
+        .map((s) => s.trim())
+        .where((s) => s.isNotEmpty)
+        .toSet();
+    return (repos, sha);
+  } catch (e) {
+    print('  Could not parse rejected list: $e');
+    return (<String>{}, '');
+  }
+}
+
+Future<void> saveRejectedRepos(Set<String> repos, String sha) async {
+  if (repos.isEmpty) return;
+  final content = base64.encode(
+    utf8.encode('${(repos.toList()..sort()).join('\n')}\n'),
+  );
+  final body = <String, dynamic>{
+    'message': 'chore: update rejected repos list [skip ci]',
+    'content': content,
+    if (sha.isNotEmpty) 'sha': sha,
+  };
+
+  final client = HttpClient();
+  try {
+    final request = await client.putUrl(
+      Uri.parse(
+        'https://api.github.com/repos/$_showcaseRepo/contents/lib/.rejected',
+      ),
+    );
+    final encoded = utf8.encode(jsonEncode(body));
+    _ghHeaders.forEach(request.headers.set);
+    request.headers.set('content-type', 'application/json; charset=utf-8');
+    request.headers.set('content-length', encoded.length.toString());
+    request.add(encoded);
+    final response = await request.close();
+    await response.drain<void>();
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      print('Rejected list saved (${repos.length} total entries)');
+    } else {
+      print('  Failed to save rejected list: ${response.statusCode}');
+    }
+  } catch (e) {
+    print('  Error saving rejected list: $e');
+  } finally {
+    client.close();
+  }
+}
+
 Future<Set<String>> alreadySubmittedUrls() async {
   final urls = <String>{};
 
@@ -826,6 +892,10 @@ Future<void> main() async {
   final submittedUrls = await alreadySubmittedUrls();
   print('Already submitted (all-time): ${submittedUrls.length} repos');
 
+  final (rejectedRepos, rejectedSha) = await fetchRejectedRepos();
+  print('Previously rejected (all-time): ${rejectedRepos.length} repos');
+  final newlyRejected = <String>{};
+
   final List<Map<String, dynamic>> toEvaluate;
 
   if (_targetRepo.isNotEmpty) {
@@ -905,6 +975,12 @@ Future<void> main() async {
 
     print('\n▸ ${repo['full_name']} (${repo['stargazers_count']} ★)');
 
+    final fullName = repo['full_name'] as String;
+    if (rejectedRepos.contains(fullName)) {
+      print('  Previously rejected — skip');
+      continue;
+    }
+
     final readme =
         await ghFile(repo['full_name'] as String, 'README.md') ??
         await ghFile(repo['full_name'] as String, 'readme.md') ??
@@ -943,6 +1019,7 @@ Future<void> main() async {
 
     if (evaluation['suitable'] != true || score < _scoreThreshold) {
       print('  AI score $score < $_scoreThreshold — not a UI showcase, skip');
+      newlyRejected.add(fullName);
       continue;
     }
 
@@ -981,6 +1058,14 @@ Future<void> main() async {
     }
 
     await Future<void>.delayed(const Duration(seconds: 2));
+  }
+
+  if (newlyRejected.isNotEmpty) {
+    print('\nSaving ${newlyRejected.length} new rejection(s) to gallery...');
+    await saveRejectedRepos(
+      {...rejectedRepos, ...newlyRejected},
+      rejectedSha,
+    );
   }
 
   print('\n=== Done. $submitted PR(s) submitted. ===');
