@@ -81,7 +81,7 @@ Future<String?> _httpGet(
 
       // Rate limited — respect Retry-After or default to 60s.
       if (response.statusCode == 429 || response.statusCode == 403) {
-        final body = await response.transform(utf8.decoder).join();
+        await response.drain<void>();
         final retryAfter =
             int.tryParse(response.headers.value('retry-after') ?? '') ?? 60;
         print(
