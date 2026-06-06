@@ -477,9 +477,7 @@ class _AiProvider {
       if (result != null) return result;
       return null; // non-retriable
     }
-    // All keys rate-limited — brief sleep before caller falls to next provider.
-    print('  [$name] all keys rate-limited — sleeping 30s');
-    await Future<void>.delayed(const Duration(seconds: 30));
+    print('  [$name] all keys exhausted — trying next provider');
     return null;
   }
 
@@ -537,12 +535,15 @@ class _AiProvider {
             .trim();
       }
 
-      if (response.statusCode == 429 ||
-          response.statusCode == 403 ||
-          response.statusCode == 503) {
+      if (response.statusCode == 429 || response.statusCode == 403) {
         print('  [$name] ${response.statusCode} — rotating key');
         _nextKey();
         return _kRateLimit;
+      }
+
+      if (response.statusCode == 503) {
+        print('  [$name] 503 server overload — skipping provider');
+        return null;
       }
 
       print(
