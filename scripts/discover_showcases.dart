@@ -46,13 +46,13 @@ const _maxCandidatesToEvaluate = 12; // hard cap — keeps runtime predictable
 const _maxPerRun = 3;
 const _geminiDelaySec = 5; // inter-call delay (Gemini free tier = 15 req/min)
 
-// One broad query split into non-overlapping date ranges.
-// Each returns a distinct slice of the pool sorted by stars.
+// Star-range queries cover the full spectrum — each gets its own 1000-result
+// GitHub API window, so no repos are missed due to the 10-page cap.
 const _searchQueries = [
-  'flutter language:dart stars:>30 pushed:2024-01-01..2026-12-31',
-  'flutter language:dart stars:>30 pushed:2022-01-01..2023-12-31',
-  'flutter language:dart stars:>30 pushed:2020-01-01..2021-12-31',
-  'flutter language:dart stars:>30 pushed:2018-01-01..2019-12-31',
+  'flutter language:dart stars:>10000',
+  'flutter language:dart stars:1000..10000',
+  'flutter language:dart stars:100..1000',
+  'flutter language:dart stars:$_minStars..100',
 ];
 
 const _builtinPackages = {
@@ -154,12 +154,13 @@ Future<List<Map<String, dynamic>>> ghUserRepos(String username) async {
       .toList();
 }
 
-Future<List<Map<String, dynamic>>> ghSearch(String query) async {
+Future<List<Map<String, dynamic>>> ghSearch(String query, {int page = 1}) async {
   final url = Uri.https('api.github.com', '/search/repositories', {
     'q': query,
     'sort': 'stars',
     'order': 'desc',
-    'per_page': '30',
+    'per_page': '100',
+    'page': '$page',
   }).toString();
 
   final raw = await _httpGet(url, _ghHeaders);
@@ -601,8 +602,9 @@ final _aiProviders = <_AiProvider>[
   ),
 ].where((p) => p.hasKeys).toList();
 
-Future<Map<String, dynamic>?> callAi(String prompt) async {
+Future<Map<String, dynamic>?> callAi(String prompt, {String label = ''}) async {
   for (final provider in _aiProviders) {
+    print('  [${provider.name}] evaluating${label.isNotEmpty ? ' $label' : ''}...');
     final text = await provider.call(prompt);
     if (text != null) {
       try {
@@ -657,7 +659,7 @@ Score 1-10 (for logging only). Set suitable=true only if ALL criteria above are 
   "orientation": "portrait_only|landscape_only|unspecified"
 }''';
 
-  return callAi(prompt);
+  return callAi(prompt, label: repo['full_name'] as String);
 }
 
 Future<(String, String)?> generateShowcaseFiles(
@@ -896,7 +898,8 @@ Future<void> main() async {
     final repos = await ghUserRepos(_targetUser);
     final filtered = repos.where((r) {
       final url = (r['html_url'] as String).replaceAll(RegExp(r'/$'), '');
-      return !submittedUrls.contains(url);
+      return !submittedUrls.contains(url) &&
+          !rejectedRepos.contains(r['full_name'] as String);
     }).toList();
     filtered.sort(
       (a, b) => (b['stargazers_count'] as int).compareTo(
@@ -911,27 +914,31 @@ Future<void> main() async {
     final candidates = <Map<String, dynamic>>[];
 
     for (final query in _searchQueries) {
-      await Future<void>.delayed(const Duration(seconds: 2));
-      try {
-        final results = await ghSearch(query);
-        for (final repo in results) {
-          final fn = repo['full_name'] as String;
-          if (seen.contains(fn)) continue;
-          seen.add(fn);
-          if ((repo['stargazers_count'] as int) < _minStars) continue;
-          if (submittedUrls.contains(
-            (repo['html_url'] as String).replaceAll(RegExp(r'/$'), ''),
-          ))
-            continue;
-          if (repo['fork'] == true) continue;
-          final descWords = (repo['description'] as String? ?? '')
-              .toLowerCase()
-              .split(' ');
-          if (descWords.any(_skipDescriptionWords.contains)) continue;
-          candidates.add(repo);
+      for (var page = 1; page <= 10; page++) {
+        await Future<void>.delayed(const Duration(seconds: 2));
+        try {
+          final results = await ghSearch(query, page: page);
+          if (results.isEmpty) break;
+          for (final repo in results) {
+            final fn = repo['full_name'] as String;
+            if (seen.contains(fn)) continue;
+            seen.add(fn);
+            if (repo['fork'] == true) continue;
+            if (rejectedRepos.contains(fn)) continue;
+            if (submittedUrls.contains(
+              (repo['html_url'] as String).replaceAll(RegExp(r'/$'), ''),
+            ))
+              continue;
+            final descWords = (repo['description'] as String? ?? '')
+                .toLowerCase()
+                .split(' ');
+            if (descWords.any(_skipDescriptionWords.contains)) continue;
+            candidates.add(repo);
+          }
+        } catch (e) {
+          print('  Search error: $e');
+          break;
         }
-      } catch (e) {
-        print('  Search error: $e');
       }
     }
 
