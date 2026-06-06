@@ -18,16 +18,14 @@
 // Each value is comma-separated keys. Providers tried in order; keys rotated on 429.
 //
 //   GEMINI_API_KEYS     ai.google.dev           — free, best quality,  15 req/min/key
-//   DEEPSEEK_API_KEYS   platform.deepseek.com   — near-free, excellent code reasoning
 //   GROQ_API_KEYS       console.groq.com        — free, fastest,       30 req/min/key
 //   CEREBRAS_API_KEYS   cloud.cerebras.ai       — free, very fast,     30 req/min/key
 //   SAMBANOVA_API_KEYS  cloud.sambanova.ai      — free
 //   NVIDIA_API_KEYS     build.nvidia.com        — 1000 credits/month free
-//   TOGETHER_API_KEYS   api.together.ai         — $1 free credit
 //   OPENROUTER_API_KEYS openrouter.ai           — free models available
 //   MISTRAL_API_KEYS    console.mistral.ai      — free tier
 //
-//   Example: GEMINI_API_KEYS=key1,key2  DEEPSEEK_API_KEYS=key3,key4
+//   Example: GEMINI_API_KEYS=key1,key2,key3  GROQ_API_KEYS=key4,key5
 //
 // Optional:
 //   TARGET_USER    GitHub username — evaluate all their Dart repos
@@ -535,8 +533,10 @@ class _AiProvider {
             .trim();
       }
 
-      if (response.statusCode == 429 || response.statusCode == 403) {
-        print('  [$name] key rate-limited — rotating');
+      if (response.statusCode == 429 ||
+          response.statusCode == 403 ||
+          response.statusCode == 503) {
+        print('  [$name] ${response.statusCode} — rotating key');
         _nextKey();
         return _kRateLimit;
       }
@@ -571,12 +571,6 @@ final _aiProviders = <_AiProvider>[
     model: 'gemini-2.5-flash',
   ),
   _AiProvider(
-    name: 'DeepSeek',
-    keys: _envKeys('DEEPSEEK_API_KEYS'),
-    url: 'https://api.deepseek.com/chat/completions',
-    model: 'deepseek-chat',
-  ),
-  _AiProvider(
     name: 'Groq',
     keys: _envKeys('GROQ_API_KEYS'),
     url: 'https://api.groq.com/openai/v1/chat/completions',
@@ -599,12 +593,6 @@ final _aiProviders = <_AiProvider>[
     keys: _envKeys('NVIDIA_API_KEYS'),
     url: 'https://integrate.api.nvidia.com/v1/chat/completions',
     model: 'meta/llama-3.3-70b-instruct',
-  ),
-  _AiProvider(
-    name: 'Together',
-    keys: _envKeys('TOGETHER_API_KEYS'),
-    url: 'https://api.together.xyz/v1/chat/completions',
-    model: 'meta-llama/Llama-3.3-70B-Instruct-Turbo',
   ),
   _AiProvider(
     name: 'OpenRouter',
