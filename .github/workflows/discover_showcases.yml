@@ -34,8 +34,12 @@ jobs:
       - name: Run discovery agent
         env:
           GH_TOKEN: ${{ secrets.SHOWCASE_DISCOVERY_PAT }}
-          GEMINI_API_KEYS: ${{ secrets.GEMINI_API_KEYS }}
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          # AI providers — add any you have; all are free, multiple keys multiply rate limits
+          GEMINI_API_KEYS: ${{ secrets.GEMINI_API_KEYS }}       # ai.google.dev
+          GROQ_API_KEYS: ${{ secrets.GROQ_API_KEYS }}           # console.groq.com
+          CEREBRAS_API_KEYS: ${{ secrets.CEREBRAS_API_KEYS }}   # cloud.cerebras.ai
+          OPENROUTER_API_KEYS: ${{ secrets.OPENROUTER_API_KEYS }} # openrouter.ai
+          MISTRAL_API_KEYS: ${{ secrets.MISTRAL_API_KEYS }}     # console.mistral.ai
           SHOWCASE_REPO: flexer-io/flexer-gallery
           TARGET_USER: ${{ github.event.inputs.github_user }}
           TARGET_REPO: ${{ github.event.inputs.repo_url }}
