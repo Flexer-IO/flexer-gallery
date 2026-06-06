@@ -48,7 +48,6 @@ const _minStars = 30;
 const _maxCandidatesToEvaluate = 12; // hard cap — keeps runtime predictable
 const _maxPerRun = 3;
 const _geminiDelaySec = 5; // inter-call delay (Gemini free tier = 15 req/min)
-const _scoreThreshold = 7;
 
 // One broad query split into non-overlapping date ranges.
 // Each returns a distinct slice of the pool sorted by stars.
@@ -666,7 +665,7 @@ WHAT WE WANT — must be ALL of these:
   ✗ NOT a pub.dev package meant to be imported, not viewed
   ✗ NOT a tutorial, template, boilerplate, or course project
 
-Score 1-10 (threshold to submit: $_scoreThreshold). Respond with JSON only — no markdown fences:
+Score 1-10 (for logging only). Set suitable=true only if ALL criteria above are met. Respond with JSON only — no markdown fences:
 {
   "score": <int 1-10>,
   "suitable": <true|false>,
@@ -1017,8 +1016,8 @@ Future<void> main() async {
     final score = evaluation['score'] as int? ?? 0;
     print('  Score $score/10 — ${evaluation['reason']}');
 
-    if (evaluation['suitable'] != true || score < _scoreThreshold) {
-      print('  AI score $score < $_scoreThreshold — not a UI showcase, skip');
+    if (evaluation['suitable'] != true) {
+      print('  AI says not suitable (score $score/10) — skip');
       newlyRejected.add(fullName);
       continue;
     }
