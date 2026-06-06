@@ -15,15 +15,19 @@
 //   At least one AI provider key (see below)
 //
 // AI provider env vars — add as many keys per provider as you have accounts.
-// Each key is comma-separated. Providers tried in order; keys rotated on 429.
+// Each value is comma-separated keys. Providers tried in order; keys rotated on 429.
 //
-//   GEMINI_API_KEYS     ai.google.dev        — free, best quality, 15 req/min/key
-//   GROQ_API_KEYS       console.groq.com     — free, fast,  30 req/min/key
-//   CEREBRAS_API_KEYS   cloud.cerebras.ai    — free, fastest, 30 req/min/key
-//   OPENROUTER_API_KEYS openrouter.ai        — free models, varies/key
-//   MISTRAL_API_KEYS    console.mistral.ai   — free tier, 1 req/s/key
+//   GEMINI_API_KEYS     ai.google.dev           — free, best quality,  15 req/min/key
+//   DEEPSEEK_API_KEYS   platform.deepseek.com   — near-free, excellent code reasoning
+//   GROQ_API_KEYS       console.groq.com        — free, fastest,       30 req/min/key
+//   CEREBRAS_API_KEYS   cloud.cerebras.ai       — free, very fast,     30 req/min/key
+//   SAMBANOVA_API_KEYS  cloud.sambanova.ai      — free
+//   NVIDIA_API_KEYS     build.nvidia.com        — 1000 credits/month free
+//   TOGETHER_API_KEYS   api.together.ai         — $1 free credit
+//   OPENROUTER_API_KEYS openrouter.ai           — free models available
+//   MISTRAL_API_KEYS    console.mistral.ai      — free tier
 //
-//   Example: GEMINI_API_KEYS=key1,key2,key3  GROQ_API_KEYS=key4,key5
+//   Example: GEMINI_API_KEYS=key1,key2  DEEPSEEK_API_KEYS=key3,key4
 //
 // Optional:
 //   TARGET_USER    GitHub username — evaluate all their Dart repos
@@ -455,8 +459,9 @@ class _AiProvider {
         final data = jsonDecode(body) as Map<String, dynamic>;
         final text = isGemini
             ? ((((data['candidates'] as List).first)['content'])['parts']
-                    as List)
-                  .first['text'] as String
+                          as List)
+                      .first['text']
+                  as String
             : (data['choices'] as List).first['message']['content'] as String;
         return text
             .trim()
@@ -486,20 +491,25 @@ class _AiProvider {
 
 const _kRateLimit = '__rate_limited__';
 
-List<String> _envKeys(String varName) =>
-    (Platform.environment[varName] ?? '')
-        .split(',')
-        .map((k) => k.trim())
-        .where((k) => k.isNotEmpty)
-        .toList();
+List<String> _envKeys(String varName) => (Platform.environment[varName] ?? '')
+    .split(',')
+    .map((k) => k.trim())
+    .where((k) => k.isNotEmpty)
+    .toList();
 
 // Provider priority: best quality first. Script falls through on exhaustion.
 final _aiProviders = <_AiProvider>[
   _AiProvider(
     name: 'Gemini',
     keys: _envKeys('GEMINI_API_KEYS'),
-    url: '', // key in query param
+    url: '', // Gemini uses key in query param, not Authorization header
     model: 'gemini-2.5-flash',
+  ),
+  _AiProvider(
+    name: 'DeepSeek',
+    keys: _envKeys('DEEPSEEK_API_KEYS'),
+    url: 'https://api.deepseek.com/chat/completions',
+    model: 'deepseek-chat',
   ),
   _AiProvider(
     name: 'Groq',
@@ -512,6 +522,24 @@ final _aiProviders = <_AiProvider>[
     keys: _envKeys('CEREBRAS_API_KEYS'),
     url: 'https://api.cerebras.ai/v1/chat/completions',
     model: 'llama-3.3-70b',
+  ),
+  _AiProvider(
+    name: 'SambaNova',
+    keys: _envKeys('SAMBANOVA_API_KEYS'),
+    url: 'https://api.sambanova.ai/v1/chat/completions',
+    model: 'Meta-Llama-3.3-70B-Instruct',
+  ),
+  _AiProvider(
+    name: 'NVIDIA',
+    keys: _envKeys('NVIDIA_API_KEYS'),
+    url: 'https://integrate.api.nvidia.com/v1/chat/completions',
+    model: 'meta/llama-3.3-70b-instruct',
+  ),
+  _AiProvider(
+    name: 'Together',
+    keys: _envKeys('TOGETHER_API_KEYS'),
+    url: 'https://api.together.xyz/v1/chat/completions',
+    model: 'meta-llama/Llama-3.3-70B-Instruct-Turbo',
   ),
   _AiProvider(
     name: 'OpenRouter',

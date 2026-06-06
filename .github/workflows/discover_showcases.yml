@@ -34,12 +34,16 @@ jobs:
       - name: Run discovery agent
         env:
           GH_TOKEN: ${{ secrets.SHOWCASE_DISCOVERY_PAT }}
-          # AI providers — add any you have; all are free, multiple keys multiply rate limits
-          GEMINI_API_KEYS: ${{ secrets.GEMINI_API_KEYS }}       # ai.google.dev
-          GROQ_API_KEYS: ${{ secrets.GROQ_API_KEYS }}           # console.groq.com
-          CEREBRAS_API_KEYS: ${{ secrets.CEREBRAS_API_KEYS }}   # cloud.cerebras.ai
-          OPENROUTER_API_KEYS: ${{ secrets.OPENROUTER_API_KEYS }} # openrouter.ai
-          MISTRAL_API_KEYS: ${{ secrets.MISTRAL_API_KEYS }}     # console.mistral.ai
+          # AI providers — set any you have; all free/near-free, multiple keys = higher limits
+          GEMINI_API_KEYS: ${{ secrets.GEMINI_API_KEYS }}           # ai.google.dev
+          DEEPSEEK_API_KEYS: ${{ secrets.DEEPSEEK_API_KEYS }}       # platform.deepseek.com
+          GROQ_API_KEYS: ${{ secrets.GROQ_API_KEYS }}               # console.groq.com
+          CEREBRAS_API_KEYS: ${{ secrets.CEREBRAS_API_KEYS }}       # cloud.cerebras.ai
+          SAMBANOVA_API_KEYS: ${{ secrets.SAMBANOVA_API_KEYS }}     # cloud.sambanova.ai
+          NVIDIA_API_KEYS: ${{ secrets.NVIDIA_API_KEYS }}           # build.nvidia.com
+          TOGETHER_API_KEYS: ${{ secrets.TOGETHER_API_KEYS }}       # api.together.ai
+          OPENROUTER_API_KEYS: ${{ secrets.OPENROUTER_API_KEYS }}   # openrouter.ai
+          MISTRAL_API_KEYS: ${{ secrets.MISTRAL_API_KEYS }}         # console.mistral.ai
           SHOWCASE_REPO: flexer-io/flexer-gallery
           TARGET_USER: ${{ github.event.inputs.github_user }}
           TARGET_REPO: ${{ github.event.inputs.repo_url }}
