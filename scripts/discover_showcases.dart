@@ -942,7 +942,7 @@ Future<void> main() async {
     print('  Score $score/10 — ${evaluation['reason']}');
 
     if (evaluation['suitable'] != true || score < _scoreThreshold) {
-      print('  Below threshold — skip');
+      print('  AI score $score < $_scoreThreshold — not a UI showcase, skip');
       continue;
     }
 
