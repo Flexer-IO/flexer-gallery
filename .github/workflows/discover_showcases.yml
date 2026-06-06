@@ -2,14 +2,17 @@ name: Discover Showcases
 
 on:
   schedule:
-    # Every 6 hours — free on GitHub Actions.
     - cron: '0 */6 * * *'
-  workflow_dispatch: # Allow manual trigger from GitHub UI.
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
 
 jobs:
   discover:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    # No timeout — script caps itself at _maxCandidatesToEvaluate=12.
+    # GitHub's default job timeout (6h) handles true hangs.
 
     steps:
       - name: Checkout
@@ -23,15 +26,8 @@ jobs:
 
       - name: Run discovery agent
         env:
-          # PAT needs repo scope on both flexer/flexer and flexer/flexer-showcase-library.
-          # Create at: https://github.com/settings/tokens
-          # Store at:  Settings → Secrets → Actions → SHOWCASE_DISCOVERY_PAT
           GH_TOKEN: ${{ secrets.SHOWCASE_DISCOVERY_PAT }}
-
-          # Free key from: https://aistudio.google.com/apikey
-          # Store at:  Settings → Secrets → Actions → GEMINI_API_KEY
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-
-          SHOWCASE_REPO: flexer/flexer-showcase-library
+          SHOWCASE_REPO: flexer-io/flexer-gallery
 
         run: dart run scripts/discover_showcases.dart

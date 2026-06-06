@@ -2,17 +2,17 @@
 //
 // Searches GitHub broadly for Flutter repos (keyword: flutter, language:dart),
 // scores each with Gemini 2.0 Flash (free tier), and opens PRs to
-// flexer/flexer-showcase-library for human review.
+// flexer-io/flexer-gallery for human review.
 //
 // Each PR adds:
 //   lib/<id>/<id>_page.dart
 //   lib/<id>/showcase_info.dart
-//   (patches showcase_library/pubspec.yaml with any missing deps)
+//   (patches pubspec.yaml with any missing deps)
 //
 // Required env vars:
 //   GH_TOKEN        PAT with repo scope on both repos
 //   GEMINI_API_KEY  Google AI Studio key (free, 15 req/min / 1M tokens/day)
-//   SHOWCASE_REPO   target repo (default: flexer/flexer-showcase-library)
+//   SHOWCASE_REPO   target repo (default: flexer-io/flexer-gallery)
 
 import 'dart:convert';
 import 'dart:io';
@@ -22,12 +22,13 @@ import 'dart:io';
 final _ghToken = Platform.environment['GH_TOKEN']!;
 final _geminiKey = Platform.environment['GEMINI_API_KEY']!;
 final _showcaseRepo =
-    Platform.environment['SHOWCASE_REPO'] ?? 'flexer/flexer-showcase-library';
+    Platform.environment['SHOWCASE_REPO'] ?? 'flexer-io/flexer-gallery';
 
 const _geminiModel = 'gemini-2.0-flash';
 const _minStars = 80;
+const _maxCandidatesToEvaluate = 12; // hard cap — keeps runtime predictable
 const _maxPerRun = 3;
-const _geminiDelaySec = 5; // 15 req/min free tier
+const _geminiDelaySec = 5; // 15 req/min free tier = 1 per 4s minimum
 const _scoreThreshold = 7;
 
 const _searchQueries = [
@@ -54,7 +55,7 @@ const _skipDescriptionWords = {
   'clone',
 };
 
-// ─── HTTP helpers ─────────────────────────────────────────────────────────────
+// ─── HTTP helpers (with rate-limit retry) ─────────────────────────────────────
 
 Map<String, String> get _ghHeaders => {
   'Authorization': 'Bearer $_ghToken',
@@ -62,43 +63,86 @@ Map<String, String> get _ghHeaders => {
   'X-GitHub-Api-Version': '2022-11-28',
 };
 
-Future<String?> _httpGet(String url, Map<String, String> headers) async {
-  final client = HttpClient();
-  try {
-    final request = await client.getUrl(Uri.parse(url));
-    headers.forEach(request.headers.set);
-    final response = await request.close();
-    if (response.statusCode == 200) {
-      return await response.transform(utf8.decoder).join();
+Future<String?> _httpGet(
+  String url,
+  Map<String, String> headers, {
+  int retries = 3,
+}) async {
+  for (var attempt = 0; attempt < retries; attempt++) {
+    final client = HttpClient();
+    try {
+      final request = await client.getUrl(Uri.parse(url));
+      headers.forEach(request.headers.set);
+      final response = await request.close();
+
+      if (response.statusCode == 200) {
+        return await response.transform(utf8.decoder).join();
+      }
+
+      // Rate limited — respect Retry-After or default to 60s.
+      if (response.statusCode == 429 || response.statusCode == 403) {
+        final body = await response.transform(utf8.decoder).join();
+        final retryAfter =
+            int.tryParse(response.headers.value('retry-after') ?? '') ?? 60;
+        print(
+          '  Rate limited (${response.statusCode}) — sleeping ${retryAfter}s',
+        );
+        await Future<void>.delayed(Duration(seconds: retryAfter));
+        continue;
+      }
+
+      await response.drain<void>();
+      return null;
+    } catch (e) {
+      print('  GET failed (attempt ${attempt + 1}): $e');
+      if (attempt < retries - 1) {
+        await Future<void>.delayed(const Duration(seconds: 5));
+      }
+    } finally {
+      client.close();
     }
-    return null;
-  } catch (e) {
-    print('  GET $url failed: $e');
-    return null;
-  } finally {
-    client.close();
   }
+  return null;
 }
 
 Future<String?> _httpPost(
   String url,
-  Map<String, String> headers,
-  Map<String, dynamic> body,
-) async {
-  final client = HttpClient();
-  try {
-    final request = await client.postUrl(Uri.parse(url));
-    headers.forEach(request.headers.set);
-    request.headers.set('content-type', 'application/json');
-    request.write(jsonEncode(body));
-    final response = await request.close();
-    return await response.transform(utf8.decoder).join();
-  } catch (e) {
-    print('  POST $url failed: $e');
-    return null;
-  } finally {
-    client.close();
+  Map<String, dynamic> body, {
+  int retries = 3,
+}) async {
+  for (var attempt = 0; attempt < retries; attempt++) {
+    final client = HttpClient();
+    try {
+      final request = await client.postUrl(Uri.parse(url));
+      request.headers.set('content-type', 'application/json');
+      request.write(jsonEncode(body));
+      final response = await request.close();
+      final responseBody = await response.transform(utf8.decoder).join();
+
+      if (response.statusCode == 200) return responseBody;
+
+      if (response.statusCode == 429) {
+        final retryAfter =
+            int.tryParse(response.headers.value('retry-after') ?? '') ?? 60;
+        print('  Gemini rate limited — sleeping ${retryAfter}s');
+        await Future<void>.delayed(Duration(seconds: retryAfter));
+        continue;
+      }
+
+      print(
+        '  POST ${response.statusCode}: ${responseBody.substring(0, responseBody.length.clamp(0, 200))}',
+      );
+      return null;
+    } catch (e) {
+      print('  POST failed (attempt ${attempt + 1}): $e');
+      if (attempt < retries - 1) {
+        await Future<void>.delayed(const Duration(seconds: 5));
+      }
+    } finally {
+      client.close();
+    }
   }
+  return null;
 }
 
 // ─── GitHub helpers ───────────────────────────────────────────────────────────
@@ -137,7 +181,7 @@ Future<List<Map<String, dynamic>>> ghTree(String repo) async {
 Future<Set<String>> alreadySubmittedUrls() async {
   final urls = <String>{};
 
-  // From committed showcase_info.dart files in the library.
+  // From committed showcase_info.dart files (merged showcases).
   final treeResult = await _run([
     'gh',
     'api',
@@ -155,19 +199,13 @@ Future<Set<String>> alreadySubmittedUrls() async {
     }
   }
 
-  // From open PR bodies.
+  // From ALL PRs — open, closed, and merged — so we never re-submit.
   final prResult = await _run([
-    'gh',
-    'pr',
-    'list',
-    '--repo',
-    _showcaseRepo,
-    '--state',
-    'open',
-    '--json',
-    'body',
-    '--limit',
-    '100',
+    'gh', 'pr', 'list',
+    '--repo', _showcaseRepo,
+    '--state', 'all', // ← covers open + closed + merged
+    '--json', 'body',
+    '--limit', '200',
   ]);
   if (prResult.exitCode == 0) {
     final prs = List<Map<String, dynamic>>.from(
@@ -204,7 +242,6 @@ List<String> topDartFiles(List<Map<String, dynamic>> tree) {
 
 Map<String, String> parseDeps(String pubspecText) {
   final deps = <String, String>{};
-  // Find the dependencies: block and extract package lines.
   final inDeps =
       RegExp(
         r'^dependencies:\s*\n((?:[ \t]+.+\n?)*)',
@@ -311,13 +348,14 @@ String orientationDart(String orientation) => switch (orientation) {
   _ => 'null',
 };
 
-// ─── Gemini helpers ───────────────────────────────────────────────────────────
+// ─── Gemini ───────────────────────────────────────────────────────────────────
 
 Future<Map<String, dynamic>?> gemini(String prompt) async {
   final url =
-      'https://generativelanguage.googleapis.com/v1beta/models/$_geminiModel:generateContent?key=$_geminiKey';
+      'https://generativelanguage.googleapis.com/v1beta/models'
+      '/$_geminiModel:generateContent?key=$_geminiKey';
 
-  final raw = await _httpPost(url, {}, {
+  final raw = await _httpPost(url, {
     'contents': [
       {
         'parts': [
@@ -336,11 +374,10 @@ Future<Map<String, dynamic>?> gemini(String prompt) async {
                 .first['text']
             as String;
 
-    // Strip markdown fences.
     final cleaned = text
         .trim()
-        .replaceAll(RegExp(r'^```(?:json)?\s*', multiLine: false), '')
-        .replaceAll(RegExp(r'\s*```$', multiLine: false), '')
+        .replaceAll(RegExp(r'^```(?:json)?\s*'), '')
+        .replaceAll(RegExp(r'\s*```$'), '')
         .trim();
 
     return jsonDecode(cleaned) as Map<String, dynamic>;
@@ -469,14 +506,13 @@ Respond with JSON only — no markdown fences:
 
 // ─── Process helpers ──────────────────────────────────────────────────────────
 
-Future<ProcessResult> _run(List<String> cmd, {String? workingDirectory}) async {
-  return Process.run(
-    cmd.first,
-    cmd.skip(1).toList(),
-    workingDirectory: workingDirectory,
-    environment: {...Platform.environment, 'GH_TOKEN': _ghToken},
-  );
-}
+Future<ProcessResult> _run(List<String> cmd, {String? workingDirectory}) =>
+    Process.run(
+      cmd.first,
+      cmd.skip(1).toList(),
+      workingDirectory: workingDirectory,
+      environment: {...Platform.environment, 'GH_TOKEN': _ghToken},
+    );
 
 // ─── PR creation ──────────────────────────────────────────────────────────────
 
@@ -486,7 +522,6 @@ Future<bool> createPr(
   String infoDart,
   String pageDart,
   Map<String, String> missingDeps,
-  String libraryPubspec,
 ) async {
   final id = showcaseId(repo);
   final displayName = showcaseDisplayName(repo);
@@ -494,7 +529,6 @@ Future<bool> createPr(
   final branch = 'auto/discover-$id';
   final cloneDir = '/tmp/flexer-showcase-$id';
 
-  // Clean up any previous failed attempt.
   await _run(['rm', '-rf', cloneDir]);
 
   var result = await _run(['gh', 'repo', 'clone', _showcaseRepo, cloneDir]);
@@ -511,13 +545,11 @@ Future<bool> createPr(
     await _run(cmd, workingDirectory: cloneDir);
   }
 
-  // Write showcase files.
   final showcaseDir = Directory('$cloneDir/lib/$id');
   await showcaseDir.create(recursive: true);
   await File('$cloneDir/lib/$id/showcase_info.dart').writeAsString(infoDart);
   await File('$cloneDir/lib/$id/${id}_page.dart').writeAsString(pageDart);
 
-  // Patch pubspec.yaml with missing deps.
   if (missingDeps.isNotEmpty) {
     final pubspecFile = File('$cloneDir/pubspec.yaml');
     final current = await pubspecFile.readAsString();
@@ -607,13 +639,13 @@ Future<void> main() async {
   print('=== Flexer Showcase Discovery Agent ===');
 
   final submittedUrls = await alreadySubmittedUrls();
-  print('Already submitted/open: ${submittedUrls.length} repos');
+  print('Already submitted (all-time): ${submittedUrls.length} repos');
 
   final seen = <String>{};
   final candidates = <Map<String, dynamic>>[];
 
   for (final query in _searchQueries) {
-    await Future<void>.delayed(const Duration(seconds: 1));
+    await Future<void>.delayed(const Duration(seconds: 2));
     try {
       final results = await ghSearch(query);
       for (final repo in results) {
@@ -637,18 +669,21 @@ Future<void> main() async {
     }
   }
 
+  // Sort by stars, then cap — runtime is now O(_maxCandidatesToEvaluate).
   candidates.sort(
     (a, b) =>
         (b['stargazers_count'] as int).compareTo(a['stargazers_count'] as int),
   );
-  print('New candidates: ${candidates.length}');
+  final toEvaluate = candidates.take(_maxCandidatesToEvaluate).toList();
+  print(
+    'Candidates: ${candidates.length} found, evaluating top ${toEvaluate.length}',
+  );
 
-  // Fetch showcase library pubspec once — reused for dep diffing.
   final libraryPubspec = await ghFile(_showcaseRepo, 'pubspec.yaml') ?? '';
 
   var submitted = 0;
 
-  for (final repo in candidates) {
+  for (final repo in toEvaluate) {
     if (submitted >= _maxPerRun) break;
 
     print('\n▸ ${repo['full_name']} (${repo['stargazers_count']} ★)');
@@ -657,7 +692,6 @@ Future<void> main() async {
         await ghFile(repo['full_name'] as String, 'README.md') ??
         await ghFile(repo['full_name'] as String, 'readme.md') ??
         '';
-
     final sourcePubspec =
         await ghFile(repo['full_name'] as String, 'pubspec.yaml') ?? '';
 
@@ -701,10 +735,11 @@ Future<void> main() async {
     }
 
     final mainFile = evaluation['main_dart_file'] as String?;
-    final sourceDart = mainFile != null
-        ? await ghFile(repo['full_name'] as String, mainFile) ??
-              dartSnippets.toString()
-        : dartSnippets.toString();
+    final sourceDart =
+        (mainFile != null
+            ? await ghFile(repo['full_name'] as String, mainFile)
+            : null) ??
+        dartSnippets.toString();
 
     await Future<void>.delayed(Duration(seconds: _geminiDelaySec));
     final files = await generateShowcaseFiles(
@@ -721,14 +756,7 @@ Future<void> main() async {
     final (infoDart, pageDart) = files;
 
     try {
-      if (await createPr(
-        repo,
-        evaluation,
-        infoDart,
-        pageDart,
-        missingDeps,
-        libraryPubspec,
-      )) {
+      if (await createPr(repo, evaluation, infoDart, pageDart, missingDeps)) {
         submitted++;
       }
     } catch (e) {
