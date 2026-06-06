@@ -218,6 +218,15 @@ Future<List<Map<String, dynamic>>> ghTree(String repo) async {
   return List<Map<String, dynamic>>.from(data['tree'] as List? ?? []);
 }
 
+Future<bool> repoHasDart(String repo) async {
+  final raw = await _httpGet(
+    'https://api.github.com/repos/$repo/languages',
+    _ghHeaders,
+  );
+  if (raw == null) return false;
+  return (jsonDecode(raw) as Map<String, dynamic>).containsKey('Dart');
+}
+
 Future<Set<String>> alreadySubmittedUrls() async {
   final urls = <String>{};
 
@@ -767,12 +776,13 @@ Future<void> main() async {
     final sourcePubspec =
         await ghFile(repo['full_name'] as String, 'pubspec.yaml') ?? '';
 
-    final tree = await ghTree(repo['full_name'] as String);
-    final dartFilePaths = topDartFiles(tree);
-    if (dartFilePaths.isEmpty) {
-      print('  No dart files — skip');
+    if (!await repoHasDart(repo['full_name'] as String)) {
+      print('  No Dart code — skip');
       continue;
     }
+
+    final tree = await ghTree(repo['full_name'] as String);
+    final dartFilePaths = topDartFiles(tree);
 
     final dartSnippets = StringBuffer();
     for (final path in dartFilePaths) {
@@ -785,8 +795,7 @@ Future<void> main() async {
     }
 
     if (dartSnippets.isEmpty) {
-      print('  Could not fetch dart source — skip');
-      continue;
+      print('  Tree truncated — evaluating from README only');
     }
 
     await Future<void>.delayed(Duration(seconds: _geminiDelaySec));
