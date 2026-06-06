@@ -1042,10 +1042,7 @@ Future<void> main() async {
 
   if (newlyRejected.isNotEmpty) {
     print('\nSaving ${newlyRejected.length} new rejection(s) to gallery...');
-    await saveRejectedRepos(
-      {...rejectedRepos, ...newlyRejected},
-      rejectedSha,
-    );
+    await saveRejectedRepos({...rejectedRepos, ...newlyRejected}, rejectedSha);
   }
 
   print('\n=== Done. $submitted PR(s) submitted. ===');
