@@ -778,6 +778,8 @@ Future<bool> createPr(
   for (final cmd in [
     ['git', 'config', 'user.email', 'agent@flexer.app'],
     ['git', 'config', 'user.name', 'Flexer Showcase Agent'],
+    ['git', 'remote', 'set-url', 'origin',
+      'https://x-access-token:$_ghToken@github.com/$_showcaseRepo.git'],
     ['git', 'checkout', '-b', branch],
   ]) {
     await _run(cmd, workingDirectory: cloneDir);
