@@ -1,7 +1,7 @@
 // Flexer Showcase Discovery Agent.
 //
 // Searches GitHub broadly for Flutter repos (keyword: flutter, language:dart),
-// scores each with Gemini 2.0 Flash (free tier), and opens PRs to
+// scores each with Gemini 2.5 Flash (free tier), and opens PRs to
 // flexer-io/flexer-gallery for human review.
 //
 // Each PR adds:
@@ -10,13 +10,15 @@
 //   (patches pubspec.yaml with any missing deps)
 //
 // Required env vars:
-//   GH_TOKEN        PAT with repo scope on both repos
-//   GEMINI_API_KEY  Google AI Studio key (free, 15 req/min / 1M tokens/day)
-//   SHOWCASE_REPO   target repo (default: flexer-io/flexer-gallery)
+//   GH_TOKEN           PAT with repo scope on both repos
+//   GEMINI_API_KEYS    Comma-separated Gemini keys (ai.google.dev, free, 1 per account)
+//                      e.g. "key1,key2,key3" — rotated on 429 to skip sleep
+//   SHOWCASE_REPO      target repo (default: flexer-io/flexer-gallery)
 //
-// Optional env vars (workflow_dispatch inputs):
-//   TARGET_USER   GitHub username — evaluate all their Dart repos
-//   TARGET_REPO   Full repo URL or owner/name — evaluate only this repo
+// Optional env vars:
+//   GROQ_API_KEY   Groq key (console.groq.com, free) — used when all Gemini keys exhausted
+//   TARGET_USER    GitHub username — evaluate all their Dart repos
+//   TARGET_REPO    Full repo URL or owner/name — evaluate only this repo
 
 import 'dart:convert';
 import 'dart:io';
@@ -24,13 +26,29 @@ import 'dart:io';
 // ─── Config ───────────────────────────────────────────────────────────────────
 
 final _ghToken = Platform.environment['GH_TOKEN']!;
-final _geminiKey = Platform.environment['GEMINI_API_KEY']!;
 final _showcaseRepo =
     Platform.environment['SHOWCASE_REPO'] ?? 'flexer-io/flexer-gallery';
 final _targetUser = Platform.environment['TARGET_USER'] ?? '';
 final _targetRepo = Platform.environment['TARGET_REPO'] ?? '';
 
-const _geminiModel = 'gemini-2.0-flash';
+// Gemini keys — comma-separated, one per free Google AI Studio account.
+// Script rotates to next key on 429 instead of sleeping.
+final _geminiKeys =
+    (Platform.environment['GEMINI_API_KEYS'] ??
+            Platform.environment['GEMINI_API_KEY'] ??
+            '')
+        .split(',')
+        .map((k) => k.trim())
+        .where((k) => k.isNotEmpty)
+        .toList();
+
+// Groq fallback — free at console.groq.com, used when all Gemini keys rate-limited.
+final _groqKey = Platform.environment['GROQ_API_KEY'] ?? '';
+
+var _geminiKeyIndex = 0;
+
+const _geminiModel = 'gemini-2.5-flash';
+const _groqModel = 'llama-3.3-70b-versatile';
 const _minStars = 30;
 const _maxCandidatesToEvaluate = 12; // hard cap — keeps runtime predictable
 const _maxPerRun = 3;
@@ -103,48 +121,6 @@ Future<String?> _httpGet(
       return null;
     } catch (e) {
       print('  GET failed (attempt ${attempt + 1}): $e');
-      if (attempt < retries - 1) {
-        await Future<void>.delayed(const Duration(seconds: 5));
-      }
-    } finally {
-      client.close();
-    }
-  }
-  return null;
-}
-
-Future<String?> _httpPost(
-  String url,
-  Map<String, dynamic> body, {
-  int retries = 3,
-}) async {
-  for (var attempt = 0; attempt < retries; attempt++) {
-    final client = HttpClient();
-    try {
-      final request = await client.postUrl(Uri.parse(url));
-      final encoded = utf8.encode(jsonEncode(body));
-      request.headers.set('content-type', 'application/json; charset=utf-8');
-      request.headers.set('content-length', encoded.length.toString());
-      request.add(encoded);
-      final response = await request.close();
-      final responseBody = await response.transform(utf8.decoder).join();
-
-      if (response.statusCode == 200) return responseBody;
-
-      if (response.statusCode == 429) {
-        final retryAfter =
-            int.tryParse(response.headers.value('retry-after') ?? '') ?? 60;
-        print('  Gemini rate limited — sleeping ${retryAfter}s');
-        await Future<void>.delayed(Duration(seconds: retryAfter));
-        continue;
-      }
-
-      print(
-        '  POST ${response.statusCode}: ${responseBody.substring(0, responseBody.length.clamp(0, 200))}',
-      );
-      return null;
-    } catch (e) {
-      print('  POST failed (attempt ${attempt + 1}): $e');
       if (attempt < retries - 1) {
         await Future<void>.delayed(const Duration(seconds: 5));
       }
@@ -397,38 +373,159 @@ String orientationDart(String orientation) => switch (orientation) {
   _ => 'null',
 };
 
-// ─── Gemini ───────────────────────────────────────────────────────────────────
+// ─── AI providers ─────────────────────────────────────────────────────────────
+
+String _extractText(Map<String, dynamic> data) {
+  final text =
+      ((((data['candidates'] as List).first)['content'])['parts'] as List)
+              .first['text']
+          as String;
+  return text
+      .trim()
+      .replaceAll(RegExp(r'^```(?:json)?\s*'), '')
+      .replaceAll(RegExp(r'\s*```$'), '')
+      .trim();
+}
+
+// Calls Gemini with key rotation on 429.
+// Returns null only if ALL keys are exhausted (triggers Groq fallback).
+Future<String?> _geminiRaw(String prompt) async {
+  if (_geminiKeys.isEmpty) return null;
+
+  var rotations = 0;
+
+  while (rotations < _geminiKeys.length) {
+    final key = _geminiKeys[_geminiKeyIndex % _geminiKeys.length];
+    final url =
+        'https://generativelanguage.googleapis.com/v1beta/models'
+        '/$_geminiModel:generateContent?key=$key';
+
+    final client = HttpClient();
+    try {
+      final request = await client.postUrl(Uri.parse(url));
+      final encoded = utf8.encode(
+        jsonEncode({
+          'contents': [
+            {
+              'parts': [
+                {'text': prompt},
+              ],
+            },
+          ],
+          'generationConfig': {'temperature': 0.2, 'maxOutputTokens': 2048},
+        }),
+      );
+      request.headers.set('content-type', 'application/json; charset=utf-8');
+      request.headers.set('content-length', encoded.length.toString());
+      request.add(encoded);
+      final response = await request.close();
+      final body = await response.transform(utf8.decoder).join();
+
+      if (response.statusCode == 200) return body;
+
+      if (response.statusCode == 429 || response.statusCode == 403) {
+        await response.drain<void>();
+        _geminiKeyIndex = (_geminiKeyIndex + 1) % _geminiKeys.length;
+        rotations++;
+        print(
+          '  Key ${rotations}/${_geminiKeys.length} rate-limited — rotating',
+        );
+        if (rotations < _geminiKeys.length) continue;
+        // All keys exhausted — sleep before returning null for Groq fallback.
+        final retryAfter =
+            int.tryParse(response.headers.value('retry-after') ?? '') ?? 60;
+        print('  All Gemini keys exhausted — sleeping ${retryAfter}s');
+        await Future<void>.delayed(Duration(seconds: retryAfter));
+        return null;
+      }
+
+      print(
+        '  Gemini ${response.statusCode}: ${body.substring(0, body.length.clamp(0, 200))}',
+      );
+      return null;
+    } catch (e) {
+      print('  Gemini request failed: $e');
+      return null;
+    } finally {
+      client.close();
+    }
+  }
+  return null;
+}
+
+// Groq fallback — OpenAI-compatible endpoint, free tier.
+Future<String?> _groqRaw(String prompt) async {
+  if (_groqKey.isEmpty) return null;
+
+  final client = HttpClient();
+  try {
+    final request = await client.postUrl(
+      Uri.parse('https://api.groq.com/openai/v1/chat/completions'),
+    );
+    final encoded = utf8.encode(
+      jsonEncode({
+        'model': _groqModel,
+        'messages': [
+          {'role': 'user', 'content': prompt},
+        ],
+        'temperature': 0.2,
+        'max_tokens': 2048,
+      }),
+    );
+    request.headers.set('authorization', 'Bearer $_groqKey');
+    request.headers.set('content-type', 'application/json; charset=utf-8');
+    request.headers.set('content-length', encoded.length.toString());
+    request.add(encoded);
+    final response = await request.close();
+    final body = await response.transform(utf8.decoder).join();
+
+    if (response.statusCode == 200) {
+      final data = jsonDecode(body) as Map<String, dynamic>;
+      return (data['choices'] as List).first['message']['content'] as String;
+    }
+
+    if (response.statusCode == 429) {
+      print('  Groq rate-limited — no fallback remaining');
+    } else {
+      print(
+        '  Groq ${response.statusCode}: ${body.substring(0, body.length.clamp(0, 200))}',
+      );
+    }
+    return null;
+  } catch (e) {
+    print('  Groq request failed: $e');
+    return null;
+  } finally {
+    client.close();
+  }
+}
 
 Future<Map<String, dynamic>?> gemini(String prompt) async {
-  final url =
-      'https://generativelanguage.googleapis.com/v1beta/models'
-      '/$_geminiModel:generateContent?key=$_geminiKey';
+  String? raw = await _geminiRaw(prompt);
 
-  final raw = await _httpPost(url, {
-    'contents': [
-      {
-        'parts': [
-          {'text': prompt},
-        ],
-      },
-    ],
-    'generationConfig': {'temperature': 0.2, 'maxOutputTokens': 2048},
-  });
+  if (raw == null && _groqKey.isNotEmpty) {
+    print('  Falling back to Groq');
+    final groqText = await _groqRaw(prompt);
+    if (groqText != null) {
+      final cleaned = groqText
+          .trim()
+          .replaceAll(RegExp(r'^```(?:json)?\s*'), '')
+          .replaceAll(RegExp(r'\s*```$'), '')
+          .trim();
+      try {
+        return jsonDecode(cleaned) as Map<String, dynamic>;
+      } catch (e) {
+        print('  Groq parse error: $e');
+        return null;
+      }
+    }
+    return null;
+  }
 
   if (raw == null) return null;
   try {
     final data = jsonDecode(raw) as Map<String, dynamic>;
-    final text =
-        ((((data['candidates'] as List).first)['content'])['parts'] as List)
-                .first['text']
-            as String;
-
-    final cleaned = text
-        .trim()
-        .replaceAll(RegExp(r'^```(?:json)?\s*'), '')
-        .replaceAll(RegExp(r'\s*```$'), '')
-        .trim();
-
+    final cleaned = _extractText(data);
     return jsonDecode(cleaned) as Map<String, dynamic>;
   } catch (e) {
     print('  Gemini parse error: $e');
