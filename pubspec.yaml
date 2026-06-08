@@ -11,7 +11,10 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_clock_helper: any
+  flutter_clock_helper:
+    git:
+      url: https://github.com/flutter/flutter_clock.git
+      path: flutter_clock_helper
+
 flutter:
   uses-material-design: true
-
