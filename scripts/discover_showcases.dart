@@ -629,6 +629,18 @@ Future<Map<String, dynamic>?> callAi(String prompt, {String label = ''}) async {
   return null;
 }
 
+// Returns raw text response — no JSON parsing. Use for code content where
+// embedded newlines/quotes would break JSON.
+Future<String?> callAiRaw(String prompt, {String label = ''}) async {
+  for (final provider in _aiProviders) {
+    print('  [${provider.name}] evaluating${label.isNotEmpty ? ' $label' : ''}...');
+    final text = await provider.call(prompt);
+    if (text != null) return text;
+  }
+  print('  All AI providers exhausted');
+  return null;
+}
+
 Future<Map<String, dynamic>?> scoreRepo(
   Map<String, dynamic> repo,
   String readme,
@@ -761,7 +773,21 @@ class $cls extends StatelessWidget {
 
 // ─── Showcase validation + self-healing ───────────────────────────────────────
 
-// Parses failing package names from pub get stderr.
+// Extracts package names from analyze output where import URI cannot be resolved.
+// Machine format line example:
+//   ERROR|URI_DOES_NOT_EXIST|...|file.dart|1|8|51|Target of URI doesn't exist: 'package:flutter_clock_helper/model.dart'
+Set<String> _missingImportDeps(String analyzeOutput) {
+  final set = <String>{};
+  for (final line in analyzeOutput.split('\n')) {
+    if (!line.contains("doesn't exist") &&
+        !line.contains('not found') &&
+        !line.contains('URI_DOES_NOT_EXIST')) continue;
+    final m = RegExp(r"package:([a-z_][a-z0-9_]*)/").firstMatch(line);
+    if (m != null) set.add(m.group(1)!);
+  }
+  return set;
+}
+
 Set<String> _failingDeps(String output) {
   final set = <String>{};
   // "Because X ..." patterns
@@ -822,20 +848,28 @@ Future<bool> _analyzeAndFix(String dir, {int maxAttempts = 5}) async {
       if (!file.existsSync()) continue;
       final current = await file.readAsString();
 
-      final fix = await callAi(
+      final fix = await callAiRaw(
         '''Fix ALL dart analyze errors in this file. Make it null-safe and compatible with Dart 3.
 
 Errors:
 ${entry.value.join('\n')}
 
-File (${entry.key}):
+Current file content (${entry.key}):
 $current
 
-Return JSON: {"fixed": "<complete corrected file content>"}''',
+Return ONLY the complete fixed Dart source file. No explanation, no markdown fences, no JSON — just the raw .dart file content starting with imports or library declaration.''',
+        label: entry.key.split('/').last,
       );
 
-      if (fix != null && fix['fixed'] is String) {
-        await file.writeAsString(fix['fixed'] as String);
+      if (fix != null && fix.trim().isNotEmpty) {
+        var fixed = fix.trim();
+        // Strip accidental markdown code fences that some models add.
+        if (fixed.startsWith('```')) {
+          fixed = fixed
+              .replaceFirst(RegExp(r'^```[a-z]*\n?'), '')
+              .replaceFirst(RegExp(r'\n?```\s*$'), '');
+        }
+        await file.writeAsString(fixed);
       }
     }
   }
@@ -949,7 +983,34 @@ Future<bool> validateAndFix(
     }
   }
 
-  print('  pub get OK — running dart analyze...');
+  print('  pub get OK — scanning for unresolved package imports...');
+
+  // Pre-analyze: find missing package imports that pub get didn't catch
+  // (e.g. packages referenced in source files but absent from pubspec).
+  final preAnalyze = await _run(
+    ['dart', 'analyze', '--format', 'machine', '$cloneDir/lib/$showcaseId'],
+  );
+  final missingPkgs = _missingImportDeps(
+    '${preAnalyze.stdout}\n${preAnalyze.stderr}',
+  )..removeAll(vendored)..removeAll(_builtinPackages);
+
+  if (missingPkgs.isNotEmpty) {
+    print('  Missing package imports: $missingPkgs — vendoring...');
+    for (final dep in missingPkgs) {
+      if (!await _vendorDep(dep, cloneDir, showcaseId, sourcePubspec)) {
+        print('  Cannot vendor $dep — showcase may fail analyze');
+      }
+      vendored.add(dep);
+    }
+    // Re-run pub get after vendoring new deps.
+    final reget = await _run(['flutter', 'pub', 'get'], workingDirectory: cloneDir);
+    if (reget.exitCode != 0) {
+      print('  pub get failed after vendoring: ${reget.stderr}');
+      return false;
+    }
+  }
+
+  print('  Running dart analyze...');
 
   // Analyze + AI fix loop on showcase files.
   final ok = await _analyzeAndFix('$cloneDir/lib/$showcaseId');
