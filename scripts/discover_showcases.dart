@@ -862,8 +862,6 @@ Future<bool> _analyzeAndFix(String dir, {int maxAttempts = 5}) async {
     final result = await _run(['dart', 'analyze', '--format', 'machine', dir]);
     if (result.exitCode == 0) return true;
 
-    print('    Analyze attempt $attempt/$maxAttempts — fixing errors...');
-
     // Group errors by file.
     final byFile = <String, List<String>>{};
     for (final line in (result.stdout as String).split('\n')) {
@@ -875,6 +873,16 @@ Future<bool> _analyzeAndFix(String dir, {int maxAttempts = 5}) async {
     }
 
     if (byFile.isEmpty) break;
+
+    print('    Analyze attempt $attempt/$maxAttempts — ${byFile.length} file(s) with errors:');
+    for (final entry in byFile.entries) {
+      final fileName = entry.key.split('/').last;
+      for (final line in entry.value) {
+        final parts = line.split('|');
+        final msg = parts.length >= 8 ? parts[7].trim() : line;
+        print('      $fileName: $msg');
+      }
+    }
 
     // Read all errored files and build one batched prompt.
     final sections = <String>[];
