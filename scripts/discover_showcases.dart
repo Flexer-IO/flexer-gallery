@@ -535,15 +535,13 @@ class _AiProvider {
             .trim();
       }
 
-      if (response.statusCode == 429 || response.statusCode == 403) {
+      if (response.statusCode == 429 ||
+          response.statusCode == 403 ||
+          response.statusCode == 400 ||
+          response.statusCode == 503) {
         print('  [$name] ${response.statusCode} — rotating key');
         _nextKey();
         return _kRateLimit;
-      }
-
-      if (response.statusCode == 503) {
-        print('  [$name] 503 server overload — skipping provider');
-        return null;
       }
 
       print(
