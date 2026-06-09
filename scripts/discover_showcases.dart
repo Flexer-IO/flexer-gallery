@@ -874,7 +874,9 @@ Future<bool> _analyzeAndFix(String dir, {int maxAttempts = 5}) async {
 
     if (byFile.isEmpty) break;
 
-    print('    Analyze attempt $attempt/$maxAttempts — ${byFile.length} file(s) with errors:');
+    print(
+      '    Analyze attempt $attempt/$maxAttempts — ${byFile.length} file(s) with errors:',
+    );
     for (final entry in byFile.entries) {
       final fileName = entry.key.split('/').last;
       for (final line in entry.value) {
