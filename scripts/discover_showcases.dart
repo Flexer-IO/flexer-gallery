@@ -18,12 +18,11 @@
 // Each value is comma-separated keys. Providers tried in order; keys rotated on 429.
 //
 //   GEMINI_API_KEYS     ai.google.dev           — free, 15 req/min/key,  gemini-2.5-flash
-//   CEREBRAS_API_KEYS   cloud.cerebras.ai       — free, ~30 req/min,    llama-3.3-70b
-//   SAMBANOVA_API_KEYS  cloud.sambanova.ai      — free, 405B model
-//   GROQ_API_KEYS       console.groq.com        — free, reasoning model  deepseek-r1-distill-llama-70b
-//   NVIDIA_API_KEYS     build.nvidia.com        — 1000 credits/month,   nemotron-70b
-//   OPENROUTER_API_KEYS openrouter.ai           — free R1 model,        deepseek-r1:free
-//   DEEPSEEK_API_KEYS   platform.deepseek.com   — paid credits fallback, deepseek-chat
+//   CEREBRAS_API_KEYS   cloud.cerebras.ai       — free, ~30 req/min,    llama3.3-70b
+//   SAMBANOVA_API_KEYS  cloud.sambanova.ai      — free,                 Meta-Llama-3.3-70B-Instruct
+//   GROQ_API_KEYS       console.groq.com        — free,                 llama-3.3-70b-versatile
+//   NVIDIA_API_KEYS     build.nvidia.com        — 1000 credits/month,   meta/llama-3.1-70b-instruct
+//   OPENROUTER_API_KEYS openrouter.ai           — free,                 google/gemma-3-27b-it:free
 //
 //   Example: GEMINI_API_KEYS=key1,key2,key3  GROQ_API_KEYS=key4,key5
 //
@@ -510,7 +509,7 @@ class _AiProvider {
                 ],
               },
             ],
-            'generationConfig': {'temperature': 0.2, 'maxOutputTokens': 2048},
+            'generationConfig': {'temperature': 0.2, 'maxOutputTokens': 8192},
           }
         : {
             'model': model,
@@ -518,7 +517,7 @@ class _AiProvider {
               {'role': 'user', 'content': prompt},
             ],
             'temperature': 0.2,
-            'max_tokens': 2048,
+            'max_tokens': 8192,
           };
 
     final client = HttpClient();
@@ -548,17 +547,18 @@ class _AiProvider {
             .trim();
       }
 
+      // Rate-limit / quota errors — rotate to next key.
       if (response.statusCode == 429 ||
           response.statusCode == 403 ||
-          response.statusCode == 400 ||
           response.statusCode == 503) {
         print('  [$name] ${response.statusCode} — rotating key');
         _nextKey();
         return _kRateLimit;
       }
 
+      // 400 = bad request — rotating keys won't help; print body for diagnosis.
       print(
-        '  [$name] ${response.statusCode}: ${body.substring(0, body.length.clamp(0, 150))}',
+        '  [$name] ${response.statusCode}: ${body.substring(0, body.length.clamp(0, 300))}',
       );
       return null;
     } catch (e) {
@@ -592,42 +592,35 @@ final _aiProviders = <_AiProvider>[
     name: 'Cerebras',
     keys: _envKeys('CEREBRAS_API_KEYS'),
     url: 'https://api.cerebras.ai/v1/chat/completions',
-    model: 'llama-3.3-70b',
+    model: 'llama3.3-70b',
   ),
-  // SambaNova — 405B free, largest freely available model.
+  // SambaNova — free 70B model.
   _AiProvider(
     name: 'SambaNova',
     keys: _envKeys('SAMBANOVA_API_KEYS'),
     url: 'https://api.sambanova.ai/v1/chat/completions',
-    model: 'Meta-Llama-3.1-405B-Instruct',
+    model: 'Meta-Llama-3.3-70B-Instruct',
   ),
-  // Groq — DeepSeek R1 distill, reasoning model excellent at code.
+  // Groq — versatile 70B.
   _AiProvider(
     name: 'Groq',
     keys: _envKeys('GROQ_API_KEYS'),
     url: 'https://api.groq.com/openai/v1/chat/completions',
-    model: 'deepseek-r1-distill-llama-70b',
+    model: 'llama-3.3-70b-versatile',
   ),
-  // NVIDIA — Nemotron 70B, NVIDIA-tuned for instruction following.
+  // NVIDIA — Llama 3.1 70B via NIM API (1000 free credits/month).
   _AiProvider(
     name: 'NVIDIA',
     keys: _envKeys('NVIDIA_API_KEYS'),
     url: 'https://integrate.api.nvidia.com/v1/chat/completions',
-    model: 'nvidia/llama-3.1-nemotron-70b-instruct',
+    model: 'meta/llama-3.1-70b-instruct',
   ),
-  // OpenRouter — DeepSeek R1 free tier (reasoning, great at code).
+  // OpenRouter — Gemma 3 27B free tier.
   _AiProvider(
     name: 'OpenRouter',
     keys: _envKeys('OPENROUTER_API_KEYS'),
     url: 'https://openrouter.ai/api/v1/chat/completions',
-    model: 'deepseek/deepseek-r1:free',
-  ),
-  // DeepSeek — V3, paid credits, last-resort fallback.
-  _AiProvider(
-    name: 'DeepSeek',
-    keys: _envKeys('DEEPSEEK_API_KEYS'),
-    url: 'https://api.deepseek.com/chat/completions',
-    model: 'deepseek-chat',
+    model: 'google/gemma-3-27b-it:free',
   ),
 ].where((p) => p.hasKeys).toList();
 
