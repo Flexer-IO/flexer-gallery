@@ -857,26 +857,53 @@ Future<Map<String, dynamic>?> _depSource(String dep, String sourcePubspec) {
 }
 
 // AI fix loop — batches ALL errored files into one call per attempt.
-Future<bool> _analyzeAndFix(String dir, {int maxAttempts = 5}) async {
-  for (var attempt = 1; attempt <= maxAttempts; attempt++) {
-    final result = await _run(['dart', 'analyze', '--format', 'machine', dir]);
-    if (result.exitCode == 0) return true;
+// Loops until clean or no progress (same errors two rounds in a row).
+Future<bool> _analyzeAndFix(String dir) async {
+  // Collect available local deps so AI knows what relative imports to use.
+  final depsDir = Directory('$dir/deps');
+  final availableDeps = <String>[];
+  if (depsDir.existsSync()) {
+    await for (final e in depsDir.list()) {
+      if (e is Directory) availableDeps.add(e.path.split('/').last);
+    }
+  }
+  final depsNote = availableDeps.isEmpty
+      ? ''
+      : '\nLocal deps available via relative import — '
+          'e.g. import \'deps/pkg_name/some_file.dart\':\n'
+          '${availableDeps.map((d) => '  deps/$d/').join('\n')}\n';
 
-    // Group errors by file.
+  Set<String> prevErrorKeys = {};
+  var attempt = 0;
+
+  while (true) {
+    attempt++;
+    final result = await _run(['dart', 'analyze', '--format', 'machine', dir]);
+
+    // Collect only ERROR-severity lines (not HINT/WARNING — those are non-blocking).
     final byFile = <String, List<String>>{};
     for (final line in (result.stdout as String).split('\n')) {
       final parts = line.split('|');
-      if (parts.length < 4) continue;
+      if (parts.length < 8) continue;
+      if (parts[0].trim() != 'ERROR') continue; // skip HINT/WARNING
       final filePath = parts[3].trim();
       if (filePath.isEmpty) continue;
       byFile.putIfAbsent(filePath, () => []).add(line);
     }
 
-    if (byFile.isEmpty) break;
+    if (byFile.isEmpty) return true; // no errors (hints/warnings are fine)
 
-    print(
-      '    Analyze attempt $attempt/$maxAttempts — ${byFile.length} file(s) with errors:',
-    );
+    // Detect no-progress: stop if error set unchanged from previous attempt.
+    final errorKeys = byFile.entries
+        .expand((e) => e.value.map((l) => '${e.key}:$l'))
+        .toSet();
+    if (errorKeys == prevErrorKeys) {
+      print('    No progress after attempt $attempt — stopping fix loop');
+      return false;
+    }
+    prevErrorKeys = errorKeys;
+
+    print('    Analyze attempt $attempt — ${byFile.length} file(s) with errors:');
     for (final entry in byFile.entries) {
       final fileName = entry.key.split('/').last;
       for (final line in entry.value) {
@@ -900,11 +927,11 @@ Future<bool> _analyzeAndFix(String dir, {int maxAttempts = 5}) async {
       );
     }
 
-    if (sections.isEmpty) break;
+    if (sections.isEmpty) return true;
 
     final fix = await callAiRaw(
       'Fix ALL dart analyze errors in the files below. '
-      'Make them null-safe and compatible with Dart 3.\n\n'
+      'Make them null-safe and compatible with Dart 3.$depsNote\n\n'
       '${sections.join('\n\n')}\n\n'
       'Return each fixed file using EXACTLY this format:\n'
       '===FIXED: <original file path>===\n'
@@ -932,9 +959,6 @@ Future<bool> _analyzeAndFix(String dir, {int maxAttempts = 5}) async {
       }
     }
   }
-
-  final final_ = await _run(['dart', 'analyze', '--format', 'machine', dir]);
-  return final_.exitCode == 0;
 }
 
 // Fetches a dep's source (git or pub.dev), fixes its code, patches pubspec + imports.
