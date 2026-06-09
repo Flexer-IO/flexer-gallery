@@ -17,12 +17,13 @@
 // AI provider env vars — add as many keys per provider as you have accounts.
 // Each value is comma-separated keys. Providers tried in order; keys rotated on 429.
 //
-//   GEMINI_API_KEYS     ai.google.dev           — free, best quality,  15 req/min/key
-//   GROQ_API_KEYS       console.groq.com        — free, fastest,       30 req/min/key
-//   CEREBRAS_API_KEYS   cloud.cerebras.ai       — free, very fast,     30 req/min/key
-//   SAMBANOVA_API_KEYS  cloud.sambanova.ai      — free
-//   NVIDIA_API_KEYS     build.nvidia.com        — 1000 credits/month free
-//   OPENROUTER_API_KEYS openrouter.ai           — free models available
+//   GEMINI_API_KEYS     ai.google.dev           — free, 15 req/min/key,  gemini-2.5-flash
+//   CEREBRAS_API_KEYS   cloud.cerebras.ai       — free, ~30 req/min,    llama-3.3-70b
+//   SAMBANOVA_API_KEYS  cloud.sambanova.ai      — free, 405B model
+//   GROQ_API_KEYS       console.groq.com        — free, reasoning model  deepseek-r1-distill-llama-70b
+//   NVIDIA_API_KEYS     build.nvidia.com        — 1000 credits/month,   nemotron-70b
+//   OPENROUTER_API_KEYS openrouter.ai           — free R1 model,        deepseek-r1:free
+//   DEEPSEEK_API_KEYS   platform.deepseek.com   — paid credits fallback, deepseek-chat
 //
 //   Example: GEMINI_API_KEYS=key1,key2,key3  GROQ_API_KEYS=key4,key5
 //
@@ -579,41 +580,54 @@ List<String> _envKeys(String varName) => (Platform.environment[varName] ?? '')
 
 // Provider priority: best quality first. Script falls through on exhaustion.
 final _aiProviders = <_AiProvider>[
+  // Gemini 2.5 Flash — best quality, 15 RPM/key free.
   _AiProvider(
     name: 'Gemini',
     keys: _envKeys('GEMINI_API_KEYS'),
-    url: '', // Gemini uses key in query param, not Authorization header
+    url: '', // key in query param, not Authorization header
     model: 'gemini-2.5-flash',
   ),
-  _AiProvider(
-    name: 'Groq',
-    keys: _envKeys('GROQ_API_KEYS'),
-    url: 'https://api.groq.com/openai/v1/chat/completions',
-    model: 'llama-3.3-70b-versatile',
-  ),
+  // Cerebras — fastest inference, generous free quota (~30 RPM).
   _AiProvider(
     name: 'Cerebras',
     keys: _envKeys('CEREBRAS_API_KEYS'),
     url: 'https://api.cerebras.ai/v1/chat/completions',
     model: 'llama-3.3-70b',
   ),
+  // SambaNova — 405B free, largest freely available model.
   _AiProvider(
     name: 'SambaNova',
     keys: _envKeys('SAMBANOVA_API_KEYS'),
     url: 'https://api.sambanova.ai/v1/chat/completions',
-    model: 'Meta-Llama-3.3-70B-Instruct',
+    model: 'Meta-Llama-3.1-405B-Instruct',
   ),
+  // Groq — DeepSeek R1 distill, reasoning model excellent at code.
+  _AiProvider(
+    name: 'Groq',
+    keys: _envKeys('GROQ_API_KEYS'),
+    url: 'https://api.groq.com/openai/v1/chat/completions',
+    model: 'deepseek-r1-distill-llama-70b',
+  ),
+  // NVIDIA — Nemotron 70B, NVIDIA-tuned for instruction following.
   _AiProvider(
     name: 'NVIDIA',
     keys: _envKeys('NVIDIA_API_KEYS'),
     url: 'https://integrate.api.nvidia.com/v1/chat/completions',
-    model: 'meta/llama-3.3-70b-instruct',
+    model: 'nvidia/llama-3.1-nemotron-70b-instruct',
   ),
+  // OpenRouter — DeepSeek R1 free tier (reasoning, great at code).
   _AiProvider(
     name: 'OpenRouter',
     keys: _envKeys('OPENROUTER_API_KEYS'),
     url: 'https://openrouter.ai/api/v1/chat/completions',
-    model: 'meta-llama/llama-3.3-70b-instruct:free',
+    model: 'deepseek/deepseek-r1:free',
+  ),
+  // DeepSeek — V3, paid credits, last-resort fallback.
+  _AiProvider(
+    name: 'DeepSeek',
+    keys: _envKeys('DEEPSEEK_API_KEYS'),
+    url: 'https://api.deepseek.com/chat/completions',
+    model: 'deepseek-chat',
   ),
 ].where((p) => p.hasKeys).toList();
 
