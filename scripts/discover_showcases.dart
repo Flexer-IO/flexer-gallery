@@ -755,6 +755,204 @@ class $cls extends StatelessWidget {
   return (infoDart, pageDart);
 }
 
+// ─── Showcase validation + self-healing ───────────────────────────────────────
+
+// Parses failing package names from pub get stderr.
+Set<String> _failingDeps(String output) {
+  final set = <String>{};
+  // "Because X ..." patterns
+  for (final m in RegExp(r"Because ([a-z_][a-z0-9_]*)[ \^]").allMatches(output)) {
+    set.add(m.group(1)!);
+  }
+  // "X ... doesn't support null safety" / "lower bound" patterns
+  for (final m in RegExp(r"'([a-z_][a-z0-9_]*)' must be 2\.12").allMatches(output)) {
+    set.add(m.group(1)!);
+  }
+  // "Incompatible constraints on X"
+  for (final m in RegExp(r"constraints on ([a-z_][a-z0-9_]*)").allMatches(output)) {
+    set.add(m.group(1)!);
+  }
+  return set;
+}
+
+// Reads a dep's source from the source repo's pubspec (git url or pub.dev).
+Future<Map<String, dynamic>?> _depSource(String dep, String sourcePubspec) {
+  // Look for git: entry for this dep in the source pubspec.
+  final gitMatch = RegExp(
+    '  $dep:\\s*\\n    git:\\s*\\n      url:\\s*(\\S+)(?:\\s*\\n      path:\\s*(\\S+))?',
+  ).firstMatch(sourcePubspec);
+  if (gitMatch != null) {
+    return Future.value({
+      'type': 'git',
+      'url': gitMatch.group(1)!,
+      'path': gitMatch.group(2),
+    });
+  }
+  return Future.value({'type': 'pubdev'});
+}
+
+// AI fix loop on a directory of dart files. Returns true when clean.
+Future<bool> _analyzeAndFix(String dir, {int maxAttempts = 5}) async {
+  for (var attempt = 1; attempt <= maxAttempts; attempt++) {
+    final result = await _run(
+      ['dart', 'analyze', '--format', 'machine', dir],
+    );
+    if (result.exitCode == 0) return true;
+
+    print('    Analyze attempt $attempt/$maxAttempts — fixing errors...');
+
+    // Group errors by file.
+    final byFile = <String, List<String>>{};
+    for (final line in (result.stdout as String).split('\n')) {
+      final parts = line.split('|');
+      if (parts.length < 4) continue;
+      final filePath = parts[3].trim();
+      if (filePath.isEmpty) continue;
+      byFile.putIfAbsent(filePath, () => []).add(line);
+    }
+
+    if (byFile.isEmpty) break;
+
+    for (final entry in byFile.entries) {
+      final file = File(entry.key);
+      if (!file.existsSync()) continue;
+      final current = await file.readAsString();
+
+      final fix = await callAi(
+        '''Fix ALL dart analyze errors in this file. Make it null-safe and compatible with Dart 3.
+
+Errors:
+${entry.value.join('\n')}
+
+File (${entry.key}):
+$current
+
+Return JSON: {"fixed": "<complete corrected file content>"}''',
+      );
+
+      if (fix != null && fix['fixed'] is String) {
+        await file.writeAsString(fix['fixed'] as String);
+      }
+    }
+  }
+
+  final final_ = await _run(['dart', 'analyze', '--format', 'machine', dir]);
+  return final_.exitCode == 0;
+}
+
+// Vendors a dep: fetches source (git or pub.dev), fixes its code, patches pubspec + imports.
+Future<bool> _vendorDep(
+  String dep,
+  String cloneDir,
+  String showcaseId,
+  String sourcePubspec,
+) async {
+  print('    Vendoring $dep...');
+  final vendorDir = '$cloneDir/lib/$showcaseId/vendor/$dep';
+  await _run(['mkdir', '-p', vendorDir]);
+
+  final source = await _depSource(dep, sourcePubspec);
+
+  if (source != null && source['type'] == 'git') {
+    final gitUrl = source['url'] as String;
+    final subPath = source['path'] as String?;
+    final tmpClone = '/tmp/vendor-git-$dep';
+    await _run(['rm', '-rf', tmpClone]);
+    final clone = await _run(['git', 'clone', '--depth=1', gitUrl, tmpClone]);
+    if (clone.exitCode != 0) { print('    Git clone failed'); return false; }
+    final libSrc = subPath != null ? '$tmpClone/$subPath/lib' : '$tmpClone/lib';
+    await _run(['bash', '-c', 'cp -r $libSrc/. $vendorDir/']);
+  } else {
+    // pub.dev
+    final info = await _httpGet(
+      'https://pub.dev/api/packages/$dep',
+      {'Accept': 'application/json'},
+    );
+    if (info == null) { print('    Cannot fetch $dep from pub.dev'); return false; }
+    final data = jsonDecode(info) as Map<String, dynamic>;
+    final version = (data['latest'] as Map<String, dynamic>)['version'] as String;
+    final tmpDir = '/tmp/vendor-$dep';
+    await _run(['rm', '-rf', tmpDir]);
+    await _run(['mkdir', '-p', tmpDir]);
+    final dl = await _run(['curl', '-sL', '-o', '$tmpDir.tar.gz',
+      'https://pub.dev/packages/$dep/versions/$version.tar.gz']);
+    if (dl.exitCode != 0) { print('    Download failed'); return false; }
+    await _run(['tar', '-xzf', '$tmpDir.tar.gz', '-C', tmpDir]);
+    await _run(['bash', '-c', 'cp -r $tmpDir/lib/. $vendorDir/']);
+  }
+
+  // Fix vendored package's own code (null-safety, deprecated APIs, etc.)
+  print('    Fixing vendored $dep code...');
+  await _analyzeAndFix(vendorDir);
+
+  // Patch pubspec: replace dep entry with local path.
+  final pubspecFile = File('$cloneDir/pubspec.yaml');
+  var pubspec = await pubspecFile.readAsString();
+  // Remove existing entry (pub.dev version, git entry, etc.) and add path.
+  pubspec = pubspec.replaceAllMapped(
+    RegExp('  $dep:(?:[^\n]*\n(?:    [^\n]*\n)*)'),
+    (_) => '  $dep:\n    path: lib/$showcaseId/vendor/$dep\n',
+  );
+  await pubspecFile.writeAsString(pubspec);
+
+  // Fix imports in all showcase dart files: package:dep/ → vendor/dep/
+  final showcaseLibDir = Directory('$cloneDir/lib/$showcaseId');
+  await for (final entity in showcaseLibDir.list(recursive: true)) {
+    if (entity is! File || !entity.path.endsWith('.dart')) continue;
+    if (entity.path.contains('/vendor/')) continue;
+    final content = await entity.readAsString();
+    final fixed = content.replaceAll(
+      RegExp("import 'package:${RegExp.escape(dep)}/"),
+      "import 'vendor/$dep/",
+    );
+    if (fixed != content) await entity.writeAsString(fixed);
+  }
+
+  print('    Vendored $dep → lib/$showcaseId/vendor/$dep');
+  return true;
+}
+
+// Full validation loop: pub get → vendor failing deps → analyze → AI fix.
+Future<bool> validateAndFix(
+  String cloneDir,
+  String showcaseId,
+  String sourcePubspec,
+) async {
+  // Pub get loop: vendor any dep that blocks resolution.
+  final vendored = <String>{};
+  for (var round = 0; round < 5; round++) {
+    final result = await _run(['flutter', 'pub', 'get'], workingDirectory: cloneDir);
+    if (result.exitCode == 0) break;
+
+    final output = '${result.stdout}\n${result.stderr}';
+    final failing = _failingDeps(output)..removeAll(vendored);
+
+    if (failing.isEmpty) {
+      print('  pub get failed (unrecognized error):\n${result.stderr}');
+      return false;
+    }
+
+    for (final dep in failing) {
+      if (!await _vendorDep(dep, cloneDir, showcaseId, sourcePubspec)) {
+        return false;
+      }
+      vendored.add(dep);
+    }
+
+    if (round == 4) {
+      print('  pub get still failing after $round vendor rounds');
+      return false;
+    }
+  }
+
+  print('  pub get OK — running dart analyze...');
+
+  // Analyze + AI fix loop on showcase files.
+  final ok = await _analyzeAndFix('$cloneDir/lib/$showcaseId');
+  if (!ok) print('  Analyze errors remain after fix attempts');
+  return ok;
+}
+
 // ─── Process helpers ──────────────────────────────────────────────────────────
 
 Future<ProcessResult> _run(List<String> cmd, {String? workingDirectory}) =>
@@ -774,6 +972,7 @@ Future<bool> createPr(
   String pageDart,
   Map<String, String> missingDeps,
   Map<String, String> sourceFiles,
+  String sourcePubspec,
 ) async {
   final id = showcaseId(repo);
   final displayName = showcaseDisplayName(repo);
@@ -839,6 +1038,14 @@ Future<bool> createPr(
     final current = await pubspecFile.readAsString();
     await pubspecFile.writeAsString(mergeDepsIntoPubspec(current, missingDeps));
     print('  Added to pubspec.yaml: ${missingDeps.keys.join(', ')}');
+  }
+
+  // Validate: pub get + dep vendoring + analyze + AI fix loop.
+  print('  Validating showcase...');
+  final valid = await validateAndFix(cloneDir, id, sourcePubspec);
+  if (!valid) {
+    print('  Showcase failed validation — not submitting PR');
+    return false;
   }
 
   await _run(['git', 'add', '.'], workingDirectory: cloneDir);
@@ -1073,7 +1280,7 @@ Future<void> main() async {
     final (infoDart, pageDart) = generateShowcaseFiles(repo, evaluation, sourceFiles);
 
     try {
-      if (await createPr(repo, evaluation, infoDart, pageDart, missingDeps, sourceFiles)) {
+      if (await createPr(repo, evaluation, infoDart, pageDart, missingDeps, sourceFiles, sourcePubspec)) {
         submitted++;
       }
     } catch (e) {
