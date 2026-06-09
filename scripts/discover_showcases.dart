@@ -647,11 +647,17 @@ ${dartSnippets.substring(0, dartSnippets.length.clamp(0, 3000))}
 WHAT WE WANT — must be ALL of these:
   ✓ Single-screen or single-component UI experience (animation, custom widget, visual demo)
   ✓ Visually impressive, creative, or animated
-  ✓ Self-contained — runs without complex backend setup
+  ✓ Self-contained — runs without complex backend setup, no native platform code
   ✗ NOT a utility/logic library
   ✗ NOT a full multi-screen app (auth, nav, data fetching, etc.)
   ✗ NOT a pub.dev package meant to be imported, not viewed
   ✗ NOT a tutorial, template, boilerplate, or course project
+  ✗ NOT requiring native Swift/Kotlin/platform-channel code to function
+
+Orientation rules (be precise):
+  - landscape_only: wide displays, clocks, horizontal scrollers, games designed for landscape
+  - portrait_only: vertical lists, phone-first UIs, tall layouts
+  - unspecified: works in both orientations equally
 
 Score 1-10 (for logging only). Set suitable=true only if ALL criteria above are met. Respond with JSON only — no markdown fences:
 {
@@ -659,87 +665,94 @@ Score 1-10 (for logging only). Set suitable=true only if ALL criteria above are 
   "suitable": <true|false>,
   "reason": "<one sentence>",
   "description": "<one sentence for end-users, max 100 chars>",
-  "main_widget_class": "<PascalCase class that IS the main visual widget>",
-  "main_dart_file": "<lib/path/to/file.dart containing that class>",
+  "main_dart_file": "<lib/path/to/file.dart containing the main visual widget>",
   "orientation": "portrait_only|landscape_only|unspecified"
 }''';
 
   return callAi(prompt, label: repo['full_name'] as String);
 }
 
-Future<(String, String)?> generateShowcaseFiles(
+// Fetches all dart files under lib/ from a source repo (up to a limit).
+Future<Map<String, String>> fetchAllSourceFiles(String repo, List<Map<String, dynamic>> tree) async {
+  final files = <String, String>{};
+  final paths = tree
+      .where((f) =>
+          (f['path'] as String).startsWith('lib/') &&
+          (f['path'] as String).endsWith('.dart') &&
+          !(f['path'] as String).toLowerCase().contains('test') &&
+          (f['size'] as int? ?? 0) < 80000)
+      .map((f) => f['path'] as String)
+      .toList();
+
+  for (final path in paths) {
+    final content = await ghFile(repo, path);
+    if (content != null) files[path] = content;
+  }
+  return files;
+}
+
+// Fixes package imports from source package → relative imports within showcase dir.
+String fixImports(String content, String sourcePackageName) {
+  return content.replaceAllMapped(
+    RegExp("import 'package:${RegExp.escape(sourcePackageName)}/(.+?)';"),
+    (m) => "import '${m.group(1)}';",
+  );
+}
+
+(String, String) generateShowcaseFiles(
   Map<String, dynamic> repo,
   Map<String, dynamic> evaluation,
-  String sourceDart,
-  Map<String, String> missingDeps,
-) async {
+  Map<String, String> sourceFiles,
+) {
   final id = showcaseId(repo);
   final cls = pageClass(id);
   final displayName = showcaseDisplayName(repo);
   final orientation = orientationDart(
     evaluation['orientation'] as String? ?? 'unspecified',
   );
-  final description = evaluation['description'] as String? ?? '';
+  final description = (evaluation['description'] as String? ?? '').replaceAll("'", r"\'");
   final repoUrl = repo['html_url'] as String;
-  final license =
-      (repo['license'] as Map<String, dynamic>?)?['spdx_id'] ?? 'MIT';
 
-  final depsNote = missingDeps.isEmpty
-      ? ''
-      : 'The widget uses these packages (already added to pubspec.yaml in this PR): '
-            '${missingDeps.keys.join(', ')}. Include their imports as-is.';
+  // Determine entry file and main widget class from AI hint or fallback.
+  final mainFile = evaluation['main_dart_file'] as String?;
+  final entryImport = mainFile != null
+      ? mainFile.replaceFirst('lib/', '')
+      : '${id}_entry.dart';
 
-  final prompt =
-      '''
-Generate two Dart files for the Flexer showcase library.
-
-Showcase ID (folder name): $id
-Source repo: $repoUrl
-License: $license
-Display name: $displayName
-Description: $description
-Main widget class: ${evaluation['main_widget_class'] ?? '(identify from source)'}
-$depsNote
-
-Source Dart:
-${sourceDart.substring(0, sourceDart.length.clamp(0, 5000))}
-
-═══ FILE 1: showcase_info.dart ═══
-- import 'package:flutter/widgets.dart';
-- import 'package:showcase_library/showcase_contract.dart';
-- const showcaseInfo = ShowcaseInfo(
-    showcaseName: '$displayName',
-    githubRepoUrl: '$repoUrl',
-    orientation: $orientation,
-    description: '$description',
-  );
-- NO authorHandle field (does not exist in ShowcaseInfo)
-
-═══ FILE 2: ${id}_page.dart ═══
-- First line: // Source: $repoUrl
-- import 'package:flutter/material.dart';
-- class $cls extends StatelessWidget, const constructor
-- Adapt/inline the source widget to be self-contained
-- If something cannot be inlined: add // TODO: manual integration needed
-  and render a placeholder Scaffold showing the showcase name and source URL
-
-Respond with JSON only — no markdown fences:
-{
-  "showcase_info_dart": "<complete file content>",
-  "page_dart": "<complete file content>"
-}''';
-
-  final result = await callAi(prompt);
-  if (result == null) return null;
-  try {
-    return (
-      result['showcase_info_dart'] as String,
-      result['page_dart'] as String,
-    );
-  } catch (e) {
-    print('  Missing keys in code-gen response');
-    return null;
+  // Derive main widget class name from the entry file content if possible.
+  String mainClass = cls.replaceAll('Page', '');
+  if (mainFile != null && sourceFiles.containsKey(mainFile)) {
+    final classMatch = RegExp(r'class\s+(\w+)\s+extends\s+Stateful|class\s+(\w+)\s+extends\s+Stateless')
+        .firstMatch(sourceFiles[mainFile]!);
+    if (classMatch != null) {
+      mainClass = classMatch.group(1) ?? classMatch.group(2) ?? mainClass;
+    }
   }
+
+  final infoDart = '''// AUTO-GENERATED by Flexer Showcase Discovery Agent
+import 'package:showcase_library/showcase_contract.dart';
+
+const showcaseInfo = ShowcaseInfo(
+  showcaseName: '$displayName',
+  githubRepoUrl: '$repoUrl',
+  orientation: $orientation,
+  description: '$description',
+);
+''';
+
+  final pageDart = '''// Source: $repoUrl
+import 'package:flutter/material.dart';
+import '$entryImport';
+
+class $cls extends StatelessWidget {
+  const $cls({super.key});
+
+  @override
+  Widget build(BuildContext context) => const $mainClass();
+}
+''';
+
+  return (infoDart, pageDart);
 }
 
 // ─── Process helpers ──────────────────────────────────────────────────────────
@@ -760,6 +773,7 @@ Future<bool> createPr(
   String infoDart,
   String pageDart,
   Map<String, String> missingDeps,
+  Map<String, String> sourceFiles,
 ) async {
   final id = showcaseId(repo);
   final displayName = showcaseDisplayName(repo);
@@ -787,8 +801,38 @@ Future<bool> createPr(
 
   final showcaseDir = Directory('$cloneDir/lib/$id');
   await showcaseDir.create(recursive: true);
+
+  // Write generated files.
   await File('$cloneDir/lib/$id/showcase_info.dart').writeAsString(infoDart);
   await File('$cloneDir/lib/$id/${id}_page.dart').writeAsString(pageDart);
+
+  // Copy all source dart files with import paths fixed.
+  final sourcePackageName = (repo['name'] as String).replaceAll('-', '_');
+  for (final entry in sourceFiles.entries) {
+    // Strip lib/ prefix — files go into lib/<id>/<rest of path>.
+    final relativePath = entry.key.replaceFirst('lib/', '');
+    final destFile = File('$cloneDir/lib/$id/$relativePath');
+    await destFile.parent.create(recursive: true);
+    final fixed = fixImports(entry.value, sourcePackageName);
+    await destFile.writeAsString(fixed);
+  }
+
+  // Copy README and LICENSE if they exist.
+  for (final name in ['README.md', 'readme.md', 'LICENSE', 'LICENSE.txt']) {
+    final content = await ghFile(repo['full_name'] as String, name);
+    if (content != null) {
+      await File('$cloneDir/lib/$id/$name').writeAsString(content);
+      break; // Only copy first README found.
+    }
+  }
+  // LICENSE separately.
+  for (final name in ['LICENSE', 'LICENSE.txt', 'LICENSE.md']) {
+    final content = await ghFile(repo['full_name'] as String, name);
+    if (content != null) {
+      await File('$cloneDir/lib/$id/LICENSE').writeAsString(content);
+      break;
+    }
+  }
 
   if (missingDeps.isNotEmpty) {
     final pubspecFile = File('$cloneDir/pubspec.yaml');
@@ -1022,29 +1066,14 @@ Future<void> main() async {
       print('  Missing deps: ${missingDeps.keys.join(', ')}');
     }
 
-    final mainFile = evaluation['main_dart_file'] as String?;
-    final sourceDart =
-        (mainFile != null
-            ? await ghFile(repo['full_name'] as String, mainFile)
-            : null) ??
-        dartSnippets.toString();
+    // Fetch ALL source dart files for inclusion in the PR.
+    final sourceFiles = await fetchAllSourceFiles(repo['full_name'] as String, tree);
+    print('  Source files: ${sourceFiles.length} dart files fetched');
 
-    await Future<void>.delayed(Duration(seconds: _geminiDelaySec));
-    final files = await generateShowcaseFiles(
-      repo,
-      evaluation,
-      sourceDart,
-      missingDeps,
-    );
-    if (files == null) {
-      print('  Code generation failed — skip');
-      continue;
-    }
-
-    final (infoDart, pageDart) = files;
+    final (infoDart, pageDart) = generateShowcaseFiles(repo, evaluation, sourceFiles);
 
     try {
-      if (await createPr(repo, evaluation, infoDart, pageDart, missingDeps)) {
+      if (await createPr(repo, evaluation, infoDart, pageDart, missingDeps, sourceFiles)) {
         submitted++;
       }
     } catch (e) {
