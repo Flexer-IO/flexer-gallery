@@ -870,8 +870,8 @@ Future<bool> _analyzeAndFix(String dir) async {
   final depsNote = availableDeps.isEmpty
       ? ''
       : '\nLocal deps available via relative import — '
-          'e.g. import \'deps/pkg_name/some_file.dart\':\n'
-          '${availableDeps.map((d) => '  deps/$d/').join('\n')}\n';
+            'e.g. import \'deps/pkg_name/some_file.dart\':\n'
+            '${availableDeps.map((d) => '  deps/$d/').join('\n')}\n';
 
   Set<String> prevErrorKeys = {};
   var attempt = 0;
@@ -903,7 +903,9 @@ Future<bool> _analyzeAndFix(String dir) async {
     }
     prevErrorKeys = errorKeys;
 
-    print('    Analyze attempt $attempt — ${byFile.length} file(s) with errors:');
+    print(
+      '    Analyze attempt $attempt — ${byFile.length} file(s) with errors:',
+    );
     for (final entry in byFile.entries) {
       final fileName = entry.key.split('/').last;
       for (final line in entry.value) {
