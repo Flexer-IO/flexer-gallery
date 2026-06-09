@@ -336,8 +336,9 @@ Map<String, String> parseDeps(String pubspecText) {
       ).firstMatch(pubspecText)?.group(1) ??
       '';
 
-  for (final line in inDeps.split('\n')) {
-    final m = RegExp(r'^  ([a-z][a-z0-9_-]*):\s*(.*)$').firstMatch(line);
+  final lines = inDeps.split('\n');
+  for (var i = 0; i < lines.length; i++) {
+    final m = RegExp(r'^  ([a-z][a-z0-9_-]*):\s*(.*)$').firstMatch(lines[i]);
     if (m == null) continue;
     final name = m.group(1)!;
     final version = m.group(2)!.trim();
@@ -346,6 +347,11 @@ Map<String, String> parseDeps(String pubspecText) {
         version.contains('path:') ||
         version.contains('git:'))
       continue;
+    // If version is empty, peek at next lines — multiline git/path dep, skip it.
+    if (version.isEmpty) {
+      final next = i + 1 < lines.length ? lines[i + 1].trim() : '';
+      if (next.startsWith('git:') || next.startsWith('path:') || next.startsWith('sdk:')) continue;
+    }
     deps[name] = version.isEmpty ? 'any' : version;
   }
   return deps;
@@ -1037,6 +1043,13 @@ Future<bool> createPr(
     await pubspecFile.writeAsString(mergeDepsIntoPubspec(current, missingDeps));
     print('  Added to pubspec.yaml: ${missingDeps.keys.join(', ')}');
   }
+
+  // Remove workspace resolution — clone runs standalone, no workspace root.
+  final clonePubspec = File('$cloneDir/pubspec.yaml');
+  final clonePubspecContent = await clonePubspec.readAsString();
+  await clonePubspec.writeAsString(
+    clonePubspecContent.replaceAll(RegExp(r'resolution:\s*workspace\s*\n'), ''),
+  );
 
   // Validate: pub get + dep vendoring + analyze + AI fix loop.
   print('  Validating showcase...');
