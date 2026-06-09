@@ -17,12 +17,12 @@
 // AI provider env vars — add as many keys per provider as you have accounts.
 // Each value is comma-separated keys. Providers tried in order; keys rotated on 429.
 //
-//   GEMINI_API_KEYS     ai.google.dev           — free, 15 req/min/key,  gemini-2.5-flash
-//   CEREBRAS_API_KEYS   cloud.cerebras.ai       — free, ~30 req/min,    llama3.3-70b
 //   SAMBANOVA_API_KEYS  cloud.sambanova.ai      — free,                 Meta-Llama-3.3-70B-Instruct
+//   CEREBRAS_API_KEYS   cloud.cerebras.ai       — free, ~30 req/min,    gpt-oss-120b
 //   GROQ_API_KEYS       console.groq.com        — free,                 llama-3.3-70b-versatile
 //   NVIDIA_API_KEYS     build.nvidia.com        — 1000 credits/month,   meta/llama-3.1-70b-instruct
 //   OPENROUTER_API_KEYS openrouter.ai           — free,                 google/gemma-3-27b-it:free
+//   GEMINI_API_KEYS     ai.google.dev           — free, 15 req/min/key,  gemini-2.5-flash (last resort)
 //
 //   Example: GEMINI_API_KEYS=key1,key2,key3  GROQ_API_KEYS=key4,key5
 //
@@ -578,35 +578,21 @@ List<String> _envKeys(String varName) => (Platform.environment[varName] ?? '')
     .where((k) => k.isNotEmpty)
     .toList();
 
-// Provider priority: best quality first. Script falls through on exhaustion.
+// Provider priority: most reliable / highest quota first. Gemini last (aggressive rate limits).
 final _aiProviders = <_AiProvider>[
-  // Gemini 2.5 Flash — best quality, 15 RPM/key free.
-  _AiProvider(
-    name: 'Gemini',
-    keys: _envKeys('GEMINI_API_KEYS'),
-    url: '', // key in query param, not Authorization header
-    model: 'gemini-2.5-flash',
-  ),
-  // Cerebras — fastest inference, generous free quota (~30 RPM).
-  _AiProvider(
-    name: 'Cerebras',
-    keys: _envKeys('CEREBRAS_API_KEYS'),
-    url: 'https://api.cerebras.ai/v1/chat/completions',
-    model: 'llama3.3-70b',
-  ),
-  // SambaNova — free 70B model.
+  // SambaNova — proven working, free 70B, no aggressive rate limits.
   _AiProvider(
     name: 'SambaNova',
     keys: _envKeys('SAMBANOVA_API_KEYS'),
     url: 'https://api.sambanova.ai/v1/chat/completions',
     model: 'Meta-Llama-3.3-70B-Instruct',
   ),
-  // Groq — versatile 70B.
+  // Cerebras — fastest inference, generous free quota.
   _AiProvider(
-    name: 'Groq',
-    keys: _envKeys('GROQ_API_KEYS'),
-    url: 'https://api.groq.com/openai/v1/chat/completions',
-    model: 'llama-3.3-70b-versatile',
+    name: 'Cerebras',
+    keys: _envKeys('CEREBRAS_API_KEYS'),
+    url: 'https://api.cerebras.ai/v1/chat/completions',
+    model: 'gpt-oss-120b',
   ),
   // NVIDIA — Llama 3.1 70B via NIM API (1000 free credits/month).
   _AiProvider(
@@ -621,6 +607,20 @@ final _aiProviders = <_AiProvider>[
     keys: _envKeys('OPENROUTER_API_KEYS'),
     url: 'https://openrouter.ai/api/v1/chat/completions',
     model: 'google/gemma-3-27b-it:free',
+  ),
+  // Groq — fast free inference.
+  _AiProvider(
+    name: 'Groq',
+    keys: _envKeys('GROQ_API_KEYS'),
+    url: 'https://api.groq.com/openai/v1/chat/completions',
+    model: 'llama-3.3-70b-versatile',
+  ),
+  // Gemini — last resort; aggressive rate limits with multiple files.
+  _AiProvider(
+    name: 'Gemini',
+    keys: _envKeys('GEMINI_API_KEYS'),
+    url: '', // key in query param, not Authorization header
+    model: 'gemini-2.5-flash',
   ),
 ].where((p) => p.hasKeys).toList();
 
@@ -856,7 +856,7 @@ Future<Map<String, dynamic>?> _depSource(String dep, String sourcePubspec) {
   return Future.value({'type': 'pubdev'});
 }
 
-// AI fix loop on a directory of dart files. Returns true when clean.
+// AI fix loop — batches ALL errored files into one call per attempt.
 Future<bool> _analyzeAndFix(String dir, {int maxAttempts = 5}) async {
   for (var attempt = 1; attempt <= maxAttempts; attempt++) {
     final result = await _run(['dart', 'analyze', '--format', 'machine', dir]);
@@ -876,33 +876,49 @@ Future<bool> _analyzeAndFix(String dir, {int maxAttempts = 5}) async {
 
     if (byFile.isEmpty) break;
 
+    // Read all errored files and build one batched prompt.
+    final sections = <String>[];
     for (final entry in byFile.entries) {
       final file = File(entry.key);
       if (!file.existsSync()) continue;
-      final current = await file.readAsString();
-
-      final fix = await callAiRaw(
-        '''Fix ALL dart analyze errors in this file. Make it null-safe and compatible with Dart 3.
-
-Errors:
-${entry.value.join('\n')}
-
-Current file content (${entry.key}):
-$current
-
-Return ONLY the complete fixed Dart source file. No explanation, no markdown fences, no JSON — just the raw .dart file content starting with imports or library declaration.''',
-        label: entry.key.split('/').last,
+      final content = await file.readAsString();
+      sections.add(
+        '===FILE: ${entry.key}===\n'
+        'ERRORS:\n${entry.value.join('\n')}\n\n'
+        'CONTENT:\n$content\n'
+        '===END===',
       );
+    }
 
-      if (fix != null && fix.trim().isNotEmpty) {
-        var fixed = fix.trim();
-        // Strip accidental markdown code fences that some models add.
-        if (fixed.startsWith('```')) {
-          fixed = fixed
+    if (sections.isEmpty) break;
+
+    final fix = await callAiRaw(
+      'Fix ALL dart analyze errors in the files below. '
+      'Make them null-safe and compatible with Dart 3.\n\n'
+      '${sections.join('\n\n')}\n\n'
+      'Return each fixed file using EXACTLY this format:\n'
+      '===FIXED: <original file path>===\n'
+      '<complete fixed file content>\n'
+      '===END===\n\n'
+      'One block per file. No explanation, no markdown, no JSON.',
+      label: '${byFile.length} file(s)',
+    );
+
+    if (fix != null && fix.trim().isNotEmpty) {
+      final blockRe = RegExp(
+        r'===FIXED: (.+?)===\n([\s\S]*?)===END===',
+        multiLine: true,
+      );
+      for (final m in blockRe.allMatches(fix)) {
+        final path = m.group(1)!.trim();
+        var content = m.group(2)!.trim();
+        if (content.startsWith('```')) {
+          content = content
               .replaceFirst(RegExp(r'^```[a-z]*\n?'), '')
               .replaceFirst(RegExp(r'\n?```\s*$'), '');
         }
-        await file.writeAsString(fixed);
+        final f = File(path);
+        if (f.existsSync()) await f.writeAsString(content);
       }
     }
   }
@@ -911,23 +927,23 @@ Return ONLY the complete fixed Dart source file. No explanation, no markdown fen
   return final_.exitCode == 0;
 }
 
-// Vendors a dep: fetches source (git or pub.dev), fixes its code, patches pubspec + imports.
-Future<bool> _vendorDep(
+// Fetches a dep's source (git or pub.dev), fixes its code, patches pubspec + imports.
+Future<bool> _fetchDep(
   String dep,
   String cloneDir,
   String showcaseId,
   String sourcePubspec,
 ) async {
-  print('    Vendoring $dep...');
-  final vendorDir = '$cloneDir/lib/$showcaseId/vendor/$dep';
-  await _run(['mkdir', '-p', vendorDir]);
+  print('    Fetching dep $dep...');
+  final depDir = '$cloneDir/lib/$showcaseId/deps/$dep';
+  await _run(['mkdir', '-p', depDir]);
 
   final source = await _depSource(dep, sourcePubspec);
 
   if (source != null && source['type'] == 'git') {
     final gitUrl = source['url'] as String;
     final subPath = source['path'] as String?;
-    final tmpClone = '/tmp/vendor-git-$dep';
+    final tmpClone = '/tmp/dep-git-$dep';
     await _run(['rm', '-rf', tmpClone]);
     final clone = await _run(['git', 'clone', '--depth=1', gitUrl, tmpClone]);
     if (clone.exitCode != 0) {
@@ -935,7 +951,7 @@ Future<bool> _vendorDep(
       return false;
     }
     final libSrc = subPath != null ? '$tmpClone/$subPath/lib' : '$tmpClone/lib';
-    await _run(['bash', '-c', 'cp -r $libSrc/. $vendorDir/']);
+    await _run(['bash', '-c', 'cp -r $libSrc/. $depDir/']);
   } else {
     // pub.dev
     final info = await _httpGet('https://pub.dev/api/packages/$dep', {
@@ -948,7 +964,7 @@ Future<bool> _vendorDep(
     final data = jsonDecode(info) as Map<String, dynamic>;
     final version =
         (data['latest'] as Map<String, dynamic>)['version'] as String;
-    final tmpDir = '/tmp/vendor-$dep';
+    final tmpDir = '/tmp/dep-$dep';
     await _run(['rm', '-rf', tmpDir]);
     await _run(['mkdir', '-p', tmpDir]);
     final dl = await _run([
@@ -963,48 +979,47 @@ Future<bool> _vendorDep(
       return false;
     }
     await _run(['tar', '-xzf', '$tmpDir.tar.gz', '-C', tmpDir]);
-    await _run(['bash', '-c', 'cp -r $tmpDir/lib/. $vendorDir/']);
+    await _run(['bash', '-c', 'cp -r $tmpDir/lib/. $depDir/']);
   }
 
-  // Fix vendored package's own code (null-safety, deprecated APIs, etc.)
-  print('    Fixing vendored $dep code...');
-  await _analyzeAndFix(vendorDir);
+  // Fix the fetched dep's own code (null-safety, deprecated APIs, etc.)
+  print('    Fixing dep $dep code...');
+  await _analyzeAndFix(depDir);
 
   // Patch pubspec: replace dep entry with local path.
   final pubspecFile = File('$cloneDir/pubspec.yaml');
   var pubspec = await pubspecFile.readAsString();
-  // Remove existing entry (pub.dev version, git entry, etc.) and add path.
   pubspec = pubspec.replaceAllMapped(
     RegExp('  $dep:(?:[^\n]*\n(?:    [^\n]*\n)*)'),
-    (_) => '  $dep:\n    path: lib/$showcaseId/vendor/$dep\n',
+    (_) => '  $dep:\n    path: lib/$showcaseId/deps/$dep\n',
   );
   await pubspecFile.writeAsString(pubspec);
 
-  // Fix imports in all showcase dart files: package:dep/ → vendor/dep/
+  // Fix imports in showcase dart files: package:dep/ → deps/dep/
   final showcaseLibDir = Directory('$cloneDir/lib/$showcaseId');
   await for (final entity in showcaseLibDir.list(recursive: true)) {
     if (entity is! File || !entity.path.endsWith('.dart')) continue;
-    if (entity.path.contains('/vendor/')) continue;
+    if (entity.path.contains('/deps/')) continue;
     final content = await entity.readAsString();
     final fixed = content.replaceAll(
       RegExp("import 'package:${RegExp.escape(dep)}/"),
-      "import 'vendor/$dep/",
+      "import 'deps/$dep/",
     );
     if (fixed != content) await entity.writeAsString(fixed);
   }
 
-  print('    Vendored $dep → lib/$showcaseId/vendor/$dep');
+  print('    Dep $dep → lib/$showcaseId/deps/$dep');
   return true;
 }
 
-// Full validation loop: pub get → vendor failing deps → analyze → AI fix.
+// Full validation loop: pub get → fetch missing deps → analyze → AI fix.
 Future<bool> validateAndFix(
   String cloneDir,
   String showcaseId,
   String sourcePubspec,
 ) async {
-  // Pub get loop: vendor any dep that blocks resolution.
-  final vendored = <String>{};
+  // Pub get loop: fetch any dep that blocks resolution.
+  final fetched = <String>{};
   for (var round = 0; round < 5; round++) {
     final result = await _run([
       'flutter',
@@ -1014,7 +1029,7 @@ Future<bool> validateAndFix(
     if (result.exitCode == 0) break;
 
     final output = '${result.stdout}\n${result.stderr}';
-    final failing = _failingDeps(output)..removeAll(vendored);
+    final failing = _failingDeps(output)..removeAll(fetched);
 
     if (failing.isEmpty) {
       print('  pub get failed (unrecognized error):\n${result.stderr}');
@@ -1022,14 +1037,14 @@ Future<bool> validateAndFix(
     }
 
     for (final dep in failing) {
-      if (!await _vendorDep(dep, cloneDir, showcaseId, sourcePubspec)) {
+      if (!await _fetchDep(dep, cloneDir, showcaseId, sourcePubspec)) {
         return false;
       }
-      vendored.add(dep);
+      fetched.add(dep);
     }
 
     if (round == 4) {
-      print('  pub get still failing after $round vendor rounds');
+      print('  pub get still failing after $round dep fetch rounds');
       return false;
     }
   }
@@ -1047,25 +1062,25 @@ Future<bool> validateAndFix(
   ]);
   final missingPkgs =
       _missingImportDeps('${preAnalyze.stdout}\n${preAnalyze.stderr}')
-        ..removeAll(vendored)
+        ..removeAll(fetched)
         ..removeAll(_builtinPackages);
 
   if (missingPkgs.isNotEmpty) {
-    print('  Missing package imports: $missingPkgs — vendoring...');
+    print('  Missing package imports: $missingPkgs — fetching deps...');
     for (final dep in missingPkgs) {
-      if (!await _vendorDep(dep, cloneDir, showcaseId, sourcePubspec)) {
-        print('  Cannot vendor $dep — showcase may fail analyze');
+      if (!await _fetchDep(dep, cloneDir, showcaseId, sourcePubspec)) {
+        print('  Cannot fetch dep $dep — showcase may fail analyze');
       }
-      vendored.add(dep);
+      fetched.add(dep);
     }
-    // Re-run pub get after vendoring new deps.
+    // Re-run pub get after fetching new deps.
     final reget = await _run([
       'flutter',
       'pub',
       'get',
     ], workingDirectory: cloneDir);
     if (reget.exitCode != 0) {
-      print('  pub get failed after vendoring: ${reget.stderr}');
+      print('  pub get failed after fetching deps: ${reget.stderr}');
       return false;
     }
   }
