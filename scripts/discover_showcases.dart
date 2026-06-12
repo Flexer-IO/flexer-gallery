@@ -1387,7 +1387,7 @@ $depsSection
     '--repo',
     _showcaseRepo,
     '--title',
-    'feat: $displayName by @$owner',
+    'feat: $displayName by $owner',
     '--body',
     prBody,
     '--head',
