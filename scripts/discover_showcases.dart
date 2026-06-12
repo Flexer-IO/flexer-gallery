@@ -153,8 +153,7 @@ Future<List<Map<String, dynamic>>> ghUserRepos(String username) async {
       .where(
         (r) =>
             r['language'] == 'Dart' &&
-            r['fork'] == false &&
-            (r['stargazers_count'] as int) >= _minStars,
+            r['fork'] == false,
       )
       .toList();
 }
