@@ -40,8 +40,7 @@ final _showcaseRepo =
     Platform.environment['SHOWCASE_REPO'] ?? 'flexer-io/flexer-gallery';
 final _targetUser = Platform.environment['TARGET_USER'] ?? '';
 final _targetRepo = Platform.environment['TARGET_REPO'] ?? '';
-final _forceReevaluate =
-    Platform.environment['FORCE_REEVALUATE'] == 'true';
+final _forceReevaluate = Platform.environment['FORCE_REEVALUATE'] == 'true';
 
 const _minStars = 30;
 const _maxCandidatesToEvaluate = 12; // hard cap — keeps runtime predictable
@@ -1416,8 +1415,9 @@ $depsSection
 Future<void> main() async {
   print('=== Flexer Showcase Discovery Agent ===');
 
-  final submittedUrls =
-      _forceReevaluate ? <String>{} : await alreadySubmittedUrls();
+  final submittedUrls = _forceReevaluate
+      ? <String>{}
+      : await alreadySubmittedUrls();
   if (_forceReevaluate) {
     print('FORCE_REEVALUATE=true — skipping submitted check');
   } else {
