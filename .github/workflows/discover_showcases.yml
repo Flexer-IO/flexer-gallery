@@ -13,6 +13,10 @@ on:
         description: 'Single repo URL to evaluate directly (e.g. https://github.com/user/repo)'
         required: false
         default: ''
+      force_reevaluate:
+        description: 'Skip submitted check — re-evaluate repos that already have a closed/merged PR'
+        required: false
+        default: 'false'
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
@@ -47,5 +51,6 @@ jobs:
           SHOWCASE_REPO: flexer-io/flexer-gallery
           TARGET_USER: ${{ github.event.inputs.github_user }}
           TARGET_REPO: ${{ github.event.inputs.repo_url }}
+          FORCE_REEVALUATE: ${{ github.event.inputs.force_reevaluate }}
 
         run: dart run scripts/discover_showcases.dart
