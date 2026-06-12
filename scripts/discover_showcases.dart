@@ -1373,7 +1373,6 @@ $depsSection
 ## Review checklist
 
 - [ ] `lib/$id/${id}_page.dart` compiles without errors
-- [ ] Any `// TODO` comments addressed
 - [ ] Visual result matches description
 - [ ] License confirmed (MIT / Apache 2.0 / BSD)
 
