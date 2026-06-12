@@ -1364,7 +1364,7 @@ Future<bool> createPr(
 - **Source:** ${repo['html_url']}
 - **Stars:** ${repo['stargazers_count']}
 - **License:** ${(repo['license'] as Map?)?['spdx_id'] ?? 'Unknown'}
-- **Author:** @$owner
+- **Author:** $owner
 
 **Agent score:** ${evaluation['score']}/10
 **Reason:** ${evaluation['reason']}
