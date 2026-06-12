@@ -881,13 +881,14 @@ Future<bool> _analyzeAndFix(String dir) async {
     for (final line in (result.stdout as String).split('\n')) {
       final parts = line.split('|');
       if (parts.length < 8) continue;
-      if (parts[0].trim() != 'ERROR') continue; // skip HINT/WARNING
+      final sev = parts[0].trim();
+      if (sev != 'ERROR' && sev != 'WARNING') continue; // skip HINT/INFO
       final filePath = parts[3].trim();
       if (filePath.isEmpty) continue;
       byFile.putIfAbsent(filePath, () => []).add(line);
     }
 
-    if (byFile.isEmpty) return true; // no errors (hints/warnings are fine)
+    if (byFile.isEmpty) return true; // no errors or warnings
 
     // Detect no-progress: stop if error set unchanged from previous attempt.
     final errorKeys = byFile.entries
