@@ -963,13 +963,63 @@ Future<bool> _analyzeAndFix(String dir) async {
   }
 }
 
+// Compute relative path from fromDir to toFile (both absolute).
+String _computeRelativePath(String fromDir, String toFile) {
+  final from = fromDir.split('/').where((s) => s.isNotEmpty).toList();
+  final to = toFile.split('/').where((s) => s.isNotEmpty).toList();
+  int common = 0;
+  while (common < from.length && common < to.length && from[common] == to[common]) {
+    common++;
+  }
+  final ups = from.length - common;
+  final parts = [...List.filled(ups, '..'), ...to.sublist(common)];
+  final result = parts.join('/');
+  return result.startsWith('.') ? result : './$result';
+}
+
+// Rewrite package:$dep/X imports within the dep folder to relative paths.
+Future<void> _rewriteInternalDepImports(String dep, String depDir) async {
+  final depDirAbs = Directory(depDir).absolute.path;
+  final pattern = RegExp("import 'package:${RegExp.escape(dep)}/([^']+)'");
+  await for (final entity in Directory(depDir).list(recursive: true)) {
+    if (entity is! File || !entity.path.endsWith('.dart')) continue;
+    var content = await entity.readAsString();
+    if (!pattern.hasMatch(content)) continue;
+    final fileDir = entity.parent.absolute.path;
+    content = content.replaceAllMapped(pattern, (m) {
+      final rel = _computeRelativePath(fileDir, '$depDirAbs/${m.group(1)!}');
+      return "import '$rel'";
+    });
+    await entity.writeAsString(content);
+  }
+}
+
+// Collect external package: imports from dep files (skip flutter/dart/self).
+Future<Set<String>> _collectExternalDepImports(String depDir, String selfDep) async {
+  const skip = {'flutter', 'dart', 'flutter_test', 'sky_engine'};
+  final packages = <String>{};
+  await for (final entity in Directory(depDir).list(recursive: true)) {
+    if (entity is! File || !entity.path.endsWith('.dart')) continue;
+    final content = await entity.readAsString();
+    for (final m in RegExp(r"import 'package:([a-z_][a-z0-9_]*)/").allMatches(content)) {
+      final pkg = m.group(1)!;
+      if (pkg != selfDep && !skip.contains(pkg)) packages.add(pkg);
+    }
+  }
+  return packages;
+}
+
 // Fetches a dep's source (git or pub.dev), fixes its code, patches pubspec + imports.
 Future<bool> _fetchDep(
   String dep,
   String cloneDir,
   String showcaseId,
-  String sourcePubspec,
-) async {
+  String sourcePubspec, {
+  Set<String>? alreadyFetched,
+}) async {
+  alreadyFetched ??= {};
+  if (alreadyFetched.contains(dep)) return true;
+  alreadyFetched.add(dep);
   print('    Fetching dep $dep...');
   final depDir = '$cloneDir/lib/$showcaseId/deps/$dep';
   await _run(['mkdir', '-p', depDir]);
@@ -1018,9 +1068,16 @@ Future<bool> _fetchDep(
     await _run(['bash', '-c', 'cp -r $tmpDir/lib/. $depDir/']);
   }
 
-  // Fix the fetched dep's own code (null-safety, deprecated APIs, etc.)
-  print('    Fixing dep $dep code...');
-  await _analyzeAndFix(depDir);
+  // Rewrite internal package:$dep/ self-references to relative paths.
+  await _rewriteInternalDepImports(dep, depDir);
+
+  // Detect + recursively fetch transitive deps.
+  final transitive = await _collectExternalDepImports(depDir, dep);
+  transitive.removeAll(alreadyFetched);
+  for (final tdep in transitive) {
+    print('    Fetching transitive dep $tdep (needed by $dep)...');
+    await _fetchDep(tdep, cloneDir, showcaseId, sourcePubspec, alreadyFetched: alreadyFetched);
+  }
 
   // Patch pubspec: replace dep entry with local path.
   final pubspecFile = File('$cloneDir/pubspec.yaml');
@@ -1073,7 +1130,7 @@ Future<bool> validateAndFix(
     }
 
     for (final dep in failing) {
-      if (!await _fetchDep(dep, cloneDir, showcaseId, sourcePubspec)) {
+      if (!await _fetchDep(dep, cloneDir, showcaseId, sourcePubspec, alreadyFetched: fetched)) {
         return false;
       }
       fetched.add(dep);
@@ -1104,7 +1161,7 @@ Future<bool> validateAndFix(
   if (missingPkgs.isNotEmpty) {
     print('  Missing package imports: $missingPkgs — fetching deps...');
     for (final dep in missingPkgs) {
-      if (!await _fetchDep(dep, cloneDir, showcaseId, sourcePubspec)) {
+      if (!await _fetchDep(dep, cloneDir, showcaseId, sourcePubspec, alreadyFetched: fetched)) {
         print('  Cannot fetch dep $dep — showcase may fail analyze');
       }
       fetched.add(dep);
