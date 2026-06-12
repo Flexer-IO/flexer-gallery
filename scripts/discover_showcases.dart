@@ -150,11 +150,7 @@ Future<List<Map<String, dynamic>>> ghUserRepos(String username) async {
   final list = jsonDecode(raw) as List;
   return list
       .cast<Map<String, dynamic>>()
-      .where(
-        (r) =>
-            r['language'] == 'Dart' &&
-            r['fork'] == false,
-      )
+      .where((r) => r['language'] == 'Dart' && r['fork'] == false)
       .toList();
 }
 
