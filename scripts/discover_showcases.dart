@@ -968,7 +968,9 @@ String _computeRelativePath(String fromDir, String toFile) {
   final from = fromDir.split('/').where((s) => s.isNotEmpty).toList();
   final to = toFile.split('/').where((s) => s.isNotEmpty).toList();
   int common = 0;
-  while (common < from.length && common < to.length && from[common] == to[common]) {
+  while (common < from.length &&
+      common < to.length &&
+      from[common] == to[common]) {
     common++;
   }
   final ups = from.length - common;
@@ -995,13 +997,18 @@ Future<void> _rewriteInternalDepImports(String dep, String depDir) async {
 }
 
 // Collect external package: imports from dep files (skip flutter/dart/self).
-Future<Set<String>> _collectExternalDepImports(String depDir, String selfDep) async {
+Future<Set<String>> _collectExternalDepImports(
+  String depDir,
+  String selfDep,
+) async {
   const skip = {'flutter', 'dart', 'flutter_test', 'sky_engine'};
   final packages = <String>{};
   await for (final entity in Directory(depDir).list(recursive: true)) {
     if (entity is! File || !entity.path.endsWith('.dart')) continue;
     final content = await entity.readAsString();
-    for (final m in RegExp(r"import 'package:([a-z_][a-z0-9_]*)/").allMatches(content)) {
+    for (final m in RegExp(
+      r"import 'package:([a-z_][a-z0-9_]*)/",
+    ).allMatches(content)) {
       final pkg = m.group(1)!;
       if (pkg != selfDep && !skip.contains(pkg)) packages.add(pkg);
     }
@@ -1076,7 +1083,13 @@ Future<bool> _fetchDep(
   transitive.removeAll(alreadyFetched);
   for (final tdep in transitive) {
     print('    Fetching transitive dep $tdep (needed by $dep)...');
-    await _fetchDep(tdep, cloneDir, showcaseId, sourcePubspec, alreadyFetched: alreadyFetched);
+    await _fetchDep(
+      tdep,
+      cloneDir,
+      showcaseId,
+      sourcePubspec,
+      alreadyFetched: alreadyFetched,
+    );
   }
 
   // Patch pubspec: replace dep entry with local path.
@@ -1130,7 +1143,13 @@ Future<bool> validateAndFix(
     }
 
     for (final dep in failing) {
-      if (!await _fetchDep(dep, cloneDir, showcaseId, sourcePubspec, alreadyFetched: fetched)) {
+      if (!await _fetchDep(
+        dep,
+        cloneDir,
+        showcaseId,
+        sourcePubspec,
+        alreadyFetched: fetched,
+      )) {
         return false;
       }
       fetched.add(dep);
@@ -1161,7 +1180,13 @@ Future<bool> validateAndFix(
   if (missingPkgs.isNotEmpty) {
     print('  Missing package imports: $missingPkgs — fetching deps...');
     for (final dep in missingPkgs) {
-      if (!await _fetchDep(dep, cloneDir, showcaseId, sourcePubspec, alreadyFetched: fetched)) {
+      if (!await _fetchDep(
+        dep,
+        cloneDir,
+        showcaseId,
+        sourcePubspec,
+        alreadyFetched: fetched,
+      )) {
         print('  Cannot fetch dep $dep — showcase may fail analyze');
       }
       fetched.add(dep);
