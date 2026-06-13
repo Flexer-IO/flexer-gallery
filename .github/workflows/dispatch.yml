@@ -63,6 +63,6 @@ jobs:
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.CORE_REPO_PAT }}
-          repository: flexer/flexer
+          repository: Flexer-IO/flexer
           event-type: new_showcase
           client-payload: '{"showcase_id": "${{ steps.detect.outputs.showcase_id }}"}'
