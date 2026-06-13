@@ -1092,7 +1092,9 @@ Future<bool> _fetchDep(
   // Patch pubspec: replace existing dep entry or append under dependencies:.
   final pubspecFile = File('$cloneDir/pubspec.yaml');
   var pubspec = await pubspecFile.readAsString();
-  final entryPattern = RegExp('  ${RegExp.escape(dep)}:(?:[^\n]*\n(?:    [^\n]*\n)*)');
+  final entryPattern = RegExp(
+    '  ${RegExp.escape(dep)}:(?:[^\n]*\n(?:    [^\n]*\n)*)',
+  );
   final pathEntry = '  $dep:\n    path: lib/$showcaseId/deps/$dep\n';
   if (entryPattern.hasMatch(pubspec)) {
     pubspec = pubspec.replaceAllMapped(entryPattern, (_) => pathEntry);
