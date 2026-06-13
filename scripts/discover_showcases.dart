@@ -768,11 +768,11 @@ String fixAssetPaths(String content, String id) {
   );
 }
 
-(String, String) generateShowcaseFiles(
+Future<(String, String)> generateShowcaseFiles(
   Map<String, dynamic> repo,
   Map<String, dynamic> evaluation,
   Map<String, String> sourceFiles,
-) {
+) async {
   final id = showcaseId(repo);
   final cls = pageClass(id);
   final displayName = showcaseDisplayName(repo);
@@ -784,23 +784,6 @@ String fixAssetPaths(String content, String id) {
     r"\'",
   );
   final repoUrl = repo['html_url'] as String;
-
-  // Determine entry file and main widget class from AI hint or fallback.
-  final mainFile = evaluation['main_dart_file'] as String?;
-  final entryImport = mainFile != null
-      ? mainFile.replaceFirst('lib/', '')
-      : '${id}_entry.dart';
-
-  // Derive main widget class name from the entry file content if possible.
-  String mainClass = cls.replaceAll('Page', '');
-  if (mainFile != null && sourceFiles.containsKey(mainFile)) {
-    final classMatch = RegExp(
-      r'class\s+(\w+)\s+extends\s+Stateful|class\s+(\w+)\s+extends\s+Stateless',
-    ).firstMatch(sourceFiles[mainFile]!);
-    if (classMatch != null) {
-      mainClass = classMatch.group(1) ?? classMatch.group(2) ?? mainClass;
-    }
-  }
 
   final orientationImport = orientation != 'null'
       ? "import 'package:flutter/widgets.dart';\n"
@@ -817,8 +800,98 @@ const showcaseInfo = ShowcaseInfo(
 );
 ''';
 
-  final pageDart =
-      '''// Source: $repoUrl
+  final pageDart = await _generateDemoPage(
+    id: id,
+    cls: cls,
+    repoUrl: repoUrl,
+    evaluation: evaluation,
+    sourceFiles: sourceFiles,
+  );
+
+  return (infoDart, pageDart);
+}
+
+// Asks AI to write a proper demo page that shows the library working.
+// Falls back to the simple template if AI is unavailable.
+Future<String> _generateDemoPage({
+  required String id,
+  required String cls,
+  required String repoUrl,
+  required Map<String, dynamic> evaluation,
+  required Map<String, String> sourceFiles,
+}) async {
+  final mainFile = evaluation['main_dart_file'] as String?;
+
+  // Build source context: main file first, then up to 3 more files, capped.
+  final contextFiles = <String, String>{};
+  if (mainFile != null && sourceFiles.containsKey(mainFile)) {
+    contextFiles[mainFile] = sourceFiles[mainFile]!;
+  }
+  for (final entry in sourceFiles.entries) {
+    if (contextFiles.length >= 4) break;
+    if (!contextFiles.containsKey(entry.key)) {
+      contextFiles[entry.key] = entry.value;
+    }
+  }
+
+  final sourceContext = contextFiles.entries
+      .map((e) {
+        final content = e.value.length > 2000
+            ? '${e.value.substring(0, 2000)}\n// ... truncated'
+            : e.value;
+        return '--- ${e.key} ---\n$content';
+      })
+      .join('\n\n');
+
+  final allImports = sourceFiles.keys
+      .map((p) => p.replaceFirst('lib/', ''))
+      .join('\n');
+
+  final prompt =
+      '''Write a Flutter demo page that showcases this library: $repoUrl
+
+The page class MUST be named `$cls` and extend StatelessWidget (or StatefulWidget/HookWidget if needed for the demo to work).
+File will be placed at: lib/$id/${id}_page.dart
+All imports of library source files use relative paths — available files:
+$allImports
+
+Source files for context:
+$sourceContext
+
+RULES:
+- The page must visually demonstrate the library's core feature — not a blank or empty screen.
+- Use a dark background (Color(0xFF0F0F0F) or Colors.black) to match the app aesthetic.
+- Wrap in Scaffold if the library requires it.
+- Include interactive elements if the library is interactive (buttons, gestures, etc.) with brief hint text (e.g. "Long press for menu").
+- Import only from: package:flutter/material.dart, package:flutter/widgets.dart, package:flutter/services.dart, and relative paths to the library source files above.
+- Do NOT import package:flutter_app_template or any external packages beyond flutter.
+- The file must compile with null-safety and Dart 3.
+- Output ONLY the raw Dart file content — no markdown fences, no explanation.''';
+
+  final raw = await callAiRaw(prompt, label: '$id page');
+  if (raw != null && raw.trim().isNotEmpty) {
+    // Strip any accidental markdown fences.
+    final cleaned = raw
+        .replaceAll(RegExp(r'^```dart\s*', multiLine: true), '')
+        .replaceAll(RegExp(r'^```\s*$', multiLine: true), '')
+        .trim();
+    if (cleaned.contains('class $cls')) return '$cleaned\n';
+  }
+
+  // Fallback: simple template.
+  print('  AI page generation failed — using template fallback');
+  String mainClass = cls.replaceAll('Page', '');
+  if (mainFile != null && sourceFiles.containsKey(mainFile)) {
+    final classMatch = RegExp(
+      r'class\s+(\w+)\s+extends\s+Stateful|class\s+(\w+)\s+extends\s+Stateless',
+    ).firstMatch(sourceFiles[mainFile]!);
+    if (classMatch != null) {
+      mainClass = classMatch.group(1) ?? classMatch.group(2) ?? mainClass;
+    }
+  }
+  final entryImport =
+      mainFile != null ? mainFile.replaceFirst('lib/', '') : '${id}_entry.dart';
+  return '''// Source: $repoUrl
 import 'package:flutter/material.dart';
 import '$entryImport';
 
@@ -829,8 +902,6 @@ class $cls extends StatelessWidget {
   Widget build(BuildContext context) => const $mainClass();
 }
 ''';
-
-  return (infoDart, pageDart);
 }
 
 // ─── Showcase validation + self-healing ───────────────────────────────────────
@@ -1722,7 +1793,7 @@ Future<void> main() async {
       print('  Asset files: ${assetFiles.keys.join(', ')}');
     }
 
-    final (infoDart, pageDart) = generateShowcaseFiles(
+    final (infoDart, pageDart) = await generateShowcaseFiles(
       repo,
       evaluation,
       sourceFiles,
