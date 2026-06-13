@@ -35,6 +35,9 @@ jobs:
           channel: stable
           cache: true
 
+      - name: Strip workspace resolution (gallery has no workspace root in CI)
+        run: sed -i '/^resolution: workspace/d' pubspec.yaml
+
       - name: Run discovery agent
         env:
           GH_TOKEN: ${{ secrets.SHOWCASE_DISCOVERY_PAT }}
