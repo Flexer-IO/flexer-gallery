@@ -1643,6 +1643,21 @@ Future<void> main() async {
     final score = evaluation['score'] as int? ?? 0;
     print('  Score $score/10 — ${evaluation['reason']}');
 
+    // Override unspecified orientation for clearly landscape UIs.
+    if ((evaluation['orientation'] as String? ?? 'unspecified') == 'unspecified') {
+      final signal =
+          '${repo['full_name']} ${repo['description'] ?? ''} $readme'
+              .toLowerCase();
+      const landscapeKeywords = [
+        'clock', 'watch', 'timer', 'game', 'arcade',
+        'horizontal', 'widescreen', 'landscape',
+      ];
+      if (landscapeKeywords.any(signal.contains)) {
+        evaluation['orientation'] = 'landscape_only';
+        print('  Orientation overridden → landscape_only (keyword match)');
+      }
+    }
+
     if (evaluation['suitable'] != true) {
       print('  AI says not suitable (score $score/10) — skip');
       newlyRejected.add(fullName);
