@@ -739,6 +739,27 @@ Future<Map<String, String>> fetchAllSourceFiles(
     }
   }
 
+  // Last resort: tree was truncated by GitHub — probe common entry-point paths directly.
+  if (files.isEmpty) {
+    final repoName = repo.split('/').last.replaceAll('-', '_');
+    final probes = [
+      'lib/main.dart',
+      'lib/$repoName.dart',
+      'lib/app.dart',
+      'main.dart',
+      '$repoName.dart',
+    ];
+    for (final path in probes) {
+      final content = await ghFile(repo, path);
+      if (content != null) {
+        files[path.startsWith('lib/') ? path : 'lib/$path'] = content;
+      }
+    }
+    if (files.isNotEmpty) {
+      print('  Tree was truncated — found ${files.length} file(s) via direct probe');
+    }
+  }
+
   return files;
 }
 
