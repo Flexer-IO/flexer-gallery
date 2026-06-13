@@ -1,0 +1,53 @@
+name: Discover Showcases
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+    inputs:
+      github_user:
+        description: 'GitHub username - evaluate all their Flutter repos'
+        required: false
+        default: ''
+      repo_url:
+        description: 'Single repo URL to evaluate directly'
+        required: false
+        default: ''
+      force_reevaluate:
+        description: 'Skip submitted check'
+        required: false
+        default: 'false'
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter (includes Dart)
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Run discovery agent
+        env:
+          GH_TOKEN: ${{ secrets.SHOWCASE_DISCOVERY_PAT }}
+          GEMINI_API_KEYS: ${{ secrets.GEMINI_API_KEYS }}
+          DEEPSEEK_API_KEYS: ${{ secrets.DEEPSEEK_API_KEYS }}
+          GROQ_API_KEYS: ${{ secrets.GROQ_API_KEYS }}
+          CEREBRAS_API_KEYS: ${{ secrets.CEREBRAS_API_KEYS }}
+          SAMBANOVA_API_KEYS: ${{ secrets.SAMBANOVA_API_KEYS }}
+          NVIDIA_API_KEYS: ${{ secrets.NVIDIA_API_KEYS }}
+          TOGETHER_API_KEYS: ${{ secrets.TOGETHER_API_KEYS }}
+          OPENROUTER_API_KEYS: ${{ secrets.OPENROUTER_API_KEYS }}
+          MISTRAL_API_KEYS: ${{ secrets.MISTRAL_API_KEYS }}
+          SHOWCASE_REPO: flexer-io/flexer-gallery
+          TARGET_USER: ${{ github.event.inputs.github_user }}
+          TARGET_REPO: ${{ github.event.inputs.repo_url }}
+          FORCE_REEVALUATE: ${{ github.event.inputs.force_reevaluate }}
+        run: |
+          sed -i '/^resolution: workspace/d' pubspec.yaml
+          dart run scripts/discover_showcases.dart
