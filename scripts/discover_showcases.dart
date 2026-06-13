@@ -682,6 +682,7 @@ WHAT WE WANT — must be ALL of these:
   ✗ NOT a pub.dev package meant to be imported, not viewed
   ✗ NOT a tutorial, template, boilerplate, or course project
   ✗ NOT requiring native Swift/Kotlin/platform-channel code to function
+  ✗ NOT a home-screen widget, notification, background service, or any feature that lives outside the Flutter canvas
 
 Orientation — judge from the visual design of the UI itself, not from SystemChrome calls (desktop/web UIs rarely set orientation even when clearly landscape):
   - landscape_only: clock faces, wide canvases, horizontal games, particle systems, any UI that is clearly wider-than-tall by design
@@ -1434,9 +1435,31 @@ Future<String?> createPr(
       'origin',
       'https://x-access-token:$_ghToken@github.com/$_showcaseRepo.git',
     ],
-    ['git', 'checkout', '-b', branch],
   ]) {
     await _run(cmd, workingDirectory: cloneDir);
+  }
+
+  // Create or reset the branch — never fall back to main.
+  final branchResult = await _run([
+    'git',
+    'checkout',
+    '-b',
+    branch,
+  ], workingDirectory: cloneDir);
+  if (branchResult.exitCode != 0) {
+    // Branch already exists locally — reset it to origin/main so we get a
+    // clean slate (avoids stale files from a previous aborted run).
+    final reset = await _run([
+      'git',
+      'checkout',
+      '-B',
+      branch,
+      'origin/main',
+    ], workingDirectory: cloneDir);
+    if (reset.exitCode != 0) {
+      print('  Failed to create/reset branch $branch: ${reset.stderr}');
+      return null;
+    }
   }
 
   final showcaseDir = Directory('$cloneDir/lib/$id');
