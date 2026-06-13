@@ -1,4 +1,5 @@
 name: Discover Showcases
+# Re-register workflow to force GitHub to pick up workflow_dispatch trigger.
 
 on:
   schedule:
