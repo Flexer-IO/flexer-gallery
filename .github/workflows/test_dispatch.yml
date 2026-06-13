@@ -1,6 +1,13 @@
 name: Test Dispatch
 on:
+  schedule:
+    - cron: '0 */6 * * *'
   workflow_dispatch:
+    inputs:
+      github_user:
+        description: 'GitHub username'
+        required: false
+        default: ''
 jobs:
   test:
     runs-on: ubuntu-latest
