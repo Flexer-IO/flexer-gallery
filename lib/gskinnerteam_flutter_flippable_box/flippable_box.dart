@@ -44,10 +44,7 @@ class FlippableBox extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(clipRadius),
               child: bg != null
-                  ? DecoratedBox(
-                      decoration: bg!,
-                      child: content,
-                    )
+                  ? DecoratedBox(decoration: bg!, child: content)
                   : content,
             ),
           ),

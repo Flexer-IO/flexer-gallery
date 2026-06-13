@@ -7,10 +7,12 @@ class GskinnerteamFlutterFlippableBoxPage extends StatefulWidget {
   const GskinnerteamFlutterFlippableBoxPage({super.key});
 
   @override
-  State<GskinnerteamFlutterFlippableBoxPage> createState() => _GskinnerteamFlutterFlippableBoxPageState();
+  State<GskinnerteamFlutterFlippableBoxPage> createState() =>
+      _GskinnerteamFlutterFlippableBoxPageState();
 }
 
-class _GskinnerteamFlutterFlippableBoxPageState extends State<GskinnerteamFlutterFlippableBoxPage> {
+class _GskinnerteamFlutterFlippableBoxPageState
+    extends State<GskinnerteamFlutterFlippableBoxPage> {
   bool _isFlipped = false;
 
   @override
@@ -28,10 +30,7 @@ class _GskinnerteamFlutterFlippableBoxPageState extends State<GskinnerteamFlutte
                 height: 200,
                 color: Colors.blue,
                 child: const Center(
-                  child: Text(
-                    'Front',
-                    style: TextStyle(color: Colors.white),
-                  ),
+                  child: Text('Front', style: TextStyle(color: Colors.white)),
                 ),
               ),
               back: Container(
@@ -39,10 +38,7 @@ class _GskinnerteamFlutterFlippableBoxPageState extends State<GskinnerteamFlutte
                 height: 200,
                 color: Colors.red,
                 child: const Center(
-                  child: Text(
-                    'Back',
-                    style: TextStyle(color: Colors.white),
-                  ),
+                  child: Text('Back', style: TextStyle(color: Colors.white)),
                 ),
               ),
             ),
