@@ -743,8 +743,7 @@ Future<Map<String, String>> fetchAllSourceFiles(
         .toList();
     if (subdirLibPaths.isNotEmpty) {
       // Find the most common top-level subdir.
-      final prefix =
-          '${subdirLibPaths.first.split('/').first}/';
+      final prefix = '${subdirLibPaths.first.split('/').first}/';
       print('  Detected subdir layout — stripping prefix "$prefix"');
       for (final path in subdirLibPaths) {
         if (!path.startsWith(prefix)) continue;
@@ -784,7 +783,9 @@ Future<Map<String, String>> fetchAllSourceFiles(
       }
     }
     if (files.isNotEmpty) {
-      print('  Tree truncated — found ${files.length} file(s) via direct probe');
+      print(
+        '  Tree truncated — found ${files.length} file(s) via direct probe',
+      );
     }
   }
 
