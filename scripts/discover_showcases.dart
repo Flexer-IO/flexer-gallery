@@ -1644,13 +1644,19 @@ Future<void> main() async {
     print('  Score $score/10 — ${evaluation['reason']}');
 
     // Override unspecified orientation for clearly landscape UIs.
-    if ((evaluation['orientation'] as String? ?? 'unspecified') == 'unspecified') {
-      final signal =
-          '${repo['full_name']} ${repo['description'] ?? ''} $readme'
-              .toLowerCase();
+    if ((evaluation['orientation'] as String? ?? 'unspecified') ==
+        'unspecified') {
+      final signal = '${repo['full_name']} ${repo['description'] ?? ''} $readme'
+          .toLowerCase();
       const landscapeKeywords = [
-        'clock', 'watch', 'timer', 'game', 'arcade',
-        'horizontal', 'widescreen', 'landscape',
+        'clock',
+        'watch',
+        'timer',
+        'game',
+        'arcade',
+        'horizontal',
+        'widescreen',
+        'landscape',
       ];
       if (landscapeKeywords.any(signal.contains)) {
         evaluation['orientation'] = 'landscape_only';
