@@ -1278,6 +1278,15 @@ Future<bool> createPr(
     return false;
   }
 
+  // Strip `resolution: workspace` — cloned into /tmp, no workspace root exists.
+  final clonedPubspec = File('$cloneDir/pubspec.yaml');
+  if (await clonedPubspec.exists()) {
+    final content = await clonedPubspec.readAsString();
+    await clonedPubspec.writeAsString(
+      content.replaceAll(RegExp(r'^resolution: workspace\s*\n', multiLine: true), ''),
+    );
+  }
+
   for (final cmd in [
     ['git', 'config', 'user.email', 'agent@flexer.app'],
     ['git', 'config', 'user.name', 'Flexer Showcase Agent'],
