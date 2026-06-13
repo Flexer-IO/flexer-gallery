@@ -906,11 +906,11 @@ Future<bool> _analyzeAndFix(String dir) async {
             'e.g. import \'deps/pkg_name/some_file.dart\':\n'
             '${availableDeps.map((d) => '  deps/$d/').join('\n')}\n';
 
-  Set<String> prevErrorKeys = {};
+  // Keep last 6 error-key sets — stop if current set was seen in that window (cycling).
+  final recentErrorSets = <Set<String>>[];
   var attempt = 0;
-  const maxAttempts = 15;
 
-  while (attempt < maxAttempts) {
+  while (true) {
     attempt++;
     final result = await _run(['dart', 'analyze', '--format', 'machine', dir]);
 
@@ -928,15 +928,16 @@ Future<bool> _analyzeAndFix(String dir) async {
 
     if (byFile.isEmpty) return true; // no errors or warnings
 
-    // Detect no-progress: stop if error set unchanged from previous attempt.
+    // Cycle detection: stop if this error set appeared in the last 6 attempts.
     final errorKeys = byFile.entries
         .expand((e) => e.value.map((l) => '${e.key}:$l'))
         .toSet();
-    if (errorKeys == prevErrorKeys) {
-      print('    No progress after attempt $attempt — stopping fix loop');
+    if (recentErrorSets.any((s) => s.containsAll(errorKeys) && errorKeys.containsAll(s))) {
+      print('    Cycle detected at attempt $attempt — stopping fix loop');
       return false;
     }
-    prevErrorKeys = errorKeys;
+    recentErrorSets.add(errorKeys);
+    if (recentErrorSets.length > 6) recentErrorSets.removeAt(0);
 
     print(
       '    Analyze attempt $attempt — ${byFile.length} file(s) with errors:',
@@ -996,8 +997,6 @@ Future<bool> _analyzeAndFix(String dir) async {
       }
     }
   }
-  print('    Max attempts ($maxAttempts) reached — giving up');
-  return false;
 }
 
 // Compute relative path from fromDir to toFile (both absolute).
