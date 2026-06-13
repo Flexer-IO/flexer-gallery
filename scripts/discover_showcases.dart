@@ -756,7 +756,9 @@ Future<Map<String, String>> fetchAllSourceFiles(
       }
     }
     if (files.isNotEmpty) {
-      print('  Tree was truncated — found ${files.length} file(s) via direct probe');
+      print(
+        '  Tree was truncated — found ${files.length} file(s) via direct probe',
+      );
     }
   }
 
