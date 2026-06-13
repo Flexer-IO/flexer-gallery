@@ -1119,6 +1119,22 @@ Future<bool> _fetchDep(
     await _run(['cp', '$tmpDir/pubspec.yaml', '$depDir/pubspec.yaml']);
   }
 
+  // Strip dependencies from vendored pubspec — imports are rewritten to
+  // relative paths, so transitive constraints must not bleed into the workspace.
+  final vendoredPubspecFile = File('$depDir/pubspec.yaml');
+  if (await vendoredPubspecFile.exists()) {
+    var vps = await vendoredPubspecFile.readAsString();
+    vps = vps.replaceAll(
+      RegExp(
+        r'^dependencies:.*?(?=^\S|\Z)',
+        multiLine: true,
+        dotAll: true,
+      ),
+      '',
+    );
+    await vendoredPubspecFile.writeAsString(vps);
+  }
+
   // Rewrite internal package:$dep/ self-references to relative paths.
   await _rewriteInternalDepImports(dep, depDir);
 
