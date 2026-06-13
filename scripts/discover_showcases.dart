@@ -1287,7 +1287,7 @@ Future<ProcessResult> _run(List<String> cmd, {String? workingDirectory}) =>
 
 // ─── PR creation ──────────────────────────────────────────────────────────────
 
-Future<bool> createPr(
+Future<String?> createPr(
   Map<String, dynamic> repo,
   Map<String, dynamic> evaluation,
   String infoDart,
@@ -1321,7 +1321,7 @@ Future<bool> createPr(
     final prs = jsonDecode(prCheck.stdout as String) as List;
     if (prs.isNotEmpty) {
       print('  Open PR already exists for $branch — skipping');
-      return true;
+      return 'existing';
     }
   }
 
@@ -1330,7 +1330,7 @@ Future<bool> createPr(
   var result = await _run(['gh', 'repo', 'clone', _showcaseRepo, cloneDir]);
   if (result.exitCode != 0) {
     print('  Clone failed: ${result.stderr}');
-    return false;
+    return null;
   }
 
   // Strip `resolution: workspace` — cloned into /tmp, no workspace root exists.
@@ -1440,7 +1440,7 @@ Future<bool> createPr(
   final valid = await validateAndFix(cloneDir, id, sourcePubspec);
   if (!valid) {
     print('  Showcase failed validation — not submitting PR');
-    return false;
+    return null;
   }
 
   // Restore `resolution: workspace` so merged PRs keep it on main.
@@ -1465,7 +1465,7 @@ Future<bool> createPr(
   ], workingDirectory: cloneDir);
   if (result.exitCode != 0) {
     print('  Commit failed: ${result.stderr}');
-    return false;
+    return null;
   }
 
   result = await _run([
@@ -1476,7 +1476,7 @@ Future<bool> createPr(
   ], workingDirectory: cloneDir);
   if (result.exitCode != 0) {
     print('  Push failed: ${result.stderr}');
-    return false;
+    return null;
   }
 
   final depsSection = missingDeps.isEmpty
@@ -1523,11 +1523,12 @@ $depsSection
   ], workingDirectory: cloneDir);
 
   if (result.exitCode == 0) {
-    print('  PR: ${(result.stdout as String).trim()}');
-    return true;
+    final url = (result.stdout as String).trim();
+    print('  PR: $url');
+    return url;
   } else {
     print('  PR failed: ${result.stderr}');
-    return false;
+    return null;
   }
 }
 
@@ -1627,6 +1628,7 @@ Future<void> main() async {
   final libraryPubspec = await ghFile(_showcaseRepo, 'pubspec.yaml') ?? '';
 
   var submitted = 0;
+  final prResults = <String, String?>{}; // repo fullName → PR url or null
 
   for (final repo in toEvaluate) {
     if (submitted >= _maxPerRun) break;
@@ -1727,7 +1729,7 @@ Future<void> main() async {
     );
 
     try {
-      if (await createPr(
+      final prUrl = await createPr(
         repo,
         evaluation,
         infoDart,
@@ -1736,8 +1738,12 @@ Future<void> main() async {
         sourceFiles,
         sourcePubspec,
         assetFiles,
-      )) {
+      );
+      if (prUrl != null && prUrl != 'existing') {
         submitted++;
+        prResults[fullName] = prUrl;
+      } else if (prUrl == 'existing') {
+        prResults[fullName] = 'existing';
       }
     } catch (e) {
       print('  Error: $e');
@@ -1751,5 +1757,17 @@ Future<void> main() async {
     await saveRejectedRepos({...rejectedRepos, ...newlyRejected}, rejectedSha);
   }
 
-  print('\n=== Done. $submitted PR(s) submitted. ===');
+  print('\n=== Results ===');
+  if (prResults.isEmpty) {
+    print('No PRs submitted this run.');
+  } else {
+    for (final entry in prResults.entries) {
+      if (entry.value == 'existing') {
+        print('  ${entry.key} → PR already open (skipped)');
+      } else {
+        print('  ${entry.key} → PR submitted: ${entry.value}');
+      }
+    }
+  }
+  print('=== Done. $submitted new PR(s) submitted. ===');
 }
