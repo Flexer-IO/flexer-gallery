@@ -727,7 +727,35 @@ Future<Map<String, String>> fetchAllSourceFiles(
     if (content != null) files[path] = content;
   }
 
-  // Fallback: repo root .dart files (non-standard layout, e.g. Flutter Clock entries).
+  // Fallback: single-level subdirectory containing lib/ (e.g. canvas_clock/lib/).
+  // Detects repos where the Flutter app lives in a named subfolder.
+  if (files.isEmpty) {
+    final subdirLibPaths = tree
+        .where((f) {
+          final p = f['path'] as String;
+          final parts = p.split('/');
+          return parts.length >= 3 &&
+              parts[1] == 'lib' &&
+              !parts[0].startsWith('.') &&
+              _isDartSource(f);
+        })
+        .map((f) => f['path'] as String)
+        .toList();
+    if (subdirLibPaths.isNotEmpty) {
+      // Find the most common top-level subdir.
+      final prefix =
+          '${subdirLibPaths.first.split('/').first}/';
+      print('  Detected subdir layout — stripping prefix "$prefix"');
+      for (final path in subdirLibPaths) {
+        if (!path.startsWith(prefix)) continue;
+        final stripped = path.substring(prefix.length);
+        final content = await ghFile(repo, path);
+        if (content != null) files[stripped] = content;
+      }
+    }
+  }
+
+  // Fallback: repo root .dart files.
   if (files.isEmpty) {
     final rootPaths = tree
         .where((f) => !(f['path'] as String).contains('/') && _isDartSource(f))
@@ -739,7 +767,7 @@ Future<Map<String, String>> fetchAllSourceFiles(
     }
   }
 
-  // Last resort: tree was truncated by GitHub — probe common entry-point paths directly.
+  // Last resort: tree truncated — probe common entry-point paths directly.
   if (files.isEmpty) {
     final repoName = repo.split('/').last.replaceAll('-', '_');
     final probes = [
@@ -756,9 +784,7 @@ Future<Map<String, String>> fetchAllSourceFiles(
       }
     }
     if (files.isNotEmpty) {
-      print(
-        '  Tree was truncated — found ${files.length} file(s) via direct probe',
-      );
+      print('  Tree truncated — found ${files.length} file(s) via direct probe');
     }
   }
 
