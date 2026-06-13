@@ -6,6 +6,8 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  flutter_clock_helper:
+    path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
   flutter:
     sdk: flutter
 
