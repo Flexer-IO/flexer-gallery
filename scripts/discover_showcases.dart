@@ -683,10 +683,11 @@ WHAT WE WANT — must be ALL of these:
   ✗ NOT a tutorial, template, boilerplate, or course project
   ✗ NOT requiring native Swift/Kotlin/platform-channel code to function
 
-Orientation rules (be precise):
-  - landscape_only: wide displays, clocks, horizontal scrollers, games designed for landscape
-  - portrait_only: vertical lists, phone-first UIs, tall layouts
-  - unspecified: works in both orientations equally
+Orientation — judge from the visual design of the UI itself, not from SystemChrome calls (desktop/web UIs rarely set orientation even when clearly landscape):
+  - landscape_only: clock faces, wide canvases, horizontal games, particle systems, any UI that is clearly wider-than-tall by design
+  - portrait_only: vertical feeds, tall cards, UIs clearly built for an upright phone
+  - unspecified: fills any aspect ratio equally well, or genuinely ambiguous
+  Note: SystemChrome.setPreferredOrientations absence does NOT mean unspecified. Reason from the layout.
 
 Score 1-10 (for logging only). Set suitable=true only if ALL criteria above are met. Respond with JSON only — no markdown fences:
 {
