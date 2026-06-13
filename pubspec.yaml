@@ -11,7 +11,11 @@ dependencies:
   flutter:
     sdk: flutter
 
+  home_widget: ^0.3.0
+  shared_preferences: ^2.2.2
 flutter:
   assets:
+    - assets/gskinnerteam_flutter_home_widget_vignette/images/flutter-logo-white.svg
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
+
