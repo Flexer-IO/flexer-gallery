@@ -1283,7 +1283,10 @@ Future<bool> createPr(
   if (await clonedPubspec.exists()) {
     final content = await clonedPubspec.readAsString();
     await clonedPubspec.writeAsString(
-      content.replaceAll(RegExp(r'^resolution: workspace\s*\n', multiLine: true), ''),
+      content.replaceAll(
+        RegExp(r'^resolution: workspace\s*\n', multiLine: true),
+        '',
+      ),
     );
   }
 
