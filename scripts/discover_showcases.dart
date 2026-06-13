@@ -757,11 +757,13 @@ String fixImports(String content, String sourcePackageName) {
   );
 }
 
-// Rewrites "assets/X" string literals → "assets/<id>/X" for asset path namespacing.
+// Rewrites "assets/X" → "packages/showcase_library/assets/<id>/X".
+// Flutter package assets are stored under packages/<pkg>/<path> in the app bundle.
 String fixAssetPaths(String content, String id) {
   return content.replaceAllMapped(
-    RegExp(r'''(["'])assets/(?!''' + RegExp.escape(id) + r''')([^"']+)\1'''),
-    (m) => '${m.group(1)}assets/$id/${m.group(2)}${m.group(1)}',
+    RegExp(r'''(["'])assets/(?!packages/)([^"']+)\1'''),
+    (m) =>
+        '${m.group(1)}packages/showcase_library/assets/$id/${m.group(2)}${m.group(1)}',
   );
 }
 
