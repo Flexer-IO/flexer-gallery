@@ -847,25 +847,32 @@ Future<String> _generateDemoPage({
       .map((p) => p.replaceFirst('lib/', ''))
       .join('\n');
 
+  final hasSourceFiles = sourceFiles.isNotEmpty;
+  final sourceSection = hasSourceFiles
+      ? 'Available library source files (use relative imports):\n$allImports\n\nSource files for context:\n$sourceContext'
+      : 'No source files available — this repo uses a non-standard structure (e.g. sub-projects, scripts). '
+            'Write a self-contained demo that VISUALLY SIMULATES the concept of the library '
+            '(e.g. for a vignettes/animations collection, implement one representative animation from scratch using only Flutter built-ins).';
+
   final prompt =
       '''Write a Flutter demo page that showcases this library: $repoUrl
 
-The page class MUST be named `$cls` and extend StatelessWidget (or StatefulWidget/HookWidget if needed for the demo to work).
+The page class MUST be named exactly `$cls`.
+CONSTRUCTOR REQUIREMENT: The class MUST have `const $cls({super.key});` — this is mandatory, not optional.
 File will be placed at: lib/$id/${id}_page.dart
-All imports of library source files use relative paths — available files:
-$allImports
 
-Source files for context:
-$sourceContext
+$sourceSection
 
 RULES:
-- The page must visually demonstrate the library's core feature — not a blank or empty screen.
+- The page must visually demonstrate the library's core concept — not a blank or empty screen.
 - Use a dark background (Color(0xFF0F0F0F) or Colors.black) to match the app aesthetic.
-- Wrap in Scaffold if the library requires it.
-- Include interactive elements if the library is interactive (buttons, gestures, etc.) with brief hint text (e.g. "Long press for menu").
-- Import only from: package:flutter/material.dart, package:flutter/widgets.dart, package:flutter/services.dart, and relative paths to the library source files above.
+- Wrap in Scaffold if needed.
+- Include interactive elements if relevant with brief on-screen hint text.
+- Import ONLY from: package:flutter/material.dart, package:flutter/widgets.dart, package:flutter/services.dart, package:flutter/animation.dart, and relative paths to library source files listed above.
 - Do NOT import package:flutter_app_template or any external packages beyond flutter.
-- The file must compile with null-safety and Dart 3.
+- Do NOT reference any asset files (no AssetImage, no rootBundle, no NetworkImage) — only programmatic drawing.
+- Do NOT use Navigator.push or Navigator.pop — the page is already inside the host app navigation.
+- The file must compile with null-safety and Dart 3. All constructors must be valid.
 - Output ONLY the raw Dart file content — no markdown fences, no explanation.''';
 
   final raw = await callAiRaw(prompt, label: '$id page');
