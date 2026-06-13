@@ -681,8 +681,6 @@ WHAT WE WANT — must be ALL of these:
   ✗ NOT a full multi-screen app (auth, nav, data fetching, etc.)
   ✗ NOT a pub.dev package meant to be imported, not viewed
   ✗ NOT a tutorial, template, boilerplate, or course project
-  ✗ NOT requiring native Swift/Kotlin/platform-channel code to function
-  ✗ NOT a home-screen widget, notification, background service, or any feature that lives outside the Flutter canvas
 
 Orientation — judge from the visual design of the UI itself, not from SystemChrome calls (desktop/web UIs rarely set orientation even when clearly landscape):
   - landscape_only: clock faces, wide canvases, horizontal games, particle systems, any UI that is clearly wider-than-tall by design
