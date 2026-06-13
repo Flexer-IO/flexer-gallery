@@ -5,6 +5,6 @@ import 'package:flutter/widgets.dart';
 const showcaseInfo = ShowcaseInfo(
   showcaseName: 'Flippable Box',
   githubRepoUrl: 'https://github.com/gskinnerTeam/flutter-flippable-box',
-  orientation: Orientation.landscape,
+  orientation: null,
   description: 'Flippable box widget',
 );
