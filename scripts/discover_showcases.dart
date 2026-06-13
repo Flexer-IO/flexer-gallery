@@ -889,8 +889,9 @@ RULES:
       mainClass = classMatch.group(1) ?? classMatch.group(2) ?? mainClass;
     }
   }
-  final entryImport =
-      mainFile != null ? mainFile.replaceFirst('lib/', '') : '${id}_entry.dart';
+  final entryImport = mainFile != null
+      ? mainFile.replaceFirst('lib/', '')
+      : '${id}_entry.dart';
   return '''// Source: $repoUrl
 import 'package:flutter/material.dart';
 import '$entryImport';
