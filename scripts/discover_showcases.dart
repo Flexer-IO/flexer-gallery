@@ -854,24 +854,28 @@ Future<String> _generateDemoPage({
             '(e.g. for a vignettes/animations collection, implement one representative animation from scratch using only Flutter built-ins).';
 
   final prompt =
-      '''Write a Flutter demo page that showcases this library: $repoUrl
+      '''Write a Flutter page wrapper for this library: $repoUrl
 
 The page class MUST be named exactly `$cls`.
-CONSTRUCTOR REQUIREMENT: The class MUST have `const $cls({super.key});` — this is mandatory, not optional.
+CONSTRUCTOR REQUIREMENT: The class MUST have `const $cls({super.key});` — this is mandatory.
 File will be placed at: lib/$id/${id}_page.dart
 
 $sourceSection
 
-RULES:
-- The page must visually demonstrate the library's core concept — not a blank or empty screen.
-- Use a dark background (Color(0xFF0F0F0F) or Colors.black) to match the app aesthetic.
-- Wrap in Scaffold if needed.
-- Include interactive elements if relevant with brief on-screen hint text.
-- Import ONLY from: package:flutter/material.dart, package:flutter/widgets.dart, package:flutter/services.dart, package:flutter/animation.dart, and relative paths to library source files listed above.
+CRITICAL RULE — NO INVENTED UI:
+This page is a THIN WRAPPER only. You must instantiate and return the library's own entry widget.
+Do NOT write custom animations, painters, transitions, or visual elements of your own.
+Do NOT simulate or reimagine what the library does — use the actual library code.
+The user will see the real library experience, not your interpretation of it.
+
+WRAPPER RULES:
+- Identify the library's main entry widget from the source files above.
+- The page body must be exactly that widget (or wrapped in Scaffold/MaterialApp only if required for the widget to render).
+- If the entry widget requires constructor arguments (vsync, controllers, etc.), set them up minimally in initState.
+- Import ONLY from: package:flutter/material.dart, package:flutter/widgets.dart, package:flutter/services.dart, and relative paths to library source files listed above.
 - Do NOT import package:flutter_app_template or any external packages beyond flutter.
-- Do NOT reference any asset files (no AssetImage, no rootBundle, no NetworkImage) — only programmatic drawing.
-- Do NOT use Navigator.push or Navigator.pop — the page is already inside the host app navigation.
-- The file must compile with null-safety and Dart 3. All constructors must be valid.
+- Do NOT use Navigator.push or Navigator.pop.
+- The file must compile with null-safety and Dart 3.
 - Output ONLY the raw Dart file content — no markdown fences, no explanation.''';
 
   final raw = await callAiRaw(prompt, label: '$id page');
@@ -1049,8 +1053,14 @@ Future<bool> _analyzeAndFix(String dir) async {
     if (sections.isEmpty) return true;
 
     final fix = await callAiRaw(
-      'Fix ALL dart analyze errors in the files below. '
-      'Make them null-safe and compatible with Dart 3.$depsNote\n\n'
+      'Fix the dart analyze errors listed below. '
+      'Make files null-safe and compatible with Dart 3.$depsNote\n\n'
+      'STRICT CONSTRAINT — DO NOT MODIFY UI:\n'
+      'You may ONLY fix: missing/broken imports, null-safety operators (?, !, late), '
+      'type annotations, and package resolution errors.\n'
+      'You must NEVER change: Widget build() methods, CustomPainter paint() methods, '
+      'animation logic, visual layout, colors, sizes, or any rendering behavior.\n'
+      'The visual output of every widget must be byte-for-byte identical to the original.\n\n'
       '${sections.join('\n\n')}\n\n'
       'Return each fixed file using EXACTLY this format:\n'
       '===FIXED: <original file path>===\n'
