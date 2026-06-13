@@ -8,6 +8,7 @@
       "version": "0.0.0",
       "dependencies": [
         "flutter",
+        "flutter_animate",
         "flutter_clock_helper"
       ],
       "devDependencies": []
@@ -60,6 +61,22 @@
       "name": "characters",
       "version": "1.4.1",
       "dependencies": []
+    },
+    {
+      "name": "flutter_animate",
+      "version": "4.5.2",
+      "dependencies": [
+        "flutter",
+        "flutter_shaders"
+      ]
+    },
+    {
+      "name": "flutter_shaders",
+      "version": "0.1.3",
+      "dependencies": [
+        "flutter",
+        "vector_math"
+      ]
     }
   ],
   "configVersion": 1

@@ -11,7 +11,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  flutter_animate: ^4.4.0
 flutter:
   assets:
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
+
