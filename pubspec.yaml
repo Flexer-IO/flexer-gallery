@@ -1,6 +1,7 @@
 name: showcase_library
 description: "Flexer public showcase library — community UI masterclasses"
 publish_to: none
+resolution: workspace
 
 environment:
   sdk: ^3.12.0
