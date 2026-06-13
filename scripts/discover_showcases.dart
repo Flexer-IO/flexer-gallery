@@ -1041,7 +1041,11 @@ Future<bool> _fetchDep(
       return false;
     }
     final libSrc = subPath != null ? '$tmpClone/$subPath/lib' : '$tmpClone/lib';
+    final pubspecSrc = subPath != null
+        ? '$tmpClone/$subPath/pubspec.yaml'
+        : '$tmpClone/pubspec.yaml';
     await _run(['bash', '-c', 'cp -r $libSrc/. $depDir/']);
+    await _run(['cp', pubspecSrc, '$depDir/pubspec.yaml']);
   } else {
     // pub.dev
     final info = await _httpGet('https://pub.dev/api/packages/$dep', {
@@ -1070,6 +1074,7 @@ Future<bool> _fetchDep(
     }
     await _run(['tar', '-xzf', '$tmpDir.tar.gz', '-C', tmpDir]);
     await _run(['bash', '-c', 'cp -r $tmpDir/lib/. $depDir/']);
+    await _run(['cp', '$tmpDir/pubspec.yaml', '$depDir/pubspec.yaml']);
   }
 
   // Rewrite internal package:$dep/ self-references to relative paths.
