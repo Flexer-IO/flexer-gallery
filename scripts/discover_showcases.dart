@@ -824,6 +824,26 @@ String fixImports(String content, String sourcePackageName) {
   );
 }
 
+// Infers the source package name by finding a package:P/X import where lib/X
+// exists in the fetched source files — handles subdir-layout repos where the
+// package name differs from the GitHub repo name (e.g. clock → canvas_clock).
+String _inferSourcePackageName(
+  Map<String, String> sourceFiles,
+  String fallback,
+) {
+  final fileKeys = sourceFiles.keys.toSet();
+  for (final content in sourceFiles.values) {
+    for (final m in RegExp(
+      r"import 'package:([a-z_][a-z0-9_]*)/([^']+)'",
+    ).allMatches(content)) {
+      final pkg = m.group(1)!;
+      final path = 'lib/${m.group(2)!}';
+      if (fileKeys.contains(path)) return pkg;
+    }
+  }
+  return fallback;
+}
+
 // Rewrites "assets/X" → "packages/showcase_library/assets/<id>/X".
 // Flutter package assets are stored under packages/<pkg>/<path> in the app bundle.
 String fixAssetPaths(String content, String id) {
@@ -1099,55 +1119,53 @@ Future<bool> _analyzeAndFix(String dir) async {
       }
     }
 
-    // Read all errored files and build one batched prompt.
-    final sections = <String>[];
+    if (byFile.isEmpty) return true;
+
+    // Process one file at a time — batching all files risks exceeding context limits
+    // on providers with 128k windows when repos have many source files.
     for (final entry in byFile.entries) {
       final file = File(entry.key);
       if (!file.existsSync()) continue;
       final content = await file.readAsString();
-      sections.add(
+      final fileName = entry.key.split('/').last;
+
+      final fix = await callAiRaw(
+        'Fix the dart analyze errors in this single file. '
+        'Make it null-safe and compatible with Dart 3.$depsNote\n\n'
+        'STRICT CONSTRAINT — DO NOT MODIFY UI:\n'
+        'You may ONLY fix: missing/broken imports, null-safety operators (?, !, late), '
+        'type annotations, and package resolution errors.\n'
+        'You must NEVER change: Widget build() methods, CustomPainter paint() methods, '
+        'animation logic, visual layout, colors, sizes, or any rendering behavior.\n'
+        'The visual output of every widget must be byte-for-byte identical to the original.\n\n'
         '===FILE: ${entry.key}===\n'
         'ERRORS:\n${entry.value.join('\n')}\n\n'
         'CONTENT:\n$content\n'
-        '===END===',
+        '===END===\n\n'
+        'Return the fixed file using EXACTLY this format:\n'
+        '===FIXED: ${entry.key}===\n'
+        '<complete fixed file content>\n'
+        '===END===\n\n'
+        'One block only. No explanation, no markdown, no JSON.',
+        label: 'fix $fileName',
       );
-    }
 
-    if (sections.isEmpty) return true;
-
-    final fix = await callAiRaw(
-      'Fix the dart analyze errors listed below. '
-      'Make files null-safe and compatible with Dart 3.$depsNote\n\n'
-      'STRICT CONSTRAINT — DO NOT MODIFY UI:\n'
-      'You may ONLY fix: missing/broken imports, null-safety operators (?, !, late), '
-      'type annotations, and package resolution errors.\n'
-      'You must NEVER change: Widget build() methods, CustomPainter paint() methods, '
-      'animation logic, visual layout, colors, sizes, or any rendering behavior.\n'
-      'The visual output of every widget must be byte-for-byte identical to the original.\n\n'
-      '${sections.join('\n\n')}\n\n'
-      'Return each fixed file using EXACTLY this format:\n'
-      '===FIXED: <original file path>===\n'
-      '<complete fixed file content>\n'
-      '===END===\n\n'
-      'One block per file. No explanation, no markdown, no JSON.',
-      label: '${byFile.length} file(s)',
-    );
-
-    if (fix != null && fix.trim().isNotEmpty) {
-      final blockRe = RegExp(
-        r'===FIXED: (.+?)===\n([\s\S]*?)===END===',
-        multiLine: true,
-      );
-      for (final m in blockRe.allMatches(fix)) {
-        final path = m.group(1)!.trim();
-        var content = m.group(2)!.trim();
-        if (content.startsWith('```')) {
-          content = content
-              .replaceFirst(RegExp(r'^```[a-z]*\n?'), '')
-              .replaceFirst(RegExp(r'\n?```\s*$'), '');
+      if (fix != null && fix.trim().isNotEmpty) {
+        final blockRe = RegExp(
+          r'===FIXED: (.+?)===\n([\s\S]*?)===END===',
+          multiLine: true,
+        );
+        for (final m in blockRe.allMatches(fix)) {
+          final path = m.group(1)!.trim();
+          var fixed = m.group(2)!.trim();
+          if (fixed.startsWith('```')) {
+            fixed = fixed
+                .replaceFirst(RegExp(r'^```[a-z]*\n?'), '')
+                .replaceFirst(RegExp(r'\n?```\s*$'), '');
+          }
+          final f = File(path);
+          if (f.existsSync()) await f.writeAsString(fixed);
         }
-        final f = File(path);
-        if (f.existsSync()) await f.writeAsString(content);
       }
     }
   }
@@ -1541,7 +1559,12 @@ Future<String?> createPr(
   await File('$cloneDir/lib/$id/${id}_page.dart').writeAsString(pageDart);
 
   // Copy all source dart files with import paths and asset paths fixed.
-  final sourcePackageName = (repo['name'] as String).replaceAll('-', '_');
+  // Infer the real package name from self-referential imports in the source files
+  // (e.g. repo 'clock' may have package name 'canvas_clock' in its pubspec).
+  final sourcePackageName = _inferSourcePackageName(
+    sourceFiles,
+    (repo['name'] as String).replaceAll('-', '_'),
+  );
   for (final entry in sourceFiles.entries) {
     // Strip lib/ prefix — files go into lib/<id>/<rest of path>.
     final relativePath = entry.key.replaceFirst('lib/', '');
