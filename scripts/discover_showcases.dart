@@ -1431,6 +1431,19 @@ Future<bool> createPr(
     return false;
   }
 
+  // Restore `resolution: workspace` so merged PRs keep it on main.
+  final pubspecBeforeCommit = File('$cloneDir/pubspec.yaml');
+  if (await pubspecBeforeCommit.exists()) {
+    var ps = await pubspecBeforeCommit.readAsString();
+    if (!ps.contains('resolution: workspace')) {
+      ps = ps.replaceFirstMapped(
+        RegExp(r'^(name:.+\n)', multiLine: true),
+        (m) => '${m.group(1)}resolution: workspace\n',
+      );
+      await pubspecBeforeCommit.writeAsString(ps);
+    }
+  }
+
   await _run(['git', 'add', '.'], workingDirectory: cloneDir);
   result = await _run([
     'git',
