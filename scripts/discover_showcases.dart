@@ -1125,11 +1125,7 @@ Future<bool> _fetchDep(
   if (await vendoredPubspecFile.exists()) {
     var vps = await vendoredPubspecFile.readAsString();
     vps = vps.replaceAll(
-      RegExp(
-        r'^dependencies:.*?(?=^\S|\Z)',
-        multiLine: true,
-        dotAll: true,
-      ),
+      RegExp(r'^dependencies:.*?(?=^\S|\Z)', multiLine: true, dotAll: true),
       '',
     );
     await vendoredPubspecFile.writeAsString(vps);
