@@ -725,11 +725,43 @@ Future<Map<String, String>> fetchAllSourceFiles(
   return files;
 }
 
+// Fetches non-dart asset files (json, xml, txt, csv) from assets/ in source repo.
+Future<Map<String, String>> fetchAssetFiles(
+  String repo,
+  List<Map<String, dynamic>> tree,
+) async {
+  const textExts = {'.json', '.xml', '.txt', '.csv', '.svg'};
+  final files = <String, String>{};
+  final paths = tree
+      .where((f) {
+        final path = f['path'] as String;
+        final ext = path.contains('.') ? '.${path.split('.').last}' : '';
+        return path.startsWith('assets/') &&
+            textExts.contains(ext) &&
+            (f['size'] as int? ?? 0) < 200000;
+      })
+      .map((f) => f['path'] as String)
+      .toList();
+  for (final path in paths) {
+    final content = await ghFile(repo, path);
+    if (content != null) files[path] = content;
+  }
+  return files;
+}
+
 // Fixes package imports from source package → relative imports within showcase dir.
 String fixImports(String content, String sourcePackageName) {
   return content.replaceAllMapped(
     RegExp("import 'package:${RegExp.escape(sourcePackageName)}/(.+?)';"),
     (m) => "import '${m.group(1)}';",
+  );
+}
+
+// Rewrites "assets/X" string literals → "assets/<id>/X" for asset path namespacing.
+String fixAssetPaths(String content, String id) {
+  return content.replaceAllMapped(
+    RegExp(r'''(["'])assets/(?!''' + RegExp.escape(id) + r''')([^"']+)\1'''),
+    (m) => '${m.group(1)}assets/$id/${m.group(2)}${m.group(1)}',
   );
 }
 
@@ -1241,6 +1273,7 @@ Future<bool> createPr(
   Map<String, String> missingDeps,
   Map<String, String> sourceFiles,
   String sourcePubspec,
+  Map<String, String> assetFiles,
 ) async {
   final id = showcaseId(repo);
   final displayName = showcaseDisplayName(repo);
@@ -1312,15 +1345,48 @@ Future<bool> createPr(
   await File('$cloneDir/lib/$id/showcase_info.dart').writeAsString(infoDart);
   await File('$cloneDir/lib/$id/${id}_page.dart').writeAsString(pageDart);
 
-  // Copy all source dart files with import paths fixed.
+  // Copy all source dart files with import paths and asset paths fixed.
   final sourcePackageName = (repo['name'] as String).replaceAll('-', '_');
   for (final entry in sourceFiles.entries) {
     // Strip lib/ prefix — files go into lib/<id>/<rest of path>.
     final relativePath = entry.key.replaceFirst('lib/', '');
     final destFile = File('$cloneDir/lib/$id/$relativePath');
     await destFile.parent.create(recursive: true);
-    final fixed = fixImports(entry.value, sourcePackageName);
+    var fixed = fixImports(entry.value, sourcePackageName);
+    if (assetFiles.isNotEmpty) fixed = fixAssetPaths(fixed, id);
     await destFile.writeAsString(fixed);
+  }
+
+  // Copy asset files to assets/<id>/ and declare in pubspec flutter: assets:.
+  if (assetFiles.isNotEmpty) {
+    final assetEntries = <String>[];
+    for (final entry in assetFiles.entries) {
+      // Strip assets/ prefix → assets/<id>/<rest>
+      final relPath = entry.key.replaceFirst('assets/', '');
+      final destFile = File('$cloneDir/assets/$id/$relPath');
+      await destFile.parent.create(recursive: true);
+      await destFile.writeAsString(entry.value);
+      assetEntries.add('assets/$id/$relPath');
+    }
+    // Patch pubspec flutter: assets: section.
+    final pubspecFile = File('$cloneDir/pubspec.yaml');
+    var pubspec = await pubspecFile.readAsString();
+    final assetLines = assetEntries.map((a) => '    - $a\n').join();
+    if (pubspec.contains('  assets:')) {
+      pubspec = pubspec.replaceFirst(
+        RegExp(r'  assets:\s*\n'),
+        '  assets:\n$assetLines',
+      );
+    } else if (pubspec.contains('\nflutter:')) {
+      pubspec = pubspec.replaceFirst(
+        RegExp(r'\nflutter:\s*\n'),
+        '\nflutter:\n  assets:\n$assetLines',
+      );
+    } else {
+      pubspec += '\nflutter:\n  assets:\n$assetLines';
+    }
+    await pubspecFile.writeAsString(pubspec);
+    print('  Assets bundled: ${assetEntries.join(', ')}');
   }
 
   // Copy README and LICENSE if they exist.
@@ -1592,6 +1658,12 @@ Future<void> main() async {
     );
     print('  Source files: ${sourceFiles.length} dart files fetched');
 
+    // Fetch asset files (json, xml, txt, csv, svg) from assets/ in source repo.
+    final assetFiles = await fetchAssetFiles(repo['full_name'] as String, tree);
+    if (assetFiles.isNotEmpty) {
+      print('  Asset files: ${assetFiles.keys.join(', ')}');
+    }
+
     final (infoDart, pageDart) = generateShowcaseFiles(
       repo,
       evaluation,
@@ -1607,6 +1679,7 @@ Future<void> main() async {
         missingDeps,
         sourceFiles,
         sourcePubspec,
+        assetFiles,
       )) {
         submitted++;
       }
