@@ -717,8 +717,7 @@ Future<Map<String, String>> fetchAllSourceFiles(
 
   final libPaths = tree
       .where(
-        (f) =>
-            (f['path'] as String).startsWith('lib/') && _isDartSource(f),
+        (f) => (f['path'] as String).startsWith('lib/') && _isDartSource(f),
       )
       .map((f) => f['path'] as String)
       .toList();
@@ -731,10 +730,7 @@ Future<Map<String, String>> fetchAllSourceFiles(
   // Fallback: repo root .dart files (non-standard layout, e.g. Flutter Clock entries).
   if (files.isEmpty) {
     final rootPaths = tree
-        .where(
-          (f) =>
-              !(f['path'] as String).contains('/') && _isDartSource(f),
-        )
+        .where((f) => !(f['path'] as String).contains('/') && _isDartSource(f))
         .map((f) => f['path'] as String)
         .toList();
     for (final path in rootPaths) {
