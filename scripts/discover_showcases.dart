@@ -701,27 +701,48 @@ Score 1-10 (for logging only). Set suitable=true only if ALL criteria above are 
   return callAi(prompt, label: repo['full_name'] as String);
 }
 
-// Fetches all dart files under lib/ from a source repo (up to a limit).
+// Fetches all dart files from a source repo.
+// Looks under lib/ first; if nothing found (truncated tree or non-standard layout),
+// falls back to fetching any .dart files at the repo root level.
 Future<Map<String, String>> fetchAllSourceFiles(
   String repo,
   List<Map<String, dynamic>> tree,
 ) async {
   final files = <String, String>{};
-  final paths = tree
+
+  bool _isDartSource(Map<String, dynamic> f) =>
+      (f['path'] as String).endsWith('.dart') &&
+      !(f['path'] as String).toLowerCase().contains('test') &&
+      (f['size'] as int? ?? 0) < 80000;
+
+  final libPaths = tree
       .where(
         (f) =>
-            (f['path'] as String).startsWith('lib/') &&
-            (f['path'] as String).endsWith('.dart') &&
-            !(f['path'] as String).toLowerCase().contains('test') &&
-            (f['size'] as int? ?? 0) < 80000,
+            (f['path'] as String).startsWith('lib/') && _isDartSource(f),
       )
       .map((f) => f['path'] as String)
       .toList();
 
-  for (final path in paths) {
+  for (final path in libPaths) {
     final content = await ghFile(repo, path);
     if (content != null) files[path] = content;
   }
+
+  // Fallback: repo root .dart files (non-standard layout, e.g. Flutter Clock entries).
+  if (files.isEmpty) {
+    final rootPaths = tree
+        .where(
+          (f) =>
+              !(f['path'] as String).contains('/') && _isDartSource(f),
+        )
+        .map((f) => f['path'] as String)
+        .toList();
+    for (final path in rootPaths) {
+      final content = await ghFile(repo, path);
+      if (content != null) files['lib/$path'] = content;
+    }
+  }
+
   return files;
 }
 
@@ -846,12 +867,8 @@ Future<String> _generateDemoPage({
       .map((p) => p.replaceFirst('lib/', ''))
       .join('\n');
 
-  final hasSourceFiles = sourceFiles.isNotEmpty;
-  final sourceSection = hasSourceFiles
-      ? 'Available library source files (use relative imports):\n$allImports\n\nSource files for context:\n$sourceContext'
-      : 'No source files available — this repo uses a non-standard structure (e.g. sub-projects, scripts). '
-            'Write a self-contained demo that VISUALLY SIMULATES the concept of the library '
-            '(e.g. for a vignettes/animations collection, implement one representative animation from scratch using only Flutter built-ins).';
+  final sourceSection =
+      'Available library source files (use relative imports):\n$allImports\n\nSource files for context:\n$sourceContext';
 
   final prompt =
       '''Write a Flutter page wrapper for this library: $repoUrl
@@ -1825,6 +1842,11 @@ Future<void> main() async {
       tree,
     );
     print('  Source files: ${sourceFiles.length} dart files fetched');
+
+    if (sourceFiles.isEmpty) {
+      print('  No source files found — cannot build thin wrapper, skipping');
+      continue;
+    }
 
     // Fetch asset files (json, xml, txt, csv, svg) from assets/ in source repo.
     final assetFiles = await fetchAssetFiles(repo['full_name'] as String, tree);
