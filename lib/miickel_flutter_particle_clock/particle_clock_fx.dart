@@ -23,10 +23,7 @@ final jellyDistributionLmt = 97;
 
 class ParticleClockFx extends ClockFx {
   ParticleClockFx({required Size size, required DateTime? time})
-      : super(
-          size: size,
-          time: time,
-        );
+    : super(size: size, time: time);
 
   @override
   void tick(Duration duration) {
@@ -140,7 +137,8 @@ class ParticleClockFx extends ClockFx {
             _isBetween(angle, ah - d, ah + d));
 
         p.life = Rnd.getDouble(0.75, .8);
-        p.size = sizeMin *
+        p.size =
+            sizeMin *
             (Rnd.ratio > .8
                 ? Rnd.getDouble(.0015, .003)
                 : Rnd.getDouble(.002, .006));

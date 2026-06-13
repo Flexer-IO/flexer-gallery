@@ -21,11 +21,7 @@ class ClockBgParticlePainter extends CustomPainter {
         ..style = p.isFilled ? PaintingStyle.fill : PaintingStyle.stroke;
 
       if (p.isFilled) {
-        var rect = Rect.fromCenter(
-          center: pos,
-          width: p.size,
-          height: p.size,
-        );
+        var rect = Rect.fromCenter(center: pos, width: p.size, height: p.size);
 
         canvas.drawRect(rect, paint);
       } else {

@@ -20,13 +20,8 @@ class Scene extends StatefulWidget {
   final DateTime? time;
   final Brightness? brightness;
 
-  const Scene({
-    Key? key,
-    this.size,
-    this.palettes,
-    this.time,
-    this.brightness,
-  }) : super(key: key);
+  const Scene({Key? key, this.size, this.palettes, this.time, this.brightness})
+    : super(key: key);
 
   @override
   SceneState createState() => SceneState();
@@ -43,14 +38,8 @@ class SceneState extends State<Scene> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     _ticker = createTicker(_tick)..start();
-    _fx = ParticleClockFx(
-      size: widget.size!,
-      time: widget.time,
-    );
-    _bgFx = BgFx(
-      size: widget.size!,
-      time: widget.time,
-    );
+    _fx = ParticleClockFx(size: widget.size!, time: widget.time);
+    _bgFx = BgFx(size: widget.size!, time: widget.time);
     _updatePalette();
     super.initState();
   }
@@ -127,9 +116,7 @@ class SceneState extends State<Scene> with SingleTickerProviderStateMixin {
       child: Stack(
         children: <Widget>[
           CustomPaint(
-            painter: ClockBgParticlePainter(
-              fx: _bgFx,
-            ),
+            painter: ClockBgParticlePainter(fx: _bgFx),
             child: Container(),
           ),
           BackdropFilter(
@@ -156,9 +143,7 @@ class SceneState extends State<Scene> with SingleTickerProviderStateMixin {
             // Paint the second hand.
             CustomPaint(
               size: Size(faceSize, faceSize),
-              painter: ClockSecondsPainter(
-                accentColor: _accentColor,
-              ),
+              painter: ClockSecondsPainter(accentColor: _accentColor),
             ),
 
             // Paint the clock face.
@@ -166,9 +151,7 @@ class SceneState extends State<Scene> with SingleTickerProviderStateMixin {
               key: Key(_accentColor.toString()),
               child: CustomPaint(
                 size: widget.size!,
-                painter: ClockFacePainter(
-                  accentColor: _accentColor,
-                ),
+                painter: ClockFacePainter(accentColor: _accentColor),
               ),
             ),
           ],

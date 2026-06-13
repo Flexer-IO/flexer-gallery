@@ -151,10 +151,7 @@ enum WeatherCondition {
 }
 
 /// Temperature unit of measurement.
-enum TemperatureUnit {
-  celsius,
-  fahrenheit,
-}
+enum TemperatureUnit { celsius, fahrenheit }
 
 /// Removes the enum type and returns the value as a String.
 String enumToString(Object? e) => e.toString().split('.').last;

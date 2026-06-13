@@ -62,10 +62,7 @@ class ClockFxPainter extends CustomPainter {
             endAngle: 2 * pi,
             transform: GradientRotation(p.a),
             stops: [.6, 1],
-          ).createShader(Rect.fromCircle(
-            center: fx!.center,
-            radius: p.dist,
-          ));
+          ).createShader(Rect.fromCircle(center: fx!.center, radius: p.dist));
 
           var gradientPaint = Paint()
             ..strokeWidth = p.size / 2

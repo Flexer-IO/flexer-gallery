@@ -57,7 +57,12 @@ class ClockSecondsPainter extends CustomPainter {
 
     // Inner indicator.
     canvas.drawArc(
-        innerRect, timeAngle - (secSize * 6), secSize * 12, false, paint);
+      innerRect,
+      timeAngle - (secSize * 6),
+      secSize * 12,
+      false,
+      paint,
+    );
   }
 
   @override

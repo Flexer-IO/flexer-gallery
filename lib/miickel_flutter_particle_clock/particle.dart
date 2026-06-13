@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class Particle {
-
   /// The particle's X-position.
   double x;
 
@@ -69,8 +68,4 @@ class Particle {
   });
 }
 
-enum ParticleType {
-  hour,
-  minute,
-  noise,
-}
+enum ParticleType { hour, minute, noise }

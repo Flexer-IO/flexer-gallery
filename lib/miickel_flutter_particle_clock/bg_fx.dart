@@ -11,11 +11,7 @@ final easingDelayDuration = Duration(seconds: 15);
 
 class BgFx extends ClockFx {
   BgFx({required Size size, required DateTime? time})
-      : super(
-          size: size,
-          time: time,
-          numParticles: 120,
-        );
+    : super(size: size, time: time, numParticles: 120);
 
   @override
   void tick(Duration duration) {

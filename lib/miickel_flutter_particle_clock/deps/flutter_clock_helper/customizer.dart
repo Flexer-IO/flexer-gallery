@@ -58,11 +58,13 @@ class _ClockCustomizerState extends State<ClockCustomizer> {
   void _handleModelChange() => setState(() {});
 
   Widget _enumMenu<T>(
-      String label, T value, List<T> items, ValueChanged<T?> onChanged) {
+    String label,
+    T value,
+    List<T> items,
+    ValueChanged<T?> onChanged,
+  ) {
     return InputDecorator(
-      decoration: InputDecoration(
-        labelText: label,
-      ),
+      decoration: InputDecoration(labelText: label),
       child: DropdownButtonHideUnderline(
         child: DropdownButton<T>(
           value: value,
@@ -83,21 +85,18 @@ class _ClockCustomizerState extends State<ClockCustomizer> {
     return Row(
       children: <Widget>[
         Expanded(child: Text(label)),
-        Switch(
-          value: value,
-          onChanged: onChanged,
-        ),
+        Switch(value: value, onChanged: onChanged),
       ],
     );
   }
 
   Widget _textField(
-      String currentValue, String label, ValueChanged<String> onChanged) {
+    String currentValue,
+    String label,
+    ValueChanged<String> onChanged,
+  ) {
     return TextField(
-      decoration: InputDecoration(
-        hintText: currentValue,
-        helperText: label,
-      ),
+      decoration: InputDecoration(hintText: currentValue, helperText: label),
       onChanged: onChanged,
     );
   }
@@ -115,38 +114,48 @@ class _ClockCustomizerState extends State<ClockCustomizer> {
                     _model.location = location;
                   });
                 }),
-                _textField(_model.temperature.toString(), 'Temperature',
-                    (String temperature) {
+                _textField(_model.temperature.toString(), 'Temperature', (
+                  String temperature,
+                ) {
                   setState(() {
                     _model.temperature = double.parse(temperature);
                   });
                 }),
-                _enumMenu<ThemeMode?>('Theme', _themeMode,
-                    ThemeMode.values.toList()..remove(ThemeMode.system),
-                    (ThemeMode? mode) {
-                  setState(() {
-                    _themeMode = mode;
-                  });
-                }),
+                _enumMenu<ThemeMode?>(
+                  'Theme',
+                  _themeMode,
+                  ThemeMode.values.toList()..remove(ThemeMode.system),
+                  (ThemeMode? mode) {
+                    setState(() {
+                      _themeMode = mode;
+                    });
+                  },
+                ),
                 _switch('24-hour format', _model.is24HourFormat, (bool value) {
                   setState(() {
                     _model.is24HourFormat = value;
                   });
                 }),
                 _enumMenu<WeatherCondition?>(
-                    'Weather', _model.weatherCondition, WeatherCondition.values,
-                    (WeatherCondition? condition) {
-                  setState(() {
-                    _model.weatherCondition = condition;
-                  });
-                }),
+                  'Weather',
+                  _model.weatherCondition,
+                  WeatherCondition.values,
+                  (WeatherCondition? condition) {
+                    setState(() {
+                      _model.weatherCondition = condition;
+                    });
+                  },
+                ),
                 _enumMenu<TemperatureUnit?>(
-                    'Units', _model.unit, TemperatureUnit.values,
-                    (TemperatureUnit? unit) {
-                  setState(() {
-                    _model.unit = unit;
-                  });
-                }),
+                  'Units',
+                  _model.unit,
+                  TemperatureUnit.values,
+                  (TemperatureUnit? unit) {
+                    setState(() {
+                      _model.unit = unit;
+                    });
+                  },
+                ),
               ],
             ),
           ),
@@ -212,10 +221,7 @@ class _ClockCustomizerState extends State<ClockCustomizer> {
                   Positioned(
                     top: 0,
                     right: 0,
-                    child: Opacity(
-                      opacity: 0.7,
-                      child: _configButton(),
-                    ),
+                    child: Opacity(opacity: 0.7, child: _configButton()),
                   ),
               ],
             ),

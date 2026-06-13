@@ -63,8 +63,13 @@ abstract class ClockFx with ChangeNotifier {
     this.palette = palette;
     var colors = palette.components!.sublist(1);
     var accentColor = colors[colors.length - 1];
-    particles.where((p) => p != null).forEach((p) => p!.color =
-        p.type == ParticleType.noise ? Rnd.getItem(colors) : accentColor);
+    particles
+        .where((p) => p != null)
+        .forEach(
+          (p) => p!.color = p.type == ParticleType.noise
+              ? Rnd.getItem(colors)
+              : accentColor,
+        );
   }
 
   /// Sets the time used for time-specific effects.

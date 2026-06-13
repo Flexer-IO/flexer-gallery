@@ -49,8 +49,9 @@ class _ParticleClockState extends State<ParticleClock>
   }
 
   Future<List<Palette>> _loadPalettes() async {
-    String data =
-        await DefaultAssetBundle.of(context).loadString("packages/showcase_library/assets/miickel_flutter_particle_clock/palettes.json");
+    String data = await DefaultAssetBundle.of(context).loadString(
+      "packages/showcase_library/assets/miickel_flutter_particle_clock/palettes.json",
+    );
     var palettes = json.decode(data) as List;
     return palettes.map((p) => Palette.fromJson(p)).toList();
   }
@@ -77,9 +78,7 @@ class _ParticleClockState extends State<ParticleClock>
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return Container(
-            child: Center(
-              child: Text("Could not load palettes."),
-            ),
+            child: Center(child: Text("Could not load palettes.")),
           );
         }
 

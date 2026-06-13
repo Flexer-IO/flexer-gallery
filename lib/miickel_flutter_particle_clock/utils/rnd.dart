@@ -65,10 +65,10 @@ class Rnd {
             .sublist(1)
             .asMap()
             .map(
-              (i, color) => MapEntry(
+              (i, color) => MapEntry(i, [
                 i,
-                [i, (luminance - color.computeLuminance()).abs()],
-              ),
+                (luminance - color.computeLuminance()).abs(),
+              ]),
             )
             .values
             .toList();
@@ -77,12 +77,11 @@ class Rnd {
           return a[1].compareTo(b[1]);
         });
 
-        List<Color> sortedColors =
-            lumDiff.map((d) => colors[d[0] + 1 as int]).toList();
+        List<Color> sortedColors = lumDiff
+            .map((d) => colors[d[0] + 1 as int])
+            .toList();
 
-        result = Palette(
-          components: [colors[0]] + sortedColors,
-        );
+        result = Palette(components: [colors[0]] + sortedColors);
       }
     }
     return result;
