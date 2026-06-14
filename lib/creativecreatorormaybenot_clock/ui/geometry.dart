@@ -36,8 +36,11 @@ class Line1d {
   factory Line1d.fromEE({required double end, required double extent}) =>
       Line1d(start: end - extent, end: end);
 
-  factory Line1d.fromSEI({required double start, required double end, required double indent}) =>
-      Line1d(start: start + indent, end: end - indent);
+  factory Line1d.fromSEI({
+    required double start,
+    required double end,
+    required double indent,
+  }) => Line1d(start: start + indent, end: end - indent);
 
   factory Line1d.fromCenter({required double center, required double extent}) =>
       Line1d(start: center - extent / 2, end: center + extent / 2);
@@ -66,7 +69,8 @@ class Line1d {
 extension ExtendedRect on Rect {
   Rect include(Offset offset) {
     return expandToInclude(
-        Rect.fromCenter(center: offset, width: 0, height: 0));
+      Rect.fromCenter(center: offset, width: 0, height: 0),
+    );
   }
 }
 

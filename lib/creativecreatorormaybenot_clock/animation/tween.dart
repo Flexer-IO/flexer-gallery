@@ -6,10 +6,7 @@ import 'package:flutter/animation.dart';
 /// Always maps the value returned from [lerp] to a value between `0` and `2 * pi`.
 /// This can be used when drawing rotated pieces in a canvas because angles wrap around every two pi.
 class AngleTween extends Tween<double> {
-  AngleTween({
-    double? begin,
-    double? end,
-  }) : super(begin: begin, end: end);
+  AngleTween({double? begin, double? end}) : super(begin: begin, end: end);
 
   /// The modulo behavior in Dart surprised me a bit here (https://stackoverflow.com/q/59470362/6509751).
   @override

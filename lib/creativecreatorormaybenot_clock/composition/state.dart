@@ -17,11 +17,8 @@ class Clock extends StatefulWidget {
   /// See [Palette].
   final Map<ClockColor, Color> palette;
 
-  const Clock({
-    Key? key,
-    required this.model,
-    required this.palette,
-  }) : super(key: key);
+  const Clock({Key? key, required this.model, required this.palette})
+    : super(key: key);
 
   @override
   State createState() => _ClockState();
@@ -72,45 +69,46 @@ class _ClockState extends State<Clock> with TickerProviderStateMixin {
     )..forward(from: waveProgress(time));
 
     ballTrips = BallTrips();
-    ballTravelController = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: ballEvery) -
-          departureDuration -
-          arrivalDuration,
-    )..addStatusListener((status) {
-        if (status == AnimationStatus.completed) {
-          ballTravelController.reset();
+    ballTravelController =
+        AnimationController(
+          vsync: this,
+          duration:
+              const Duration(seconds: ballEvery) -
+              departureDuration -
+              arrivalDuration,
+        )..addStatusListener((status) {
+          if (status == AnimationStatus.completed) {
+            ballTravelController.reset();
 
-          ballArrivalController.forward(from: 0);
-        }
-      });
-    ballArrivalController = AnimationController(
-      vsync: this,
-      duration: arrivalDuration,
-    )..addStatusListener((status) {
-        if (status == AnimationStatus.completed) {
-          ballArrivalController.reset();
+            ballArrivalController.forward(from: 0);
+          }
+        });
+    ballArrivalController =
+        AnimationController(vsync: this, duration: arrivalDuration)
+          ..addStatusListener((status) {
+            if (status == AnimationStatus.completed) {
+              ballArrivalController.reset();
 
-          ballDepartureController.forward(from: 0);
-          Palette.of(context)!.vibrant = !Palette.of(context)!.vibrant;
+              ballDepartureController.forward(from: 0);
+              Palette.of(context)!.vibrant = !Palette.of(context)!.vibrant;
 
-          // Starting the animation for the bouncing
-          // of the element hit.
-          bounceController.forward(from: 0);
-        }
-      });
-    ballDepartureController = AnimationController(
-      vsync: this,
-      duration: departureDuration,
-    )..addStatusListener((status) {
-        if (status == AnimationStatus.completed) {
-          ballDepartureController.reset();
-          ballTrips.count++;
+              // Starting the animation for the bouncing
+              // of the element hit.
+              bounceController.forward(from: 0);
+            }
+          });
+    ballDepartureController =
+        AnimationController(vsync: this, duration: departureDuration)
+          ..addStatusListener((status) {
+            if (status == AnimationStatus.completed) {
+              ballDepartureController.reset();
+              ballTrips.count++;
 
-          ballTravelController.forward(
-              from: ballTravelProgress(DateTime.now()));
-        }
-      });
+              ballTravelController.forward(
+                from: ballTravelProgress(DateTime.now()),
+              );
+            }
+          });
 
     bounceController = AnimationController(
       vsync: this,
@@ -167,7 +165,8 @@ class _ClockState extends State<Clock> with TickerProviderStateMixin {
   double ballTravelProgress(DateTime time) {
     // toGo is the time until the next ball
     // arrival animation should start in microseconds.
-    final toGo = ballEvery * 1e6 ~/ 1 -
+    final toGo =
+        ballEvery * 1e6 ~/ 1 -
         (time.second % ballEvery) * 1e6 ~/ 1 -
         time.microsecond -
         time.millisecond * 1e3 ~/ 1 -
@@ -180,10 +179,11 @@ class _ClockState extends State<Clock> with TickerProviderStateMixin {
     final time = DateTime.now();
 
     updateTimer = Timer(
-        Duration(
-            microseconds:
-                1e6 ~/ 1 - time.microsecond - time.millisecond * 1e3 ~/ 1),
-        update);
+      Duration(
+        microseconds: 1e6 ~/ 1 - time.microsecond - time.millisecond * 1e3 ~/ 1,
+      ),
+      update,
+    );
 
     if (!ballArrivalController.isAnimating &&
         !ballDepartureController.isAnimating) {
@@ -225,17 +225,11 @@ class _ClockState extends State<Clock> with TickerProviderStateMixin {
   }
 
   Animation<double> get ballTravelAnimation {
-    return CurvedAnimation(
-      parent: ballTravelController,
-      curve: travelCurve,
-    );
+    return CurvedAnimation(parent: ballTravelController, curve: travelCurve);
   }
 
   Animation<double> get ballArrivalAnimation {
-    return CurvedAnimation(
-      parent: ballArrivalController,
-      curve: arrivalCurve,
-    );
+    return CurvedAnimation(parent: ballArrivalController, curve: arrivalCurve);
   }
 
   Animation<double> get ballDepartureAnimation {
@@ -248,15 +242,21 @@ class _ClockState extends State<Clock> with TickerProviderStateMixin {
   Animation<double> get bounceAnimation {
     return TweenSequence([
       TweenSequenceItem(
-        tween: Tween<double>(begin: 0, end: 1)
-            .chain(CurveTween(curve: bounceAwayCurve)),
-        weight: bounceAwayDuration.inMicroseconds /
+        tween: Tween<double>(
+          begin: 0,
+          end: 1,
+        ).chain(CurveTween(curve: bounceAwayCurve)),
+        weight:
+            bounceAwayDuration.inMicroseconds /
             bounceController.duration!.inMicroseconds,
       ),
       TweenSequenceItem(
-        tween: Tween<double>(begin: 1, end: 0)
-            .chain(CurveTween(curve: bounceBackCurve)),
-        weight: bounceBackDuration.inMicroseconds /
+        tween: Tween<double>(
+          begin: 1,
+          end: 0,
+        ).chain(CurveTween(curve: bounceBackCurve)),
+        weight:
+            bounceBackDuration.inMicroseconds /
             bounceController.duration!.inMicroseconds,
       ),
     ]).animate(bounceController);

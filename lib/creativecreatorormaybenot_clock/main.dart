@@ -78,10 +78,7 @@ void main() {
       debugSemantics: debugSemantics,
       builder: (context, model) => Palette(
         builder: (context, palette) {
-          return AnimatedClock(
-            model: model,
-            palette: palette,
-          );
+          return AnimatedClock(model: model, palette: palette);
         },
       ),
     ),

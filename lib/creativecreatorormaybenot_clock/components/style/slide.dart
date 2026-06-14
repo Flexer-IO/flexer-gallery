@@ -75,15 +75,14 @@ class RenderSlide
     required Color primaryColor,
     required Color secondaryColor,
     required Color shadowColor,
-  })  : _primaryColor = primaryColor,
-        _secondaryColor = secondaryColor,
-        _shadowColor = shadowColor,
-        super(ClockComponent.slide);
+  }) : _primaryColor = primaryColor,
+       _secondaryColor = secondaryColor,
+       _shadowColor = shadowColor,
+       super(ClockComponent.slide);
 
   Color _primaryColor, _secondaryColor, _shadowColor;
 
   set primaryColor(Color value) {
-
     if (_primaryColor == value) {
       return;
     }
@@ -93,7 +92,6 @@ class RenderSlide
   }
 
   set secondaryColor(Color value) {
-
     if (_secondaryColor == value) {
       return;
     }
@@ -103,7 +101,6 @@ class RenderSlide
   }
 
   set shadowColor(Color value) {
-
     if (_shadowColor == value) {
       return;
     }
@@ -186,16 +183,8 @@ class RenderSlide
     // properly add padding to account for the ball's size.
     final startLeft = start.dx < end.dx;
 
-    startLine = Line2d(start: start, end: destination)
-      ..padStartEnd(
-        1.85,
-        .99,
-      );
-    endLine = Line2d(start: end, end: destination)
-      ..padStartEnd(
-        1.6,
-        .58,
-      );
+    startLine = Line2d(start: start, end: destination)..padStartEnd(1.85, .99);
+    endLine = Line2d(start: end, end: destination)..padStartEnd(1.6, .58);
     travelLine = Line2d(start: end, end: start);
 
     final ballRadius = compositionData.ballRadius,
@@ -210,18 +199,22 @@ class RenderSlide
     // The start line should touch the ball on its side.
     // The same also goes for the end line, which is
     // why startLeft is required.
-    startLine.shift(startLine.normal.offset *
-        ballRadius *
-        (startLeft ? shiftFactor : -shiftFactor));
-    endLine.shift(endLine.normal.offset *
-        ballRadius *
-        (startLeft ? -shiftFactor : shiftFactor));
+    startLine.shift(
+      startLine.normal.offset *
+          ballRadius *
+          (startLeft ? shiftFactor : -shiftFactor),
+    );
+    endLine.shift(
+      endLine.normal.offset *
+          ballRadius *
+          (startLeft ? -shiftFactor : shiftFactor),
+    );
 
     travelLine.pad(1.02);
 
     travelLine
-        // The line should touch the ball's bottom.
-        .shift(travelLine.normal.offset * ballRadius * shiftFactor);
+    // The line should touch the ball's bottom.
+    .shift(travelLine.normal.offset * ballRadius * shiftFactor);
 
     leftTravelSequence = TweenSequence([
       TweenSequenceItem(
@@ -231,16 +224,10 @@ class RenderSlide
         ).chain(CurveTween(curve: Curves.fastLinearToSlowEaseIn)),
         weight: ballRadius / 28,
       ),
-      TweenSequenceItem(
-        tween: ConstantTween<double>(1),
-        weight: travelLength,
-      ),
+      TweenSequenceItem(tween: ConstantTween<double>(1), weight: travelLength),
     ]);
     rightTravelSequence = TweenSequence([
-      TweenSequenceItem(
-        tween: ConstantTween<double>(1),
-        weight: travelLength,
-      ),
+      TweenSequenceItem(tween: ConstantTween<double>(1), weight: travelLength),
       TweenSequenceItem(
         tween: Tween<double>(
           begin: 1,
@@ -343,8 +330,10 @@ class RenderSlide
     canvas.save();
     // Need to translate by the offset and subtract the offset
     // set in performResize again.
-    canvas.translate(offset.dx + -compositionData.offset.dx,
-        offset.dy + -compositionData.offset.dy);
+    canvas.translate(
+      offset.dx + -compositionData.offset.dx,
+      offset.dy + -compositionData.offset.dy,
+    );
 
     final travelPath = paddedTravelLine.pathWithWidth(strokeWidth),
         startPath = startLine.pathWithWidth(strokeWidth),
@@ -363,14 +352,10 @@ class RenderSlide
 
     final rect = offset & size,
         paint = Paint()
-          ..shader = ui.Gradient.linear(
-            rect.topRight,
-            rect.bottomCenter,
-            [
-              _secondaryColor,
-              _primaryColor,
-            ],
-          );
+          ..shader = ui.Gradient.linear(rect.topRight, rect.bottomCenter, [
+            _secondaryColor,
+            _primaryColor,
+          ]);
     canvas.drawPath(travelPath, paint);
     canvas.drawPath(startPath, paint);
     canvas.drawPath(endPath, paint);

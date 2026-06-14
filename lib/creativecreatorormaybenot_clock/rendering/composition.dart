@@ -15,8 +15,12 @@ class CompositionChildrenParentData<C>
 /// [RenderObject] for [MultiChildRenderObjectWidget]s that are supposed to layout a specific set of children and all of these only exactly once.
 ///
 /// [C] is intended to be an enum.
-abstract class RenderComposition<C, D extends CompositionChildrenParentData<C>,
-        P extends MultiChildRenderObjectWidget> extends RenderBox
+abstract class RenderComposition<
+  C,
+  D extends CompositionChildrenParentData<C>,
+  P extends MultiChildRenderObjectWidget
+>
+    extends RenderBox
     with
         ContainerRenderObjectMixin<RenderBox, D>,
         RenderBoxContainerDefaultsMixin<RenderBox, D> {
@@ -46,14 +50,16 @@ abstract class RenderComposition<C, D extends CompositionChildrenParentData<C>,
           type = childParentData.childType;
 
       assert(
-          childParentData.valid,
-          'A child ($child) was passed to $P which does not set up its $RenderObject.parentData '
-          'as $D correctly (setting $D.valid to `true`).');
+        childParentData.valid,
+        'A child ($child) was passed to $P which does not set up its $RenderObject.parentData '
+        'as $D correctly (setting $D.valid to `true`).',
+      );
 
       assert(
-          !layoutChildren.containsKey(type),
-          'The children passed to $P contain the child type $type more than once. '
-          'Every child type can only be passed exactly once.');
+        !layoutChildren.containsKey(type),
+        'The children passed to $P contain the child type $type more than once. '
+        'Every child type can only be passed exactly once.',
+      );
 
       layoutChildren[type] = child;
       layoutParentData[type] = childParentData;
@@ -61,15 +67,17 @@ abstract class RenderComposition<C, D extends CompositionChildrenParentData<C>,
       child = childParentData.nextSibling;
     }
 
-    final missingComponents =
-        children.where((child) => !layoutChildren.containsKey(child));
+    final missingComponents = children.where(
+      (child) => !layoutChildren.containsKey(child),
+    );
 
     assert(
-        missingComponents.isEmpty,
-        'The children passed to $P do not cover every child type of $children. '
-        'You need to pass every child type exactly once and '
-        'specify the child type correctly using $CompositionChildrenParentData.\n'
-        'Missing children are $missingComponents.');
+      missingComponents.isEmpty,
+      'The children passed to $P do not cover every child type of $children. '
+      'You need to pass every child type exactly once and '
+      'specify the child type correctly using $CompositionChildrenParentData.\n'
+      'Missing children are $missingComponents.',
+    );
 
     // This should prevent accidental use of child.
     child = null;
@@ -95,8 +103,10 @@ abstract class RenderComposition<C, D extends CompositionChildrenParentData<C>,
       child = childParentData.nextSibling;
     }
 
-    paintChild = (C child) =>
-        context.paintChild(children[child]!, parentData[child]!.offset + offset);
+    paintChild = (C child) => context.paintChild(
+      children[child]!,
+      parentData[child]!.offset + offset,
+    );
   }
 
   static const bool debugPaintMessageEnabled = false;
@@ -107,15 +117,18 @@ abstract class RenderComposition<C, D extends CompositionChildrenParentData<C>,
     assert(() {
       if (debugPaintMessageEnabled && debugPaintSizeEnabled) {
         final painter = TextPainter(
-            text: const TextSpan(
-                text:
-                    'Please send me a sign :/ This is leading me nowhere and I do not mean this challenge - creativecreatorormaybenot.',
-                style: TextStyle(
-                    fontSize: 42,
-                    color: Color(0xffff3456),
-                    backgroundColor: Color(0xffffffff))),
-            textDirection: TextDirection.ltr,
-            textAlign: TextAlign.center);
+          text: const TextSpan(
+            text:
+                'Please send me a sign :/ This is leading me nowhere and I do not mean this challenge - creativecreatorormaybenot.',
+            style: TextStyle(
+              fontSize: 42,
+              color: Color(0xffff3456),
+              backgroundColor: Color(0xffffffff),
+            ),
+          ),
+          textDirection: TextDirection.ltr,
+          textAlign: TextAlign.center,
+        );
         painter.layout(maxWidth: size.width);
         painter.paint(context.canvas, Offset(0, size.height / 2));
       }
@@ -126,13 +139,14 @@ abstract class RenderComposition<C, D extends CompositionChildrenParentData<C>,
 
 /// Takes care of validating [RenderObject]s passed to [RenderComposition] and assigning an enum value of type [C].
 /// It also provides easy access to the [CompositionChildrenParentData] of this [RenderObject] via [compositionData].
-abstract class RenderCompositionChild<C,
-    D extends CompositionChildrenParentData<C>> extends RenderBox {
+abstract class RenderCompositionChild<
+  C,
+  D extends CompositionChildrenParentData<C>
+>
+    extends RenderBox {
   final C childType;
 
-  RenderCompositionChild(
-    this.childType,
-  );
+  RenderCompositionChild(this.childType);
 
   D get compositionData => parentData as D;
 

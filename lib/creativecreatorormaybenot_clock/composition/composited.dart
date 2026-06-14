@@ -21,9 +21,7 @@ class CompositedClock extends MultiChildRenderObjectWidget {
 
   @override
   RenderObject createRenderObject(BuildContext context) {
-    return RenderCompositedClock(
-      spinUpAnimation: spinUpAnimation,
-    );
+    return RenderCompositedClock(spinUpAnimation: spinUpAnimation);
   }
 }
 
@@ -60,13 +58,17 @@ class ClockChildrenParentData
   bool hasSemanticsInformation = false;
 }
 
-class RenderCompositedClock extends RenderComposition<ClockComponent,
-    ClockChildrenParentData, CompositedClock> {
+class RenderCompositedClock
+    extends
+        RenderComposition<
+          ClockComponent,
+          ClockChildrenParentData,
+          CompositedClock
+        > {
   final Animation<double> spinUpAnimation;
 
-  RenderCompositedClock({
-    required this.spinUpAnimation,
-  }) : super(ClockComponent.values);
+  RenderCompositedClock({required this.spinUpAnimation})
+    : super(ClockComponent.values);
 
   /// Declares that [RenderCompositedClock] is not a repaint
   /// boundary.
@@ -125,7 +127,8 @@ class RenderCompositedClock extends RenderComposition<ClockComponent,
     // Background
     final background = layoutChildren[ClockComponent.background]!,
         backgroundData =
-            layoutParentData[ClockComponent.background]! as BackgroundParentData;
+            layoutParentData[ClockComponent.background]!
+                as BackgroundParentData;
 
     backgroundData.clearRects();
 
@@ -144,7 +147,8 @@ class RenderCompositedClock extends RenderComposition<ClockComponent,
     // Analog time (paint order is different, but the weather component depends on the size of the analog component).
     final analogTime = layoutChildren[ClockComponent.analogTime]!,
         analogTimeData =
-            layoutParentData[ClockComponent.analogTime]! as AnalogTimeParentData,
+            layoutParentData[ClockComponent.analogTime]!
+                as AnalogTimeParentData,
         analogTimeSize =
             Size.fromRadius(size.height / 2.9) * spinUpAnimation.value;
 
@@ -155,25 +159,23 @@ class RenderCompositedClock extends RenderComposition<ClockComponent,
     );
     () {
       final ballStartPosition = Offset(
-        analogClockBasePosition.dx + analogTimeSize.width * .912,
-        // It should slowly come a bit more into view.
-        // The ball barely shows fully at the start of the travel,
-        // i.e. at the end position.
-        ballSize.height * (7 / 9 - (1 - spinUpAnimation.value)),
-      ),
-          ballDestination = analogClockBasePosition +
+            analogClockBasePosition.dx + analogTimeSize.width * .912,
+            // It should slowly come a bit more into view.
+            // The ball barely shows fully at the start of the travel,
+            // i.e. at the end position.
+            ballSize.height * (7 / 9 - (1 - spinUpAnimation.value)),
+          ),
+          ballDestination =
+              analogClockBasePosition +
               analogTimeSize.onlyWidth.offset / 2 -
               // The ball should only touch the clock and not fly into it.
               ballSize.onlyHeight.offset / 2,
           ballEndPosition = Offset(
-        analogClockBasePosition.dx + analogTimeSize.width / 81,
-        (1 / 2 - (1 - spinUpAnimation.value)) * ballSize.height,
-      );
+            analogClockBasePosition.dx + analogTimeSize.width / 81,
+            (1 / 2 - (1 - spinUpAnimation.value)) * ballSize.height,
+          );
 
-      final ballRect = Rect.fromPoints(
-        ballEndPosition,
-        ballStartPosition,
-      )
+      final ballRect = Rect.fromPoints(ballEndPosition, ballStartPosition)
           .include(ballDestination)
           // The positions are the center of where the ball should be.
           // Thus, the slide rect needs to be inflated.
@@ -186,15 +188,16 @@ class RenderCompositedClock extends RenderComposition<ClockComponent,
         ..destination = ballDestination
         ..ballRadius = ballSize.longestSide / 2;
       slide.layout(
-          constraints.loosen().copyWith(
-                // This is a hack to force the slide to
-                // relayout even when the constraints
-                // do not actually change (making
-                // the constraints change by supplying
-                // the animation value).
-                minWidth: spinUpAnimation.value,
-              ),
-          parentUsesSize: false);
+        constraints.loosen().copyWith(
+          // This is a hack to force the slide to
+          // relayout even when the constraints
+          // do not actually change (making
+          // the constraints change by supplying
+          // the animation value).
+          minWidth: spinUpAnimation.value,
+        ),
+        parentUsesSize: false,
+      );
 
       ballData
         ..startPosition = ballStartPosition - ballRect.topLeft
@@ -212,12 +215,17 @@ class RenderCompositedClock extends RenderComposition<ClockComponent,
       analogTimeData
         ..offset = analogClockBasePosition
         ..bounce = bounce;
-      analogTime.layout(BoxConstraints.tight(analogTimeSize + bounce),
-          parentUsesSize: false);
+      analogTime.layout(
+        BoxConstraints.tight(analogTimeSize + bounce),
+        parentUsesSize: false,
+      );
     }();
 
     backgroundData.addRect(
-        ClockComponent.analogTime, analogTimeData.offset, analogTimeSize);
+      ClockComponent.analogTime,
+      analogTimeData.offset,
+      analogTimeSize,
+    );
 
     // Weather
     final weather = layoutChildren[ClockComponent.weather]!,
@@ -234,15 +242,20 @@ class RenderCompositedClock extends RenderComposition<ClockComponent,
       size.height / 2 - weatherSize.height / 2,
     );
     backgroundData.addRect(
-        ClockComponent.weather, weatherData.offset, weatherSize);
+      ClockComponent.weather,
+      weatherData.offset,
+      weatherSize,
+    );
 
     // Temperature
     final temperature = layoutChildren[ClockComponent.temperature]!,
         temperatureData = layoutParentData[ClockComponent.temperature]!,
         temperatureSize = Size(size.width / 6, size.height / 1.2);
 
-    temperature.layout(BoxConstraints.tight(temperatureSize),
-        parentUsesSize: false);
+    temperature.layout(
+      BoxConstraints.tight(temperatureSize),
+      parentUsesSize: false,
+    );
 
     temperatureData.offset = Offset(
       size.width -
@@ -253,7 +266,10 @@ class RenderCompositedClock extends RenderComposition<ClockComponent,
       size.height / 2 - temperatureSize.height / 2,
     );
     backgroundData.addRect(
-        ClockComponent.temperature, temperatureData.offset, temperatureSize);
+      ClockComponent.temperature,
+      temperatureData.offset,
+      temperatureSize,
+    );
 
     // Location
     final location = layoutChildren[ClockComponent.location]!,
@@ -265,13 +281,15 @@ class RenderCompositedClock extends RenderComposition<ClockComponent,
 
       location.layout(
         BoxConstraints(
-            maxWidth: weatherSize.width -
-                (horizontalLocationPadding -
-                        // Using the padding value instead of the weather components
-                        // offset because it is not influenced by the spin up animation.
-                        horizontalPadding) *
-                    2,
-            maxHeight: size.height),
+          maxWidth:
+              weatherSize.width -
+              (horizontalLocationPadding -
+                      // Using the padding value instead of the weather components
+                      // offset because it is not influenced by the spin up animation.
+                      horizontalPadding) *
+                  2,
+          maxHeight: size.height,
+        ),
         // The text painter determines the size, hence, there is no way to determine it here
         // (except creating the text painter here).
         // This is not critical as long as the location is not updated frequently, which it is not.
@@ -280,10 +298,7 @@ class RenderCompositedClock extends RenderComposition<ClockComponent,
 
       final verticalPadding = padding - location.size.height / 3;
 
-      locationData.offset = Offset(
-        horizontalLocationPadding,
-        verticalPadding,
-      );
+      locationData.offset = Offset(horizontalLocationPadding, verticalPadding);
     }();
 
     // Date
@@ -291,15 +306,18 @@ class RenderCompositedClock extends RenderComposition<ClockComponent,
         dateData = layoutParentData[ClockComponent.date]!;
 
     date.layout(
-        BoxConstraints(maxWidth: weatherSize.width, maxHeight: size.height),
-        parentUsesSize: false);
-    dateData.offset =
-        ExtendedOffset(locationData.offset).plus(location.size.onlyHeight);
+      BoxConstraints(maxWidth: weatherSize.width, maxHeight: size.height),
+      parentUsesSize: false,
+    );
+    dateData.offset = ExtendedOffset(
+      locationData.offset,
+    ).plus(location.size.onlyHeight);
 
     // Digital clock
     final digitalTime = layoutChildren[ClockComponent.digitalTime]!,
-        digitalTimeData = layoutParentData[ClockComponent.digitalTime]!
-            as DigitalTimeParentData;
+        digitalTimeData =
+            layoutParentData[ClockComponent.digitalTime]!
+                as DigitalTimeParentData;
 
     // The position needs to be assigned before layout
     // as it is used in the layout function of digital time.

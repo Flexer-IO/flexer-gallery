@@ -14,15 +14,9 @@ extension ExtendedCanvas on Canvas {
   /// `drawX` and anything that might take a [PaintingContext] `paintX`.
   void drawPetals(Color color, Color highlightColor, double radius) {
     final petalShader = RadialGradient(
-      colors: [
-        highlightColor,
-        color,
-      ],
-      stops: const [
-        0,
-        .3,
-      ],
-    ).createShader(Rect.fromCircle(center: Offset.zero, radius: radius)),
+          colors: [highlightColor, color],
+          stops: const [0, .3],
+        ).createShader(Rect.fromCircle(center: Offset.zero, radius: radius)),
         paint = Paint()
           ..style = PaintingStyle.stroke
           ..strokeWidth = radius / 107
@@ -43,38 +37,26 @@ extension ExtendedCanvas on Canvas {
       ..moveTo(0, 0)
       // Could use conicTo instead and pass a weight there, but
       // it works better for me doing it this way.
-      ..quadraticBezierTo(
-        -radius / petalWeightDivisor,
-        radius / 2,
-        0,
-        radius,
-      )
-      ..quadraticBezierTo(
-        radius / petalWeightDivisor,
-        radius / 2,
-        0,
-        0,
-      )
+      ..quadraticBezierTo(-radius / petalWeightDivisor, radius / 2, 0, radius)
+      ..quadraticBezierTo(radius / petalWeightDivisor, radius / 2, 0, 0)
       ..close();
 
     drawPath(path, paint);
   }
 
   /// Draws a lid for hands on a dial or clock, i.e. a circular piece with a shadow.
-  void drawLid(Color color, Color highlightColor, Color shadowColor,
-      double radius, double shadowElevation) {
-    final rect = Rect.fromCircle(
-      center: Offset.zero,
-      radius: radius,
-    ),
-        shader = ui.Gradient.radial(
-      Offset.zero,
-      rect.shortestSide / 2,
-      [
-        highlightColor,
-        color,
-      ],
-    ),
+  void drawLid(
+    Color color,
+    Color highlightColor,
+    Color shadowColor,
+    double radius,
+    double shadowElevation,
+  ) {
+    final rect = Rect.fromCircle(center: Offset.zero, radius: radius),
+        shader = ui.Gradient.radial(Offset.zero, rect.shortestSide / 2, [
+          highlightColor,
+          color,
+        ]),
         paint = Paint()
           ..shader = shader
           ..style = PaintingStyle.fill,
@@ -99,24 +81,23 @@ extension ExtendedPath on Path {
   /// syntax that resembles [lineTo] and others more
   /// than [arcToPoint] does.
   void halfCircleTo(double x, double y, [bool clockwise = true]) {
-    arcToPoint(Offset(x, y),
-        radius: const Radius.circular(1), clockwise: clockwise);
+    arcToPoint(
+      Offset(x, y),
+      radius: const Radius.circular(1),
+      clockwise: clockwise,
+    );
   }
 
   void leafTipTo(
-      double sx, double sy, double ex, double ey, double c, double f) {
-    quadraticBezierTo(
-      -c,
-      sy - (sy - ey) / f,
-      ex,
-      ey,
-    );
-    quadraticBezierTo(
-      c,
-      sy - (sy - ey) / f,
-      ex - sx,
-      sy,
-    );
+    double sx,
+    double sy,
+    double ex,
+    double ey,
+    double c,
+    double f,
+  ) {
+    quadraticBezierTo(-c, sy - (sy - ey) / f, ex, ey);
+    quadraticBezierTo(c, sy - (sy - ey) / f, ex - sx, sy);
   }
 
   /// Returns a trimmed version of this path.
@@ -141,17 +122,35 @@ extension ExtendedPath on Path {
 
     if (complement) {
       if (trimStart > 0.0) {
-        offset =
-            _appendPathSegment(metrics, this, result, offset, 0.0, trimStart);
+        offset = _appendPathSegment(
+          metrics,
+          this,
+          result,
+          offset,
+          0.0,
+          trimStart,
+        );
       }
       if (trimStop < totalLength) {
         offset = _appendPathSegment(
-            metrics, this, result, offset, trimStop, totalLength);
+          metrics,
+          this,
+          result,
+          offset,
+          trimStop,
+          totalLength,
+        );
       }
     } else {
       if (trimStart < trimStop) {
         offset = _appendPathSegment(
-            metrics, this, result, offset, trimStart, trimStop);
+          metrics,
+          this,
+          result,
+          offset,
+          trimStart,
+          trimStop,
+        );
       }
     }
 
@@ -160,8 +159,14 @@ extension ExtendedPath on Path {
 }
 
 /// https://github.com/2d-inc/Flare-Flutter/blob/eb4a7d77a9fe453f5907eb1c720a39ac9fe80a0c/flare_flutter/lib/trim_path.dart#L3
-double _appendPathSegment(ui.PathMetrics metrics, Path from, Path to,
-    double offset, double start, double stop) {
+double _appendPathSegment(
+  ui.PathMetrics metrics,
+  Path from,
+  Path to,
+  double offset,
+  double start,
+  double stop,
+) {
   var nextOffset = offset;
 
   for (final metric in metrics) {

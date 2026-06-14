@@ -71,11 +71,7 @@ class Ball extends LeafRenderObjectWidget {
 }
 
 /// For information on what this is see [RenderBall].
-enum BallTripStage {
-  travel,
-  arrival,
-  departure,
-}
+enum BallTripStage { travel, arrival, departure }
 
 /// A way to count the ball's trips while being able to
 /// pass a pointer to the count around.
@@ -130,13 +126,13 @@ class RenderBall
     required Color dotsPrimedColor,
     required Color dotsDisengagedColor,
     required Color shadowColor,
-  })  : _primaryColor = primaryColor,
-        _secondaryColor = secondaryColor,
-        _dotsIdleColor = dotsIdleColor,
-        _dotsPrimedColor = dotsPrimedColor,
-        _dotsDisengagedColor = dotsDisengagedColor,
-        _shadowColor = shadowColor,
-        super(ClockComponent.ball);
+  }) : _primaryColor = primaryColor,
+       _secondaryColor = secondaryColor,
+       _dotsIdleColor = dotsIdleColor,
+       _dotsPrimedColor = dotsPrimedColor,
+       _dotsDisengagedColor = dotsDisengagedColor,
+       _shadowColor = shadowColor,
+       super(ClockComponent.ball);
 
   Color _primaryColor,
       _secondaryColor,
@@ -146,7 +142,6 @@ class RenderBall
       _shadowColor;
 
   set primaryColor(Color value) {
-
     if (_primaryColor == value) {
       return;
     }
@@ -156,7 +151,6 @@ class RenderBall
   }
 
   set secondaryColor(Color value) {
-
     if (_secondaryColor == value) {
       return;
     }
@@ -166,7 +160,6 @@ class RenderBall
   }
 
   set dotsIdleColor(Color value) {
-
     if (_dotsIdleColor == value) {
       return;
     }
@@ -176,7 +169,6 @@ class RenderBall
   }
 
   set dotsPrimedColor(Color value) {
-
     if (_dotsPrimedColor == value) {
       return;
     }
@@ -186,7 +178,6 @@ class RenderBall
   }
 
   set dotsDisengagedColor(Color value) {
-
     if (_dotsDisengagedColor == value) {
       return;
     }
@@ -196,7 +187,6 @@ class RenderBall
   }
 
   set shadowColor(Color value) {
-
     if (_shadowColor == value) {
       return;
     }
@@ -292,7 +282,8 @@ class RenderBall
     if (departureAnimation.status == AnimationStatus.forward) {
       translation += _departureTween.evaluate(departureAnimation);
 
-      distanceTraveled = _travelDistance +
+      distanceTraveled =
+          _travelDistance +
           _arrivalDistance +
           _departureDistance * departureAnimation.value;
 
@@ -327,7 +318,8 @@ class RenderBall
     // using modulo.
     // It is fine because the Canvas.rotate also takes any multiples
     // of the rotation value and accepts it.
-    final progress = (distanceTraveled +
+    final progress =
+            (distanceTraveled +
                 // After every trip there will probably be some additional
                 // distance that is not evenly divisible by the circumference,
                 // which would cause the rotation to visually reset if
@@ -351,7 +343,10 @@ class RenderBall
             // Flutter web and Flutter web does not currently support sweep gradients.
             // See https://github.com/flutter/flutter/issues/41389.
             ? ui.Gradient.radial(
-                rect.center, rect.shortestSide / 2, shaderColors)
+                rect.center,
+                rect.shortestSide / 2,
+                shaderColors,
+              )
             : SweepGradient(
                 startAngle: 0,
                 endAngle: pi / 2,
@@ -395,11 +390,9 @@ class RenderBall
 
     canvas.rotate(angle);
     canvas.drawOval(
-        Rect.fromCircle(
-          center: Offset(0, _radius * 5 / 7),
-          radius: _radius / 9,
-        ),
-        Paint()..color = dotColor);
+      Rect.fromCircle(center: Offset(0, _radius * 5 / 7), radius: _radius / 9),
+      Paint()..color = dotColor,
+    );
 
     canvas.restore();
   }

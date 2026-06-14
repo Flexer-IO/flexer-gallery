@@ -53,12 +53,14 @@ class _AnimatedClockState extends AnimatedWidgetBaseState<AnimatedClock> {
 
   @override
   void forEachTween(visitor) {
-    _paletteTween = visitor(
-            _paletteTween,
-            widget.palette,
-            (value) =>
-                ColorPaletteTween(begin: value as Map<ClockColor, Color>))
-        as ColorPaletteTween;
+    _paletteTween =
+        visitor(
+              _paletteTween,
+              widget.palette,
+              (value) =>
+                  ColorPaletteTween(begin: value as Map<ClockColor, Color>),
+            )
+            as ColorPaletteTween;
   }
 
   @override

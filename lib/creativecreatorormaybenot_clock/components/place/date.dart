@@ -7,10 +7,7 @@ import 'package:flutter/widgets.dart';
 class UpdatedDate extends StatefulWidget {
   final Map<ClockColor, Color> palette;
 
-  const UpdatedDate({
-    Key? key,
-    required this.palette,
-  }) : super(key: key);
+  const UpdatedDate({Key? key, required this.palette}) : super(key: key);
 
   @override
   State createState() => _UpdatedDateState();
@@ -42,38 +39,33 @@ class _UpdatedDateState extends State<UpdatedDate> {
       // passing the previous day + 1 is fine because DateTime will convert it into the correct date anyway,
       // which means that the time difference here will always be correct.
       timer = Timer(
-          DateTime(time.year, time.month, time.day + 1).difference(time),
-          update);
+        DateTime(time.year, time.month, time.day + 1).difference(time),
+        update,
+      );
     });
   }
 
   @override
   Widget build(BuildContext context) => Date(
-        text: '${time.month}/${time.day}/${time.year}',
-        textStyle: TextStyle(
-          color: widget.palette[ClockColor.text],
-          fontWeight: FontWeight.normal,
-          fontStyle: FontStyle.normal,
-        ),
-      );
+    text: '${time.month}/${time.day}/${time.year}',
+    textStyle: TextStyle(
+      color: widget.palette[ClockColor.text],
+      fontWeight: FontWeight.normal,
+      fontStyle: FontStyle.normal,
+    ),
+  );
 }
 
 class Date extends LeafRenderObjectWidget {
   final String text;
   final TextStyle textStyle;
 
-  Date({
-    Key? key,
-    required this.text,
-    required this.textStyle,
-  }) : super(key: key);
+  Date({Key? key, required this.text, required this.textStyle})
+    : super(key: key);
 
   @override
   RenderObject createRenderObject(BuildContext context) {
-    return RenderDate(
-      text: text,
-      textStyle: textStyle,
-    );
+    return RenderDate(text: text, textStyle: textStyle);
   }
 
   @override
@@ -86,17 +78,14 @@ class Date extends LeafRenderObjectWidget {
 
 class RenderDate
     extends RenderCompositionChild<ClockComponent, ClockChildrenParentData> {
-  RenderDate({
-    required String text,
-    required TextStyle textStyle,
-  })  : _text = text,
-        _textStyle = textStyle,
-        super(ClockComponent.date);
+  RenderDate({required String text, required TextStyle textStyle})
+    : _text = text,
+      _textStyle = textStyle,
+      super(ClockComponent.date);
 
   String _text;
 
   set text(String value) {
-
     if (_text == value) {
       return;
     }
@@ -109,7 +98,6 @@ class RenderDate
   TextStyle _textStyle;
 
   set textStyle(TextStyle value) {
-
     if (_textStyle == value) {
       return;
     }
@@ -144,9 +132,7 @@ class RenderDate
     _textPainter = TextPainter(
       text: TextSpan(
         text: _text,
-        style: _textStyle.copyWith(
-          fontSize: width / 13.8,
-        ),
+        style: _textStyle.copyWith(fontSize: width / 13.8),
       ),
       textDirection: TextDirection.ltr,
     );

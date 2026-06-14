@@ -40,31 +40,40 @@ class _AnimatedTemperatureState
   /// This allows smooth transitions even when the temperature unit
   /// and the temperatures change at once :)
   double temperatureToRelative(double temperature) {
-    final currentScale = temperatureScale[widget.model.unit ?? TemperatureUnit.celsius]!,
-        temperatureRange = currentScale[0].toDouble().difference(currentScale[1].toDouble()),
+    final currentScale =
+            temperatureScale[widget.model.unit ?? TemperatureUnit.celsius]!,
+        temperatureRange = currentScale[0].toDouble().difference(
+          currentScale[1].toDouble(),
+        ),
         currentTemperature = temperature - currentScale[0].toDouble();
     return temperatureRange / (temperatureRange - currentTemperature);
   }
 
   @override
   void forEachTween(TweenVisitor<dynamic> visitor) {
-    _temperatureRelative = visitor(
-      _temperatureRelative,
-      temperatureToRelative(widget.model.temperature.toDouble()),
-      (value) => Tween<double>(begin: value as double),
-    ) as Tween<double>;
+    _temperatureRelative =
+        visitor(
+              _temperatureRelative,
+              temperatureToRelative(widget.model.temperature.toDouble()),
+              (value) => Tween<double>(begin: value as double),
+            )
+            as Tween<double>;
 
-    _lowRelative = visitor(
-      _lowRelative,
-      temperatureToRelative(widget.model.low.toDouble()),
-      (value) => Tween<double>(begin: value as double),
-    ) as Tween<double>;
+    _lowRelative =
+        visitor(
+              _lowRelative,
+              temperatureToRelative(widget.model.low.toDouble()),
+              (value) => Tween<double>(begin: value as double),
+            )
+            as Tween<double>;
 
-    _highRelative = visitor(
-      _highRelative,
-      temperatureToRelative(widget.model.high.toDouble()),
-      (value) => Tween<double>(begin: value as double),
-    ) as Tween<double>;
+    _highRelative =
+        visitor(
+              _highRelative,
+              temperatureToRelative(widget.model.high.toDouble()),
+              (value) => Tween<double>(begin: value as double),
+            )
+            as Tween<double>;
   }
 
   @override
@@ -166,7 +175,9 @@ class Temperature extends LeafRenderObjectWidget {
 
   @override
   void updateRenderObject(
-      BuildContext context, RenderTemperature renderObject) {
+    BuildContext context,
+    RenderTemperature renderObject,
+  ) {
     renderObject
       ..unit = unit
       ..unitString = unitString
@@ -212,31 +223,30 @@ class RenderTemperature
     required Color bracketColor,
     required Color bracketHighlightColor,
     required Color shadowColor,
-  })  : _unit = unit,
-        _unitString = unitString,
-        _temperatureRelative = temperatureRelative,
-        _lowRelative = lowRelative,
-        _highRelative = highRelative,
-        _textColor = textColor,
-        _tubeColor = tubeColor,
-        _mountColor = mountColor,
-        _backgroundPrimaryColor = backgroundPrimaryColor,
-        _backgroundSecondaryColor = backgroundSecondaryColor,
-        _borderColor = borderColor,
-        _bradColor = bradColor,
-        _bradHighlightColor = bradHighlightColor,
-        _temperatureColor = temperatureColor,
-        _maxTemperatureColor = maxTemperatureColor,
-        _minTemperatureColor = minTemperatureColor,
-        _bracketColor = bracketColor,
-        _bracketHighlightColor = bracketHighlightColor,
-        _shadowColor = shadowColor,
-        super(ClockComponent.temperature);
+  }) : _unit = unit,
+       _unitString = unitString,
+       _temperatureRelative = temperatureRelative,
+       _lowRelative = lowRelative,
+       _highRelative = highRelative,
+       _textColor = textColor,
+       _tubeColor = tubeColor,
+       _mountColor = mountColor,
+       _backgroundPrimaryColor = backgroundPrimaryColor,
+       _backgroundSecondaryColor = backgroundSecondaryColor,
+       _borderColor = borderColor,
+       _bradColor = bradColor,
+       _bradHighlightColor = bradHighlightColor,
+       _temperatureColor = temperatureColor,
+       _maxTemperatureColor = maxTemperatureColor,
+       _minTemperatureColor = minTemperatureColor,
+       _bracketColor = bracketColor,
+       _bracketHighlightColor = bracketHighlightColor,
+       _shadowColor = shadowColor,
+       super(ClockComponent.temperature);
 
   TemperatureUnit _unit;
 
   set unit(TemperatureUnit value) {
-
     if (_unit == value) {
       return;
     }
@@ -248,7 +258,6 @@ class RenderTemperature
   String _unitString;
 
   set unitString(String value) {
-
     if (_unitString == value) {
       return;
     }
@@ -261,7 +270,6 @@ class RenderTemperature
   double _temperatureRelative, _lowRelative, _highRelative;
 
   set temperatureRelative(double value) {
-
     if (_temperatureRelative == value) {
       return;
     }
@@ -272,7 +280,6 @@ class RenderTemperature
   }
 
   set lowRelative(double value) {
-
     if (_lowRelative == value) {
       return;
     }
@@ -283,7 +290,6 @@ class RenderTemperature
   }
 
   set highRelative(double value) {
-
     if (_highRelative == value) {
       return;
     }
@@ -309,7 +315,6 @@ class RenderTemperature
       _shadowColor;
 
   set textColor(Color value) {
-
     if (_textColor == value) {
       return;
     }
@@ -319,7 +324,6 @@ class RenderTemperature
   }
 
   set tubeColor(Color value) {
-
     if (_tubeColor == value) {
       return;
     }
@@ -329,7 +333,6 @@ class RenderTemperature
   }
 
   set mountColor(Color value) {
-
     if (_mountColor == value) {
       return;
     }
@@ -339,7 +342,6 @@ class RenderTemperature
   }
 
   set backgroundPrimaryColor(Color value) {
-
     if (_backgroundPrimaryColor == value) {
       return;
     }
@@ -349,7 +351,6 @@ class RenderTemperature
   }
 
   set backgroundSecondaryColor(Color value) {
-
     if (_backgroundSecondaryColor == value) {
       return;
     }
@@ -359,7 +360,6 @@ class RenderTemperature
   }
 
   set borderColor(Color value) {
-
     if (_borderColor == value) {
       return;
     }
@@ -369,7 +369,6 @@ class RenderTemperature
   }
 
   set bradColor(Color value) {
-
     if (_bradColor == value) {
       return;
     }
@@ -379,7 +378,6 @@ class RenderTemperature
   }
 
   set bradHighlightColor(Color value) {
-
     if (_bradHighlightColor == value) {
       return;
     }
@@ -389,7 +387,6 @@ class RenderTemperature
   }
 
   set temperatureColor(Color value) {
-
     if (_temperatureColor == value) {
       return;
     }
@@ -399,7 +396,6 @@ class RenderTemperature
   }
 
   set maxTemperatureColor(Color value) {
-
     if (_maxTemperatureColor == value) {
       return;
     }
@@ -409,7 +405,6 @@ class RenderTemperature
   }
 
   set minTemperatureColor(Color value) {
-
     if (_minTemperatureColor == value) {
       return;
     }
@@ -419,7 +414,6 @@ class RenderTemperature
   }
 
   set bracketColor(Color value) {
-
     if (_bracketColor == value) {
       return;
     }
@@ -429,7 +423,6 @@ class RenderTemperature
   }
 
   set bracketHighlightColor(Color value) {
-
     if (_bracketHighlightColor == value) {
       return;
     }
@@ -439,7 +432,6 @@ class RenderTemperature
   }
 
   set shadowColor(Color value) {
-
     if (_shadowColor == value) {
       return;
     }
@@ -462,9 +454,13 @@ class RenderTemperature
   /// temperatures.
   double relativeToTemperature(double relative) {
     final currentScale = temperatureScale[_unit]!,
-        temperatureRange = currentScale[0].toDouble().difference(currentScale[1].toDouble());
+        temperatureRange = currentScale[0].toDouble().difference(
+          currentScale[1].toDouble(),
+        );
 
-    return temperatureRange - temperatureRange / relative + currentScale[0].toDouble();
+    return temperatureRange -
+        temperatureRange / relative +
+        currentScale[0].toDouble();
   }
 
   @override
@@ -476,8 +472,8 @@ class RenderTemperature
       ..textDirection = TextDirection.ltr
       ..label =
           'Thermometer showing a temperature of ${relativeToTemperature(_temperatureRelative)}$_unitString, '
-              'a high of ${relativeToTemperature(_highRelative)}$_unitString, '
-              'and a low of ${relativeToTemperature(_lowRelative)}$_unitString';
+          'a high of ${relativeToTemperature(_highRelative)}$_unitString, '
+          'and a low of ${relativeToTemperature(_lowRelative)}$_unitString';
   }
 
   @override
@@ -496,54 +492,58 @@ class RenderTemperature
     canvas.translate(offset.dx, offset.dy);
 
     final area = RRect.fromRectAndRadius(
-        Offset.zero & size, Radius.circular(size.width / 36));
+      Offset.zero & size,
+      Radius.circular(size.width / 36),
+    );
 
     //<editor-fold desc="Background">
     final backgroundGradient = LinearGradient(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-        colors: [
-          _backgroundPrimaryColor,
-          _backgroundSecondaryColor,
-        ]);
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: [_backgroundPrimaryColor, _backgroundSecondaryColor],
+    );
     canvas.drawRRect(
-        area,
-        Paint()
-          ..style = PaintingStyle.fill
-          ..shader = backgroundGradient.createShader(Offset.zero & size));
+      area,
+      Paint()
+        ..style = PaintingStyle.fill
+        ..shader = backgroundGradient.createShader(Offset.zero & size),
+    );
     //</editor-fold>
 
     // Border
     canvas.drawRRect(
-        area,
-        Paint()
-          ..style = PaintingStyle.stroke
-          ..color = _borderColor
-          // Not using strokeWidth 0.0 because that does not seem to scale with smaller canvas size,
-          // i.e. 0 < strokeWidth < 1 is actually thinner than strokeWidth = 0.0, strangely.
-          ..strokeWidth = size.height / 649);
+      area,
+      Paint()
+        ..style = PaintingStyle.stroke
+        ..color = _borderColor
+        // Not using strokeWidth 0.0 because that does not seem to scale with smaller canvas size,
+        // i.e. 0 < strokeWidth < 1 is actually thinner than strokeWidth = 0.0, strangely.
+        ..strokeWidth = size.height / 649,
+    );
 
     //<editor-fold desc="Some kind of brad nails at the top and bottom">
     final bradRadius = size.width / 29,
         // Lighter in the center to give some depth based on the lighting
-        bradGradient = RadialGradient(colors: [
-      _bradColor,
-      _bradHighlightColor,
-    ]),
+        bradGradient = RadialGradient(
+          colors: [_bradColor, _bradHighlightColor],
+        ),
         bradIndent = size.width / 11;
     () {
       final elevation = size.width / 186;
 
       final topRect = Rect.fromCircle(
-              center: Offset(size.width / 2, bradIndent), radius: bradRadius),
+            center: Offset(size.width / 2, bradIndent),
+            radius: bradRadius,
+          ),
           topPath = Path()..addOval(topRect),
           topPaint = Paint()..shader = bradGradient.createShader(topRect);
       _drawTransformedShadow(canvas, topPath, elevation);
       canvas.drawPath(topPath, topPaint);
 
       final bottomRect = Rect.fromCircle(
-              center: Offset(size.width / 2, size.height - bradIndent),
-              radius: bradRadius),
+            center: Offset(size.width / 2, size.height - bradIndent),
+            radius: bradRadius,
+          ),
           bottomPath = Path()..addOval(bottomRect),
           bottomPaint = Paint()..shader = bradGradient.createShader(bottomRect);
       _drawTransformedShadow(canvas, bottomPath, elevation);
@@ -554,39 +554,46 @@ class RenderTemperature
     //<editor-fold desc="Unit">
     final unitIndent = size.width / 8,
         unitPainter = TextPainter(
-      text: TextSpan(
-        text: '$_unitString',
-        style: TextStyle(
-          color: _textColor,
-          fontSize: size.width / 6,
+          text: TextSpan(
+            text: '$_unitString',
+            style: TextStyle(color: _textColor, fontSize: size.width / 6),
+          ),
+          textDirection: TextDirection.ltr,
         ),
-      ),
-      textDirection: TextDirection.ltr,
-    ),
         freeUnitWidth = size.width - unitIndent * 2;
     unitPainter.layout(maxWidth: freeUnitWidth);
     unitPainter.paint(
-        canvas,
-        Offset(unitIndent + (freeUnitWidth / 2 - unitPainter.width / 2),
-            unitIndent + bradIndent));
+      canvas,
+      Offset(
+        unitIndent + (freeUnitWidth / 2 - unitPainter.width / 2),
+        unitIndent + bradIndent,
+      ),
+    );
     //</editor-fold>
 
     // Constraints for the positioning of the numbers, lines, brackets, and tube.
     final addedIndentFactor = 3.2,
         mount = Line1d.fromEE(
-            end: size.height - bradIndent * addedIndentFactor,
-            extent: size.height / 13),
+          end: size.height - bradIndent * addedIndentFactor,
+          extent: size.height / 13,
+        ),
         tube = Line1d(
-            end: mount.start,
-            start: unitIndent +
-                unitPainter.height / 1.4 +
-                bradIndent * addedIndentFactor),
+          end: mount.start,
+          start:
+              unitIndent +
+              unitPainter.height / 1.4 +
+              bradIndent * addedIndentFactor,
+        ),
         brackets = Line1d.fromSEI(
-            start: tube.start, end: tube.end, indent: tube.extent / 7.42),
+          start: tube.start,
+          end: tube.end,
+          indent: tube.extent / 7.42,
+        ),
         lines = Line1d.fromSEI(
-            start: brackets.start,
-            end: brackets.end,
-            indent: -mount.extent / 3);
+          start: brackets.start,
+          end: brackets.end,
+          indent: -mount.extent / 3,
+        );
 
     _drawLines(canvas, lines);
 
@@ -599,26 +606,11 @@ class RenderTemperature
         tubeStart = tube.startOffset(dx: size.width / 2),
         tubeEnd = tube.endOffset(dx: size.width / 2),
         tubePath = Path()
-          ..moveTo(
-            tubeEnd.dx - tubeWidth / 2,
-            tubeEnd.dy,
-          )
-          ..lineTo(
-            tubeStart.dx - tubeWidth / 2,
-            tubeStart.dy,
-          )
-          ..halfCircleTo(
-            tubeStart.dx + tubeWidth / 2,
-            tubeStart.dy,
-          )
-          ..lineTo(
-            tubeEnd.dx + tubeWidth / 2,
-            tubeEnd.dy,
-          )
-          ..halfCircleTo(
-            tubeEnd.dx - tubeWidth / 2,
-            tubeEnd.dy,
-          )
+          ..moveTo(tubeEnd.dx - tubeWidth / 2, tubeEnd.dy)
+          ..lineTo(tubeStart.dx - tubeWidth / 2, tubeStart.dy)
+          ..halfCircleTo(tubeStart.dx + tubeWidth / 2, tubeStart.dy)
+          ..lineTo(tubeEnd.dx + tubeWidth / 2, tubeEnd.dy)
+          ..halfCircleTo(tubeEnd.dx - tubeWidth / 2, tubeEnd.dy)
           ..close();
     //</editor-fold>
 
@@ -642,10 +634,7 @@ class RenderTemperature
           // which extends beyond the end point.
           start.dy - w / 2,
         )
-        ..lineTo(
-          start.dx + w / 2,
-          start.dy - w / 2,
-        )
+        ..lineTo(start.dx + w / 2, start.dy - w / 2)
         ..lineTo(end.dx + w / 2, end.dy)
         // Round cap at the bottom
         ..halfCircleTo(
@@ -660,13 +649,10 @@ class RenderTemperature
       // of the tube and the mount would overlap, which looks
       // unnatural.
       _drawTransformedShadow(
-          canvas,
-          Path.from(tubePath)
-            ..extendWithPath(
-              mountPath,
-              Offset.zero,
-            ),
-          tubeElevation);
+        canvas,
+        Path.from(tubePath)..extendWithPath(mountPath, Offset.zero),
+        tubeElevation,
+      );
 
       canvas.drawPath(tubePath, tubePaint);
     }();
@@ -707,12 +693,13 @@ class RenderTemperature
 
     //<editor-fold desc="Brackets">
     final bracketGradient = LinearGradient(
-            // Again, highlight in the center to show that the metal is shining.
-            colors: [
-          _bracketHighlightColor,
-          _bracketColor,
-          _bracketHighlightColor,
-        ]),
+          // Again, highlight in the center to show that the metal is shining.
+          colors: [
+            _bracketHighlightColor,
+            _bracketColor,
+            _bracketHighlightColor,
+          ],
+        ),
         bracketWidth = tubeWidth * 1.42,
         bracketSize = Size(bracketWidth, bracketWidth / 2.3);
     () {
@@ -755,8 +742,9 @@ class RenderTemperature
     canvas.save();
 
     final light = lightSourcePosition,
-        transformedPath =
-            path.transform(Matrix4.translation((-light).vector3).storage);
+        transformedPath = path.transform(
+          Matrix4.translation((-light).vector3).storage,
+        );
 
     canvas.translate(light.dx, light.dy);
     canvas.drawShadow(transformedPath, _shadowColor, elevation, false);
@@ -776,10 +764,10 @@ class RenderTemperature
     final fontSize = size.width / 7.4,
         fontIndent = fontSize / 9,
         style = TextStyle(
-      color: _textColor,
-      fontSize: fontSize,
-      fontWeight: FontWeight.bold,
-    );
+          color: _textColor,
+          fontSize: fontSize,
+          fontWeight: FontWeight.bold,
+        );
 
     final minMax = temperatureScale[_unit]!,
         min = minMax[0],
@@ -790,33 +778,33 @@ class RenderTemperature
     for (var i = min; i <= max; i++) {
       if (i % minorValue != 0 &&
           i % intermediateValue != 0 &&
-          i % majorValue != 0) continue;
+          i % majorValue != 0)
+        continue;
 
       if (i % majorValue == 0) {
         final line = Line1d.fromCenter(
-            center: size.width / 2, extent: size.width / 1.46);
+          center: size.width / 2,
+          extent: size.width / 1.46,
+        );
 
         canvas.drawLine(
-            line.startOffset(dy: h), line.endOffset(dy: h), linePaint);
+          line.startOffset(dy: h),
+          line.endOffset(dy: h),
+          linePaint,
+        );
 
         final text = i == 0 ? '00' : '${i.abs()}',
             left = text.substring(0, 1),
             right = text.substring(1);
 
         final leftPainter = TextPainter(
-          text: TextSpan(
-            text: left,
-            style: style,
-          ),
-          textDirection: TextDirection.ltr,
-        ),
+              text: TextSpan(text: left, style: style),
+              textDirection: TextDirection.ltr,
+            ),
             rightPainter = TextPainter(
-          text: TextSpan(
-            text: right,
-            style: style,
-          ),
-          textDirection: TextDirection.ltr,
-        );
+              text: TextSpan(text: right, style: style),
+              textDirection: TextDirection.ltr,
+            );
 
         // If the digits do not fit roughly line.extent / 4, the design is screwed anyway, hence, no constraints here.
         leftPainter.layout();
@@ -827,25 +815,38 @@ class RenderTemperature
         final reduction = 1.14;
 
         leftPainter.paint(
-            canvas,
-            Offset(
-                line.start + fontIndent, h - leftPainter.height / reduction));
+          canvas,
+          Offset(line.start + fontIndent, h - leftPainter.height / reduction),
+        );
         rightPainter.paint(
-            canvas,
-            Offset(line.end - fontIndent - rightPainter.width / reduction,
-                h - rightPainter.height / reduction));
+          canvas,
+          Offset(
+            line.end - fontIndent - rightPainter.width / reduction,
+            h - rightPainter.height / reduction,
+          ),
+        );
       } else if (i % intermediateValue == 0) {
-        final line =
-            Line1d.fromCenter(center: size.width / 2, extent: size.width / 2.1);
+        final line = Line1d.fromCenter(
+          center: size.width / 2,
+          extent: size.width / 2.1,
+        );
 
         canvas.drawLine(
-            line.startOffset(dy: h), line.endOffset(dy: h), linePaint);
+          line.startOffset(dy: h),
+          line.endOffset(dy: h),
+          linePaint,
+        );
       } else if (i % minorValue == 0) {
-        final line =
-            Line1d.fromCenter(center: size.width / 2, extent: size.width / 3.3);
+        final line = Line1d.fromCenter(
+          center: size.width / 2,
+          extent: size.width / 3.3,
+        );
 
         canvas.drawLine(
-            line.startOffset(dy: h), line.endOffset(dy: h), linePaint);
+          line.startOffset(dy: h),
+          line.endOffset(dy: h),
+          linePaint,
+        );
       }
 
       h -= difference;
@@ -868,7 +869,8 @@ class RenderTemperature
       ..strokeWidth = strokeWidth
       ..strokeCap = StrokeCap.butt;
 
-    final offset = lines.startOffset(dx: size.width / 2) +
+    final offset =
+        lines.startOffset(dx: size.width / 2) +
         Offset(0, lines.extent / relativeValue);
 
     // Bars
@@ -904,10 +906,13 @@ class RenderTemperature
       final textPadding = size.width / 21;
 
       painter.paint(
-          canvas,
-          offset +
-              Offset(textLeft ? -painter.width - textPadding : textPadding,
-                  -painter.height / 2));
+        canvas,
+        offset +
+            Offset(
+              textLeft ? -painter.width - textPadding : textPadding,
+              -painter.height / 2,
+            ),
+      );
     }
 
     // Add a little tick mark to indicate the current temperature.
@@ -917,11 +922,12 @@ class RenderTemperature
         extent: horizontalLineWidth,
       );
       canvas.drawLine(
-          horizontalLine.startOffset(dy: offset.dy),
-          horizontalLine.endOffset(dy: offset.dy),
-          Paint()
-            ..color = _textColor
-            ..strokeWidth = size.height / 312);
+        horizontalLine.startOffset(dy: offset.dy),
+        horizontalLine.endOffset(dy: offset.dy),
+        Paint()
+          ..color = _textColor
+          ..strokeWidth = size.height / 312,
+      );
     }
   }
 }

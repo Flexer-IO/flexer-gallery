@@ -6,17 +6,14 @@ import '../deps/flutter_clock_helper/model.dart';
 export 'automatic.dart';
 export 'manual.dart';
 
-typedef ClockModelBuilder = Widget Function(
-    BuildContext context, ClockModel model);
+typedef ClockModelBuilder =
+    Widget Function(BuildContext context, ClockModel model);
 
 /// Customization flows control the behavior of the clock.
 ///
 /// The selected mode is determined by the [customizationFlowMode]
 /// constants.
-enum CustomizationFlow {
-  manual,
-  automatic,
-}
+enum CustomizationFlow { manual, automatic }
 
 class Customizer extends StatelessWidget {
   final ClockModelBuilder builder;

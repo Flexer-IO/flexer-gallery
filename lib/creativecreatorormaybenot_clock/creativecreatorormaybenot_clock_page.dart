@@ -13,10 +13,8 @@ class CreativecreatorormaybenotClockPage extends StatelessWidget {
     return Customizer(
       mode: CustomizationFlow.automatic,
       builder: (context, model) => Palette(
-        builder: (context, palette) => AnimatedClock(
-          model: model,
-          palette: palette,
-        ),
+        builder: (context, palette) =>
+            AnimatedClock(model: model, palette: palette),
       ),
     );
   }

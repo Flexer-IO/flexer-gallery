@@ -69,7 +69,9 @@ class DigitalTime extends LeafRenderObjectWidget {
 
   @override
   void updateRenderObject(
-      BuildContext context, RenderDigitalTime renderObject) {
+    BuildContext context,
+    RenderDigitalTime renderObject,
+  ) {
     renderObject
       ..textColor = textColor
       ..minuteProgress = minuteProgress
@@ -98,17 +100,16 @@ class RenderDigitalTime
     required int minute,
     required bool use24HourFormat,
     required Color textColor,
-  })  : _minuteProgress = minuteProgress,
-        _hour = hour,
-        _minute = minute,
-        _use24HourFormat = use24HourFormat,
-        _textColor = textColor,
-        super(ClockComponent.digitalTime);
+  }) : _minuteProgress = minuteProgress,
+       _hour = hour,
+       _minute = minute,
+       _use24HourFormat = use24HourFormat,
+       _textColor = textColor,
+       super(ClockComponent.digitalTime);
 
   double _minuteProgress;
 
   set minuteProgress(double value) {
-
     if (_minuteProgress == value) {
       return;
     }
@@ -121,7 +122,6 @@ class RenderDigitalTime
   int _hour, _minute;
 
   set hour(int value) {
-
     if (_hour == value) {
       return;
     }
@@ -132,7 +132,6 @@ class RenderDigitalTime
   }
 
   set minute(int value) {
-
     if (_minute == value) {
       return;
     }
@@ -145,7 +144,6 @@ class RenderDigitalTime
   bool _use24HourFormat;
 
   set use24HourFormat(bool value) {
-
     if (_use24HourFormat == value) {
       return;
     }
@@ -158,7 +156,6 @@ class RenderDigitalTime
   Color _textColor;
 
   set textColor(Color value) {
-
     if (_textColor == value) {
       return;
     }
@@ -213,10 +210,7 @@ class RenderDigitalTime
     _timePainter = TextPainter(
       text: TextSpan(
         text: time,
-        style: TextStyle(
-          color: _textColor,
-          fontSize: given.width / 7.4,
-        ),
+        style: TextStyle(color: _textColor, fontSize: given.width / 7.4),
       ),
       textDirection: TextDirection.ltr,
     );
@@ -224,10 +218,7 @@ class RenderDigitalTime
     _amPmPainter = TextPainter(
       text: TextSpan(
         text: amPm,
-        style: TextStyle(
-          color: _textColor,
-          fontSize: given.width / 13,
-        ),
+        style: TextStyle(color: _textColor, fontSize: given.width / 13),
       ),
       textDirection: TextDirection.ltr,
     );
@@ -237,12 +228,13 @@ class RenderDigitalTime
 
     size = Size(
       min(
-          // See https://github.com/flutter/flutter/issues/49183.
-          constraints.biggest.width,
-          _timePainter.width +
-              // This is always correct because the bar that is used instead of AM-PM
-              // should have the same width as the text.
-              _amPmPainter.width),
+        // See https://github.com/flutter/flutter/issues/49183.
+        constraints.biggest.width,
+        _timePainter.width +
+            // This is always correct because the bar that is used instead of AM-PM
+            // should have the same width as the text.
+            _amPmPainter.width,
+      ),
       _timePainter.height,
     );
 
@@ -250,19 +242,18 @@ class RenderDigitalTime
     compositionData.offset = compositionData.position - size.offset / 2;
 
     final
-        // The text should go fully off screen about the new minute.
-        h = _amPmPainter.height / 2,
+            // The text should go fully off screen about the new minute.
+            h =
+            _amPmPainter.height / 2,
         inDistance = _timePainter.text!.style!.fontSize! / 1.5;
 
     // Describes the center position of the element.
     yMovementSequence = TweenSequence([
       TweenSequenceItem(
-        tween: Tween(begin: size.height + h, end: size.height + h - inDistance)
-            .chain(
-          CurveTween(
-            curve: const Cubic(.32, .62, .06, .95),
-          ),
-        ),
+        tween: Tween(
+          begin: size.height + h,
+          end: size.height + h - inDistance,
+        ).chain(CurveTween(curve: const Cubic(.32, .62, .06, .95))),
         weight: fastMoveSeconds,
       ),
       TweenSequenceItem(
@@ -270,11 +261,10 @@ class RenderDigitalTime
         weight: 60 - fastMoveSeconds * 2,
       ),
       TweenSequenceItem(
-        tween: Tween(begin: inDistance - h, end: -h).chain(
-          CurveTween(
-            curve: const Cubic(.91, .09, .91, .54),
-          ),
-        ),
+        tween: Tween(
+          begin: inDistance - h,
+          end: -h,
+        ).chain(CurveTween(curve: const Cubic(.91, .09, .91, .54))),
         weight: fastMoveSeconds,
       ),
     ]);
@@ -315,9 +305,10 @@ class RenderDigitalTime
     if (_use24HourFormat) {
       final start = _timePainter.width + width * barPaddingFactor,
           path = Path()..moveTo(start, movementY),
-          // Want to have a constant spend, hence,
-          // using the minute progress.
-          waveProgress = (_minuteProgress * waveSpeed) % 1;
+              // Want to have a constant spend, hence,
+              // using the minute progress.
+              waveProgress =
+              (_minuteProgress * waveSpeed) % 1;
 
       final waveLength = width / widthToWaveLengthRatio, minX = -waveLength;
 
@@ -340,14 +331,17 @@ class RenderDigitalTime
         ..close();
 
       canvas.drawPath(
-          path,
-          Paint()
-            ..style = PaintingStyle.fill
-            ..color = _textColor
-            ..strokeWidth = size.height / 26);
+        path,
+        Paint()
+          ..style = PaintingStyle.fill
+          ..color = _textColor
+          ..strokeWidth = size.height / 26,
+      );
     } else {
-      _amPmPainter.paint(canvas,
-          Offset(_timePainter.width, movementY - _amPmPainter.height / 2));
+      _amPmPainter.paint(
+        canvas,
+        Offset(_timePainter.width, movementY - _amPmPainter.height / 2),
+      );
     }
 
     canvas.restore();

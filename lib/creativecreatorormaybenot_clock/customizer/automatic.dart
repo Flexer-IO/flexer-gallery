@@ -6,83 +6,81 @@ import 'package:flutter/widgets.dart';
 import '../deps/flutter_clock_helper/model.dart';
 
 const nextDataEvery = Duration(microseconds: 120 / 7 * 1e6 ~/ 1),
-// These need to be applied in sequence in order to make sense.
-// Additionally, the first entry must not have any null values.
-// This means that it also needs to specify every property.
+    // These need to be applied in sequence in order to make sense.
+    // Additionally, the first entry must not have any null values.
+    // This means that it also needs to specify every property.
     data = [
-  // Initial data
-  CustomizationData(
-    unit: TemperatureUnit.celsius,
-    location: "creativemaybeno's place",
-    temperature: 24.5,
-    high: 29,
-    low: 17,
-    condition: WeatherCondition.sunny,
-    theme: ThemeMode.light,
-    timeFormat: TimeFormat.standard,
-  ),
-  // Mountain view (as of writing)
-  CustomizationData(
-    location: 'Mountain View, CA',
-    unit: TemperatureUnit.fahrenheit,
-    temperature: 47,
-    low: 46,
-    high: 58,
-    condition: WeatherCondition.cloudy,
-    timeFormat: TimeFormat.amPm,
-  ),
-  // Antarctica right now
-  CustomizationData(
-    location: 'Casey, Antarctica',
-    theme: ThemeMode.dark,
-    high: 1,
-    temperature: 0,
-    low: -3,
-    unit: TemperatureUnit.celsius,
-    condition: WeatherCondition.snowy,
-    timeFormat: TimeFormat.standard,
-  ),
-  CustomizationData(
-    location: 'Pasighat, India',
-    condition: WeatherCondition.thunderstorm,
-    temperature: 13,
-    low: 13,
-    high: 19,
-  ),
-  CustomizationData(
-    location: 'Cork, Ireland',
-    temperature: 5,
-    high: 8,
-    low: 2,
-    condition: WeatherCondition.foggy,
-  ),
-  CustomizationData(
-    location: 'Olympia, WA',
-    unit: TemperatureUnit.fahrenheit,
-    temperature: 44,
-    high: 50,
-    low: 42,
-    theme: ThemeMode.light,
-    timeFormat: TimeFormat.amPm,
-    condition: WeatherCondition.rainy,
-  ),
-  CustomizationData(
-    location: 'Coral Bay, WA',
-    condition: WeatherCondition.windy,
-    unit: TemperatureUnit.celsius,
-    temperature: 25,
-    high: 34,
-    low: 22,
-  ),
-];
+      // Initial data
+      CustomizationData(
+        unit: TemperatureUnit.celsius,
+        location: "creativemaybeno's place",
+        temperature: 24.5,
+        high: 29,
+        low: 17,
+        condition: WeatherCondition.sunny,
+        theme: ThemeMode.light,
+        timeFormat: TimeFormat.standard,
+      ),
+      // Mountain view (as of writing)
+      CustomizationData(
+        location: 'Mountain View, CA',
+        unit: TemperatureUnit.fahrenheit,
+        temperature: 47,
+        low: 46,
+        high: 58,
+        condition: WeatherCondition.cloudy,
+        timeFormat: TimeFormat.amPm,
+      ),
+      // Antarctica right now
+      CustomizationData(
+        location: 'Casey, Antarctica',
+        theme: ThemeMode.dark,
+        high: 1,
+        temperature: 0,
+        low: -3,
+        unit: TemperatureUnit.celsius,
+        condition: WeatherCondition.snowy,
+        timeFormat: TimeFormat.standard,
+      ),
+      CustomizationData(
+        location: 'Pasighat, India',
+        condition: WeatherCondition.thunderstorm,
+        temperature: 13,
+        low: 13,
+        high: 19,
+      ),
+      CustomizationData(
+        location: 'Cork, Ireland',
+        temperature: 5,
+        high: 8,
+        low: 2,
+        condition: WeatherCondition.foggy,
+      ),
+      CustomizationData(
+        location: 'Olympia, WA',
+        unit: TemperatureUnit.fahrenheit,
+        temperature: 44,
+        high: 50,
+        low: 42,
+        theme: ThemeMode.light,
+        timeFormat: TimeFormat.amPm,
+        condition: WeatherCondition.rainy,
+      ),
+      CustomizationData(
+        location: 'Coral Bay, WA',
+        condition: WeatherCondition.windy,
+        unit: TemperatureUnit.celsius,
+        temperature: 25,
+        high: 34,
+        low: 22,
+      ),
+    ];
 
 class AutomatedCustomizer extends StatefulWidget {
   final ClockModelBuilder builder;
 
-  const AutomatedCustomizer({
-    Key? key,
-    required this.builder,
-  }) : super(key: key);
+  const AutomatedCustomizer({Key? key, required this.builder})
+    : super(key: key);
 
   @override
   State createState() => _AutomatedCustomizerState();

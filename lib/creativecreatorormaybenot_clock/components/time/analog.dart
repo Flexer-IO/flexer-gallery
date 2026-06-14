@@ -34,18 +34,19 @@ class AnimatedAnalogTime extends AnimatedWidget {
       bounceAnimation: bounceAnimation,
       secondHandAngle: // Regular distance
           pi * 2 / 60 * time.second +
-              // Bounce
-              pi * 2 / 60 * (bounce - 1),
-      minuteHandAngle: pi * 2 / 60 * time.minute +
+          // Bounce
+          pi * 2 / 60 * (bounce - 1),
+      minuteHandAngle:
+          pi * 2 / 60 * time.minute +
           // Bounce only when the minute changes.
           (time.second != 0 ? 0 : pi * 2 / 60 * (bounce - 1)),
       hourHandAngle:
           // Distance for the hour.
           pi * 2 / 12 * (time.hour % 12) +
-              // Distance for the minute.
-              pi * 2 / 12 / 60 * time.minute +
-              // Distance for the second.
-              pi * 2 / 12 / 60 / 60 * time.second,
+          // Distance for the minute.
+          pi * 2 / 12 / 60 * time.minute +
+          // Distance for the second.
+          pi * 2 / 12 / 60 / 60 * time.second,
       use24HourFormat: model.is24HourFormat,
       ballEvery: ballEvery,
       textColor: palette[ClockColor.text]!,
@@ -109,8 +110,8 @@ class AnalogTime extends LeafRenderObjectWidget {
     required this.borderColor,
     required this.petalsColor,
     required this.petalsHighlightColor,
-  })  : assert(60 % ballEvery == 0),
-        super(key: key);
+  }) : assert(60 % ballEvery == 0),
+       super(key: key);
 
   @override
   RenderObject createRenderObject(BuildContext context) {
@@ -180,27 +181,26 @@ class RenderAnalogTime
     required Color borderColor,
     required Color petalsColor,
     required Color petalsHighlightColor,
-  })  : _secondHandAngle = secondHandAngle,
-        _minuteHandAngle = minuteHandAngle,
-        _hourHandAngle = hourHandAngle,
-        _use24HourFormat = use24HourFormat,
-        _ballEvery = ballEvery,
-        _textColor = textColor,
-        _backgroundColor = backgroundColor,
-        _backgroundHighlightColor = backgroundHighlightColor,
-        _hourHandColor = hourHandColor,
-        _minuteHandColor = minuteHandColor,
-        _secondHandColor = secondHandColor,
-        _shadowColor = shadowColor,
-        _borderColor = borderColor,
-        _petalsColor = petalsColor,
-        _petalsHighlightColor = petalsHighlightColor,
-        super(ClockComponent.analogTime);
+  }) : _secondHandAngle = secondHandAngle,
+       _minuteHandAngle = minuteHandAngle,
+       _hourHandAngle = hourHandAngle,
+       _use24HourFormat = use24HourFormat,
+       _ballEvery = ballEvery,
+       _textColor = textColor,
+       _backgroundColor = backgroundColor,
+       _backgroundHighlightColor = backgroundHighlightColor,
+       _hourHandColor = hourHandColor,
+       _minuteHandColor = minuteHandColor,
+       _secondHandColor = secondHandColor,
+       _shadowColor = shadowColor,
+       _borderColor = borderColor,
+       _petalsColor = petalsColor,
+       _petalsHighlightColor = petalsHighlightColor,
+       super(ClockComponent.analogTime);
 
   double _secondHandAngle, _minuteHandAngle, _hourHandAngle;
 
   set secondHandAngle(double value) {
-
     if (_secondHandAngle == value) {
       return;
     }
@@ -211,7 +211,6 @@ class RenderAnalogTime
   }
 
   set minuteHandAngle(double value) {
-
     if (_minuteHandAngle == value) {
       return;
     }
@@ -222,7 +221,6 @@ class RenderAnalogTime
   }
 
   set hourHandAngle(double value) {
-
     if (_hourHandAngle == value) {
       return;
     }
@@ -235,7 +233,6 @@ class RenderAnalogTime
   int _ballEvery;
 
   set ballEvery(int value) {
-
     if (_ballEvery == value) {
       return;
     }
@@ -247,7 +244,6 @@ class RenderAnalogTime
   bool _use24HourFormat;
 
   set use24HourFormat(bool value) {
-
     if (_use24HourFormat == value) {
       return;
     }
@@ -268,7 +264,6 @@ class RenderAnalogTime
       _petalsHighlightColor;
 
   set textColor(Color value) {
-
     if (_textColor == value) {
       return;
     }
@@ -278,7 +273,6 @@ class RenderAnalogTime
   }
 
   set backgroundColor(Color value) {
-
     if (_backgroundColor == value) {
       return;
     }
@@ -288,7 +282,6 @@ class RenderAnalogTime
   }
 
   set backgroundHighlightColor(Color value) {
-
     if (_backgroundHighlightColor == value) {
       return;
     }
@@ -298,7 +291,6 @@ class RenderAnalogTime
   }
 
   set hourHandColor(Color value) {
-
     if (_hourHandColor == value) {
       return;
     }
@@ -308,7 +300,6 @@ class RenderAnalogTime
   }
 
   set minuteHandColor(Color value) {
-
     if (_minuteHandColor == value) {
       return;
     }
@@ -318,7 +309,6 @@ class RenderAnalogTime
   }
 
   set secondHandColor(Color value) {
-
     if (_secondHandColor == value) {
       return;
     }
@@ -328,7 +318,6 @@ class RenderAnalogTime
   }
 
   set shadowColor(Color value) {
-
     if (_shadowColor == value) {
       return;
     }
@@ -338,7 +327,6 @@ class RenderAnalogTime
   }
 
   set borderColor(Color value) {
-
     if (_borderColor == value) {
       return;
     }
@@ -348,7 +336,6 @@ class RenderAnalogTime
   }
 
   set petalsColor(Color value) {
-
     if (_petalsColor == value) {
       return;
     }
@@ -358,7 +345,6 @@ class RenderAnalogTime
   }
 
   set petalsHighlightColor(Color value) {
-
     if (_petalsHighlightColor == value) {
       return;
     }
@@ -412,7 +398,7 @@ class RenderAnalogTime
     config
       ..label =
           'Analog clock showing hour $hour${_use24HourFormat ? ' (and ${hour + 12})' : ''}, '
-              'minute $minute, and second $second'
+          'minute $minute, and second $second'
       ..isReadOnly = true
       ..textDirection = TextDirection.ltr;
   }
@@ -424,10 +410,9 @@ class RenderAnalogTime
     canvas.save();
     // Translate the canvas to the center of the square.
     canvas.translate(
-        offset.dx + _radius,
-        offset.dy +
-            _radius +
-            compositionData.bounce!.dy * bounceAnimation.value);
+      offset.dx + _radius,
+      offset.dy + _radius + compositionData.bounce!.dy * bounceAnimation.value,
+    );
 
     _drawBackground(canvas);
 
@@ -435,11 +420,11 @@ class RenderAnalogTime
     for (var i = 0; i < balls; i++) {
       final angle = pi * 2 / 60 * _ballEvery * i,
           center = Offset.fromDirection(
-        // Need to subtract a quarter of the circle because
-        // Offset.fromDirection starts at positive x.
-        angle - pi / 2,
-        _radius / 2.56,
-      ),
+            // Need to subtract a quarter of the circle because
+            // Offset.fromDirection starts at positive x.
+            angle - pi / 2,
+            _radius / 2.56,
+          ),
           circle = Rect.fromCircle(center: center, radius: _radius / 15),
           paint = Paint()
             // Using the text color because the purpose of this icon is the same
@@ -461,11 +446,12 @@ class RenderAnalogTime
     if (_use24HourFormat) {
       // Draw smaller ring.
       canvas.drawOval(
-          Rect.fromCircle(center: Offset.zero, radius: radius24),
-          Paint()
-            ..color = _borderColor
-            ..style = PaintingStyle.stroke
-            ..strokeWidth = _radius / 348);
+        Rect.fromCircle(center: Offset.zero, radius: radius24),
+        Paint()
+          ..color = _borderColor
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = _radius / 348,
+      );
     }
 
     final largeDivisions = 12, smallDivisions = 60;
@@ -476,25 +462,22 @@ class RenderAnalogTime
       if (n % (smallDivisions / largeDivisions) != 0) {
         final height = _radius / 27;
         canvas.drawRect(
-            Rect.fromCenter(
-              center: Offset(0, (-size.width + height) / 2),
-              width: _radius / 195,
-              height: height,
-            ),
-            Paint()..color = _textColor);
+          Rect.fromCenter(
+            center: Offset(0, (-size.width + height) / 2),
+            width: _radius / 195,
+            height: height,
+          ),
+          Paint()..color = _textColor,
+        );
       }
 
       // Draw 24 hour minute tick marks further inwards.
       if (_use24HourFormat) {
         final w = _radius / 197, h = _radius / 45;
         canvas.drawRect(
-            Rect.fromLTWH(
-              -w / 2,
-              -radius24,
-              w,
-              -h,
-            ),
-            Paint()..color = _textColor);
+          Rect.fromLTWH(-w / 2, -radius24, w, -h),
+          Paint()..color = _textColor,
+        );
       }
 
       // This will go back to 0 at the end of loop,
@@ -506,20 +489,18 @@ class RenderAnalogTime
     for (var n = largeDivisions; n > 0; n--) {
       final height = _radius / 61;
       canvas.drawRect(
-          Rect.fromCenter(
-            center: Offset(0, (-size.width + height) / 2),
-            width: _radius / 68,
-            height: height,
-          ),
-          Paint()..color = _textColor);
+        Rect.fromCenter(
+          center: Offset(0, (-size.width + height) / 2),
+          width: _radius / 68,
+          height: height,
+        ),
+        Paint()..color = _textColor,
+      );
 
       final painter = TextPainter(
         text: TextSpan(
           text: '$n',
-          style: TextStyle(
-            color: _textColor,
-            fontSize: _radius / 7.5,
-          ),
+          style: TextStyle(color: _textColor, fontSize: _radius / 7.5),
         ),
         textDirection: TextDirection.ltr,
       );
@@ -539,31 +520,21 @@ class RenderAnalogTime
         () {
           final w = _radius / 124, h = _radius / 35;
           canvas.drawRect(
-              Rect.fromLTWH(
-                -w / 2,
-                -radius24,
-                w,
-                -h,
-              ),
-              Paint()..color = _textColor);
+            Rect.fromLTWH(-w / 2, -radius24, w, -h),
+            Paint()..color = _textColor,
+          );
 
           final painter = TextPainter(
             text: TextSpan(
               text: '${n + 12}',
-              style: TextStyle(
-                color: _textColor,
-                fontSize: _radius / 9,
-              ),
+              style: TextStyle(color: _textColor, fontSize: _radius / 9),
             ),
             textDirection: TextDirection.ltr,
           );
           painter.layout();
           painter.paint(
             canvas,
-            Offset(
-              -painter.width / 2,
-              -radius24 + _radius / 29,
-            ),
+            Offset(-painter.width / 2, -radius24 + _radius / 29),
           );
         }();
       }
@@ -593,30 +564,34 @@ class RenderAnalogTime
   }
 
   void _drawBackground(Canvas canvas) {
-    final fullCircleRect =
-            Rect.fromCircle(center: Offset.zero, radius: _radius),
+    final fullCircleRect = Rect.fromCircle(
+          center: Offset.zero,
+          radius: _radius,
+        ),
         shader = ui.Gradient.radial(
-      fullCircleRect.center,
-      _radius,
-      [_backgroundHighlightColor, _backgroundColor],
-      const [0, .7],
-    );
+          fullCircleRect.center,
+          _radius,
+          [_backgroundHighlightColor, _backgroundColor],
+          const [0, .7],
+        );
 
     canvas.drawOval(
-        fullCircleRect,
-        Paint()
-          ..style = PaintingStyle.fill
-          ..shader = shader);
+      fullCircleRect,
+      Paint()
+        ..style = PaintingStyle.fill
+        ..shader = shader,
+    );
 
     // Border
     canvas.drawOval(
-        fullCircleRect,
-        Paint()
-          ..style = PaintingStyle.stroke
-          ..color = _borderColor
-          // See thermometer border (`temperature.dart`)
-          // for an explanation as to why this is.
-          ..strokeWidth = _radius / 612);
+      fullCircleRect,
+      Paint()
+        ..style = PaintingStyle.stroke
+        ..color = _borderColor
+        // See thermometer border (`temperature.dart`)
+        // for an explanation as to why this is.
+        ..strokeWidth = _radius / 612,
+    );
   }
 
   void _drawHourHand(Canvas canvas) {
@@ -666,18 +641,8 @@ class RenderAnalogTime
         w = _radius / 18,
         path = Path()
           ..moveTo(0, 0)
-          ..quadraticBezierTo(
-            -w,
-            h / 4,
-            0,
-            h,
-          )
-          ..quadraticBezierTo(
-            w,
-            h / 4,
-            0,
-            0,
-          )
+          ..quadraticBezierTo(-w, h / 4, 0, h)
+          ..quadraticBezierTo(w, h / 4, 0, 0)
           ..close();
 
     canvas.drawShadow(path, _shadowColor, _radius / 89, false);
@@ -694,18 +659,22 @@ class RenderAnalogTime
     final paint = Paint()
           ..color = _secondHandColor
           ..style = PaintingStyle.fill,
-        // These are height and width.
-        h = -_radius / 1.08,
+            // These are height and width.
+            h =
+            -_radius / 1.08,
         w = _radius / 84.51,
-        // These are total width of the design part &
-        // the height where it starts and ends.
-        dw = _radius / 35.52,
+            // These are total width of the design part &
+            // the height where it starts and ends.
+            dw =
+            _radius / 35.52,
         sh = -_radius / 2.85,
-        // This matches the 24 hour ring.
-        eh = -_radius * .711,
-        // These are Opposite End start, height,
-        // indent, and width.
-        oes = _radius / 9,
+            // This matches the 24 hour ring.
+            eh =
+            -_radius * .711,
+            // These are Opposite End start, height,
+            // indent, and width.
+            oes =
+            _radius / 9,
         oeh = _radius / 8,
         oei = _radius / 8.37,
         oew = _radius / 16,

@@ -41,15 +41,14 @@ class RenderLocation
     required String text,
     required TextStyle textStyle,
     required Color shadowColor,
-  })  : _text = text,
-        _textStyle = textStyle,
-        _shadowColor = shadowColor,
-        super(ClockComponent.location);
+  }) : _text = text,
+       _textStyle = textStyle,
+       _shadowColor = shadowColor,
+       super(ClockComponent.location);
 
   String _text;
 
   set text(String value) {
-
     if (_text == value) {
       return;
     }
@@ -64,7 +63,6 @@ class RenderLocation
   TextStyle _textStyle;
 
   set textStyle(TextStyle value) {
-
     if (_textStyle == value) {
       return;
     }
@@ -76,7 +74,6 @@ class RenderLocation
   Color _shadowColor;
 
   set shadowColor(Color value) {
-
     if (_shadowColor == value) {
       return;
     }

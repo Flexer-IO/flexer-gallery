@@ -65,8 +65,10 @@ class BackgroundParentData extends ClockChildrenParentData {
 
   Rect rectOf(ClockComponent component) {
     final rect = _rects![component];
-    assert(rect != null,
-        'No $Rect was provided for $component. If the rect of this child should be accessible from $childType, this needs to be changed in $RenderCompositedClock.');
+    assert(
+      rect != null,
+      'No $Rect was provided for $component. If the rect of this child should be accessible from $childType, this needs to be changed in $RenderCompositedClock.',
+    );
     return rect!;
   }
 
@@ -91,13 +93,13 @@ class RenderBackground
     required Color analogTimeComponentColor,
     required Color weatherComponentColor,
     required Color temperatureComponentColor,
-  })  : _ballColor = ballColor,
-        _groundColor = groundColor,
-        _gooColor = gooColor,
-        _analogTimeComponentColor = analogTimeComponentColor,
-        _weatherComponentColor = weatherComponentColor,
-        _temperatureComponentColor = temperatureComponentColor,
-        super(ClockComponent.background);
+  }) : _ballColor = ballColor,
+       _groundColor = groundColor,
+       _gooColor = gooColor,
+       _analogTimeComponentColor = analogTimeComponentColor,
+       _weatherComponentColor = weatherComponentColor,
+       _temperatureComponentColor = temperatureComponentColor,
+       super(ClockComponent.background);
 
   Color _ballColor,
       _groundColor,
@@ -107,7 +109,6 @@ class RenderBackground
       _temperatureComponentColor;
 
   set ballColor(Color value) {
-
     if (_ballColor == value) {
       return;
     }
@@ -117,7 +118,6 @@ class RenderBackground
   }
 
   set groundColor(Color value) {
-
     if (_groundColor == value) {
       return;
     }
@@ -127,7 +127,6 @@ class RenderBackground
   }
 
   set gooColor(Color value) {
-
     if (_gooColor == value) {
       return;
     }
@@ -137,7 +136,6 @@ class RenderBackground
   }
 
   set analogTimeComponentColor(Color value) {
-
     if (_analogTimeComponentColor == value) {
       return;
     }
@@ -147,7 +145,6 @@ class RenderBackground
   }
 
   set weatherComponentColor(Color value) {
-
     if (_weatherComponentColor == value) {
       return;
     }
@@ -157,7 +154,6 @@ class RenderBackground
   }
 
   set temperatureComponentColor(Color value) {
-
     if (_temperatureComponentColor == value) {
       return;
     }
@@ -195,28 +191,30 @@ class RenderBackground
     // Do not need to clip here because CompositedClock already clips the canvas.
 
     final gooArea = Rect.fromLTWH(
-      // Infinite width and height ensure that the indentations of the goo caused by components will always consider the complete object, even if some of it is out of view.
-      // Using maxFinite because negativeInfinity for the left value throws NaN errors.
-      -double.maxFinite,
-      size.height / 2 + (animation.value - 1 / 2) * size.height / 5,
-      double.infinity,
-      double.maxFinite,
-    ),
+          // Infinite width and height ensure that the indentations of the goo caused by components will always consider the complete object, even if some of it is out of view.
+          // Using maxFinite because negativeInfinity for the left value throws NaN errors.
+          -double.maxFinite,
+          size.height / 2 + (animation.value - 1 / 2) * size.height / 5,
+          double.infinity,
+          double.maxFinite,
+        ),
         components = [
-      compositionData.rectOf(ClockComponent.weather),
-      compositionData.rectOf(ClockComponent.temperature),
-      // The glow of the clock should be rendered after the other two components.
-      compositionData
-          .rectOf(ClockComponent.analogTime)
-          // The background animates depending on the analog time's position.
-          .shift(compositionData.analogTimeBounce! *
-              analogTimeBounceAnimation.value),
-    ],
+          compositionData.rectOf(ClockComponent.weather),
+          compositionData.rectOf(ClockComponent.temperature),
+          // The glow of the clock should be rendered after the other two components.
+          compositionData
+              .rectOf(ClockComponent.analogTime)
+              // The background animates depending on the analog time's position.
+              .shift(
+                compositionData.analogTimeBounce! *
+                    analogTimeBounceAnimation.value,
+              ),
+        ],
         componentColors = [
-      _weatherComponentColor,
-      _temperatureComponentColor,
-      _analogTimeComponentColor,
-    ],
+          _weatherComponentColor,
+          _temperatureComponentColor,
+          _analogTimeComponentColor,
+        ],
         componentsInGoo = components
             .where((rect) => rect.overlaps(gooArea))
             .map((rect) => gooArea.intersect(rect))
@@ -296,18 +294,20 @@ class RenderBackground
       ..lineTo(0, 0)
       ..close();
     canvas.drawPath(
-        upperPath,
-        Paint()
-          ..color = _groundColor
-          ..style = PaintingStyle.fill);
+      upperPath,
+      Paint()
+        ..color = _groundColor
+        ..style = PaintingStyle.fill,
+    );
 
     // Draw a kind of glow about the given components
     for (var i = 0; i < components.length; i++) {
       final component = components[i],
           rect = Rect.fromCenter(
-              center: component.center,
-              width: component.width * 7 / 4,
-              height: component.height * 7 / 4);
+            center: component.center,
+            width: component.width * 7 / 4,
+            height: component.height * 7 / 4,
+          );
 
       final color = componentColors[i],
           paint = Paint()
@@ -332,10 +332,11 @@ class RenderBackground
       ..lineTo(0, size.height)
       ..close();
     canvas.drawPath(
-        lowerPath,
-        Paint()
-          ..color = _gooColor
-          ..style = PaintingStyle.fill);
+      lowerPath,
+      Paint()
+        ..color = _gooColor
+        ..style = PaintingStyle.fill,
+    );
 
     canvas.restore();
   }
