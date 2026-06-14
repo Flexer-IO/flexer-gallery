@@ -1,7 +1,5 @@
-import 'dart:ui';
 
 import '../../main.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 enum ClockColor {

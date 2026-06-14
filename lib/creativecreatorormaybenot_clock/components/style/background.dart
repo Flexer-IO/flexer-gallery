@@ -187,6 +187,9 @@ class RenderBackground
   bool get sizedByParent => true;
 
   @override
+  Size computeDryLayout(BoxConstraints constraints) => constraints.biggest;
+
+  @override
   void paint(PaintingContext context, Offset offset) {
     // Do not need to clip here because CompositedClock already clips the canvas.
 
@@ -318,7 +321,7 @@ class RenderBackground
                 color,
                 // It is important that the target color has no opacity
                 // because the different gradient otherwise interfere.
-                _groundColor.withOpacity(0),
+                _groundColor.withValues(alpha: 0),
               ],
             );
 

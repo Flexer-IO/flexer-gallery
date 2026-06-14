@@ -3,7 +3,6 @@ import 'dart:ui' as ui;
 
 import '../../clock.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
@@ -693,6 +692,9 @@ abstract class RenderWeatherIcon
 
   @override
   bool get sizedByParent => true;
+
+  @override
+  Size computeDryLayout(BoxConstraints constraints) => constraints.biggest;
 
   @override
   void performResize() {
@@ -1556,8 +1558,8 @@ class RenderSnowy extends RenderWeatherIcon {
             (animation.value + animationRandom.nextDouble()) % 1,
           ),
           animatedPaint = Paint()
-            ..color = paint.color.withOpacity(
-              paint.color.opacity * tuple.second,
+            ..color = paint.color.withValues(
+              alpha: paint.color.a * tuple.second,
             ),
           animatedPosition = Offset(position.dx, tuple.first),
           circle = Rect.fromCircle(
@@ -1906,8 +1908,8 @@ class RenderThunderstorm extends RenderWeatherIcon {
     canvas.drawPath(
       lightningPath,
       Paint()
-        ..color = _lightningColor.withOpacity(
-          min(1, lightningSequence.transform(animation.value)),
+        ..color = _lightningColor.withValues(
+          alpha: min(1, lightningSequence.transform(animation.value)),
         )
         ..style = PaintingStyle.fill,
     );

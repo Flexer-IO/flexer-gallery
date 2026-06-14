@@ -271,6 +271,7 @@ class RenderSlide
     compositionData.offset = rect.topLeft;
     size = rect.size;
 
+    paddedTravelLine = Line2d.from(travelLine);
     updatePadding();
   }
 

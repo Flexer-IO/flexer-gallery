@@ -2,7 +2,6 @@ import 'dart:async';
 
 import '../clock.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import '../deps/flutter_clock_helper/model.dart';
 
 const nextDataEvery = Duration(microseconds: 120 / 7 * 1e6 ~/ 1),

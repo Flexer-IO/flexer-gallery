@@ -3,7 +3,6 @@ import 'dart:math';
 
 import '../clock.dart';
 import '../main.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../deps/flutter_clock_helper/model.dart';
 

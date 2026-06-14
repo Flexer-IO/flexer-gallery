@@ -375,6 +375,9 @@ class RenderAnalogTime
   @override
   bool get sizedByParent => true;
 
+  @override
+  Size computeDryLayout(BoxConstraints constraints) => constraints.biggest;
+
   late double _radius;
 
   @override

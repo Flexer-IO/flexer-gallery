@@ -114,7 +114,7 @@ class RenderLocation
           fontSize: width / 9.7,
           shadows: [
             Shadow(
-              color: _shadowColor.withOpacity(.46),
+              color: _shadowColor.withValues(alpha: .46),
               // I wanted to use a bigger blur radius,
               // but it looks boxy in Flutter web, i.e.
               // the shadow is clipped there.

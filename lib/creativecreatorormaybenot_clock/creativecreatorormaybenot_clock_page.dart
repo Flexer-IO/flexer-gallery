@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'clock.dart';
-import 'customizer/customizer.dart';
-import 'composition/animated.dart';
-import 'components/style/palette.dart';
 
 class CreativecreatorormaybenotClockPage extends StatelessWidget {
   const CreativecreatorormaybenotClockPage({super.key});

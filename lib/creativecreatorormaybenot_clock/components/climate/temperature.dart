@@ -480,6 +480,9 @@ class RenderTemperature
   bool get sizedByParent => true;
 
   @override
+  Size computeDryLayout(BoxConstraints constraints) => constraints.biggest;
+
+  @override
   void performResize() {
     size = constraints.biggest;
   }
@@ -896,7 +899,7 @@ class RenderTemperature
             color: color,
             fontSize: size.width / 13,
             fontWeight: FontWeight.bold,
-            backgroundColor: _tubeColor.withOpacity(.52),
+            backgroundColor: _tubeColor.withValues(alpha: .52),
           ),
         ),
         textDirection: TextDirection.ltr,
