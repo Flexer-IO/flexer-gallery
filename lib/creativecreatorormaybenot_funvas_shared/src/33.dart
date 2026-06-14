@@ -46,7 +46,7 @@ class ThirtyThree extends Funvas with FunvasTweetMixin {
         z,
         w,
       );
-      return bs.copyWith(color: color.withOpacity(1 / 2 + 1 / 2 * value));
+      return bs.copyWith(color: color.withValues(alpha: 1 / 2 + 1 / 2 * value));
     }
 
     c.drawColor(const Color(0xff000000), BlendMode.srcOver);

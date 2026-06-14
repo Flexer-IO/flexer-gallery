@@ -90,7 +90,7 @@ class Eighteen extends Funvas with FunvasTweetMixin {
   }
 
   Paint _circlePaint(double opacity) {
-    return Paint()..color = const Color(0xff02569b).withOpacity(opacity);
+    return Paint()..color = const Color(0xff02569b).withValues(alpha: opacity);
   }
 
   void _phase0(double t, Rect r) {

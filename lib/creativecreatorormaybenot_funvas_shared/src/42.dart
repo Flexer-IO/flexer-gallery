@@ -118,19 +118,19 @@ class _TimedRegularHexagon {
     callback(
       p,
       Paint()
-        ..color = Color(baseColor.value & 0xffff0000)
+        ..color = Color(baseColor.toARGB32() & 0xffff0000)
         ..blendMode = BlendMode.plus,
     );
     callback(
       p - 1 / 25,
       Paint()
-        ..color = Color(baseColor.value & 0xff00ff00)
+        ..color = Color(baseColor.toARGB32() & 0xff00ff00)
         ..blendMode = BlendMode.plus,
     );
     callback(
       p - 1 / 25 * 2,
       Paint()
-        ..color = Color(baseColor.value & 0xff0000ff)
+        ..color = Color(baseColor.toARGB32() & 0xff0000ff)
         ..blendMode = BlendMode.plus,
     );
   }
