@@ -136,12 +136,11 @@ class Line2d {
 
   /// Compares two lines for equality.
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     if (other is! Line2d) {
       return false;
     }
 
-    final typedOther = other as Line2d;
-    return start == typedOther.start && end == typedOther.end;
+    return start == other.start && end == other.end;
   }
 }

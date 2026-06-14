@@ -378,6 +378,7 @@ class RenderBall
       case BallTripStage.departure:
         return _dotsDisengagedColor;
     }
+    // ignore: dead_code
     throw ArgumentError.value(stage);
   }
 

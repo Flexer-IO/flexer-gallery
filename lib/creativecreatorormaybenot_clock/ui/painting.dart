@@ -173,9 +173,7 @@ double _appendPathSegment(
     nextOffset = offset + metric.length;
     if (start < nextOffset) {
       final extracted = metric.extractPath(start - offset, stop - offset);
-      if (extracted != null) {
-        to.addPath(extracted, Offset.zero);
-      }
+      to.addPath(extracted, Offset.zero);
       if (stop < nextOffset) {
         break;
       }

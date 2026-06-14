@@ -258,6 +258,7 @@ class _AnimatedWeatherTweenState
           borderColor: widget.palette[ClockColor.border]!,
         );
     }
+    // ignore: dead_code
     throw UnimplementedError('Missing weather icon for $condition.');
   }
 }
