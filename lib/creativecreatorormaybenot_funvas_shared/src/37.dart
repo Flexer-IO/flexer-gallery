@@ -52,7 +52,13 @@ class ThirtySeven extends Funvas with FunvasTweetMixin {
   }
 
   void _drawHilbertCurve(
-      double sw, int repeat, double s, int n, double lp, Color color) {
+    double sw,
+    int repeat,
+    double s,
+    int n,
+    double lp,
+    Color color,
+  ) {
     final p = Path()..moveTo(sw / 2, sw / 2);
 
     Offset pos(int i, int n) {

@@ -56,8 +56,9 @@ class TwentyThree extends Funvas with FunvasTweetMixin {
 
     // Our center box.
     c.translate(_d / 2, _d / 2);
-    c.scale(1 +
-        ((_boxCount + 1) / 2) * Curves.easeInQuad.transform((t % _ld) / _ld));
+    c.scale(
+      1 + ((_boxCount + 1) / 2) * Curves.easeInQuad.transform((t % _ld) / _ld),
+    );
     c.rotate(-pi / 2 * ((t % _ld) / _ld));
     c.save();
     _drawBox(t, 0);
@@ -135,9 +136,10 @@ class TwentyThree extends Funvas with FunvasTweetMixin {
       );
 
       final progress = min(
-          1.0,
-          max(0.0, timeInRun - delay / 2 - timePerTile * i / _tileCount) /
-              timePerTile);
+        1.0,
+        max(0.0, timeInRun - delay / 2 - timePerTile * i / _tileCount) /
+            timePerTile,
+      );
       final transformed = Curves.easeOutSine.transform(progress);
 
       if (i == 0 && progress == 0) {
@@ -156,28 +158,24 @@ class TwentyThree extends Funvas with FunvasTweetMixin {
         break;
       }
 
-      final offset = Offset.lerp(
-        packedOffset,
-        spreadOffset,
-        transformed,
-      )!;
+      final offset = Offset.lerp(packedOffset, spreadOffset, transformed)!;
 
       c.drawRect(
-        Rect.fromCenter(
-          center: offset,
-          width: dtf,
-          height: dtf,
-        ),
+        Rect.fromCenter(center: offset, width: dtf, height: dtf),
         Paint()
           // If we allow anti alias in the collapsed state, there are weird
           // gaps that probably also screw up the GIF export.
           ..isAntiAlias = progress == 0 ? false : true
           ..color = Color.lerp(
-              _stableColor,
-              HSLColor.fromAHSL(
-                      1, 360 * (1 - i / _tileCount / _tileCount), .8, .7)
-                  .toColor(),
-              max(0, progress - timeInRun / _ld))!,
+            _stableColor,
+            HSLColor.fromAHSL(
+              1,
+              360 * (1 - i / _tileCount / _tileCount),
+              .8,
+              .7,
+            ).toColor(),
+            max(0, progress - timeInRun / _ld),
+          )!,
       );
 
       switch (direction) {

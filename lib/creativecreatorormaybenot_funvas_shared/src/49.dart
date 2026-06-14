@@ -22,9 +22,9 @@ class FortyNine extends Funvas {
     c.rotate(-pi / 2);
 
     Offset oo(int i) => Offset.fromDirection(
-          S(i * pi / factor + t / (period * factor * 4) * pi * 2) * pi * 2,
-          d / n * (n - i) / 1.25,
-        );
+      S(i * pi / factor + t / (period * factor * 4) * pi * 2) * pi * 2,
+      d / n * (n - i) / 1.25,
+    );
 
     for (var i = 0; i < n; i++) {
       final o = oo(i), no = oo(i + 1);

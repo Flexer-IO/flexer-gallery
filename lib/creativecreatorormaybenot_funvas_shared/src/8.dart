@@ -18,10 +18,7 @@ class Eight extends Funvas with FunvasTweetMixin {
   void u(double t) {
     // The center point in the Mandelbrot set about which we rotate to draw
     // corresponding Julia sets.
-    const centerPoint = [
-      -0.38551857,
-      -0.18918556,
-    ];
+    const centerPoint = [-0.38551857, -0.18918556];
     // The radius which we rotate about the center point in the Mandelbrot set.
     const rotationRadius = 0.35;
     // The duration (in seconds) for completing the rotation about the center
@@ -40,7 +37,8 @@ class Eight extends Funvas with FunvasTweetMixin {
           sin(t % rotationDuration / rotationDuration * 2 * pi) *
               rotationRadius,
       centerPoint[1] +
-          cos(t % rotationDuration / rotationDuration * 2 * pi) * rotationRadius
+          cos(t % rotationDuration / rotationDuration * 2 * pi) *
+              rotationRadius,
     ];
 
     for (var x = 0; x < this.x.width; x++) {
@@ -60,13 +58,12 @@ class Eight extends Funvas with FunvasTweetMixin {
         }
 
         this.c.drawRect(
-              Rect.fromLTWH(x / 1, y / 1, 1, 1),
-              Paint()
-                ..color = n == _iterations
-                    ? const Color(0xff000000)
-                    : HSVColor.fromAHSV(1, 360 * n / _iterations, .9, .6)
-                        .toColor(),
-            );
+          Rect.fromLTWH(x / 1, y / 1, 1, 1),
+          Paint()
+            ..color = n == _iterations
+                ? const Color(0xff000000)
+                : HSVColor.fromAHSV(1, 360 * n / _iterations, .9, .6).toColor(),
+        );
       }
     }
   }

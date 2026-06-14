@@ -19,7 +19,8 @@ class Thirteen extends Funvas with FunvasTweetMixin {
 
     void drawSquare(double shift) {
       c.save();
-      final progress = (t + shift) %
+      final progress =
+          (t + shift) %
           animationDuration *
           // Make the squares cross the track exactly once (+ an extra width to
           // make the entrance seamless) in the given duration.

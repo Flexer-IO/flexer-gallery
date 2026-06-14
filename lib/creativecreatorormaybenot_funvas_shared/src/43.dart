@@ -30,8 +30,8 @@ class FortyThree extends Funvas with FunvasTweetMixin {
       ct > 2.5
           ? 1
           : ct > 2
-              ? Curves.ease.transform((ct - 2) * 2)
-              : 0,
+          ? Curves.ease.transform((ct - 2) * 2)
+          : 0,
     )!;
     c.drawColor(bgc, BlendMode.srcOver);
 

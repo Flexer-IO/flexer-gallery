@@ -60,8 +60,12 @@ class Thirty extends Funvas with FunvasTweetMixin {
             0xff,
             0xff,
             0xff,
-            const Cubic(1, 1, 0, 1)
-                .transform(pow(i / _shaderResolution, 2).toDouble()),
+            const Cubic(
+              1,
+              1,
+              0,
+              1,
+            ).transform(pow(i / _shaderResolution, 2).toDouble()),
           ),
       ]);
       _stops.addAll([
@@ -96,11 +100,9 @@ class Thirty extends Funvas with FunvasTweetMixin {
 /// This code is directly taken from https://github.com/matthew-carroll/flutter_processing/blob/599ebd7fdd3098fd0c4531ce5ca5df0518e10afd/example/lib/the_coding_train/coding_challenges/028_metaballs.dart#L104
 /// as the point of this funvas is trying to challenge the FPS.
 class Blob {
-  Blob({
-    required Offset offset,
-    required Offset velocity,
-  })  : _offset = offset,
-        _velocity = velocity;
+  Blob({required Offset offset, required Offset velocity})
+    : _offset = offset,
+      _velocity = velocity;
 
   Offset get offset => _offset;
   Offset _offset;

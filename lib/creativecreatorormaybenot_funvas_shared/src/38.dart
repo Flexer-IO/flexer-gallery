@@ -21,9 +21,7 @@ class ThirtyEight extends Funvas with FunvasTweetMixin {
   static const _d = 750.0, _ps = 42, _duration = 2.0, _n = 4200, _sn = 64;
 
   static const _particleProvider = ResizeImage(
-    NetworkImage(
-      'https://i.imgur.com/skxsba4.png',
-    ),
+    NetworkImage('https://i.imgur.com/skxsba4.png'),
     width: _ps,
     height: _ps,
   );
@@ -80,9 +78,7 @@ class ThirtyEight extends Funvas with FunvasTweetMixin {
     }
     _particles.removeWhere((element) => element.oob(_d, _ps / 1));
 
-    final offsets = [
-      for (var i = 0; i < _sn; i++) 2 * pi / _sn * i,
-    ];
+    final offsets = [for (var i = 0; i < _sn; i++) 2 * pi / _sn * i];
     for (final o in offsets) {
       if (_particles.length >= _n) break;
       _particles.add(_Particle.basedOnTime(t, _duration, _noise, o));

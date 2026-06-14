@@ -23,10 +23,7 @@ class Four extends Funvas with FunvasTweetMixin {
   final _movementPath = TweenSequence<Offset>([
     // Stay put.
     TweenSequenceItem(
-      tween: Tween(
-        begin: Offset.zero,
-        end: Offset.zero,
-      ),
+      tween: Tween(begin: Offset.zero, end: Offset.zero),
       weight: 1,
     ),
     // Move right.
@@ -111,10 +108,7 @@ class Four extends Funvas with FunvasTweetMixin {
     ),
     // Wait.
     TweenSequenceItem(
-      tween: Tween(
-        begin: const Offset(0, 0),
-        end: const Offset(0, 0),
-      ),
+      tween: Tween(begin: const Offset(0, 0), end: const Offset(0, 0)),
       weight: 1 / 2,
     ),
   ]);
@@ -131,21 +125,9 @@ class Four extends Funvas with FunvasTweetMixin {
       weight: 1,
     ),
     // Stay put.
-    TweenSequenceItem(
-      tween: Tween<double>(
-        begin: 0,
-        end: 0,
-      ),
-      weight: 1,
-    ),
+    TweenSequenceItem(tween: Tween<double>(begin: 0, end: 0), weight: 1),
     // Wait.
-    TweenSequenceItem(
-      tween: Tween<double>(
-        begin: 0,
-        end: 0,
-      ),
-      weight: 1 / 2,
-    ),
+    TweenSequenceItem(tween: Tween<double>(begin: 0, end: 0), weight: 1 / 2),
     // Rotate to prepare moving top right.
     TweenSequenceItem(
       tween: Tween<double>(
@@ -156,18 +138,12 @@ class Four extends Funvas with FunvasTweetMixin {
     ),
     // Stay put.
     TweenSequenceItem(
-      tween: Tween(
-        begin: 1.675 * pi,
-        end: 1.675 * pi,
-      ),
+      tween: Tween(begin: 1.675 * pi, end: 1.675 * pi),
       weight: 1,
     ),
     // Wait.
     TweenSequenceItem(
-      tween: Tween(
-        begin: 1.675 * pi,
-        end: 1.675 * pi,
-      ),
+      tween: Tween(begin: 1.675 * pi, end: 1.675 * pi),
       weight: 1 / 2,
     ),
     // Rotate to prepare moving left.
@@ -180,18 +156,12 @@ class Four extends Funvas with FunvasTweetMixin {
     ),
     // Stay put.
     TweenSequenceItem(
-      tween: Tween(
-        begin: 3 * pi,
-        end: 3 * pi,
-      ),
+      tween: Tween(begin: 3 * pi, end: 3 * pi),
       weight: 1,
     ),
     // Wait.
     TweenSequenceItem(
-      tween: Tween(
-        begin: 3 * pi,
-        end: 3 * pi,
-      ),
+      tween: Tween(begin: 3 * pi, end: 3 * pi),
       weight: 1 / 2,
     ),
     // Rotate to prepare moving bottom left.
@@ -204,18 +174,12 @@ class Four extends Funvas with FunvasTweetMixin {
     ),
     // Stay put.
     TweenSequenceItem(
-      tween: Tween(
-        begin: 4.675 * pi,
-        end: 4.675 * pi,
-      ),
+      tween: Tween(begin: 4.675 * pi, end: 4.675 * pi),
       weight: 1,
     ),
     // Wait.
     TweenSequenceItem(
-      tween: Tween(
-        begin: 4.675 * pi,
-        end: 4.675 * pi,
-      ),
+      tween: Tween(begin: 4.675 * pi, end: 4.675 * pi),
       weight: 1 / 2,
     ),
   ]);
@@ -266,7 +230,8 @@ class Four extends Funvas with FunvasTweetMixin {
         ? Offset.zero
         : _movementPath.transform(
             ((t ~/ (_animationSeconds / 4)) * _animationSeconds / 4) /
-                _animationSeconds);
+                _animationSeconds,
+          );
     c.translate(-translationOffset.dx, -translationOffset.dy);
 
     final center = Offset(x.width / 2, x.height / 2);
@@ -289,24 +254,34 @@ class Four extends Funvas with FunvasTweetMixin {
 
     for (var h = 0; h < (x.height / _distance / 2 + 2); h++) {
       for (var w = 0; w < (x.width / _distance / 2 + 2); w++) {
-        final base =
-            Offset(x.width / 2 + (h.isOdd ? _distance / 2 : 0), x.height / 2);
+        final base = Offset(
+          x.width / 2 + (h.isOdd ? _distance / 2 : 0),
+          x.height / 2,
+        );
 
         var preMovePosition = base + Offset(w * _distance, h * _distance);
-        paintArrow(preMovePosition + movementOffset(preMovePosition),
-            rotation(preMovePosition));
+        paintArrow(
+          preMovePosition + movementOffset(preMovePosition),
+          rotation(preMovePosition),
+        );
 
         preMovePosition = base + Offset(w * _distance, -h * _distance);
-        paintArrow(preMovePosition + movementOffset(preMovePosition),
-            rotation(preMovePosition));
+        paintArrow(
+          preMovePosition + movementOffset(preMovePosition),
+          rotation(preMovePosition),
+        );
 
         preMovePosition = base + Offset(-w * _distance, h * _distance);
-        paintArrow(preMovePosition + movementOffset(preMovePosition),
-            rotation(preMovePosition));
+        paintArrow(
+          preMovePosition + movementOffset(preMovePosition),
+          rotation(preMovePosition),
+        );
 
         preMovePosition = base + Offset(-w * _distance, -h * _distance);
-        paintArrow(preMovePosition + movementOffset(preMovePosition),
-            rotation(preMovePosition));
+        paintArrow(
+          preMovePosition + movementOffset(preMovePosition),
+          rotation(preMovePosition),
+        );
       }
     }
   }

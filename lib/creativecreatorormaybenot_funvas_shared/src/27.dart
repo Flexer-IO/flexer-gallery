@@ -98,10 +98,7 @@ class TwentySeven extends Funvas with FunvasTweetMixin {
       text: TextSpan(
         text: 'n = $n',
         style: GoogleFonts.roboto(
-          textStyle: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: d / 32,
-          ),
+          textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: d / 32),
         ),
       ),
       textDirection: TextDirection.ltr,

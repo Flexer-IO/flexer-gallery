@@ -77,15 +77,9 @@ class TwentyTwo extends Funvas with FunvasTweetMixin {
     final vertices = <Offset>[];
     for (var i = 0; i < 3; i++) {
       final angle = 2 * pi / 3 * (i - 1 / 2) + pi / 6;
-      vertices.add(Offset(
-        radius * cos(angle),
-        radius * sin(angle),
-      ));
+      vertices.add(Offset(radius * cos(angle), radius * sin(angle)));
     }
-    c.drawPath(
-      Path()..addPolygon(vertices, true),
-      paint,
-    );
+    c.drawPath(Path()..addPolygon(vertices, true), paint);
     c.restore();
   }
 }

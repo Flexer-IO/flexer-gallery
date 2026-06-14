@@ -21,8 +21,10 @@ class Ten extends Funvas with FunvasTweetMixin {
 
   /// [ImageProvider] for my StackOverflow avatar image.
   late final _soProvider = const ResizeImage(
-    NetworkImage('https://www.gravatar.com/avatar/'
-        '260caa996ae8ac9fcee35487aa8d7c81?s=420&d=identicon&r=PG&f=1'),
+    NetworkImage(
+      'https://www.gravatar.com/avatar/'
+      '260caa996ae8ac9fcee35487aa8d7c81?s=420&d=identicon&r=PG&f=1',
+    ),
     width: 420,
     height: 420,
   );
@@ -63,11 +65,15 @@ class Ten extends Funvas with FunvasTweetMixin {
       // Loading images.
       return;
     }
-    final soCenter =
-        Offset((w - _soImage!.width) / 2, (h - _soImage!.height) / 2);
+    final soCenter = Offset(
+      (w - _soImage!.width) / 2,
+      (h - _soImage!.height) / 2,
+    );
     const blur = 11.0;
-    final ghCenter =
-        Offset((w - _ghImage!.width) / 2, (h - _ghImage!.height) / 2);
+    final ghCenter = Offset(
+      (w - _ghImage!.width) / 2,
+      (h - _ghImage!.height) / 2,
+    );
 
     final soPaint = Paint(), ghPaint = Paint();
     final Offset soPosition, ghPosition;

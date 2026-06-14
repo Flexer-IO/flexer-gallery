@@ -164,7 +164,8 @@ extension on Canvas {
       // As I am trying to imitate https://twitter.com/beesandbombs/status/870061547137236992?s=20,
       // I want to position the polygons in a way where there are always two
       // vertices at the bottom in the exact same horizontal positions.
-      final angle = 2 *
+      final angle =
+          2 *
               pi /
               vertices *
               (i -
@@ -176,10 +177,7 @@ extension on Canvas {
           +
           pi / 2;
 
-      points.add(Offset(
-        radius * cos(angle),
-        radius * sin(angle),
-      ));
+      points.add(Offset(radius * cos(angle), radius * sin(angle)));
     }
 
     save();

@@ -30,15 +30,18 @@ class Forty extends Funvas with FunvasTweetMixin {
 
     if (_layers.isEmpty) {
       for (var i = 0; i < _nl; i++) {
-        final color =
-            i % 2 == 0 ? const Color(0xffffffff) : const Color(0xff000000);
+        final color = i % 2 == 0
+            ? const Color(0xffffffff)
+            : const Color(0xff000000);
 
         final layer = <_TimedRegularHexagon>[];
         var y = .0, alt = false;
         do {
-          for (var x = alt ? .0 : _sqrt3 * _r / 2;
-              x <= hLim;
-              x += _sqrt3 * _r) {
+          for (
+            var x = alt ? .0 : _sqrt3 * _r / 2;
+            x <= hLim;
+            x += _sqrt3 * _r
+          ) {
             final time = _noise.noise3XYBeforeZ(
               x / _d * 10,
               y / _d * 10,
@@ -103,10 +106,7 @@ class _TimedRegularHexagon {
     for (var i = 0; i < 6; i++) {
       final angle = pi / 3 * i + pi / 2;
 
-      points.add(Offset(
-        x + radius * cos(angle),
-        y + radius * sin(angle),
-      ));
+      points.add(Offset(x + radius * cos(angle), y + radius * sin(angle)));
     }
     canvas.drawPath(
       Path()..addPolygon(points, true),

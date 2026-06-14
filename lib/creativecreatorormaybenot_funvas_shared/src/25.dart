@@ -31,8 +31,10 @@ class TwentyFive extends Funvas with FunvasTweetMixin {
     final n = _n * sin(t * pi / 4) + _n;
     for (var i = 0; i < n; i++) {
       c.drawCircle(
-        Offset(cos(pi * t + 2 * pi / n * i),
-                sin(pi / 4 * t + pi * t + 2 * pi / n * i)) *
+        Offset(
+              cos(pi * t + 2 * pi / n * i),
+              sin(pi / 4 * t + pi * t + 2 * pi / n * i),
+            ) *
             d /
             3,
         10,

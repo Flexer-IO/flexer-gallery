@@ -53,12 +53,7 @@ class Twelve extends Funvas with FunvasTweetMixin {
         c.translate(i + sideLength * 1.5, j + sideLength * 1.5);
         drawSS(
           t - i / sideLength - j / sideLength,
-          HSVColor.fromAHSV(
-            1,
-            i / w * 180 + j / h * 180,
-            1,
-            .76,
-          ).toColor(),
+          HSVColor.fromAHSV(1, i / w * 180 + j / h * 180, 1, .76).toColor(),
         );
         c.restore();
       }

@@ -78,14 +78,16 @@ class FortyFive extends Funvas with FunvasTweetMixin, FunvasFutureMixin {
     var monaLisaScale = scale;
     var translateX = .0, translateY = .0;
     do {
-      monaLisas.add(RSTransform.fromComponents(
-        rotation: 0,
-        scale: monaLisaScale,
-        anchorX: 0,
-        anchorY: 0,
-        translateX: translateX,
-        translateY: translateY,
-      ));
+      monaLisas.add(
+        RSTransform.fromComponents(
+          rotation: 0,
+          scale: monaLisaScale,
+          anchorX: 0,
+          anchorY: 0,
+          translateX: translateX,
+          translateY: translateY,
+        ),
+      );
 
       translateX += _w * monaLisaScale * relativeX;
       translateY += _h * monaLisaScale * relativeY;

@@ -60,9 +60,9 @@ class ThirtyThree extends Funvas with FunvasTweetMixin {
           TextSpan(text: char(j, i), style: style(j, i)),
     ];
     TextPainter(
-      text: TextSpan(children: spans),
-      textDirection: TextDirection.ltr,
-    )
+        text: TextSpan(children: spans),
+        textDirection: TextDirection.ltr,
+      )
       ..layout()
       ..paint(c, const Offset(startMargin, 0));
 

@@ -58,7 +58,8 @@ class ThirtyFive extends Funvas with FunvasTweetMixin {
     final path = Path();
     for (var a = 0.0; a < 2 * pi; a += step) {
       final dx = sin(a), dy = cos(a);
-      final nr = r +
+      final nr =
+          r +
           _noise.noise4XYBeforeZW(dx + so.dx, dy + so.dy, tx, ty) *
               _disturbance *
               r /

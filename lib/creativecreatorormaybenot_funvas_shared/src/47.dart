@@ -87,10 +87,7 @@ class FortySeven extends Funvas with FunvasTweetMixin {
     final triangleGradient = Gradient.linear(
       const Offset(87.2623 + 37.9092, 28.8384 + 123.4389),
       const Offset(42.9205 + 37.9092, 35.0952 + 123.4389),
-      <Color>[
-        const Color(0x001A237E),
-        const Color(0x661A237E),
-      ],
+      <Color>[const Color(0x001A237E), const Color(0x661A237E)],
     );
     final trianglePaint = Paint()..shader = triangleGradient;
 
@@ -116,13 +113,15 @@ class FortySeven extends Funvas with FunvasTweetMixin {
     c.drawPath(bottomBeam, darkPaint);
 
     c.save();
-    c.transform(Float64List.fromList(const <double>[
-      // careful, this is in _column_-major order
-      0.7071, -0.7071, 0.0, 0.0,
-      0.7071, 0.7071, 0.0, 0.0,
-      0.0, 0.0, 1.0, 0.0,
-      -77.697, 98.057, 0.0, 1.0,
-    ]));
+    c.transform(
+      Float64List.fromList(const <double>[
+        // careful, this is in _column_-major order
+        0.7071, -0.7071, 0.0, 0.0,
+        0.7071, 0.7071, 0.0, 0.0,
+        0.0, 0.0, 1.0, 0.0,
+        -77.697, 98.057, 0.0, 1.0,
+      ]),
+    );
     c.drawRect(const Rect.fromLTWH(59.8, 123.1, 39.4, 39.4), mediumPaint);
     c.restore();
 

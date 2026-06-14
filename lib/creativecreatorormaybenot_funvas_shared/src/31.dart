@@ -86,9 +86,6 @@ class _Triangle {
   }
 
   void draw(Canvas canvas, Paint paint) {
-    canvas.drawPath(
-      Path()..addPolygon([a, c, b], true),
-      paint,
-    );
+    canvas.drawPath(Path()..addPolygon([a, c, b], true), paint);
   }
 }

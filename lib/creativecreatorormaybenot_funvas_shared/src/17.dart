@@ -31,12 +31,7 @@ class Seventeen extends Funvas with FunvasTweetMixin {
 
     Paint paint(int i, [bool difference = true]) {
       return Paint()
-        ..color = HSVColor.fromAHSV(
-          1,
-          360 * i / n,
-          1,
-          1,
-        ).toColor()
+        ..color = HSVColor.fromAHSV(1, 360 * i / n, 1, 1).toColor()
         ..strokeWidth = 2
         ..blendMode = difference ? BlendMode.xor : BlendMode.srcOver;
     }

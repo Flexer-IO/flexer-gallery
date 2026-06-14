@@ -21,9 +21,11 @@ class Fifty extends Funvas with FunvasFutureMixin, FunvasTweetMixin {
   Future get future => _completer.future;
 
   Future<void> _init() async {
-    _completer.complete(_fragmentProgram = await FragmentProgram.fromAsset(
-      'packages/showcase_library/lib/creativecreatorormaybenot_funvas_shared/shaders/50.frag',
-    ));
+    _completer.complete(
+      _fragmentProgram = await FragmentProgram.fromAsset(
+        'packages/showcase_library/lib/creativecreatorormaybenot_funvas_shared/shaders/50.frag',
+      ),
+    );
   }
 
   @override

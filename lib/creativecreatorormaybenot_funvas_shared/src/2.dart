@@ -26,18 +26,22 @@ class Two extends Funvas with FunvasTweetMixin {
         startRadius = 19,
         endRadius = 1,
         padding = 16;
-    final startPosition = const Offset(startRadius / 2 + startStroke + padding,
-            startRadius / 2 + startStroke + padding),
+    final startPosition = const Offset(
+          startRadius / 2 + startStroke + padding,
+          startRadius / 2 + startStroke + padding,
+        ),
         endPosition = Offset(w / 2, h / 2);
 
     // Draws a single square outline sequence from outside to inside.
     void sequence(double progress) {
       c.drawRect(
-          Rect.fromCircle(
-              center: Offset.lerp(startPosition, endPosition, progress)!,
-              radius: lerpDouble(startRadius, endRadius, progress)!),
-          outlinePaint
-            ..strokeWidth = lerpDouble(startStroke, endStroke, progress)!);
+        Rect.fromCircle(
+          center: Offset.lerp(startPosition, endPosition, progress)!,
+          radius: lerpDouble(startRadius, endRadius, progress)!,
+        ),
+        outlinePaint
+          ..strokeWidth = lerpDouble(startStroke, endStroke, progress)!,
+      );
     }
 
     void centerRotation(double radians) {

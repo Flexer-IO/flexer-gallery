@@ -31,10 +31,7 @@ class Fifteen extends Funvas with FunvasTweetMixin {
     if (depth == 0) return;
     // Half branch distance.
     final d2 = d1 * 2 / 3;
-    final p2 = Offset(
-      p1.dx + sin(angle) * d2,
-      p1.dy - cos(angle) * d2,
-    );
+    final p2 = Offset(p1.dx + sin(angle) * d2, p1.dy - cos(angle) * d2);
     // Stroke based on depth.
     final paint = Paint()
       ..color = const Color(0xddb58863)

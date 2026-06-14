@@ -32,11 +32,7 @@ class FortyTwo extends Funvas with FunvasTweetMixin {
         var y = .0, alt = false;
         do {
           for (var x = alt ? .0 : _sqrt3 * r / 2; x <= hLim; x += _sqrt3 * r) {
-            final time = _noise.noise3XYBeforeZ(
-              x / d * 10,
-              y / d * 10,
-              i / 1,
-            );
+            final time = _noise.noise3XYBeforeZ(x / d * 10, y / d * 10, i / 1);
             layer.add(_TimedRegularHexagon(x, y, (time - 1) / 2, i % 2 == 0));
           }
           alt = !alt;
@@ -146,10 +142,7 @@ class _TimedRegularHexagon {
     for (var i = 0; i < 6; i++) {
       final angle = pi / 3 * i + pi / 2 + a;
 
-      points.add(Offset(
-        x + radius * cos(angle),
-        y + radius * sin(angle),
-      ));
+      points.add(Offset(x + radius * cos(angle), y + radius * sin(angle)));
     }
     canvas.drawPath(Path()..addPolygon(points, true), paint);
   }

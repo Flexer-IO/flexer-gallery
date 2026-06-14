@@ -88,8 +88,9 @@ class Sixteen extends Funvas with FunvasTweetMixin {
         p1,
         p2,
         Paint()
-          ..color =
-              const Color(0xffffffff).withRed(i * 222 ~/ transformedCube.length)
+          ..color = const Color(
+            0xffffffff,
+          ).withRed(i * 222 ~/ transformedCube.length)
           ..strokeWidth = 11
           ..strokeCap = StrokeCap.round,
       );

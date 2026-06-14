@@ -45,11 +45,23 @@ class TwentyFour extends Funvas with FunvasTweetMixin {
 
     c.drawLine(Offset(x, y), Offset(x + 2 * pi * r, y), bp);
     drawCircle(
-        Offset(x, y), r, (t * pi) % (12 * pi), n, bp..strokeWidth = 2, co);
+      Offset(x, y),
+      r,
+      (t * pi) % (12 * pi),
+      n,
+      bp..strokeWidth = 2,
+      co,
+    );
   }
 
   void drawCircle(
-      Offset center, double radius, double t, int n, Paint paint, int co) {
+    Offset center,
+    double radius,
+    double t,
+    int n,
+    Paint paint,
+    int co,
+  ) {
     final s = center + Offset(0, -radius);
 
     Offset cc(t) {
@@ -59,20 +71,12 @@ class TwentyFour extends Funvas with FunvasTweetMixin {
         return s + Offset(t * radius, 0);
       } else if (t < 3 * pi) {
         final cp = s + Offset(2 * pi * radius, 0);
-        return cp +
-            Offset(
-              sin(t) * radius,
-              radius - cos(t) * radius,
-            );
+        return cp + Offset(sin(t) * radius, radius - cos(t) * radius);
       } else if (t < 5 * pi) {
         return s + Offset(2 * pi * radius - (t - 3 * pi) * radius, radius * 2);
       } else {
         final cp = s + Offset(0, radius * 2);
-        return cp +
-            Offset(
-              sin(t) * radius,
-              -radius - cos(t) * radius,
-            );
+        return cp + Offset(sin(t) * radius, -radius - cos(t) * radius);
       }
     }
 
@@ -82,9 +86,12 @@ class TwentyFour extends Funvas with FunvasTweetMixin {
       };
     }
 
-    Color l(double i) =>
-        HSLColor.fromAHSL(1, (i / 2 / pi * 360 + co) % 360, 3 / 4, 1 / 2)
-            .toColor();
+    Color l(double i) => HSLColor.fromAHSL(
+      1,
+      (i / 2 / pi * 360 + co) % 360,
+      3 / 4,
+      1 / 2,
+    ).toColor();
 
     final oc = t - 3 * pi;
 
@@ -101,8 +108,13 @@ class TwentyFour extends Funvas with FunvasTweetMixin {
     }
   }
 
-  void drawPath(Offset Function(double t) o, double radius, double t, double s,
-      Color color) {
+  void drawPath(
+    Offset Function(double t) o,
+    double radius,
+    double t,
+    double s,
+    Color color,
+  ) {
     final start = o(s);
     final path = Path()..moveTo(start.dx, start.dy);
     for (var i = s; i < t; i += _l) {

@@ -19,11 +19,9 @@ class Six extends Funvas with FunvasTweetMixin {
     _polygons.clear();
 
     for (var i = 3; i < 16; i++) {
-      _polygons.add(_RegularPolygon(
-        center: center,
-        vertices: i,
-        radius: 40 + i * 20,
-      ));
+      _polygons.add(
+        _RegularPolygon(center: center, vertices: i, radius: 40 + i * 20),
+      );
     }
   }
 
@@ -47,36 +45,44 @@ class Six extends Funvas with FunvasTweetMixin {
 
     for (var i = _polygons.length - 1; i >= 0; i--) {
       _polygons[i].draw(
-          c,
-          paint
-            // I actually did not intend the colors to turn out the exact same
-            // way as the original - this is just what I am used to from
-            // Dwitter.
-            ..color = HSVColor.fromAHSV(1, 360 / _polygons.length * i, .7, .9)
-                .toColor());
+        c,
+        paint
+          // I actually did not intend the colors to turn out the exact same
+          // way as the original - this is just what I am used to from
+          // Dwitter.
+          ..color = HSVColor.fromAHSV(
+            1,
+            360 / _polygons.length * i,
+            .7,
+            .9,
+          ).toColor(),
+      );
     }
     for (var i = 0; i < _polygons.length; i++) {
       final metric = _polygons[i].path.computeMetrics().first;
 
-      final progress = t /
+      final progress =
+          t /
           (T /
               // This will make the second outermost dot complete 2 laps in the
               // same time the outermost performs 1 etc.
               (_polygons.length - i));
 
       final point = metric
-          .getTangentForOffset(metric.length *
-              (1 -
-                  (progress -
-                          // This aligns the dots at the bottom center at the start.
-                          // The logic is that we want to move half the distance
-                          // between each vertex. If the whole distance of the path
-                          // is 1, then the distance between each vertex is
-                          // 1 / vertices → half of that distance is
-                          // 1 / (vertices * 2). We add 3 to i because the first
-                          // polygon has 3 vertices and i starts at 0.
-                          1 / ((i + 3) * 2)) %
-                      1))!
+          .getTangentForOffset(
+            metric.length *
+                (1 -
+                    (progress -
+                            // This aligns the dots at the bottom center at the start.
+                            // The logic is that we want to move half the distance
+                            // between each vertex. If the whole distance of the path
+                            // is 1, then the distance between each vertex is
+                            // 1 / vertices → half of that distance is
+                            // 1 / (vertices * 2). We add 3 to i because the first
+                            // polygon has 3 vertices and i starts at 0.
+                            1 / ((i + 3) * 2)) %
+                        1),
+          )!
           .position;
       c.drawCircle(point, 7.5, Paint());
     }
@@ -88,8 +94,8 @@ class _RegularPolygon {
     required this.center,
     required this.radius,
     required this.vertices,
-  })  : assert(radius > 0),
-        assert(vertices > 2) {
+  }) : assert(radius > 0),
+       assert(vertices > 2) {
     _init();
   }
 
@@ -107,7 +113,8 @@ class _RegularPolygon {
       // As I am trying to imitate https://twitter.com/beesandbombs/status/870061547137236992?s=20,
       // I want to position the polygons in a way where there are always two
       // vertices at the bottom in the exact same horizontal positions.
-      final angle = 2 *
+      final angle =
+          2 *
               pi /
               vertices *
               (i -
@@ -119,10 +126,12 @@ class _RegularPolygon {
           +
           pi / 2;
 
-      points.add(Offset(
-        center.dx + radius * cos(angle),
-        center.dy + radius * sin(angle),
-      ));
+      points.add(
+        Offset(
+          center.dx + radius * cos(angle),
+          center.dy + radius * sin(angle),
+        ),
+      );
     }
 
     _path = Path()..addPolygon(points, true);

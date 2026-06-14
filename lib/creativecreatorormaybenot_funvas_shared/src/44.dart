@@ -38,12 +38,7 @@ class FortyFour extends Funvas with FunvasTweetMixin {
     var a = i + t * 4;
     var w = C(a) * 2;
     c.drawOval(
-      Rect.fromLTWH(
-        20 + 9 * S(a),
-        -C(i + t) * S(t) * 12,
-        w,
-        w > 0 ? 2 : 0,
-      ),
+      Rect.fromLTWH(20 + 9 * S(a), -C(i + t) * S(t) * 12, w, w > 0 ? 2 : 0),
       Paint()
         ..blendMode = BlendMode.plus
         ..color = Color(0xffffffff & color),

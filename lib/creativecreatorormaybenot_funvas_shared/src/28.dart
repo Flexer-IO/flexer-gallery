@@ -104,14 +104,12 @@ class TwentyEight extends Funvas with FunvasTweetMixin {
     );
 
   final _ms = TweenSequence<double>([
+    TweenSequenceItem(tween: Tween(begin: 0, end: 0), weight: 1),
     TweenSequenceItem(
-      tween: Tween(begin: 0, end: 0),
-      weight: 1,
-    ),
-    TweenSequenceItem(
-      tween: Tween<double>(begin: 0, end: 1).chain(CurveTween(
-        curve: Curves.ease,
-      )),
+      tween: Tween<double>(
+        begin: 0,
+        end: 1,
+      ).chain(CurveTween(curve: Curves.ease)),
       weight: 2,
     ),
   ]);
@@ -126,10 +124,12 @@ extension on Path {
     final points = <Offset>[];
     for (var i = 0; i < vertices; i++) {
       final angle = 2 * pi / vertices * (i - 1 / 2) + pi / 2;
-      points.add(Offset(
-        center.dx + radius * cos(angle),
-        center.dy + radius * sin(angle),
-      ));
+      points.add(
+        Offset(
+          center.dx + radius * cos(angle),
+          center.dy + radius * sin(angle),
+        ),
+      );
     }
 
     addPolygon(points, true);

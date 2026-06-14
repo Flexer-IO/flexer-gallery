@@ -16,8 +16,9 @@ class Seven extends Funvas with FunvasTweetMixin {
   @override
   void u(double t) {
     const zoomPoint = _ComplexNumber(
-        -1.74999841099374081749002483162428393452822172335808534616943930976364725846655540417646727085571962736578151132907961927190726789896685696750162524460775546580822744596887978637416593715319388030232414667046419863755743802804780843375,
-        -0.00000000000000165712469295418692325810961981279189026504290127375760405334498110850956047368308707050735960323397389547038231194872482690340369921750514146922400928554011996123112902000856666847088788158433995358406779259404221904755);
+      -1.74999841099374081749002483162428393452822172335808534616943930976364725846655540417646727085571962736578151132907961927190726789896685696750162524460775546580822744596887978637416593715319388030232414667046419863755743802804780843375,
+      -0.00000000000000165712469295418692325810961981279189026504290127375760405334498110850956047368308707050735960323397389547038231194872482690340369921750514146922400928554011996123112902000856666847088788158433995358406779259404221904755,
+    );
     const targetZoomFactor = 42;
     // Duration until the target zoom is reached in seconds.
     const zoomDuration = 5;
@@ -28,22 +29,35 @@ class Seven extends Funvas with FunvasTweetMixin {
     // The coordinate range I feel you want to see of the set at 0 zoom.
     final reRange = <double>[-2.1, 0.55], imRange = <double>[-1.2, 1.2];
 
-    final noZoomWindow =
-            Rect.fromLTRB(reRange[0], imRange[0], reRange[1], imRange[1]),
+    final noZoomWindow = Rect.fromLTRB(
+          reRange[0],
+          imRange[0],
+          reRange[1],
+          imRange[1],
+        ),
         targetZoomWindow = Rect.fromCenter(
           center: Offset(zoomPoint.re, zoomPoint.im),
           width: noZoomWindow.width / targetZoomFactor,
           height: noZoomWindow.height / targetZoomFactor,
         );
     final zoomedWindow = Rect.lerp(
-        noZoomWindow, targetZoomWindow, t % zoomDuration / zoomDuration)!;
+      noZoomWindow,
+      targetZoomWindow,
+      t % zoomDuration / zoomDuration,
+    )!;
 
     for (var x = 0; x < this.x.width; x++) {
       for (var y = 0; y < this.x.height; y++) {
         final re = lerpDouble(
-                zoomedWindow.left, zoomedWindow.right, x / this.x.width)!,
+              zoomedWindow.left,
+              zoomedWindow.right,
+              x / this.x.width,
+            )!,
             im = lerpDouble(
-                zoomedWindow.top, zoomedWindow.bottom, y / this.x.height)!;
+              zoomedWindow.top,
+              zoomedWindow.bottom,
+              y / this.x.height,
+            )!;
 
         var n = 0;
         var zre = re, zim = im;

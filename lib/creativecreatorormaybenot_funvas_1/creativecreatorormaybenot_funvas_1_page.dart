@@ -8,10 +8,7 @@ class CreativecreatorormaybenotFunvas1Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: AspectRatio(
-        aspectRatio: 1,
-        child: FunvasContainer(funvas: One()),
-      ),
+      child: AspectRatio(aspectRatio: 1, child: FunvasContainer(funvas: One())),
     );
   }
 }
