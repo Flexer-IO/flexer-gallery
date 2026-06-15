@@ -7,6 +7,7 @@ ComicSparks/jasmine
 ComicSparks/pikapika
 FilledStacks/flutter-tutorials
 FlutterOpen/flutter-ui-nice
+GhostenEditor/Ghosten-Player
 JideGuru/FlutterEbookApp
 KRTirtho/spotube
 LianjiaTech/bruno
@@ -23,6 +24,7 @@ abuanwar072/Flutter-Responsive-Admin-Panel-or-Dashboard
 alibaba/fish-redux
 alibaba/flutter-go
 alibaba/flutter_boost
+anandnet/Harmony-Music
 bdlukaa/fluent_ui
 bggRGjQaUbCoE/PiliPlus
 bostrot/wsl2-distro-manager
@@ -36,6 +38,7 @@ creativecreatorormaybenot/performance
 creativecreatorormaybenot/portfolio
 creativecreatorormaybenot/wakelock
 deckerst/aves
+diegoveloper/flutter-samples
 ente-io/ente
 felangel/bloc
 firebase/flutterfire
@@ -45,6 +48,7 @@ flutter-team-archive/plugins
 flutter/flutter
 flutter/packages
 flutter/samples
+flutter/website
 fzyzcjy/flutter_rust_bridge
 gokadzev/Musify
 gskinnerTeam/flokk
@@ -69,6 +73,7 @@ isar/hive
 isar/isar
 jameskokoska/Cashew
 jiangtian616/JHenTai
+jogboms/flutter_spinkit
 jonataslaw/getx
 kaina404/FlutterDouBan
 kodjodevf/mangayomi
@@ -92,9 +97,11 @@ serverpod/serverpod
 simolus3/drift
 simplezhli/flutter_deer
 spotiflacapp/SpotiFLAC-Mobile
+tekartik/sqflite
 toly1994328/FlutterUnit
 vandadnp/flutter-tips-and-tricks
 venera-app/venera
 wgh136/PicaComic
+xiaoyaocz/flutter_dmzj
 xujiyou/zhihu-flutter
 zino-hofmann/graphql-flutter
