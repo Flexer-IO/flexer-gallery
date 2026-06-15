@@ -41,7 +41,13 @@ class FortyEight extends Funvas with FunvasTweetMixin {
       final lt = t - delay / n * i;
       final lo = opacity * (1 - 1 / n * i);
 
-      _drawParticle(lt, r, pr, offset, const Color(0xffff0000).withValues(alpha: lo));
+      _drawParticle(
+        lt,
+        r,
+        pr,
+        offset,
+        const Color(0xffff0000).withValues(alpha: lo),
+      );
       _drawParticle(
         lt - delay / 8,
         r,

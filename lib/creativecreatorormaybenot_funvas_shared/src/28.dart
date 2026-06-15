@@ -48,7 +48,9 @@ class TwentyEight extends Funvas with FunvasTweetMixin {
       PointMode.points,
       points,
       Paint()
-        ..color = const Color(0xffffffff).withValues(alpha: min(1, 2e3 / _pointsN))
+        ..color = const Color(
+          0xffffffff,
+        ).withValues(alpha: min(1, 2e3 / _pointsN))
         // We want to draw circles.
         ..strokeCap = StrokeCap.round
         ..strokeWidth = _pointDiameter,
