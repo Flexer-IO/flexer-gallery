@@ -3,6 +3,7 @@ AppFlowy-IO/AppFlowy
 AweiLoveAndroid/Flutter-learning
 BasedHardware/omi
 CarGuo/gsy_github_app_flutter
+Chevey339/kelivo
 ComicSparks/jasmine
 ComicSparks/pikapika
 FilledStacks/flutter-tutorials
@@ -40,15 +41,18 @@ creativecreatorormaybenot/wakelock
 deckerst/aves
 diegoveloper/flutter-samples
 ente-io/ente
+erluxman/awesomefluttertips
 felangel/bloc
 firebase/flutterfire
 flame-engine/flame
+fleaflet/flutter_map
 flutter-team-archive/gallery
 flutter-team-archive/plugins
 flutter/flutter
 flutter/packages
 flutter/samples
 flutter/website
+fluttergems/awesome-open-source-flutter-apps
 fzyzcjy/flutter_rust_bridge
 gokadzev/Musify
 gskinnerTeam/flokk
@@ -94,8 +98,10 @@ rrousselGit/provider
 rrousselGit/riverpod
 saber-notes/saber
 serverpod/serverpod
+shorebirdtech/shorebird
 simolus3/drift
 simplezhli/flutter_deer
+singerdmx/flutter-quill
 spotiflacapp/SpotiFLAC-Mobile
 tekartik/sqflite
 toly1994328/FlutterUnit
@@ -104,4 +110,5 @@ venera-app/venera
 wgh136/PicaComic
 xiaoyaocz/flutter_dmzj
 xujiyou/zhihu-flutter
+yubo725/flutter-osc
 zino-hofmann/graphql-flutter
