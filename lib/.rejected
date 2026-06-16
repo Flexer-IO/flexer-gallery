@@ -2,6 +2,7 @@ Anxcye/anx-reader
 AppFlowy-IO/AppFlowy
 AweiLoveAndroid/Flutter-learning
 BasedHardware/omi
+CarGuo/gsy_flutter_demo
 CarGuo/gsy_github_app_flutter
 Chevey339/kelivo
 ComicSparks/jasmine
@@ -27,6 +28,7 @@ alibaba/flutter-go
 alibaba/flutter_boost
 anandnet/Harmony-Music
 bdlukaa/fluent_ui
+best-flutter/flutter_swiper
 bggRGjQaUbCoE/PiliPlus
 bostrot/wsl2-distro-manager
 brianegan/flutter_architecture_samples
@@ -53,6 +55,7 @@ flutter/packages
 flutter/samples
 flutter/website
 fluttergems/awesome-open-source-flutter-apps
+foss42/apidash
 fzyzcjy/flutter_rust_bridge
 gokadzev/Musify
 gskinnerTeam/flokk
@@ -69,6 +72,7 @@ gskinnerTeam/flutter-universal-platform
 gskinnerTeam/flutter-wonderous-app
 guozhigq/pilipala
 harmonoid/harmonoid
+huangruiLearn/flutter_hrlweibo
 iampawan/Flutter-UI-Kit
 iampawan/FlutterExampleApps
 imaNNeo/fl_chart
@@ -76,19 +80,25 @@ ionicfirebaseapp/getwidget
 isar/hive
 isar/isar
 jameskokoska/Cashew
+jayden320/flutter_shuqi
 jiangtian616/JHenTai
 jogboms/flutter_spinkit
 jonataslaw/getx
 kaina404/FlutterDouBan
 kodjodevf/mangayomi
+krille-chan/fluffychat
 leoafarias/fvm
+letsar/flutter_slidable
+letsar/flutter_staggered_grid_view
 localsend/localsend
 lohanidamodar/flutter_ui_challenges
 lollipopkit/flutter_server_box
+lucinhu/bili_you
 lukepighetti/fluro
 miickel/couchpuzzler
 miru-project/miru-app
 mitesh77/Best-Flutter-UI-Templates
+mxflutter/mxflutter
 mylxsw/aidea
 namidaco/namida
 pichillilorenzo/flutter_inappwebview
@@ -109,6 +119,7 @@ vandadnp/flutter-tips-and-tricks
 venera-app/venera
 wgh136/PicaComic
 xiaoyaocz/flutter_dmzj
+xuelongqy/flutter_easy_refresh
 xujiyou/zhihu-flutter
 yubo725/flutter-osc
 zino-hofmann/graphql-flutter
