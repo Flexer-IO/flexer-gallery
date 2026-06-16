@@ -9,6 +9,7 @@ CarGuo/gsy_github_app_flutter
 Chevey339/kelivo
 ComicSparks/jasmine
 ComicSparks/pikapika
+DonutWare/Fladder
 FilledStacks/flutter-tutorials
 FlutterOpen/flutter-ui-nice
 GhostenEditor/Ghosten-Player
@@ -37,6 +38,7 @@ authpass/authpass
 bdlukaa/fluent_ui
 best-flutter/flutter_swiper
 bggRGjQaUbCoE/PiliPlus
+bizz84/flutter-tips-and-tricks
 bostrot/wsl2-distro-manager
 brianegan/flutter_architecture_samples
 cfug/dio
@@ -58,6 +60,7 @@ firebase/flutterfire
 flame-engine/flame
 fleaflet/flutter_map
 flutter-team-archive/gallery
+flutter-team-archive/pinball
 flutter-team-archive/plugins
 flutter/flutter
 flutter/packages
@@ -65,6 +68,7 @@ flutter/samples
 flutter/website
 fluttercandies/wechat_flutter
 fluttergems/awesome-open-source-flutter-apps
+flyerhq/flutter_chat_ui
 foss42/apidash
 fzyzcjy/flutter_rust_bridge
 gokadzev/Musify
@@ -95,13 +99,16 @@ jayden320/flutter_shuqi
 jiangtian616/JHenTai
 jogboms/flutter_spinkit
 jonataslaw/getx
+juicycleff/flutter-unity-view-widget
 kaina404/FlutterDouBan
 kodecocodes/flta-materials
 kodjodevf/mangayomi
 krille-chan/fluffychat
+kubenav/kubenav
 leoafarias/fvm
 letsar/flutter_slidable
 letsar/flutter_staggered_grid_view
+lichess-org/mobile
 localsend/localsend
 lohanidamodar/flutter_ui_challenges
 lollipopkit/flutter_server_box
@@ -123,6 +130,7 @@ rrousselGit/flutter_hooks
 rrousselGit/provider
 rrousselGit/riverpod
 saber-notes/saber
+schultek/jaspr
 serverpod/serverpod
 shichunlei/flutter_app
 shorebirdtech/shorebird
