@@ -15,6 +15,7 @@ FilledStacks/flutter-tutorials
 FlutterOpen/flutter-ui-nice
 GanZhiXiong/GZXTaoBaoAppFlutter
 GhostenEditor/Ghosten-Player
+HemantKArya/BloomeeTunes
 Idean/Flutter-Neumorphic
 JideGuru/FlutterEbookApp
 KRTirtho/spotube
@@ -25,6 +26,7 @@ Notsfsssf/pixez-flutter
 OpenFlutter/flutter_screenutil
 OpenFlutter/fluwx
 Predidit/Kazumi
+Predidit/oneAnime
 ResoCoder/flutter-tdd-clean-architecture-course
 Sky24n/flutter_wanandroid
 Solido/awesome-flutter
@@ -35,6 +37,7 @@ VeryGoodOpenSource/very_good_cli
 WorldHealthOrganization/app
 X-Wei/flutter_catalog
 Xmarmalade/alisthelper
+abuanwar072/E-commerce-App-UI-Flutter
 abuanwar072/Flutter-Responsive-Admin-Panel-or-Dashboard
 alibaba/fish-redux
 alibaba/flutter-go
@@ -48,9 +51,11 @@ best-flutter/flutter_swiper
 bggRGjQaUbCoE/PiliPlus
 bizz84/flutter-tips-and-tricks
 bluefireteam/audioplayers
+bluefireteam/photo_view
 bostrot/wsl2-distro-manager
 brianegan/flutter_architecture_samples
 bytedance/flutter_ume
+canxin121/app_rhyme
 cfug/dio
 chen08209/FlClash
 creativecreatorormaybenot/funvas
@@ -77,8 +82,10 @@ flutter/flutter
 flutter/packages
 flutter/samples
 flutter/website
+fluttercandies/extended_image
 fluttercandies/wechat_flutter
 flutterchina/flukit
+fluttercommunity/flutter_launcher_icons
 fluttergems/awesome-open-source-flutter-apps
 flyerhq/flutter_chat_ui
 foss42/apidash
@@ -107,8 +114,10 @@ ionicfirebaseapp/getwidget
 isar/hive
 isar/isar
 jameskokoska/Cashew
+janoodleFTW/timy-messenger
 jayden320/flutter_shuqi
 jiangtian616/JHenTai
+jing332/AListFlutter
 jogboms/flutter_spinkit
 jonataslaw/getx
 juicycleff/flutter-unity-view-widget
@@ -141,6 +150,7 @@ pauldemarco/flutter_blue
 peng8350/flutter_pulltorefresh
 phoenixsky/fun_android_flutter
 pichillilorenzo/flutter_inappwebview
+robertodoering/harpy
 roughike/inKino
 rrousselGit/flutter_hooks
 rrousselGit/freezed
@@ -156,6 +166,7 @@ simolus3/drift
 simplezhli/flutter_deer
 singerdmx/flutter-quill
 spotiflacapp/SpotiFLAC-Mobile
+syncfusion/flutter-examples
 tekartik/sqflite
 toly1994328/FlutterUnit
 vandadnp/flutter-tips-and-tricks
