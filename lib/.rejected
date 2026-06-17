@@ -3,6 +3,7 @@ Anxcye/anx-reader
 AppFlowy-IO/AppFlowy
 AweiLoveAndroid/Flutter-learning
 BasedHardware/omi
+Baseflow/flutter-permission-handler
 Baseflow/flutter_cached_network_image
 CarGuo/gsy_flutter_demo
 CarGuo/gsy_github_app_flutter
@@ -12,6 +13,7 @@ ComicSparks/pikapika
 DonutWare/Fladder
 FilledStacks/flutter-tutorials
 FlutterOpen/flutter-ui-nice
+GanZhiXiong/GZXTaoBaoAppFlutter
 GhostenEditor/Ghosten-Player
 JideGuru/FlutterEbookApp
 KRTirtho/spotube
@@ -22,6 +24,7 @@ Notsfsssf/pixez-flutter
 OpenFlutter/flutter_screenutil
 OpenFlutter/fluwx
 Predidit/Kazumi
+ResoCoder/flutter-tdd-clean-architecture-course
 Sky24n/flutter_wanandroid
 Solido/awesome-flutter
 TheAlphamerc/flutter_ecommerce_app
@@ -41,6 +44,7 @@ bggRGjQaUbCoE/PiliPlus
 bizz84/flutter-tips-and-tricks
 bostrot/wsl2-distro-manager
 brianegan/flutter_architecture_samples
+bytedance/flutter_ume
 cfug/dio
 chen08209/FlClash
 creativecreatorormaybenot/funvas
@@ -121,12 +125,14 @@ mobxjs/mobx.dart
 mxflutter/mxflutter
 mylxsw/aidea
 namidaco/namida
+nank1ro/flutter-shadcn-ui
 pauldemarco/flutter_blue
 peng8350/flutter_pulltorefresh
 phoenixsky/fun_android_flutter
 pichillilorenzo/flutter_inappwebview
 roughike/inKino
 rrousselGit/flutter_hooks
+rrousselGit/freezed
 rrousselGit/provider
 rrousselGit/riverpod
 saber-notes/saber
@@ -149,4 +155,5 @@ xuelongqy/flutter_easy_refresh
 xujiyou/zhihu-flutter
 youxinLu/flutter_mall
 yubo725/flutter-osc
+yukilzw/dy_flutter
 zino-hofmann/graphql-flutter
