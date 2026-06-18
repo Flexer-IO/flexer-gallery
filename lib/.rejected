@@ -35,6 +35,7 @@ Sky24n/flustars
 Sky24n/flutter_wanandroid
 Solido/awesome-flutter
 Sub6Resources/flutter_html
+TNT-Likely/BeeCount
 TheAlphamerc/flutter_ecommerce_app
 TomBursch/kitchenowl
 UnicornsOnLSD/finamp
@@ -56,6 +57,7 @@ bdlukaa/fluent_ui
 best-flutter/flutter_swiper
 bggRGjQaUbCoE/PiliPlus
 bizz84/flutter-tips-and-tricks
+bizz84/starter_architecture_flutter_firebase
 bluefireteam/audioplayers
 bluefireteam/photo_view
 bostrot/wsl2-distro-manager
@@ -71,10 +73,12 @@ creativecreatorormaybenot/performance
 creativecreatorormaybenot/portfolio
 creativecreatorormaybenot/wakelock
 dahliaOS/pangolin_desktop
+dart-lang/dart-pad
 deckerst/aves
 diegoveloper/flutter-samples
 dstark5/Openlib
 duobaseio/forui
+duytq94/flutter-chat-demo
 edde746/plezy
 ente-io/ente
 erluxman/awesomefluttertips
@@ -94,6 +98,7 @@ fluttercandies/wechat_flutter
 flutterchina/flukit
 fluttercommunity/chewie
 fluttercommunity/flutter_launcher_icons
+fluttercommunity/plus_plugins
 fluttergems/awesome-open-source-flutter-apps
 flyerhq/flutter_chat_ui
 foss42/apidash
@@ -115,6 +120,7 @@ guozhigq/pilipala
 harmonoid/harmonoid
 huangruiLearn/flutter_hrlweibo
 hungps/flutter_pokedex
+iampawan/Flutter-Music-Player
 iampawan/Flutter-UI-Kit
 iampawan/FlutterExampleApps
 imaNNeo/fl_chart
@@ -149,12 +155,14 @@ memspace/zefyr
 miickel/couchpuzzler
 miru-project/miru-app
 mitesh77/Best-Flutter-UI-Templates
+mkobuolys/flutter-design-patterns
 mobxjs/mobx.dart
 mpflutter/mpflutter
 mxflutter/mxflutter
 mylxsw/aidea
 namidaco/namida
 nank1ro/flutter-shadcn-ui
+olmps/memo
 pauldemarco/flutter_blue
 peng8350/flutter_pulltorefresh
 phoenixsky/fun_android_flutter
@@ -177,6 +185,7 @@ simplezhli/flutter_deer
 singerdmx/flutter-quill
 spotiflacapp/SpotiFLAC-Mobile
 syncfusion/flutter-examples
+syncfusion/flutter-widgets
 tekartik/sqflite
 toly1994328/FlutterUnit
 vandadnp/flutter-tips-and-tricks
