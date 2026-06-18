@@ -19,6 +19,7 @@ GhostenEditor/Ghosten-Player
 HemantKArya/BloomeeTunes
 Idean/Flutter-Neumorphic
 JideGuru/FlutterEbookApp
+JideGuru/FlutterFoodybite
 JideGuru/FlutterSocialAppUIKit
 KRTirtho/spotube
 LaoMengFlutter/flutter-do
@@ -55,6 +56,7 @@ anandnet/Harmony-Music
 asjqkkkk/flutter-todos
 authpass/authpass
 bdlukaa/fluent_ui
+befovy/fijkplayer
 best-flutter/flutter_swiper
 bggRGjQaUbCoE/PiliPlus
 bizz84/flutter-tips-and-tricks
@@ -90,10 +92,12 @@ fleaflet/flutter_map
 flutter-team-archive/gallery
 flutter-team-archive/pinball
 flutter-team-archive/plugins
+flutter/devtools
 flutter/flutter
 flutter/packages
 flutter/samples
 flutter/website
+fluttercandies/NeteaseCloudMusic
 fluttercandies/extended_image
 fluttercandies/wechat_flutter
 flutterchina/flukit
@@ -166,6 +170,7 @@ mxflutter/mxflutter
 mylxsw/aidea
 namidaco/namida
 nank1ro/flutter-shadcn-ui
+niuhuan/daisy
 olmps/memo
 pauldemarco/flutter_blue
 peng8350/flutter_pulltorefresh
