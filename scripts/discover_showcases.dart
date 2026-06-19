@@ -42,22 +42,30 @@ final _targetUser = Platform.environment['TARGET_USER'] ?? '';
 final _targetRepo = Platform.environment['TARGET_REPO'] ?? '';
 final _forceReevaluate = Platform.environment['FORCE_REEVALUATE'] == 'true';
 
-const _minStars = 30;
+// Keyword the star-range sweep searches for. Defaults to 'flutter' (broad run);
+// the hourly clock run sets SEARCH_KEYWORD=clock. Star ranges are preserved
+// either way so the 1000-result API window never truncates coverage.
+final _searchKeyword = () {
+  final raw = (Platform.environment['SEARCH_KEYWORD'] ?? 'flutter').trim();
+  return raw.isEmpty ? 'flutter' : raw;
+}();
+
+const _minStars = 0; // AI evaluates regardless of stars — no floor.
 const _maxCandidatesToEvaluate = 12; // hard cap — keeps runtime predictable
 const _maxPerRun = 3;
 const _geminiDelaySec = 5; // inter-call delay (Gemini free tier = 15 req/min)
 
 // Star-range queries — each gets its own 1000-result GitHub API window.
 // Splitting into narrow ranges ensures no repo is missed due to the 10-page cap.
-const _searchQueries = [
-  'flutter language:dart stars:>50000',
-  'flutter language:dart stars:10000..50000',
-  'flutter language:dart stars:5000..10000',
-  'flutter language:dart stars:2000..5000',
-  'flutter language:dart stars:1000..2000',
-  'flutter language:dart stars:500..1000',
-  'flutter language:dart stars:100..500',
-  'flutter language:dart stars:$_minStars..100',
+final _searchQueries = [
+  '$_searchKeyword language:dart stars:>50000',
+  '$_searchKeyword language:dart stars:10000..50000',
+  '$_searchKeyword language:dart stars:5000..10000',
+  '$_searchKeyword language:dart stars:2000..5000',
+  '$_searchKeyword language:dart stars:1000..2000',
+  '$_searchKeyword language:dart stars:500..1000',
+  '$_searchKeyword language:dart stars:100..500',
+  '$_searchKeyword language:dart stars:$_minStars..100',
 ];
 
 const _builtinPackages = {
