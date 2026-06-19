@@ -15,9 +15,12 @@ dependencies:
   google_fonts: ^8.1.0
   shared_preferences: ^2.5.3
 
+  gradient_text: ^1.0.2
+  random_color: ^1.0.3
 flutter:
   assets:
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
   shaders:
     - lib/creativecreatorormaybenot_funvas_shared/shaders/50.frag
+
