@@ -6,6 +6,8 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  flutter_gen:
+    path: lib/cscoderr_flutter_clock_painter/deps/flutter_gen
   flutter_clock_helper:
     path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
   flutter:
@@ -15,9 +17,14 @@ dependencies:
   google_fonts: ^8.1.0
   shared_preferences: ^2.5.3
 
+  bloc: ^8.1.0
+  flutter_bloc: ^8.1.1
+  intl: ^0.17.0
+  line_icons: ^2.0.1
 flutter:
   assets:
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
   shaders:
     - lib/creativecreatorormaybenot_funvas_shared/shaders/50.frag
+
