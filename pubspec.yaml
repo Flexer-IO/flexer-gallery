@@ -15,9 +15,13 @@ dependencies:
   google_fonts: ^8.1.0
   shared_preferences: ^2.5.3
 
+  restart_app: ^1.2.1
+  shorebird_code_push: ^1.1.3
 flutter:
   assets:
+    - assets/shorebirdtech_time_shift/palettes.json
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
   shaders:
     - lib/creativecreatorormaybenot_funvas_shared/shaders/50.frag
+
