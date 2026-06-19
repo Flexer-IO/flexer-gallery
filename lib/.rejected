@@ -33,6 +33,7 @@ OpenFlutter/fluwx
 Predidit/Kazumi
 Predidit/oneAnime
 ResoCoder/flutter-tdd-clean-architecture-course
+SimformSolutionsPvtLtd/showcaseview
 Sky24n/flustars
 Sky24n/flutter_wanandroid
 Solido/awesome-flutter
@@ -46,13 +47,16 @@ WorldHealthOrganization/app
 X-Wei/flutter_catalog
 Xmarmalade/alisthelper
 ZhuJHua/moodiary
+aagarwal1012/Animated-Text-Kit
 abuanwar072/E-commerce-App-UI-Flutter
 abuanwar072/Flutter-Responsive-Admin-Panel-or-Dashboard
+abuanwar072/Flutter-responsive-email-ui---Mobile-Tablet-and-Web
 alibaba/fish-redux
 alibaba/flutter-go
 alibaba/flutter_boost
 aloisdeniel/flutter_device_preview
 anandnet/Harmony-Music
+arianneorpilla/jidoujisho
 asjqkkkk/flutter-todos
 authpass/authpass
 bdlukaa/fluent_ui
@@ -79,11 +83,13 @@ dahliaOS/pangolin_desktop
 dart-lang/dart-pad
 deckerst/aves
 diegoveloper/flutter-samples
+dnfield/flutter_svg
 dstark5/Openlib
 duobaseio/forui
 duytq94/flutter-chat-demo
 edde746/plezy
 ente-io/ente
+entronad/graphic
 erluxman/awesomefluttertips
 felangel/bloc
 firebase/flutterfire
@@ -108,6 +114,7 @@ fluttergems/awesome-open-source-flutter-apps
 flyerhq/flutter_chat_ui
 foss42/apidash
 fzyzcjy/flutter_rust_bridge
+fzyzcjy/flutter_smooth
 gokadzev/Musify
 gskinnerTeam/flokk
 gskinnerTeam/flutter-adaptive-demo
@@ -173,6 +180,7 @@ nank1ro/flutter-shadcn-ui
 niuhuan/daisy
 olmps/memo
 pauldemarco/flutter_blue
+pd4d10/git-touch
 peng8350/flutter_pulltorefresh
 phoenixsky/fun_android_flutter
 pichillilorenzo/flutter_inappwebview
@@ -182,6 +190,7 @@ rrousselGit/flutter_hooks
 rrousselGit/freezed
 rrousselGit/provider
 rrousselGit/riverpod
+rxlabz/panache
 saber-notes/saber
 schultek/jaspr
 serverpod/serverpod
@@ -205,6 +214,7 @@ xiaoyaocz/flutter_dmzj
 xuelongqy/flutter_easy_refresh
 xujiyou/zhihu-flutter
 yang991178/fluent-reader-lite
+ycccccccy/wx_key
 youxinLu/flutter_mall
 yubo725/flutter-osc
 yukilzw/dy_flutter
