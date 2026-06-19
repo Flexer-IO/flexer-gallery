@@ -42,6 +42,7 @@ Solido/awesome-flutter
 Sub6Resources/flutter_html
 SushiiReboot/Nothing-Clock
 TNT-Likely/BeeCount
+The-ring-io/flutter_staggered_animations
 TheAlphamerc/flutter_ecommerce_app
 TomBursch/kitchenowl
 UnicornsOnLSD/finamp
@@ -55,6 +56,7 @@ abuanwar072/E-commerce-App-UI-Flutter
 abuanwar072/Flutter-Responsive-Admin-Panel-or-Dashboard
 abuanwar072/Flutter-responsive-email-ui---Mobile-Tablet-and-Web
 afzalali15/flutter_alarm_clock
+aleksanderwozniak/table_calendar
 alibaba/fish-redux
 alibaba/flutter-go
 alibaba/flutter_boost
@@ -74,6 +76,7 @@ bluefireteam/audioplayers
 bluefireteam/photo_view
 bostrot/wsl2-distro-manager
 brianegan/flutter_architecture_samples
+brianegan/flutter_redux
 bytedance/flutter_ume
 canxin121/app_rhyme
 cfug/dio
@@ -87,6 +90,7 @@ creativecreatorormaybenot/wakelock
 dahliaOS/pangolin_desktop
 dart-lang/dart-pad
 deckerst/aves
+dengyin2000/dynamic_widget
 diegoveloper/flutter-samples
 dnfield/flutter_svg
 dstark5/Openlib
@@ -111,6 +115,7 @@ flutter/samples
 flutter/website
 fluttercandies/NeteaseCloudMusic
 fluttercandies/extended_image
+fluttercandies/flutter_wechat_assets_picker
 fluttercandies/wechat_flutter
 flutterchina/flukit
 fluttercommunity/chewie
@@ -163,6 +168,7 @@ krille-chan/fluffychat
 kubenav/kubenav
 lambiengcode/analog-clock
 leoafarias/fvm
+leoafarias/sidekick
 letsar/flutter_slidable
 letsar/flutter_staggered_grid_view
 lichess-org/mobile
@@ -179,6 +185,7 @@ memspace/zefyr
 miickel/couchpuzzler
 miru-project/miru-app
 mitesh77/Best-Flutter-UI-Templates
+mjl0602/flutter_tiktok
 mkobuolys/flutter-design-patterns
 mobxjs/mobx.dart
 mpflutter/mpflutter
@@ -187,6 +194,7 @@ mylxsw/aidea
 namidaco/namida
 nank1ro/flutter-shadcn-ui
 niuhuan/daisy
+niuhuan/kobi
 olmps/memo
 pauldemarco/flutter_blue
 pd4d10/git-touch
@@ -202,6 +210,7 @@ rrousselGit/riverpod
 rxlabz/panache
 saber-notes/saber
 schultek/jaspr
+serenader2014/flutter_carousel_slider
 serverpod/serverpod
 shichunlei/flutter_app
 shorebirdtech/shorebird
@@ -218,6 +227,7 @@ toly1994328/FlutterUnit
 vandadnp/flutter-tips-and-tricks
 venera-app/venera
 vicolo-dev/chrono
+wasabeef/flutter-architecture-blueprints
 wgh136/PicaComic
 wuba/Fair
 xiaoyaocz/flutter_dmzj
