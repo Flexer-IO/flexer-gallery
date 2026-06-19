@@ -109,15 +109,11 @@ class _PalettePickerState extends State<PalettePicker>
   // could swallow the tap mid-fade.
   void _handleTap() => _open ? _closeDrawer() : _openDrawer();
 
-  void _select(int index) {
-    widget.onSelected(index);
-    _closeDrawer();
-  }
+  // Selection keeps the drawer open so the user can browse/compare palettes
+  // and modes without it dismissing each time. Tapping the trigger closes it.
+  void _select(int index) => widget.onSelected(index);
 
-  void _selectMode(PaletteMode mode) {
-    widget.onModeSelected(mode);
-    _closeDrawer();
-  }
+  void _selectMode(PaletteMode mode) => widget.onModeSelected(mode);
 
   Color? _selectedAccent() {
     final i = widget.selectedIndex;
@@ -252,15 +248,16 @@ class _TriggerButton extends StatelessWidget {
 /// Small status dot on the trigger: the current accent, or a rainbow sweep for
 /// "All" (random rotation).
 class _AccentDot extends StatelessWidget {
-  const _AccentDot({required this.accent});
+  const _AccentDot({required this.accent, this.size = 10});
 
   final Color? accent;
+  final double size;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 10,
-      height: 10,
+      width: size,
+      height: size,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: accent,
@@ -482,7 +479,7 @@ class _ModeTile extends StatelessWidget {
 
   Widget get _leading {
     final child = switch (mode) {
-      PaletteMode.all => const _AccentDot(accent: null),
+      PaletteMode.all => const _AccentDot(accent: null, size: 15),
       PaletteMode.dark => const Icon(
         Icons.dark_mode_rounded,
         color: Colors.white,
