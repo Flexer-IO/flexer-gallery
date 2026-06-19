@@ -21,8 +21,11 @@ final rougeDistributionLmt = 85;
 final jellyDistributionLmt = 97;
 
 class ParticleClockFx extends ClockFx {
-  ParticleClockFx({required Size size, required DateTime? time})
-    : super(size: size, time: time);
+  ParticleClockFx({
+    required Size size,
+    required DateTime? time,
+    int numParticles = 5000,
+  }) : super(size: size, time: time, numParticles: numParticles);
 
   @override
   void tick(Duration duration) {

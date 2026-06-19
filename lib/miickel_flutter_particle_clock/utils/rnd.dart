@@ -56,34 +56,54 @@ class Rnd {
 
     while (result == null) {
       Palette palette = Rnd.getItem(palettes!);
-      List<Color> colors = Rnd.shuffle(palette.components!) as List<Color>;
+      // Copy before shuffling so the source palette list is not mutated.
+      List<Color> colors =
+          Rnd.shuffle(List<Color>.from(palette.components!)) as List<Color>;
 
       var luminance = colors[0].computeLuminance();
 
       if (dark ? luminance <= .1 : luminance >= .1) {
-        var lumDiff = colors
-            .sublist(1)
-            .asMap()
-            .map(
-              (i, color) => MapEntry(i, [
-                i,
-                (luminance - color.computeLuminance()).abs(),
-              ]),
-            )
-            .values
-            .toList();
-
-        lumDiff.sort((List<num> a, List<num> b) {
-          return a[1].compareTo(b[1]);
-        });
-
-        List<Color> sortedColors = lumDiff
-            .map((d) => colors[d[0] + 1 as int])
-            .toList();
-
-        result = Palette(components: [colors[0]] + sortedColors);
+        result = orderPalette(colors);
       }
     }
     return result;
+  }
+
+  /// Whether a palette reads as "dark" — judged by its background (first)
+  /// colour, matching how the clock and previews pick the background.
+  static bool isDarkBg(Palette palette) =>
+      palette.components!.first.computeLuminance() < 0.12;
+
+  /// Returns the [index]th palette ordered for clock use, without any random
+  /// selection or brightness gating. Used when the user locks the clock to a
+  /// single palette.
+  static Palette selectPalette(List<Palette> palettes, int index) {
+    return orderPalette(List<Color>.from(palettes[index].components!));
+  }
+
+  /// Orders [colors] so the first color is the background and the rest are
+  /// sorted by luminance distance from it (closest first).
+  static Palette orderPalette(List<Color> colors) {
+    var luminance = colors[0].computeLuminance();
+
+    var lumDiff = colors
+        .sublist(1)
+        .asMap()
+        .map(
+          (i, color) =>
+              MapEntry(i, [i, (luminance - color.computeLuminance()).abs()]),
+        )
+        .values
+        .toList();
+
+    lumDiff.sort((List<num> a, List<num> b) {
+      return a[1].compareTo(b[1]);
+    });
+
+    List<Color> sortedColors = lumDiff
+        .map((d) => colors[d[0] + 1 as int])
+        .toList();
+
+    return Palette(components: [colors[0]] + sortedColors);
   }
 }

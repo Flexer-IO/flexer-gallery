@@ -20,8 +20,21 @@ class Scene extends StatefulWidget {
   final DateTime? time;
   final Brightness? brightness;
 
-  const Scene({Key? key, this.size, this.palettes, this.time, this.brightness})
-    : super(key: key);
+  /// Index of the palette the clock is locked to, or null to auto-rotate.
+  final int? selectedIndex;
+
+  /// When [selectedIndex] is null, which pool to rotate through.
+  final PaletteMode mode;
+
+  const Scene({
+    Key? key,
+    this.size,
+    this.palettes,
+    this.time,
+    this.brightness,
+    this.selectedIndex,
+    this.mode = PaletteMode.all,
+  }) : super(key: key);
 
   @override
   SceneState createState() => SceneState();
@@ -65,6 +78,12 @@ class SceneState extends State<Scene> with SingleTickerProviderStateMixin {
       }
     }
 
+    // Re-apply immediately when the user changes selection or rotation mode.
+    if (oldWidget.selectedIndex != widget.selectedIndex ||
+        oldWidget.mode != widget.mode) {
+      _updatePalette();
+    }
+
     if (oldWidget.size != widget.size) {
       _fx!.setSize(widget.size!);
       _bgFx!.setSize(widget.size!);
@@ -78,11 +97,27 @@ class SceneState extends State<Scene> with SingleTickerProviderStateMixin {
   /// in terms of luminosity.
   void _updatePalette() {
     var isDarkMode = widget.brightness == Brightness.dark;
-    _palette = Rnd.getPalette(widget.palettes, isDarkMode);
+    if (widget.selectedIndex != null) {
+      _palette = Rnd.selectPalette(widget.palettes!, widget.selectedIndex!);
+    } else if (widget.mode == PaletteMode.all) {
+      _palette = Rnd.getPalette(widget.palettes, isDarkMode);
+    } else {
+      // Rotate randomly within the dark- or light-background pool.
+      final wantDark = widget.mode == PaletteMode.dark;
+      final pool = widget.palettes!
+          .where((p) => Rnd.isDarkBg(p) == wantDark)
+          .toList();
+      final candidates = pool.isEmpty ? widget.palettes! : pool;
+      final pick = Rnd.getItem(candidates) as Palette;
+      _palette = Rnd.orderPalette(List<Color>.from(pick.components!));
+    }
     _bgColor = _palette.components![0];
     _accentColor = _palette.components![_palette.components!.length - 1];
     _fx!.setPalette(_palette);
     _bgFx!.setPalette(_palette);
+    // Bg only ticks every 5th second, so recoloured particles would otherwise
+    // keep their old colours until then. Force an immediate repaint.
+    _bgFx!.tick(const Duration(days: 0));
   }
 
   void _tick(Duration duration) {

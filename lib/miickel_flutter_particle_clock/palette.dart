@@ -1,5 +1,8 @@
 import 'dart:ui';
 
+/// How the clock rotates palettes when not locked to a single one.
+enum PaletteMode { all, dark, light }
+
 /// Holds a list of colors.
 class Palette {
   /// The palette's color members. All unique.

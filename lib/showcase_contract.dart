@@ -19,3 +19,10 @@ class ShowcaseInfo {
   final Orientation? orientation;
   final String? description;
 }
+
+/// Dispatched by an in-showcase overlay (e.g. a scrollable drawer) when a
+/// trackpad pan/zoom starts over it, so the host does not treat that gesture
+/// as a "swipe to exit" the showcase.
+class ShowcasePopVetoNotification extends Notification {
+  const ShowcasePopVetoNotification();
+}
