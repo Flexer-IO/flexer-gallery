@@ -583,20 +583,22 @@ List<String> _envKeys(String varName) => (Platform.environment[varName] ?? '')
     .toList();
 
 // Provider priority: most reliable / highest quota first. Gemini last (aggressive rate limits).
+// Cerebras leads SambaNova — SambaNova keys 429 aggressively in practice, so try
+// Cerebras first and fall through to SambaNova only when Cerebras is unavailable.
 final _aiProviders = <_AiProvider>[
-  // SambaNova — proven working, free 70B, no aggressive rate limits.
-  _AiProvider(
-    name: 'SambaNova',
-    keys: _envKeys('SAMBANOVA_API_KEYS'),
-    url: 'https://api.sambanova.ai/v1/chat/completions',
-    model: 'Meta-Llama-3.3-70B-Instruct',
-  ),
   // Cerebras — fastest inference, generous free quota.
   _AiProvider(
     name: 'Cerebras',
     keys: _envKeys('CEREBRAS_API_KEYS'),
     url: 'https://api.cerebras.ai/v1/chat/completions',
     model: 'gpt-oss-120b',
+  ),
+  // SambaNova — free 70B; used when Cerebras keys are missing/exhausted.
+  _AiProvider(
+    name: 'SambaNova',
+    keys: _envKeys('SAMBANOVA_API_KEYS'),
+    url: 'https://api.sambanova.ai/v1/chat/completions',
+    model: 'Meta-Llama-3.3-70B-Instruct',
   ),
   // NVIDIA — Llama 3.1 70B via NIM API (1000 free credits/month).
   _AiProvider(
@@ -1640,11 +1642,13 @@ Future<String?> createPr(
   }
 
   // Validate: pub get + dep vendoring + analyze + AI fix loop.
+  // Validation failure NEVER drops the candidate: anything the AI deemed
+  // suitable is always opened as a PR. Failures become a DRAFT PR flagged
+  // for manual fixing so an approved repo can never silently vanish.
   print('  Validating showcase...');
   final valid = await validateAndFix(cloneDir, id, sourcePubspec);
   if (!valid) {
-    print('  Showcase failed validation — not submitting PR');
-    return null;
+    print('  Showcase failed validation — opening DRAFT PR for manual review');
   }
 
   // Restore `resolution: workspace` so merged PRs keep it on main.
@@ -1688,8 +1692,18 @@ Future<String?> createPr(
       : '\n**New deps added to pubspec.yaml:**\n'
             '${missingDeps.entries.map((e) => '  - `${e.key}: ${e.value}`').join('\n')}\n';
 
+  final validationBanner = valid
+      ? ''
+      : '> ⚠️ **Automated validation FAILED** — this showcase did not pass '
+            '`flutter pub get` / `dart analyze`. Opened as a **draft** so the '
+            'AI-approved candidate is never lost. A human must fix the build/dep '
+            'errors before merge.\n\n';
+  final validationChecklistItem = valid
+      ? ''
+      : '- [ ] **Fix automated validation failures** (`pub get` / `analyze`)\n';
+
   final prBody =
-      '''## Auto-discovered showcase
+      '''$validationBanner## Auto-discovered showcase
 
 - **Source:** ${repo['html_url']}
 - **Stars:** ${repo['stargazers_count']}
@@ -1698,12 +1712,13 @@ Future<String?> createPr(
 
 **Agent score:** ${evaluation['score']}/10
 **Reason:** ${evaluation['reason']}
+**Automated validation:** ${valid ? '✅ passed' : '❌ failed — needs manual fixing'}
 $depsSection
 ---
 
 ## Review checklist
 
-- [ ] `lib/$id/${id}_page.dart` compiles without errors
+${validationChecklistItem}- [ ] `lib/$id/${id}_page.dart` compiles without errors
 - [ ] Visual result matches description
 - [ ] License confirmed (MIT / Apache 2.0 / BSD)
 
@@ -1717,13 +1732,14 @@ $depsSection
     '--repo',
     _showcaseRepo,
     '--title',
-    'feat: $displayName by $owner',
+    '${valid ? '' : '[needs-fix] '}feat: $displayName by $owner',
     '--body',
     prBody,
     '--head',
     branch,
     '--base',
     'main',
+    if (!valid) '--draft',
   ], workingDirectory: cloneDir);
 
   if (result.exitCode == 0) {
@@ -1832,6 +1848,7 @@ Future<void> main() async {
   final libraryPubspec = await ghFile(_showcaseRepo, 'pubspec.yaml') ?? '';
 
   var submitted = 0;
+  var suitableCount = 0; // repos the AI marked suitable this run
   final prResults = <String, String?>{}; // repo fullName → PR url or null
 
   for (final repo in toEvaluate) {
@@ -1907,6 +1924,7 @@ Future<void> main() async {
       newlyRejected.add(fullName);
       continue;
     }
+    suitableCount++; // AI approved — must always end up as a PR
 
     final missingDeps = computeMissingDeps(sourcePubspec, libraryPubspec);
     if (missingDeps.isNotEmpty) {
@@ -1978,5 +1996,8 @@ Future<void> main() async {
       }
     }
   }
-  print('=== Done. $submitted new PR(s) submitted. ===');
+  print(
+    '=== Done. $suitableCount repo(s) judged suitable by AI, '
+    '$submitted new PR(s) submitted. ===',
+  );
 }
