@@ -6,8 +6,26 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  intl:
+    path: lib/dwite_scenery_flutterclock/deps/intl
+  clock:
+    path:
+    path: lib/dwite_scenery_flutterclock/deps/path
+  flare_flutter:
+    path:
+    path: lib/dwite_scenery_flutterclock/deps/path
+  collection:
+    path:
+    path: lib/dwite_scenery_flutterclock/deps/path
+  meta:
+    path:
+    path: lib/dwite_scenery_flutterclock/deps/path
+  flare_dart:
+    path:
+    path: lib/dwite_scenery_flutterclock/deps/path
   flutter_clock_helper:
-    path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
+    path:
+    path: lib/dwite_scenery_flutterclock/deps/path
   flutter:
     sdk: flutter
   funvas: ^0.1.8
