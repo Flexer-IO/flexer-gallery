@@ -15,9 +15,21 @@ dependencies:
   google_fonts: ^8.1.0
   shared_preferences: ^2.5.3
 
+  flutter_svg: ^2.0.7
+  provider: ^6.0.5
 flutter:
   assets:
+    - assets/abuanwar072_flutter_analog_clock_light_dark_theme/icons/Liberty.svg
+    - assets/abuanwar072_flutter_analog_clock_light_dark_theme/icons/Moon.svg
+    - assets/abuanwar072_flutter_analog_clock_light_dark_theme/icons/Settings.svg
+    - assets/abuanwar072_flutter_analog_clock_light_dark_theme/icons/Sun.svg
+    - assets/abuanwar072_flutter_analog_clock_light_dark_theme/icons/Sydney.svg
+    - assets/abuanwar072_flutter_analog_clock_light_dark_theme/icons/clock.svg
+    - assets/abuanwar072_flutter_analog_clock_light_dark_theme/icons/stop_watch.svg
+    - assets/abuanwar072_flutter_analog_clock_light_dark_theme/icons/watch_2.svg
+    - assets/abuanwar072_flutter_analog_clock_light_dark_theme/icons/world.svg
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
   shaders:
     - lib/creativecreatorormaybenot_funvas_shared/shaders/50.frag
+
