@@ -1,17 +1,6 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
-
-// Temporary stub for TinyClock model to resolve missing import.
-// In the actual project, replace this with the proper import.
-class TinyClock {
-  final int hour;
-  final int minutes;
-
-  const TinyClock({
-    required this.hour,
-    required this.minutes,
-  });
-}
+import '../../models/tiny_clock.dart';
 
 class ClockViewPainter extends CustomPainter {
   final TinyClock tinyClock;
@@ -21,7 +10,7 @@ class ClockViewPainter extends CustomPainter {
   final Paint mPaint = Paint()
     ..style = PaintingStyle.stroke
     ..isAntiAlias = true
-    ..color = Colors.black.withOpacity(0.2)
+    ..color = Colors.black.withValues(alpha: 0.2)
     ..maskFilter = const MaskFilter.blur(BlurStyle.inner, 0.2)
     ..strokeWidth = 0.5;
 
