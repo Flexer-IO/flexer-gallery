@@ -10,14 +10,9 @@ dependencies:
     path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
   flutter:
     sdk: flutter
-  funvas: ^0.1.8
-  open_simplex_2: ^0.2.1
-  google_fonts: ^8.1.0
   shared_preferences: ^2.5.3
 
 flutter:
   assets:
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
-  shaders:
-    - lib/creativecreatorormaybenot_funvas_shared/shaders/50.frag
