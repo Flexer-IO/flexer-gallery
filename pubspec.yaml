@@ -6,8 +6,36 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  image:
+    path: lib/mboonchai_da_pixel/deps/image
+  xml:
+    path: lib/mboonchai_da_pixel/deps/xml
+  petitparser:
+    path: lib/mboonchai_da_pixel/deps/petitparser
+  archive:
+    path: lib/mboonchai_da_pixel/deps/archive
+  posix:
+    path: lib/mboonchai_da_pixel/deps/posix
+  ffi:
+    path: lib/mboonchai_da_pixel/deps/ffi
+  flame:
+    path:
+    path: lib/mboonchai_da_pixel/deps/path
+  ordered_set:
+    path:
+    path: lib/mboonchai_da_pixel/deps/path
+  vector_math:
+    path:
+    path: lib/mboonchai_da_pixel/deps/path
+  meta:
+    path:
+    path: lib/mboonchai_da_pixel/deps/path
+  collection:
+    path:
+    path: lib/mboonchai_da_pixel/deps/path
   flutter_clock_helper:
-    path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
+    path:
+    path: lib/mboonchai_da_pixel/deps/path
   flutter:
     sdk: flutter
   funvas: ^0.1.8
