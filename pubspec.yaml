@@ -6,6 +6,18 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  wakelock:
+    path: lib/echokk11_flutter_flip_clock/deps/wakelock
+  wakelock_macos:
+    path: lib/echokk11_flutter_flip_clock/deps/wakelock_macos
+  wakelock_web:
+    path: lib/echokk11_flutter_flip_clock/deps/wakelock_web
+  wakelock_platform_interface:
+    path: lib/echokk11_flutter_flip_clock/deps/wakelock_platform_interface
+  meta:
+    path: lib/echokk11_flutter_flip_clock/deps/meta
+  js:
+    path: lib/echokk11_flutter_flip_clock/deps/js
   flutter_clock_helper:
     path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
   flutter:
