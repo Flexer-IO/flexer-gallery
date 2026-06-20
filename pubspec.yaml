@@ -6,8 +6,26 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  intl:
+    path: lib/vlidholt_flutter_clock/deps/intl
+  clock:
+    path:
+    path: lib/vlidholt_flutter_clock/deps/path
+  meta:
+    path:
+    path: lib/vlidholt_flutter_clock/deps/path
+  spritewidget:
+    path:
+    path: lib/vlidholt_flutter_clock/deps/path
+  vector_math:
+    path:
+    path: lib/vlidholt_flutter_clock/deps/path
+  text_to_path_maker:
+    path:
+    path: lib/vlidholt_flutter_clock/deps/path
   flutter_clock_helper:
-    path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
+    path:
+    path: lib/vlidholt_flutter_clock/deps/path
   flutter:
     sdk: flutter
   shared_preferences: ^2.5.3
