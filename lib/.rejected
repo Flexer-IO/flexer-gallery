@@ -19,10 +19,12 @@ ComicSparks/wax
 DavBfr/dart_pdf
 DonutWare/Fladder
 EricZeller/flutter-world-clock-v2
+Ferry-200/coriander_player
 FilledStacks/flutter-tutorials
 Flutter-Bounty-Hunters/super_editor
 FlutterGen/flutter_gen
 FlutterOpen/flutter-ui-nice
+FriesI23/mhabit
 GanZhiXiong/GZXTaoBaoAppFlutter
 GhostenEditor/Ghosten-Player
 GiddyNaya/clockee
@@ -49,9 +51,11 @@ OpenFlutter/flutter_screenutil
 OpenFlutter/fluwx
 Predidit/Kazumi
 Predidit/oneAnime
+RIP-Comm/sossoldi
 RafaelBarbosatec/bonfire
 Rahul-Blatz/Complete-Analog-and-Digital-World-Clock-Flutter
 Rannie/flui
+ReinBentdal/styled_widget
 ResoCoder/flutter-tdd-clean-architecture-course
 Ronak99/ClockApp
 SimformSolutionsPvtLtd/showcaseview
@@ -59,6 +63,7 @@ Sky24n/common_utils
 Sky24n/flustars
 Sky24n/flutter_wanandroid
 Solido/awesome-flutter
+SongTube/SongTube-App
 Sub6Resources/flutter_html
 SushiiReboot/Nothing-Clock
 Suwayomi/Tachidesk-Sorayomi
@@ -72,11 +77,13 @@ VeryGoodOpenSource/very_good_cli
 WorldHealthOrganization/app
 X-Wei/flutter_catalog
 Xmarmalade/alisthelper
+Yubico/yubioath-flutter
 ZhuJHua/moodiary
 aagarwal1012/Animated-Text-Kit
 abuanwar072/E-commerce-App-UI-Flutter
 abuanwar072/Flutter-Responsive-Admin-Panel-or-Dashboard
 abuanwar072/Flutter-responsive-email-ui---Mobile-Tablet-and-Web
+abuanwar072/Welcome-Login-Signup-Page-Flutter
 afzalali15/flutter_alarm_clock
 akshathjain/sliding_up_panel
 aleksanderwozniak/table_calendar
@@ -85,12 +92,15 @@ alibaba/flutter-go
 alibaba/flutter_boost
 aloisdeniel/flutter_device_preview
 amchii/FloatingClock
+amir-hossein-rajaezadeh/flutter_clock_app
 amirziyacode/Fluttter_Clock
 anandnet/Harmony-Music
 arianneorpilla/jidoujisho
 asjqkkkk/flutter-todos
+astubenbord/paperless-mobile
 atsign-foundation/at_client_sdk
 authpass/authpass
+aws-amplify/amplify-flutter
 bdlukaa/fluent_ui
 befovy/fijkplayer
 best-flutter/flutter_swiper
@@ -192,6 +202,7 @@ jamesblasco/modal_bottom_sheet
 jameskokoska/Cashew
 janoodleFTW/timy-messenger
 javico2609/flutter-challenges
+javiercbk/json_to_dart
 jayden320/flutter_shuqi
 jiangtian616/JHenTai
 jing332/AListFlutter
@@ -205,6 +216,7 @@ kodjodevf/mangayomi
 krille-chan/fluffychat
 kubenav/kubenav
 lambiengcode/analog-clock
+leancodepl/patrol
 leo-elstin/Flutter-UI-Kits
 leoafarias/fvm
 leoafarias/sidekick
@@ -243,6 +255,7 @@ niuhuan/daisy
 niuhuan/kobi
 olayemii/flutter-ui-kits
 olmps/memo
+openfoodfacts/smooth-app
 pauldemarco/flutter_blue
 pd4d10/git-touch
 peng8350/flutter_pulltorefresh
