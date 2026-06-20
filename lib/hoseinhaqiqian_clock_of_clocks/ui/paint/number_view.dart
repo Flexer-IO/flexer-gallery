@@ -12,7 +12,7 @@ class NumberView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        for (int i = 0; i < clocks.length ~/ 7; i++)
+        for (int i = 0; i < clocks.length ~/ 6; i++)
           Row(
             children: [
               for (int j = i * 6; j < (i * 6) + 6; j++)
@@ -33,7 +33,7 @@ class NumberView extends StatelessWidget {
       ),
       builder: (context, value, child) {
         return CustomPaint(
-          painter: painter.ClockViewPainter(tinyClock: value!),
+          painter: painter.ClockViewPainter(tinyClock: value ?? tinyClock),
           child: child,
         );
       },

@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const ClockViewPage(title: 'Clock of clocks'),
+      home: const ClockViewPage(),
     );
   }
 }
