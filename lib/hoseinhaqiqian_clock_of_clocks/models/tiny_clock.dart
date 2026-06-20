@@ -1,0 +1,22 @@
+class TinyClock {
+  static final TinyClock VERTICAL = TinyClock(hour: 0, minutes: 6);
+  static final TinyClock HORIZONTAL = TinyClock(hour: 9, minutes: 3);
+  static final TinyClock topLeft = TinyClock(hour: 0, minutes: 9);
+  static final TinyClock topRight = TinyClock(hour: 0, minutes: 3);
+  static final TinyClock NON = TinyClock(hour: 2, minutes: 2);
+  static final TinyClock bottomLeft = TinyClock(hour: 6, minutes: 9);
+  static final TinyClock bottomRight = TinyClock(hour: 6, minutes: 3);
+
+  double hour;
+  double minutes;
+
+  TinyClock({required this.hour, required this.minutes});
+
+  TinyClock operator *(num other) {
+    return TinyClock(hour: hour * other, minutes: minutes * other);
+  }
+
+  bool equal(TinyClock tinyClock) {
+    return hour == tinyClock.hour || minutes == tinyClock.minutes;
+  }
+}
