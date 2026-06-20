@@ -12,6 +12,7 @@ CCExtractor/ultimate_alarm_clock
 CarGuo/gsy_flutter_demo
 CarGuo/gsy_github_app_flutter
 Chevey339/kelivo
+Codelessly/ResponsiveFramework
 ComicSparks/jasmine
 ComicSparks/pikapika
 ComicSparks/wax
@@ -39,6 +40,7 @@ Livinglist/Hacki
 MaikuB/flutter_local_notifications
 Mayandev/morec
 Milad-Akarie/auto_route_library
+Milad-Akarie/smooth_page_indicator
 Mindinventory/clock_loader
 MohammedAsaadAsaad/quds_ui_kit
 NearHuscarl/flutter_login
@@ -47,10 +49,13 @@ OpenFlutter/flutter_screenutil
 OpenFlutter/fluwx
 Predidit/Kazumi
 Predidit/oneAnime
+RafaelBarbosatec/bonfire
 Rahul-Blatz/Complete-Analog-and-Digital-World-Clock-Flutter
+Rannie/flui
 ResoCoder/flutter-tdd-clean-architecture-course
 Ronak99/ClockApp
 SimformSolutionsPvtLtd/showcaseview
+Sky24n/common_utils
 Sky24n/flustars
 Sky24n/flutter_wanandroid
 Solido/awesome-flutter
@@ -73,6 +78,7 @@ abuanwar072/E-commerce-App-UI-Flutter
 abuanwar072/Flutter-Responsive-Admin-Panel-or-Dashboard
 abuanwar072/Flutter-responsive-email-ui---Mobile-Tablet-and-Web
 afzalali15/flutter_alarm_clock
+akshathjain/sliding_up_panel
 aleksanderwozniak/table_calendar
 alibaba/fish-redux
 alibaba/flutter-go
@@ -83,12 +89,15 @@ amirziyacode/Fluttter_Clock
 anandnet/Harmony-Music
 arianneorpilla/jidoujisho
 asjqkkkk/flutter-todos
+atsign-foundation/at_client_sdk
 authpass/authpass
 bdlukaa/fluent_ui
 befovy/fijkplayer
 best-flutter/flutter_swiper
+beyondtranslate/beyondtranslate
 bggRGjQaUbCoE/PiliPlus
 bizz84/flutter-tips-and-tricks
+bizz84/layout-demo-flutter
 bizz84/starter_architecture_flutter_firebase
 bluefireteam/audioplayers
 bluefireteam/photo_view
@@ -150,6 +159,7 @@ furkantektas/analog_clock
 fzyzcjy/flutter_rust_bridge
 fzyzcjy/flutter_smooth
 gokadzev/Musify
+google/flutter.widgets
 gskinnerTeam/flokk
 gskinnerTeam/flutter-adaptive-demo
 gskinnerTeam/flutter-defer-pointer
@@ -171,6 +181,7 @@ iampawan/Flutter-UI-Kit
 iampawan/FlutterExampleApps
 iampawan/VelocityX
 imaNNeo/fl_chart
+invertase/melos
 invoiceninja/admin-portal
 ionicfirebaseapp/getwidget
 isar/hive
@@ -273,6 +284,7 @@ wuba/Fair
 xiaoyaocz/flutter_dmzj
 xuelongqy/flutter_easy_refresh
 xujiyou/zhihu-flutter
+xuyisheng/flutter_dojo
 yang991178/fluent-reader-lite
 ycccccccy/wx_key
 youxinLu/flutter_mall
