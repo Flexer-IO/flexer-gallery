@@ -6,13 +6,86 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  google_fonts:
+    path: lib/ashu98s_flutter_clock_app_ui/deps/google_fonts
+  path_provider:
+    path: lib/ashu98s_flutter_clock_app_ui/deps/path_provider
+  path_provider_platform_interface:
+    path: lib/ashu98s_flutter_clock_app_ui/deps/path_provider_platform_interface
+  plugin_platform_interface:
+    path: lib/ashu98s_flutter_clock_app_ui/deps/plugin_platform_interface
+  platform:
+    path: lib/ashu98s_flutter_clock_app_ui/deps/platform
+  crypto:
+    path: lib/ashu98s_flutter_clock_app_ui/deps/crypto
+  flutter_svg:
+    path: lib/ashu98s_flutter_clock_app_ui/deps/flutter_svg
+  vector_graphics:
+    path: lib/ashu98s_flutter_clock_app_ui/deps/vector_graphics
+  http:
+    path: lib/ashu98s_flutter_clock_app_ui/deps/http
+  web:
+    path: lib/ashu98s_flutter_clock_app_ui/deps/web
+  http_parser:
+    path: lib/ashu98s_flutter_clock_app_ui/deps/http_parser
+  typed_data:
+    path: lib/ashu98s_flutter_clock_app_ui/deps/typed_data
+  string_scanner:
+    path: lib/ashu98s_flutter_clock_app_ui/deps/string_scanner
+  source_span:
+    path: lib/ashu98s_flutter_clock_app_ui/deps/source_span
+  term_glyph:
+    path: lib/ashu98s_flutter_clock_app_ui/deps/term_glyph
+  async:
+    path:
+    path: lib/ashu98s_flutter_clock_app_ui/deps/path
+  vector_graphics_compiler:
+    path:
+    path: lib/ashu98s_flutter_clock_app_ui/deps/path
+  xml:
+    path:
+    path: lib/ashu98s_flutter_clock_app_ui/deps/path
+  petitparser:
+    path:
+    path: lib/ashu98s_flutter_clock_app_ui/deps/path
+  path_parsing:
+    path:
+    path: lib/ashu98s_flutter_clock_app_ui/deps/path
+  vector_math:
+    path:
+    path: lib/ashu98s_flutter_clock_app_ui/deps/path
+  meta:
+    path:
+    path: lib/ashu98s_flutter_clock_app_ui/deps/path
+  vector_graphics_codec:
+    path:
+    path: lib/ashu98s_flutter_clock_app_ui/deps/path
+  provider:
+    path:
+    path: lib/ashu98s_flutter_clock_app_ui/deps/path
+  nested:
+    path:
+    path: lib/ashu98s_flutter_clock_app_ui/deps/path
+  collection:
+    path:
+    path: lib/ashu98s_flutter_clock_app_ui/deps/path
   flutter_clock_helper:
-    path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
+    path:
+    path: lib/ashu98s_flutter_clock_app_ui/deps/path
   flutter:
     sdk: flutter
   shared_preferences: ^2.5.3
 
 flutter:
   assets:
+    - assets/ashu98s_flutter_clock_app_ui/icons/Liberty.svg
+    - assets/ashu98s_flutter_clock_app_ui/icons/Moon.svg
+    - assets/ashu98s_flutter_clock_app_ui/icons/Settings.svg
+    - assets/ashu98s_flutter_clock_app_ui/icons/Sun.svg
+    - assets/ashu98s_flutter_clock_app_ui/icons/Sydney.svg
+    - assets/ashu98s_flutter_clock_app_ui/icons/clock.svg
+    - assets/ashu98s_flutter_clock_app_ui/icons/stop_watch.svg
+    - assets/ashu98s_flutter_clock_app_ui/icons/watch_2.svg
+    - assets/ashu98s_flutter_clock_app_ui/icons/world.svg
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
