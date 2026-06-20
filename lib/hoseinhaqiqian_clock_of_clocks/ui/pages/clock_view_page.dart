@@ -33,9 +33,11 @@ class _ClockViewPageState extends State<ClockViewPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
+    return ColoredBox(
+      color: Colors.white,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -50,7 +52,8 @@ class _ClockViewPageState extends State<ClockViewPage> {
             for (var value in dateTime.second.splitter()) _buildNumber(value),
           ],
         ),
-      ],
+        ],
+      ),
     );
   }
 
