@@ -6,8 +6,51 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  simple_animations:
+    path: lib/ahsanalidev_flutter_clock/deps/simple_animations
+  intl:
+    path: lib/ahsanalidev_flutter_clock/deps/intl
+  clock:
+    path: lib/ahsanalidev_flutter_clock/deps/clock
+  google_fonts:
+    path: lib/ahsanalidev_flutter_clock/deps/google_fonts
+  path_provider:
+    path: lib/ahsanalidev_flutter_clock/deps/path_provider
+  path_provider_platform_interface:
+    path: lib/ahsanalidev_flutter_clock/deps/path_provider_platform_interface
+  plugin_platform_interface:
+    path: lib/ahsanalidev_flutter_clock/deps/plugin_platform_interface
+  platform:
+    path: lib/ahsanalidev_flutter_clock/deps/platform
+  http:
+    path: lib/ahsanalidev_flutter_clock/deps/http
+  web:
+    path: lib/ahsanalidev_flutter_clock/deps/web
+  http_parser:
+    path: lib/ahsanalidev_flutter_clock/deps/http_parser
+  typed_data:
+    path: lib/ahsanalidev_flutter_clock/deps/typed_data
+  string_scanner:
+    path: lib/ahsanalidev_flutter_clock/deps/string_scanner
+  source_span:
+    path: lib/ahsanalidev_flutter_clock/deps/source_span
+  term_glyph:
+    path: lib/ahsanalidev_flutter_clock/deps/term_glyph
+  async:
+    path:
+    path: lib/ahsanalidev_flutter_clock/deps/path
+  meta:
+    path:
+    path: lib/ahsanalidev_flutter_clock/deps/path
+  collection:
+    path:
+    path: lib/ahsanalidev_flutter_clock/deps/path
+  crypto:
+    path:
+    path: lib/ahsanalidev_flutter_clock/deps/path
   flutter_clock_helper:
-    path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
+    path:
+    path: lib/ahsanalidev_flutter_clock/deps/path
   flutter:
     sdk: flutter
   shared_preferences: ^2.5.3
