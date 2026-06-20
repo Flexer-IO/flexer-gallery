@@ -9,6 +9,7 @@ BasedHardware/omi
 Baseflow/flutter-geolocator
 Baseflow/flutter-permission-handler
 Baseflow/flutter_cached_network_image
+BlueBubblesApp/bluebubbles-app
 CCExtractor/ultimate_alarm_clock
 CarGuo/gsy_flutter_demo
 CarGuo/gsy_github_app_flutter
@@ -19,6 +20,7 @@ ComicSparks/pikapika
 ComicSparks/wax
 Crazy-MT/flutter_flip_clock
 DavBfr/dart_pdf
+Dinesh-Sowndar/flutter_billing_app
 DonutWare/Fladder
 EricZeller/flutter-world-clock-v2
 Ferry-200/coriander_player
@@ -46,6 +48,7 @@ MDeLuise/plant-it
 MaikuB/flutter_local_notifications
 MarcBrede/chess_clock
 Mayandev/morec
+Merrit/nyrna
 Milad-Akarie/auto_route_library
 Milad-Akarie/smooth_page_indicator
 Mindinventory/clock_loader
@@ -120,6 +123,7 @@ bizz84/starter_architecture_flutter_firebase
 bluefireteam/audioplayers
 bluefireteam/photo_view
 bostrot/wsl2-distro-manager
+brendan-duncan/image
 brianegan/flutter_architecture_samples
 brianegan/flutter_redux
 burhanrashid52/WhatTodo
@@ -155,10 +159,12 @@ firebase/flutterfire
 flame-engine/flame
 fleaflet/flutter_map
 flutter-form-builder-ecosystem/flutter_form_builder
+flutter-ml/google_ml_kit_flutter
 flutter-team-archive/flutter_clock
 flutter-team-archive/gallery
 flutter-team-archive/pinball
 flutter-team-archive/plugins
+flutter-webrtc/flutter-webrtc-demo
 flutter/devtools
 flutter/flutter
 flutter/packages
@@ -166,6 +172,7 @@ flutter/samples
 flutter/website
 fluttercandies/NeteaseCloudMusic
 fluttercandies/extended_image
+fluttercandies/flutter_smart_dialog
 fluttercandies/flutter_wechat_assets_picker
 fluttercandies/wechat_flutter
 flutterchina/flukit
@@ -196,6 +203,7 @@ guozhigq/pilipala
 harmonoid/harmonoid
 huangruiLearn/flutter_hrlweibo
 hungps/flutter_pokedex
+iamSahdeep/liquid_swipe_flutter
 iampawan/Flutter-Music-Player
 iampawan/Flutter-UI-Kit
 iampawan/FlutterExampleApps
@@ -268,6 +276,7 @@ naveeramesh/clock_app
 niuhuan/daisy
 niuhuan/kobi
 nslogx/flutter_easyloading
+objectbox/objectbox-dart
 olayemii/flutter-ui-kits
 olmps/memo
 openfoodfacts/smooth-app
@@ -291,9 +300,11 @@ saber-notes/saber
 schultek/jaspr
 serenader2014/flutter_carousel_slider
 serverpod/serverpod
+shenghy/flutter_shop
 shichunlei/flutter_app
 shorebirdtech/shorebird
 simc/auto_size_text
+simc/awesome-flutter-packages
 simolus3/drift
 simonoppowa/OpenNutriTracker
 simplezhli/flutter_deer
