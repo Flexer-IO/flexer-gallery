@@ -6,6 +6,7 @@ AppFlowy-IO/AppFlowy
 AshutoshPatole/FlutterUI
 AweiLoveAndroid/Flutter-learning
 BasedHardware/omi
+Baseflow/flutter-geolocator
 Baseflow/flutter-permission-handler
 Baseflow/flutter_cached_network_image
 CCExtractor/ultimate_alarm_clock
@@ -36,9 +37,11 @@ JideGuru/FlutterFoodybite
 JideGuru/FlutterSocialAppUIKit
 KRTirtho/spotube
 LaoMengFlutter/flutter-do
+LeetaoGoooo/RSSAid
 LianjiaTech/bruno
 LinwoodDev/Butterfly
 Livinglist/Hacki
+MDeLuise/plant-it
 MaikuB/flutter_local_notifications
 Mayandev/morec
 Milad-Akarie/auto_route_library
@@ -81,6 +84,7 @@ Xmarmalade/alisthelper
 Yubico/yubioath-flutter
 ZhuJHua/moodiary
 aagarwal1012/Animated-Text-Kit
+aagarwal1012/Liquid-Pull-To-Refresh
 abuanwar072/E-commerce-App-UI-Flutter
 abuanwar072/Flutter-Responsive-Admin-Panel-or-Dashboard
 abuanwar072/Flutter-responsive-email-ui---Mobile-Tablet-and-Web
@@ -115,6 +119,7 @@ bluefireteam/photo_view
 bostrot/wsl2-distro-manager
 brianegan/flutter_architecture_samples
 brianegan/flutter_redux
+burhanrashid52/WhatTodo
 bytedance/flutter_ume
 canxin121/app_rhyme
 cfug/dio
@@ -208,6 +213,7 @@ javiercbk/json_to_dart
 jayden320/flutter_shuqi
 jiangtian616/JHenTai
 jing332/AListFlutter
+jogboms/flutter_offline
 jogboms/flutter_spinkit
 jonataslaw/getx
 jonbhanson/flutter_native_splash
@@ -235,8 +241,10 @@ mabDc/eso
 macosui/macos_ui
 manishmeganathan/metronome
 manudevcode/flutter_alarm_app
+marchellodev/sharik
 mateusz-bak/openreads
 media-kit/media-kit
+meditohq/medito-app
 memspace/zefyr
 mevljas/flutter_alarm_clock
 miguelpruivo/flutter_file_picker
@@ -255,6 +263,7 @@ nank1ro/flutter-shadcn-ui
 naveeramesh/clock_app
 niuhuan/daisy
 niuhuan/kobi
+nslogx/flutter_easyloading
 olayemii/flutter-ui-kits
 olmps/memo
 openfoodfacts/smooth-app
@@ -264,6 +273,7 @@ peng8350/flutter_pulltorefresh
 phoenixsky/fun_android_flutter
 phucgaoxam/slide_countdown_clock
 pichillilorenzo/flutter_inappwebview
+quickemu-project/quickgui
 recepbasturk/clock_game
 rive-app/rive-flutter
 robertodoering/harpy
@@ -298,9 +308,11 @@ wasabeef/flutter-architecture-blueprints
 wgh136/PicaComic
 wuba/Fair
 xiaoyaocz/flutter_dmzj
+xpavle00/Habo
 xuelongqy/flutter_easy_refresh
 xujiyou/zhihu-flutter
 xuyisheng/flutter_dojo
+xvrh/lottie-flutter
 yang991178/fluent-reader-lite
 ycccccccy/wx_key
 youxinLu/flutter_mall
