@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'customizer.dart';
-import 'model.dart';
 import 'snake_clock.dart';
 
 class GildevSnakeclockPage extends StatelessWidget {
   const GildevSnakeclockPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return ClockCustomizer((ClockModel model) => SnakeClock(model));
-  }
+  Widget build(BuildContext context) => const SnakeClock();
 }
