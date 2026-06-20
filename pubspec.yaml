@@ -6,6 +6,14 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  clock:
+    path: lib/tsinis_flutter_clock/deps/clock
+  flare_flutter:
+    path: lib/tsinis_flutter_clock/deps/flare_flutter
+  collection:
+    path: lib/tsinis_flutter_clock/deps/collection
+  meta:
+    path: lib/tsinis_flutter_clock/deps/meta
   flutter_clock_helper:
     path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
   flutter:
