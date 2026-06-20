@@ -11,6 +11,7 @@ class NumberView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         for (int i = 0; i < clocks.length ~/ 6; i++)
           Row(
