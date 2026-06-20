@@ -6,8 +6,17 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  intl:
+    path: lib/geekyants_flutter_login_home_animation/deps/intl
+  clock:
+    path:
+    path: lib/geekyants_flutter_login_home_animation/deps/path
+  meta:
+    path:
+    path: lib/geekyants_flutter_login_home_animation/deps/path
   flutter_clock_helper:
-    path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
+    path:
+    path: lib/geekyants_flutter_login_home_animation/deps/path
   flutter:
     sdk: flutter
   shared_preferences: ^2.5.3
