@@ -173,7 +173,7 @@
     },
     {
       "name": "path_provider_linux",
-      "version": "2.2.2",
+      "version": "2.2.1",
       "dependencies": [
         "ffi",
         "flutter",
