@@ -52,6 +52,7 @@ LeetaoGoooo/RSSAid
 LianjiaTech/bruno
 LinwoodDev/Butterfly
 Livinglist/Hacki
+Lyokone/flutterlocation
 MDeLuise/plant-it
 MaikuB/flutter_local_notifications
 MarcBrede/chess_clock
@@ -64,6 +65,7 @@ Mindinventory/clock_loader
 MohammedAsaadAsaad/quds_ui_kit
 Mouhaned-55/tictac_clock_app
 NearHuscarl/flutter_login
+Norbert515/flutter_ide
 Notsfsssf/pixez-flutter
 OpenFlutter/flutter_screenutil
 OpenFlutter/fluwx
@@ -89,6 +91,7 @@ Suwayomi/Tachidesk-Sorayomi
 TNT-Likely/BeeCount
 TOM88812/xiaozhi-android-client
 Tarikul711/flutter-food-delivery-app-ui
+Tencent/tdesign-flutter
 ThangVuNguyenViet/clock_app
 The-ring-io/flutter_staggered_animations
 TheAlphamerc/flutter_ecommerce_app
@@ -96,11 +99,13 @@ To-Rex/Flutter-Clock-App
 TomBursch/kitchenowl
 UnicornsOnLSD/finamp
 VeryGoodOpenSource/very_good_cli
+Widle-Studio/Grocery-App
 WorldHealthOrganization/app
 X-Wei/flutter_catalog
 Xmarmalade/alisthelper
 YYFlutter/flutter-ui
 Yubico/yubioath-flutter
+ZDfordream/FlutterTianYue
 ZhuJHua/moodiary
 aagarwal1012/Animated-Text-Kit
 aagarwal1012/Liquid-Pull-To-Refresh
@@ -195,10 +200,12 @@ flutterchina/azlistview
 flutterchina/flukit
 fluttercommunity/chewie
 fluttercommunity/flutter_launcher_icons
+fluttercommunity/flutter_sticky_headers
 fluttercommunity/plus_plugins
 fluttergems/awesome-open-source-flutter-apps
 flyerhq/flutter_chat_ui
 foss42/apidash
+fregie/pho
 furkantektas/analog_clock
 fzyzcjy/flutter_rust_bridge
 fzyzcjy/flutter_smooth
@@ -246,6 +253,7 @@ jogboms/flutter_spinkit
 jonataslaw/getx
 jonbhanson/flutter_native_splash
 juicycleff/flutter-unity-view-widget
+juliansteenbakker/mobile_scanner
 kaina404/FlutterDouBan
 kodecocodes/flta-materials
 kodjodevf/mangayomi
@@ -273,6 +281,7 @@ manishmeganathan/metronome
 manudevcode/flutter_alarm_app
 marchellodev/sharik
 mateusz-bak/openreads
+matthiasn/lotti
 media-kit/media-kit
 meditohq/medito-app
 memspace/zefyr
@@ -307,9 +316,11 @@ phoenixsky/fun_android_flutter
 phucgaoxam/slide_countdown_clock
 pichillilorenzo/flutter_inappwebview
 quickemu-project/quickgui
+raoxwup/haka_comic
 recepbasturk/clock_game
 rive-app/rive-flutter
 robertodoering/harpy
+rohan20/flutter-chat-app
 roughike/inKino
 rrousselGit/flutter_hooks
 rrousselGit/freezed
@@ -339,6 +350,7 @@ tekartik/sqflite
 tilakpatel22/employee-attendance-app-flutter
 toly1994328/FlutterUnit
 tomialagbe/flutter_ui_challenges
+trentpiercy/trace
 ubclaunchpad/time-tracker
 vandadnp/flutter-tips-and-tricks
 venera-app/venera
