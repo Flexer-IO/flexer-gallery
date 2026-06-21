@@ -12,7 +12,11 @@ dependencies:
     sdk: flutter
   shared_preferences: ^2.5.3
 
+  flutter_svg: ^2.0.10+1
+  intl: ^0.20.2
 flutter:
   assets:
+    - assets/thomas_leung_how_is_moon/spaceBg.svg
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
+
