@@ -9,6 +9,7 @@ BasedHardware/omi
 Baseflow/flutter-geolocator
 Baseflow/flutter-permission-handler
 Baseflow/flutter_cached_network_image
+BirjuVachhani/ticking_widget
 BlueBubblesApp/bluebubbles-app
 CCExtractor/ultimate_alarm_clock
 CarGuo/gsy_flutter_demo
@@ -140,6 +141,7 @@ creativecreatorormaybenot/microphone
 creativecreatorormaybenot/performance
 creativecreatorormaybenot/portfolio
 creativecreatorormaybenot/wakelock
+dahliaOS/clock
 dahliaOS/pangolin_desktop
 dart-archive/clock
 dart-lang/dart-pad
@@ -323,6 +325,7 @@ tekartik/sqflite
 tilakpatel22/employee-attendance-app-flutter
 toly1994328/FlutterUnit
 tomialagbe/flutter_ui_challenges
+ubclaunchpad/time-tracker
 vandadnp/flutter-tips-and-tricks
 venera-app/venera
 vicolo-dev/chrono
