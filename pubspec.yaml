@@ -6,13 +6,35 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  geolocator:
+    path: lib/abstrxtinfinity_analog_clock/deps/geolocator
+  geolocator_apple:
+    path: lib/abstrxtinfinity_analog_clock/deps/geolocator_apple
+  geolocator_android:
+    path: lib/abstrxtinfinity_analog_clock/deps/geolocator_android
+  uuid:
+    path: lib/abstrxtinfinity_analog_clock/deps/uuid
+  crypto:
+    path: lib/abstrxtinfinity_analog_clock/deps/crypto
+  fixnum:
+    path: lib/abstrxtinfinity_analog_clock/deps/fixnum
+  geolocator_platform_interface:
+    path: lib/abstrxtinfinity_analog_clock/deps/geolocator_platform_interface
+  vector_math:
+    path: lib/abstrxtinfinity_analog_clock/deps/vector_math
+  plugin_platform_interface:
+    path: lib/abstrxtinfinity_analog_clock/deps/plugin_platform_interface
+  meta:
+    path: lib/abstrxtinfinity_analog_clock/deps/meta
   flutter_clock_helper:
     path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
   flutter:
     sdk: flutter
   shared_preferences: ^2.5.3
 
+  provider: ^5.0.0
 flutter:
   assets:
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
+
