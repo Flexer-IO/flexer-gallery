@@ -1,0 +1,85 @@
+// Copyright 2019 Egor Belibov. All rights reserved.
+ // Use of this source code is governed by a BSD-style license that can be
+ // found in the LICENSE file.
+ 
+ import 'package:flutter/widgets.dart';
+ 
+ import '../../../../g_models/device_type.dart';
+ import '../../../../g_styles/colors.dart';
+ import '../../../../g_styles/fonts.dart';
+ import '../../../../g_styles/spaces.dart';
+ 
+ TextStyle defaultTextStyle(BuildContext context, DeviceType deviceType) {
+   switch (deviceType) {
+     case DeviceType.desktopBig:
+     case DeviceType.desktop:
+       return TextStyle(
+         fontFamily: defaultFontFamily,
+         fontSize: 16,
+         fontWeight: FontWeight.w300,
+         color: themeBasedColor(context, PaletteColor.footerTextColor),
+       );
+     case DeviceType.mobile:
+       return TextStyle(
+         fontFamily: defaultFontFamily,
+         fontSize: 14,
+         fontWeight: FontWeight.w300,
+         color: themeBasedColor(context, PaletteColor.footerTextColor),
+       );
+     case DeviceType.mobileMini:
+       return TextStyle(
+         fontFamily: defaultFontFamily,
+         fontSize: 12,
+         fontWeight: FontWeight.w300,
+         color: themeBasedColor(context, PaletteColor.footerTextColor),
+       );
+   }
+ }
+ 
+ TextStyle remarkedTextStyle(BuildContext context, DeviceType deviceType) {
+   switch (deviceType) {
+     case DeviceType.desktopBig:
+     case DeviceType.desktop:
+       return TextStyle(
+         fontFamily: defaultFontFamily,
+         fontSize: 16,
+         fontWeight: FontWeight.w700,
+         color: themeBasedColor(context, PaletteColor.footerTextColor),
+       );
+     case DeviceType.mobile:
+       return TextStyle(
+         fontFamily: defaultFontFamily,
+         fontSize: 14,
+         fontWeight: FontWeight.w700,
+         color: themeBasedColor(context, PaletteColor.footerTextColor),
+       );
+     case DeviceType.mobileMini:
+       return TextStyle(
+         fontFamily: defaultFontFamily,
+         fontSize: 12,
+         fontWeight: FontWeight.w700,
+         color: themeBasedColor(context, PaletteColor.footerTextColor),
+       );
+   }
+ }
+ 
+ EdgeInsetsGeometry footerPadding(DeviceType deviceType) {
+   switch (deviceType) {
+     case DeviceType.desktopBig:
+     case DeviceType.desktop:
+       return EdgeInsets.symmetric(
+         vertical: topScreenPadding,
+         horizontal: rightScreenPadding,
+       );
+     case DeviceType.mobile:
+       return EdgeInsets.symmetric(
+         vertical: 20,
+         horizontal: rightScreenPadding,
+       );
+     case DeviceType.mobileMini:
+       return EdgeInsets.symmetric(
+         vertical: 20,
+         horizontal: 20,
+       );
+   }
+ }

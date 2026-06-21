@@ -6,6 +6,8 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  property_change_notifier:
+    path: lib/egorbelibov_clock_of_clocks_web/deps/property_change_notifier
   flutter_clock_helper:
     path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
   flutter:
