@@ -12,7 +12,20 @@ dependencies:
     sdk: flutter
   shared_preferences: ^2.5.3
 
+  flutter_svg: # it helps us to use SVG in our app
+  google_fonts: ^6.1.0 # it helps us to use google fonts on our app
+  provider: ^6.0.5 # Our state management package
 flutter:
   assets:
+    - assets/mamun361054_flutter_responsive_clock/icons/Liberty.svg
+    - assets/mamun361054_flutter_responsive_clock/icons/Moon.svg
+    - assets/mamun361054_flutter_responsive_clock/icons/Settings.svg
+    - assets/mamun361054_flutter_responsive_clock/icons/Sun.svg
+    - assets/mamun361054_flutter_responsive_clock/icons/Sydney.svg
+    - assets/mamun361054_flutter_responsive_clock/icons/clock.svg
+    - assets/mamun361054_flutter_responsive_clock/icons/stop_watch.svg
+    - assets/mamun361054_flutter_responsive_clock/icons/watch_2.svg
+    - assets/mamun361054_flutter_responsive_clock/icons/world.svg
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
+
