@@ -6,13 +6,29 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  intl:
+    path: lib/ahammer_adams_clock/deps/intl
+  clock:
+    path:
+    path: lib/ahammer_adams_clock/deps/path
+  meta:
+    path:
+    path: lib/ahammer_adams_clock/deps/path
+  dart_board_core:
+    path:
+    path: lib/ahammer_adams_clock/deps/path
+  logging:
+    path:
+    path: lib/ahammer_adams_clock/deps/path
   flutter_clock_helper:
-    path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
+    path:
+    path: lib/ahammer_adams_clock/deps/path
   flutter:
     sdk: flutter
   shared_preferences: ^2.5.3
 
 flutter:
   assets:
+    - assets/ahammer_adams_clock/OFL.txt
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
