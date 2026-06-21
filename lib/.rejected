@@ -37,6 +37,7 @@ FlutterOpen/flutter-ui-nice
 FoxSensei001/LoveIwara
 FriesI23/mhabit
 GanZhiXiong/GZXTaoBaoAppFlutter
+GetStream/stream-chat-flutter
 GhostenEditor/Ghosten-Player
 GiddyNaya/clockee
 Hamad-Anwar/Neumorphic-Analog-Clockify
@@ -129,12 +130,14 @@ amchii/FloatingClock
 amir-hossein-rajaezadeh/flutter_clock_app
 amirziyacode/Fluttter_Clock
 anandnet/Harmony-Music
+angel-dart/angel
 arianneorpilla/jidoujisho
 asjqkkkk/flutter-todos
 astubenbord/paperless-mobile
 atsign-foundation/at_client_sdk
 authpass/authpass
 aws-amplify/amplify-flutter
+bailicangdu/native-xdm
 bdlukaa/fluent_ui
 befovy/fijkplayer
 best-flutter/flutter_swiper
@@ -149,6 +152,7 @@ bostrot/wsl2-distro-manager
 brendan-duncan/image
 brianegan/flutter_architecture_samples
 brianegan/flutter_redux
+bukunmialuko/flutter_ui_kit_obkm
 burhanrashid52/WhatTodo
 bytedance/flutter_ume
 canxin121/app_rhyme
@@ -183,11 +187,14 @@ erluxman/awesomefluttertips
 felangel/bloc
 felangel/equatable
 felangel/mason
+felixblaschke/simple_animations
 firebase/flutterfire
 flame-engine/flame
 fleaflet/flutter_map
 flutter-form-builder-ecosystem/flutter_form_builder
+flutter-mapbox-gl/maps
 flutter-ml/google_ml_kit_flutter
+flutter-stripe/flutter_stripe
 flutter-team-archive/flutter_clock
 flutter-team-archive/gallery
 flutter-team-archive/pinball
@@ -234,7 +241,9 @@ gskinnerTeam/flutter-universal-platform
 gskinnerTeam/flutter-wonderous-app
 guozhigq/pilipala
 harmonoid/harmonoid
+hnvn/flutter_image_cropper
 huangruiLearn/flutter_hrlweibo
+huextrat/Taskist
 hugeicons/hugeicons
 hungps/flutter_pokedex
 iamSahdeep/liquid_swipe_flutter
@@ -242,6 +251,7 @@ iampawan/Flutter-Music-Player
 iampawan/Flutter-UI-Kit
 iampawan/FlutterExampleApps
 iampawan/VelocityX
+ibhavikmakwana/FlutterPlayground
 imaNNeo/fl_chart
 invertase/melos
 invoiceninja/admin-portal
@@ -304,6 +314,7 @@ miru-project/miru-app
 mitesh77/Best-Flutter-UI-Templates
 mithun50/openclaw-termux
 mjl0602/flutter_tiktok
+mjohnsullivan/flutter-by-example
 mkobuolys/flutter-design-patterns
 mobxjs/mobx.dart
 mpflutter/mpflutter
@@ -360,6 +371,7 @@ spotiflacapp/SpotiFLAC-Mobile
 stryder-dev/flutter_platform_widgets
 syncfusion/flutter-examples
 syncfusion/flutter-widgets
+syphon-org/syphon
 takeoutfm/takeout_assistant
 tekartik/sqflite
 tilakpatel22/employee-attendance-app-flutter
