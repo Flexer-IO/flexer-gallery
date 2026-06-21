@@ -6,6 +6,16 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  fl_chart:
+    path: lib/pedromassango_my_flutter_challenges/deps/fl_chart
+  vector_math:
+    path: lib/pedromassango_my_flutter_challenges/deps/vector_math
+  equatable:
+    path: lib/pedromassango_my_flutter_challenges/deps/equatable
+  collection:
+    path: lib/pedromassango_my_flutter_challenges/deps/collection
+  meta:
+    path: lib/pedromassango_my_flutter_challenges/deps/meta
   flutter_clock_helper:
     path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
   flutter:
