@@ -12,7 +12,11 @@ dependencies:
     sdk: flutter
   shared_preferences: ^2.5.3
 
+  google_fonts: ^1.1.0
+  intl: ^0.16.1
+  vector_math: ^2.0.8
 flutter:
   assets:
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
+
