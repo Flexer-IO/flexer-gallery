@@ -12,7 +12,9 @@ dependencies:
     sdk: flutter
   shared_preferences: ^2.5.3
 
+  flare_flutter: ^2.0.1
 flutter:
   assets:
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
+
