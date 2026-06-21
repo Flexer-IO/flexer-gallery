@@ -1,0 +1,50 @@
+import 'components/digit.dart';
+import 'constants/digits.dart';
+import 'package:flutter/material.dart';
+
+class CountByClock extends StatelessWidget {
+  final int number;
+  final Color? baseColor, tickColor;
+  final double clockArea;
+  final double? tickThickness;
+  final bool flatStyle, hideTick;
+  final int digitCount;
+  final Curve curve;
+
+  const CountByClock(
+    this.number, {
+    this.baseColor,
+    this.clockArea = 100,
+    this.tickThickness,
+    this.tickColor = Colors.black87,
+    this.digitCount = 1,
+    this.curve = Curves.easeInOut,
+    this.flatStyle = false,
+    this.hideTick = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    var digits = number
+        .toString()
+        .split('')
+        .map((i) => Digits.values[int.parse(i)])
+        .toList();
+    int additionalZeros = digits.length < digitCount ? digitCount - digits.length : 0;
+    if (additionalZeros != 0) List.generate(additionalZeros, (_) => digits.insert(0, Digits.zero));
+    return Row(
+        mainAxisSize: MainAxisSize.min,
+        children: digits.map((digit) {
+          return Digit(
+            digit,
+            curve: curve,
+            baseColor: baseColor ?? Colors.black87,
+            clockArea: clockArea,
+            tickColor: tickColor ?? Colors.black87,
+            flatStyle: flatStyle,
+            tickThickness: tickThickness,
+            hideTick: hideTick,
+          );
+        }).toList());
+  }
+}
