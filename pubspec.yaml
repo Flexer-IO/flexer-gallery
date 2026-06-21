@@ -6,8 +6,49 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  intl:
+    path: lib/techieblossom_animated_digital_clock_flutter/deps/intl
+  clock:
+    path: lib/techieblossom_animated_digital_clock_flutter/deps/clock
+  google_fonts:
+    path: lib/techieblossom_animated_digital_clock_flutter/deps/google_fonts
+  path_provider:
+    path: lib/techieblossom_animated_digital_clock_flutter/deps/path_provider
+  path_provider_platform_interface:
+    path: lib/techieblossom_animated_digital_clock_flutter/deps/path_provider_platform_interface
+  plugin_platform_interface:
+    path: lib/techieblossom_animated_digital_clock_flutter/deps/plugin_platform_interface
+  platform:
+    path: lib/techieblossom_animated_digital_clock_flutter/deps/platform
+  http:
+    path: lib/techieblossom_animated_digital_clock_flutter/deps/http
+  web:
+    path: lib/techieblossom_animated_digital_clock_flutter/deps/web
+  http_parser:
+    path: lib/techieblossom_animated_digital_clock_flutter/deps/http_parser
+  typed_data:
+    path: lib/techieblossom_animated_digital_clock_flutter/deps/typed_data
+  string_scanner:
+    path: lib/techieblossom_animated_digital_clock_flutter/deps/string_scanner
+  source_span:
+    path: lib/techieblossom_animated_digital_clock_flutter/deps/source_span
+  term_glyph:
+    path: lib/techieblossom_animated_digital_clock_flutter/deps/term_glyph
+  async:
+    path:
+    path: lib/techieblossom_animated_digital_clock_flutter/deps/path
+  meta:
+    path:
+    path: lib/techieblossom_animated_digital_clock_flutter/deps/path
+  collection:
+    path:
+    path: lib/techieblossom_animated_digital_clock_flutter/deps/path
+  crypto:
+    path:
+    path: lib/techieblossom_animated_digital_clock_flutter/deps/path
   flutter_clock_helper:
-    path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
+    path:
+    path: lib/techieblossom_animated_digital_clock_flutter/deps/path
   flutter:
     sdk: flutter
   shared_preferences: ^2.5.3
