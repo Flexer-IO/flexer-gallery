@@ -6,8 +6,61 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  intl:
+    path: lib/bimsina_bimsina_clock/deps/intl
+  clock:
+    path: lib/bimsina_bimsina_clock/deps/clock
+  flutter_svg:
+    path: lib/bimsina_bimsina_clock/deps/flutter_svg
+  vector_graphics:
+    path: lib/bimsina_bimsina_clock/deps/vector_graphics
+  http:
+    path: lib/bimsina_bimsina_clock/deps/http
+  web:
+    path: lib/bimsina_bimsina_clock/deps/web
+  http_parser:
+    path: lib/bimsina_bimsina_clock/deps/http_parser
+  typed_data:
+    path: lib/bimsina_bimsina_clock/deps/typed_data
+  string_scanner:
+    path: lib/bimsina_bimsina_clock/deps/string_scanner
+  source_span:
+    path: lib/bimsina_bimsina_clock/deps/source_span
+  term_glyph:
+    path: lib/bimsina_bimsina_clock/deps/term_glyph
+  async:
+    path:
+    path: lib/bimsina_bimsina_clock/deps/path
+  vector_graphics_compiler:
+    path:
+    path: lib/bimsina_bimsina_clock/deps/path
+  xml:
+    path:
+    path: lib/bimsina_bimsina_clock/deps/path
+  petitparser:
+    path:
+    path: lib/bimsina_bimsina_clock/deps/path
+  path_parsing:
+    path:
+    path: lib/bimsina_bimsina_clock/deps/path
+  vector_math:
+    path:
+    path: lib/bimsina_bimsina_clock/deps/path
+  vector_graphics_codec:
+    path:
+    path: lib/bimsina_bimsina_clock/deps/path
+  flare_flutter:
+    path:
+    path: lib/bimsina_bimsina_clock/deps/path
+  collection:
+    path:
+    path: lib/bimsina_bimsina_clock/deps/path
+  meta:
+    path:
+    path: lib/bimsina_bimsina_clock/deps/path
   flutter_clock_helper:
-    path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
+    path:
+    path: lib/bimsina_bimsina_clock/deps/path
   flutter:
     sdk: flutter
   shared_preferences: ^2.5.3
