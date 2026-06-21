@@ -102,6 +102,7 @@ VeryGoodOpenSource/very_good_cli
 Widle-Studio/Grocery-App
 WorldHealthOrganization/app
 X-Wei/flutter_catalog
+XianyuTech/aspectd
 Xmarmalade/alisthelper
 YYFlutter/flutter-ui
 Yubico/yubioath-flutter
@@ -161,6 +162,7 @@ dahliaOS/clock
 dahliaOS/pangolin_desktop
 dart-archive/clock
 dart-lang/dart-pad
+dart-lang/http
 deckerst/aves
 dengsgo/funny_time
 dengyin2000/dynamic_widget
@@ -176,6 +178,8 @@ ente-io/ente
 entronad/graphic
 erluxman/awesomefluttertips
 felangel/bloc
+felangel/equatable
+felangel/mason
 firebase/flutterfire
 flame-engine/flame
 fleaflet/flutter_map
@@ -209,8 +213,10 @@ fregie/pho
 furkantektas/analog_clock
 fzyzcjy/flutter_rust_bridge
 fzyzcjy/flutter_smooth
+glorylab/wave
 gokadzev/Musify
 google/flutter.widgets
+gskinner/flutter_animate
 gskinnerTeam/flokk
 gskinnerTeam/flutter-adaptive-demo
 gskinnerTeam/flutter-defer-pointer
@@ -226,6 +232,7 @@ gskinnerTeam/flutter-wonderous-app
 guozhigq/pilipala
 harmonoid/harmonoid
 huangruiLearn/flutter_hrlweibo
+hugeicons/hugeicons
 hungps/flutter_pokedex
 iamSahdeep/liquid_swipe_flutter
 iampawan/Flutter-Music-Player
@@ -236,6 +243,7 @@ imaNNeo/fl_chart
 invertase/melos
 invoiceninja/admin-portal
 ionicfirebaseapp/getwidget
+iotjin/jh_flutter_demo
 isar/hive
 isar/isar
 iteqno-id/fluboard
@@ -273,6 +281,7 @@ lohanidamodar/flutter_ui_challenges
 lollipopkit/flutter_server_box
 lucasmontano/Mobile-Performance-Test
 lucinhu/bili_you
+luhenchang/flutter_study
 lukepighetti/fluro
 m3uzz/date_time_picker
 mabDc/eso
@@ -311,6 +320,7 @@ omar-alshyokh/flutter_flip_panel_plus
 openfoodfacts/smooth-app
 pauldemarco/flutter_blue
 pd4d10/git-touch
+pedromassango/bottom_navy_bar
 peng8350/flutter_pulltorefresh
 phoenixsky/fun_android_flutter
 phucgaoxam/slide_countdown_clock
@@ -337,6 +347,7 @@ shichunlei/flutter_app
 shorebirdtech/shorebird
 simc/auto_size_text
 simc/awesome-flutter-packages
+simc/dartx
 simolus3/drift
 simonoppowa/OpenNutriTracker
 simplezhli/flutter_deer
