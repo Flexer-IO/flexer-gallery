@@ -6,6 +6,8 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  analog_clock:
+    path: lib/win_112_flutter_analog_clock/deps/analog_clock
   flutter_clock_helper:
     path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
   flutter:
