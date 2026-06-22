@@ -6,13 +6,86 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  google_fonts:
+    path: lib/zendy199x_flutter_analog_clock_dark_light_app/deps/google_fonts
+  path_provider:
+    path: lib/zendy199x_flutter_analog_clock_dark_light_app/deps/path_provider
+  path_provider_platform_interface:
+    path: lib/zendy199x_flutter_analog_clock_dark_light_app/deps/path_provider_platform_interface
+  plugin_platform_interface:
+    path: lib/zendy199x_flutter_analog_clock_dark_light_app/deps/plugin_platform_interface
+  platform:
+    path: lib/zendy199x_flutter_analog_clock_dark_light_app/deps/platform
+  crypto:
+    path: lib/zendy199x_flutter_analog_clock_dark_light_app/deps/crypto
+  flutter_svg:
+    path: lib/zendy199x_flutter_analog_clock_dark_light_app/deps/flutter_svg
+  vector_graphics:
+    path: lib/zendy199x_flutter_analog_clock_dark_light_app/deps/vector_graphics
+  http:
+    path: lib/zendy199x_flutter_analog_clock_dark_light_app/deps/http
+  web:
+    path: lib/zendy199x_flutter_analog_clock_dark_light_app/deps/web
+  http_parser:
+    path: lib/zendy199x_flutter_analog_clock_dark_light_app/deps/http_parser
+  typed_data:
+    path: lib/zendy199x_flutter_analog_clock_dark_light_app/deps/typed_data
+  string_scanner:
+    path: lib/zendy199x_flutter_analog_clock_dark_light_app/deps/string_scanner
+  source_span:
+    path: lib/zendy199x_flutter_analog_clock_dark_light_app/deps/source_span
+  term_glyph:
+    path: lib/zendy199x_flutter_analog_clock_dark_light_app/deps/term_glyph
+  async:
+    path:
+    path: lib/zendy199x_flutter_analog_clock_dark_light_app/deps/path
+  vector_graphics_compiler:
+    path:
+    path: lib/zendy199x_flutter_analog_clock_dark_light_app/deps/path
+  xml:
+    path:
+    path: lib/zendy199x_flutter_analog_clock_dark_light_app/deps/path
+  petitparser:
+    path:
+    path: lib/zendy199x_flutter_analog_clock_dark_light_app/deps/path
+  path_parsing:
+    path:
+    path: lib/zendy199x_flutter_analog_clock_dark_light_app/deps/path
+  vector_math:
+    path:
+    path: lib/zendy199x_flutter_analog_clock_dark_light_app/deps/path
+  meta:
+    path:
+    path: lib/zendy199x_flutter_analog_clock_dark_light_app/deps/path
+  vector_graphics_codec:
+    path:
+    path: lib/zendy199x_flutter_analog_clock_dark_light_app/deps/path
+  provider:
+    path:
+    path: lib/zendy199x_flutter_analog_clock_dark_light_app/deps/path
+  nested:
+    path:
+    path: lib/zendy199x_flutter_analog_clock_dark_light_app/deps/path
+  collection:
+    path:
+    path: lib/zendy199x_flutter_analog_clock_dark_light_app/deps/path
   flutter_clock_helper:
-    path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
+    path:
+    path: lib/zendy199x_flutter_analog_clock_dark_light_app/deps/path
   flutter:
     sdk: flutter
   shared_preferences: ^2.5.3
 
 flutter:
   assets:
+    - assets/zendy199x_flutter_analog_clock_dark_light_app/icons/Liberty.svg
+    - assets/zendy199x_flutter_analog_clock_dark_light_app/icons/Moon.svg
+    - assets/zendy199x_flutter_analog_clock_dark_light_app/icons/Settings.svg
+    - assets/zendy199x_flutter_analog_clock_dark_light_app/icons/Sun.svg
+    - assets/zendy199x_flutter_analog_clock_dark_light_app/icons/Sydney.svg
+    - assets/zendy199x_flutter_analog_clock_dark_light_app/icons/clock.svg
+    - assets/zendy199x_flutter_analog_clock_dark_light_app/icons/stop_watch.svg
+    - assets/zendy199x_flutter_analog_clock_dark_light_app/icons/watch_2.svg
+    - assets/zendy199x_flutter_analog_clock_dark_light_app/icons/world.svg
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
