@@ -40,6 +40,7 @@ FlutterGen/flutter_gen
 FlutterOpen/flutter-ui-nice
 FoxSensei001/LoveIwara
 FriesI23/mhabit
+G-Ray/pikatorrent
 GanZhiXiong/GZXTaoBaoAppFlutter
 GetStream/stream-chat-flutter
 GhostenEditor/Ghosten-Player
@@ -54,9 +55,11 @@ JideGuru/FlutterTravel
 KRTirtho/spotube
 KhoaSuperman/findseat
 KishoreSreedharan/Clock_View
+Kuingsmile/PicHoro
 LaoMengFlutter/flutter-do
 LeetaoGoooo/RSSAid
 LianjiaTech/bruno
+LianjiaTech/keframe
 LinwoodDev/Butterfly
 Livinglist/Hacki
 Lyokone/flutterlocation
@@ -170,6 +173,7 @@ bytedance/flutter_ume
 canxin121/app_rhyme
 cfug/dio
 chen08209/FlClash
+chipweinberger/flutter_blue_plus
 conghaonet/flutter_analog_clock
 creativecreatorormaybenot/funvas
 creativecreatorormaybenot/logo
@@ -212,6 +216,7 @@ flutter-ml/google_ml_kit_flutter
 flutter-stripe/flutter_stripe
 flutter-team-archive/flutter_clock
 flutter-team-archive/gallery
+flutter-team-archive/photobooth
 flutter-team-archive/pinball
 flutter-team-archive/plugins
 flutter-webrtc/flutter-webrtc-demo
@@ -255,6 +260,7 @@ gskinnerTeam/flutter-sized-context
 gskinnerTeam/flutter-stateful-props
 gskinnerTeam/flutter-universal-platform
 gskinnerTeam/flutter-wonderous-app
+guozhigq/flutter_v2ex
 guozhigq/pilipala
 harmonoid/harmonoid
 hep-mh/flounder
@@ -269,6 +275,7 @@ iampawan/Flutter-UI-Kit
 iampawan/FlutterExampleApps
 iampawan/VelocityX
 ibhavikmakwana/FlutterPlayground
+ilgnefz/once_power
 imaNNeo/fl_chart
 invertase/melos
 invoiceninja/admin-portal
@@ -307,6 +314,7 @@ leoafarias/fvm
 leoafarias/sidekick
 letsar/flutter_slidable
 letsar/flutter_staggered_grid_view
+letsar/flutter_sticky_header
 lichess-org/mobile
 localdev-josh/Clock-App
 localsend/localsend
@@ -396,12 +404,15 @@ simplezhli/flutter_deer
 singerdmx/flutter-quill
 spotiflacapp/SpotiFLAC-Mobile
 stryder-dev/flutter_platform_widgets
+supabase/supabase-flutter
 syncfusion/flutter-examples
 syncfusion/flutter-widgets
 syphon-org/syphon
 takeoutfm/takeout_assistant
 tekartik/sqflite
+tharwatsamy/Flutter-Beginners-Projects
 theahmedhany/blink_alarm_clock_app
+thunder-app/thunder
 tilakpatel22/employee-attendance-app-flutter
 toly1994328/FlutterUnit
 tomialagbe/flutter_ui_challenges
