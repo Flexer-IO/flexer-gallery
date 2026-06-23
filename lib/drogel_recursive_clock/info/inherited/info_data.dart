@@ -1,0 +1,21 @@
+import 'package:flutter/material.dart';
+import 'info/view_model/info_state.dart';
+
+/// An [InheritedWidget] that propagates information about a given [InfoState].
+class InfoData extends InheritedWidget {
+  const InfoData({
+    @required this.infoState,
+    @required Widget child,
+  })  : assert(infoState != null),
+        assert(child != null),
+        super(child: child);
+
+  final InfoState infoState;
+
+  static InfoData of(BuildContext context) =>
+      context.dependOnInheritedWidgetOfExactType(aspect: InfoData);
+
+  @override
+  bool updateShouldNotify(InfoData oldWidget) =>
+      oldWidget.infoState != infoState;
+}
