@@ -1,0 +1,51 @@
+import 'exhibition_bottom_sheet.dart';
+import 'sliding_cards.dart';
+import 'tabs.dart';
+import 'package:flutter/material.dart';
+
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Stack(
+        children: <Widget>[
+          SafeArea(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                const SizedBox(height: 8),
+                const Header(),
+                const SizedBox(height: 40),
+                Tabs(),
+                const SizedBox(height: 8),
+                SlidingCardsView(),
+              ],
+            ),
+          ),
+          ExhibitionBottomSheet(),
+        ],
+      ),
+    );
+  }
+}
+
+class Header extends StatelessWidget {
+  const Header({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 32),
+      child: Text(
+        'Shenzhen',
+        style: TextStyle(
+          fontSize: 22,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+    );
+  }
+}
