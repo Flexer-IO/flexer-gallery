@@ -6,13 +6,89 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  google_fonts:
+    path: lib/hadikachmar3_flutter_analog_clock/deps/google_fonts
+  path_provider:
+    path: lib/hadikachmar3_flutter_analog_clock/deps/path_provider
+  path_provider_platform_interface:
+    path: lib/hadikachmar3_flutter_analog_clock/deps/path_provider_platform_interface
+  plugin_platform_interface:
+    path: lib/hadikachmar3_flutter_analog_clock/deps/plugin_platform_interface
+  platform:
+    path: lib/hadikachmar3_flutter_analog_clock/deps/platform
+  crypto:
+    path: lib/hadikachmar3_flutter_analog_clock/deps/crypto
+  flutter_svg:
+    path: lib/hadikachmar3_flutter_analog_clock/deps/flutter_svg
+  vector_graphics:
+    path: lib/hadikachmar3_flutter_analog_clock/deps/vector_graphics
+  http:
+    path: lib/hadikachmar3_flutter_analog_clock/deps/http
+  web:
+    path: lib/hadikachmar3_flutter_analog_clock/deps/web
+  http_parser:
+    path: lib/hadikachmar3_flutter_analog_clock/deps/http_parser
+  typed_data:
+    path: lib/hadikachmar3_flutter_analog_clock/deps/typed_data
+  string_scanner:
+    path: lib/hadikachmar3_flutter_analog_clock/deps/string_scanner
+  source_span:
+    path: lib/hadikachmar3_flutter_analog_clock/deps/source_span
+  term_glyph:
+    path: lib/hadikachmar3_flutter_analog_clock/deps/term_glyph
+  async:
+    path:
+    path: lib/hadikachmar3_flutter_analog_clock/deps/path
+  vector_graphics_compiler:
+    path:
+    path: lib/hadikachmar3_flutter_analog_clock/deps/path
+  xml:
+    path:
+    path: lib/hadikachmar3_flutter_analog_clock/deps/path
+  petitparser:
+    path:
+    path: lib/hadikachmar3_flutter_analog_clock/deps/path
+  path_parsing:
+    path:
+    path: lib/hadikachmar3_flutter_analog_clock/deps/path
+  vector_math:
+    path:
+    path: lib/hadikachmar3_flutter_analog_clock/deps/path
+  meta:
+    path:
+    path: lib/hadikachmar3_flutter_analog_clock/deps/path
+  vector_graphics_codec:
+    path:
+    path: lib/hadikachmar3_flutter_analog_clock/deps/path
+  provider:
+    path:
+    path: lib/hadikachmar3_flutter_analog_clock/deps/path
+  nested:
+    path:
+    path: lib/hadikachmar3_flutter_analog_clock/deps/path
+  collection:
+    path:
+    path: lib/hadikachmar3_flutter_analog_clock/deps/path
+  analog_clock:
+    path:
+    path: lib/hadikachmar3_flutter_analog_clock/deps/path
   flutter_clock_helper:
-    path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
+    path:
+    path: lib/hadikachmar3_flutter_analog_clock/deps/path
   flutter:
     sdk: flutter
   shared_preferences: ^2.5.3
 
 flutter:
   assets:
+    - assets/hadikachmar3_flutter_analog_clock/icons/Liberty.svg
+    - assets/hadikachmar3_flutter_analog_clock/icons/Moon.svg
+    - assets/hadikachmar3_flutter_analog_clock/icons/Settings.svg
+    - assets/hadikachmar3_flutter_analog_clock/icons/Sun.svg
+    - assets/hadikachmar3_flutter_analog_clock/icons/Sydney.svg
+    - assets/hadikachmar3_flutter_analog_clock/icons/clock.svg
+    - assets/hadikachmar3_flutter_analog_clock/icons/stop_watch.svg
+    - assets/hadikachmar3_flutter_analog_clock/icons/watch_2.svg
+    - assets/hadikachmar3_flutter_analog_clock/icons/world.svg
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
