@@ -6,6 +6,14 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  circle_list:
+    path: lib/mikkyboy357_flutter_clock_animation/deps/circle_list
+  provider:
+    path: lib/mikkyboy357_flutter_clock_animation/deps/provider
+  nested:
+    path: lib/mikkyboy357_flutter_clock_animation/deps/nested
+  collection:
+    path: lib/mikkyboy357_flutter_clock_animation/deps/collection
   flutter_clock_helper:
     path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
   flutter:
