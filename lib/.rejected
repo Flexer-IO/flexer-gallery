@@ -115,6 +115,7 @@ Ronak99/ClockApp
 RyanYuuki/AnymeX
 Seolong/new_alarm_clock
 SimformSolutionsPvtLtd/showcaseview
+Sky24n/GreenTravel
 Sky24n/common_utils
 Sky24n/flustars
 Sky24n/flutter_wanandroid
@@ -128,12 +129,14 @@ SushiiReboot/Nothing-Clock
 Suwayomi/Tachidesk-Sorayomi
 TNT-Likely/BeeCount
 TOM88812/xiaozhi-android-client
+Tarikul711/flutter-ecommerce
 Tarikul711/flutter-food-delivery-app-ui
 Tencent/mxflutter
 Tencent/tdesign-flutter
 ThangVuNguyenViet/clock_app
 The-ring-io/flutter_staggered_animations
 TheAlphamerc/flutter_ecommerce_app
+Tkko/Flutter_Pinput
 To-Rex/Flutter-Clock-App
 TomBursch/kitchenowl
 UnicornsOnLSD/finamp
@@ -153,6 +156,7 @@ abuanwar072/Covid-19-Flutter-UI
 abuanwar072/E-commerce-App-UI-Flutter
 abuanwar072/Flutter-Responsive-Admin-Panel-or-Dashboard
 abuanwar072/Flutter-responsive-email-ui---Mobile-Tablet-and-Web
+abuanwar072/Plant-App-Flutter-UI
 abuanwar072/Welcome-Login-Signup-Page-Flutter
 adisaptr/flutter_alarm_app
 afzalali15/flutter_alarm_clock
@@ -211,6 +215,7 @@ dahliaOS/clock
 dahliaOS/pangolin_desktop
 darkmoonight/Rain
 dart-archive/clock
+dart-code-checker/dart-code-metrics
 dart-lang/dart-pad
 dart-lang/http
 deckerst/aves
@@ -272,9 +277,11 @@ fregie/pho
 furkantektas/analog_clock
 fzyzcjy/flutter_rust_bridge
 fzyzcjy/flutter_smooth
+getsentry/sentry-dart
 glorylab/wave
 gokadzev/Musify
 google/flutter.widgets
+google/inject.dart
 gskinner/flutter_animate
 gskinnerTeam/flokk
 gskinnerTeam/flutter-adaptive-demo
@@ -300,6 +307,7 @@ huangruiLearn/flutter_hrlweibo
 huextrat/Taskist
 hugeicons/hugeicons
 hungps/flutter_pokedex
+hyochan/flutter_calendar_carousel
 iamSahdeep/liquid_swipe_flutter
 iampawan/Flutter-Music-Player
 iampawan/Flutter-UI-Kit
@@ -336,6 +344,7 @@ juicycleff/flutter-unity-view-widget
 juliansteenbakker/mobile_scanner
 juliuscanute/qr_code_scanner
 kaina404/FlutterDouBan
+kangpeiqin/bilivideo_down
 kareem-Abed/ClockMaster
 kodecocodes/flta-materials
 kodjodevf/mangayomi
@@ -366,6 +375,7 @@ manishmeganathan/metronome
 manudevcode/flutter_alarm_app
 marchellodev/sharik
 material-components/material-components-flutter
+material-foundation/flutter-packages
 mateusz-bak/openreads
 matthiasn/lotti
 media-kit/media-kit
@@ -394,6 +404,7 @@ nightmare-space/code_lfa
 niuhuan/daisy
 niuhuan/kobi
 nslogx/flutter_easyloading
+nylo-core/nylo
 objectbox/objectbox-dart
 olayemii/flutter-ui-kits
 olmps/memo
@@ -424,6 +435,7 @@ rrousselGit/freezed
 rrousselGit/provider
 rrousselGit/riverpod
 rxlabz/panache
+ryanheise/audio_service
 rydmike/flex_color_scheme
 saber-notes/saber
 savagecarol/clock
