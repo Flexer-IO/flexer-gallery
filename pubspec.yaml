@@ -6,8 +6,133 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  flutter_colorpicker:
+    path: lib/treejeig_aeroclock/deps/flutter_colorpicker
+  intl:
+    path: lib/treejeig_aeroclock/deps/intl
+  url_strategy:
+    path: lib/treejeig_aeroclock/deps/url_strategy
+  hive_flutter:
+    path: lib/treejeig_aeroclock/deps/hive_flutter
+  path_provider:
+    path: lib/treejeig_aeroclock/deps/path_provider
+  path_provider_platform_interface:
+    path: lib/treejeig_aeroclock/deps/path_provider_platform_interface
+  plugin_platform_interface:
+    path: lib/treejeig_aeroclock/deps/plugin_platform_interface
+  platform:
+    path: lib/treejeig_aeroclock/deps/platform
+  hive:
+    path: lib/treejeig_aeroclock/deps/hive
+  flutter_riverpod:
+    path: lib/treejeig_aeroclock/deps/flutter_riverpod
+  riverpod:
+    path: lib/treejeig_aeroclock/deps/riverpod
+  uuid:
+    path: lib/treejeig_aeroclock/deps/uuid
+  fixnum:
+    path: lib/treejeig_aeroclock/deps/fixnum
+  test:
+    path: lib/treejeig_aeroclock/deps/test
+  io:
+    path: lib/treejeig_aeroclock/deps/io
+  shelf_web_socket:
+    path: lib/treejeig_aeroclock/deps/shelf_web_socket
+  shelf_packages_handler:
+    path: lib/treejeig_aeroclock/deps/shelf_packages_handler
+  shelf_static:
+    path: lib/treejeig_aeroclock/deps/shelf_static
+  http_multi_server:
+    path: lib/treejeig_aeroclock/deps/http_multi_server
+  web_socket_channel:
+    path: lib/treejeig_aeroclock/deps/web_socket_channel
+  web_socket:
+    path: lib/treejeig_aeroclock/deps/web_socket
+  web:
+    path: lib/treejeig_aeroclock/deps/web
+  webkit_inspection_protocol:
+    path: lib/treejeig_aeroclock/deps/webkit_inspection_protocol
+  logging:
+    path: lib/treejeig_aeroclock/deps/logging
+  node_preamble:
+    path: lib/treejeig_aeroclock/deps/node_preamble
+  test_core:
+    path: lib/treejeig_aeroclock/deps/test_core
+  frontend_server_client:
+    path: lib/treejeig_aeroclock/deps/frontend_server_client
+  coverage:
+    path: lib/treejeig_aeroclock/deps/coverage
+  cli_config:
+    path: lib/treejeig_aeroclock/deps/cli_config
+  vm_service:
+    path: lib/treejeig_aeroclock/deps/vm_service
+  pool:
+    path: lib/treejeig_aeroclock/deps/pool
+  args:
+    path: lib/treejeig_aeroclock/deps/args
+  analyzer:
+    path: lib/treejeig_aeroclock/deps/analyzer
+  watcher:
+    path: lib/treejeig_aeroclock/deps/watcher
+  crypto:
+    path: lib/treejeig_aeroclock/deps/crypto
+  convert:
+    path: lib/treejeig_aeroclock/deps/convert
+  glob:
+    path: lib/treejeig_aeroclock/deps/glob
+  file:
+    path: lib/treejeig_aeroclock/deps/file
+  _fe_analyzer_shared:
+    path: lib/treejeig_aeroclock/deps/_fe_analyzer_shared
+  pub_semver:
+    path: lib/treejeig_aeroclock/deps/pub_semver
+  yaml:
+    path: lib/treejeig_aeroclock/deps/yaml
+  source_map_stack_trace:
+    path: lib/treejeig_aeroclock/deps/source_map_stack_trace
+  source_maps:
+    path: lib/treejeig_aeroclock/deps/source_maps
+  test_api:
+    path: lib/treejeig_aeroclock/deps/test_api
+  boolean_selector:
+    path: lib/treejeig_aeroclock/deps/boolean_selector
+  package_config:
+    path: lib/treejeig_aeroclock/deps/package_config
+  shelf:
+    path: lib/treejeig_aeroclock/deps/shelf
+  stream_channel:
+    path: lib/treejeig_aeroclock/deps/stream_channel
+  stack_trace:
+    path: lib/treejeig_aeroclock/deps/stack_trace
+  state_notifier:
+    path: lib/treejeig_aeroclock/deps/state_notifier
+  dio:
+    path: lib/treejeig_aeroclock/deps/dio
+  async:
+    path: lib/treejeig_aeroclock/deps/async
+  mime:
+    path: lib/treejeig_aeroclock/deps/mime
+  http_parser:
+    path: lib/treejeig_aeroclock/deps/http_parser
+  typed_data:
+    path: lib/treejeig_aeroclock/deps/typed_data
+  string_scanner:
+    path: lib/treejeig_aeroclock/deps/string_scanner
+  source_span:
+    path: lib/treejeig_aeroclock/deps/source_span
+  collection:
+    path: lib/treejeig_aeroclock/deps/collection
+  term_glyph:
+    path: lib/treejeig_aeroclock/deps/term_glyph
+  clock:
+    path:
+    path: lib/treejeig_aeroclock/deps/path
+  meta:
+    path:
+    path: lib/treejeig_aeroclock/deps/path
   flutter_clock_helper:
-    path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
+    path:
+    path: lib/treejeig_aeroclock/deps/path
   flutter:
     sdk: flutter
   shared_preferences: ^2.5.3
