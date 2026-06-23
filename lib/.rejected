@@ -2,6 +2,7 @@
 2d-inc/Flare-Flutter
 4seer/openflutterecommerceapp
 ABausG/home_widget
+AbdulRahmanAlHamali/flutter_typeahead
 AdetoyeseM/Flutter-Clock
 Aditya1787/My-First-clock-app
 AimesSoft/NipaPlay-Reload
@@ -51,6 +52,7 @@ GanZhiXiong/GZXTaoBaoAppFlutter
 GetStream/stream-chat-flutter
 GhostenEditor/Ghosten-Player
 GiddyNaya/clockee
+GimelStudio/GimelStudio
 Hamad-Anwar/Neumorphic-Analog-Clockify
 HemantKArya/BloomeeTunes
 Hendi-arch/hendi-clock-app
@@ -77,6 +79,7 @@ Livinglist/Hacki
 LouisLou2/Clockie
 Lyokone/flutterlocation
 MDeLuise/plant-it
+MMMzq/bot_toast
 MaikuB/flutter_local_notifications
 MarcBrede/chess_clock
 MarcusNg/flutter_facebook_responsive_ui
@@ -190,6 +193,7 @@ befovy/fijkplayer
 best-flutter/flutter_swiper
 beyondtranslate/beyondtranslate
 bggRGjQaUbCoE/PiliPlus
+bitsdojo/bitsdojo_window
 bizz84/flutter-tips-and-tricks
 bizz84/layout-demo-flutter
 bizz84/starter_architecture_flutter_firebase
@@ -199,12 +203,14 @@ bostrot/wsl2-distro-manager
 brendan-duncan/image
 brianegan/flutter_architecture_samples
 brianegan/flutter_redux
+brinesoftwares/Flutter-AI-Rubik-cube-Solver
 bukunmialuko/flutter_ui_kit_obkm
 burhanrashid52/WhatTodo
 bytedance/flutter_ume
 canxin121/app_rhyme
 cfug/dio
 chen08209/FlClash
+chinabrant/flutter_study
 chipweinberger/flutter_blue_plus
 conghaonet/flutter_analog_clock
 creativecreatorormaybenot/funvas
@@ -302,6 +308,7 @@ guilherme-v/flutter-clean-architecture-example
 guozhigq/flutter_v2ex
 guozhigq/pilipala
 hacktons/convex_bottom_bar
+halildurmus/win32
 harmonoid/harmonoid
 harryboi17/World-Time_Flutter-App
 hep-mh/flounder
@@ -412,6 +419,7 @@ nslogx/flutter_easyloading
 nylo-core/nylo
 objectbox/objectbox-dart
 olayemii/flutter-ui-kits
+olexale/arkit_flutter_plugin
 olmps/memo
 omar-alshyokh/flutter_flip_panel_plus
 openfoodfacts/smooth-app
@@ -450,6 +458,7 @@ seasick/dreamclock
 serenader2014/flutter_carousel_slider
 serverpod/serverpod
 shankarkharel/World-Clock
+shaqian/flutter_realtime_detection
 shenghy/flutter_shop
 shichunlei/flutter_app
 shorebirdtech/shorebird
@@ -480,6 +489,7 @@ tomialagbe/flutter_ui_challenges
 tommyxchow/frosty
 toplustar/clock_game
 trentpiercy/trace
+tunitowen/fancy_bottom_navigation
 tuuhin/clockwork
 ubclaunchpad/time-tracker
 ubuntu/app-center
@@ -511,5 +521,6 @@ yechaoa/wanandroid_flutter
 youxinLu/flutter_mall
 yubo725/flutter-osc
 yukilzw/dy_flutter
+yumi0629/FlutterUI
 zino-hofmann/graphql-flutter
 zoidberg-xgd/NekoTime
