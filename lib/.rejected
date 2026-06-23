@@ -16,6 +16,7 @@ AweiLoveAndroid/Flutter-learning
 BasedHardware/omi
 Baseflow/flutter-geolocator
 Baseflow/flutter-permission-handler
+Baseflow/flutter_cache_manager
 Baseflow/flutter_cached_network_image
 BaselAllam/clockcommerce
 BirjuVachhani/ticking_widget
@@ -47,6 +48,7 @@ FlutterGen/flutter_gen
 FlutterOpen/flutter-ui-nice
 ForceDestroy/OverClock
 FoxSensei001/LoveIwara
+Frezyx/talker
 FriesI23/mhabit
 G-Ray/pikatorrent
 GanZhiXiong/GZXTaoBaoAppFlutter
@@ -66,12 +68,14 @@ JideGuru/FlutterSocialAppUIKit
 JideGuru/FlutterTravel
 K9i-0/ccpocket
 KRTirtho/spotube
+Kavantix/sliver_tools
 KhoaSuperman/findseat
 KhubaibJamal/Flutter-Clock-Light-Dark_Theme
 Kindness-Kismet/Stelliberty
 KishoreSreedharan/Clock_View
 Kuingsmile/PicHoro
 LZQL/clock_in_map
+LanarsInc/direct-select-flutter
 LaoMengFlutter/flutter-do
 LeetaoGoooo/RSSAid
 LianjiaTech/bruno
@@ -203,6 +207,7 @@ bizz84/layout-demo-flutter
 bizz84/starter_architecture_flutter_firebase
 bluefireteam/audioplayers
 bluefireteam/photo_view
+boeledi/Streams-Block-Reactive-Programming-in-Flutter
 bostrot/wsl2-distro-manager
 brendan-duncan/image
 brianegan/flutter_architecture_samples
@@ -216,6 +221,7 @@ cfug/dio
 chen08209/FlClash
 chinabrant/flutter_study
 chipweinberger/flutter_blue_plus
+chulwoo-park/timelines
 conghaonet/flutter_analog_clock
 creativecreatorormaybenot/funvas
 creativecreatorormaybenot/logo
@@ -237,6 +243,7 @@ denissavishchev/the_clock
 deretame/Breeze
 desxz/smart_cyrptocurrency_clock
 diegoveloper/flutter-samples
+diegoveloper/flutter_keyboard_actions
 dnfield/flutter_svg
 dstark5/Openlib
 duobaseio/forui
@@ -294,6 +301,7 @@ fzyzcjy/flutter_smooth
 getsentry/sentry-dart
 glorylab/wave
 gokadzev/Musify
+google/flutter-provide
 google/flutter.widgets
 google/inject.dart
 gskinner/flutter_animate
@@ -433,6 +441,7 @@ ouzari/analog_clock_for_flutter
 pachisi456/clocktrol
 pauldemarco/flutter_blue
 pawlik92/flutter_whirlpool
+payam-zahedi/toastification
 pd4d10/git-touch
 pedromassango/bottom_navy_bar
 peng8350/flutter_pulltorefresh
@@ -442,6 +451,7 @@ pichillilorenzo/flutter_inappwebview
 pinchbv/floor
 profchi/Chess_Clock
 quickemu-project/quickgui
+rafaelsetragni/awesome_notifications
 rajatDeveloper/flutter_world_clock_app_using_api_
 raoxwup/haka_comic
 rasitesdmr/pokeme
@@ -459,6 +469,7 @@ rxlabz/panache
 ryanheise/audio_service
 rydmike/flex_color_scheme
 saber-notes/saber
+sarbagyastha/youtube_player_flutter
 savagecarol/clock
 schultek/jaspr
 seaneagan/clock
@@ -510,6 +521,7 @@ vicolo-dev/chrono
 vs4824/Flutter_Analog_Clock
 walid-rehamnia/Clocking-System
 wasabeef/flutter-architecture-blueprints
+wendux/flutter_in_action_source_code
 wger-project/flutter
 wgh136/PicaComic
 whiz25/world_clock_app
