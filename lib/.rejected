@@ -120,6 +120,7 @@ Sky24n/flustars
 Sky24n/flutter_wanandroid
 Solido/awesome-flutter
 SongTube/SongTube-App
+StacDev/stac
 Stacked-Org/stacked
 Sub6Resources/flutter_html
 SunPointed/word_clock
@@ -162,6 +163,7 @@ aleksanderwozniak/table_calendar
 alibaba/fish-redux
 alibaba/flutter-go
 alibaba/flutter_boost
+aloisdeniel/figma-to-flutter
 aloisdeniel/flutter_device_preview
 amchii/FloatingClock
 amir-hossein-rajaezadeh/flutter_clock_app
@@ -231,6 +233,7 @@ felangel/bloc
 felangel/equatable
 felangel/mason
 felixblaschke/simple_animations
+filiph/state_experiments
 firebase/flutterfire
 flame-engine/flame
 fleaflet/flutter_map
@@ -260,6 +263,7 @@ fluttercommunity/chewie
 fluttercommunity/flutter_launcher_icons
 fluttercommunity/flutter_sticky_headers
 fluttercommunity/flutter_workmanager
+fluttercommunity/font_awesome_flutter
 fluttercommunity/plus_plugins
 fluttergems/awesome-open-source-flutter-apps
 flyerhq/flutter_chat_ui
@@ -284,8 +288,10 @@ gskinnerTeam/flutter-sized-context
 gskinnerTeam/flutter-stateful-props
 gskinnerTeam/flutter-universal-platform
 gskinnerTeam/flutter-wonderous-app
+guilherme-v/flutter-clean-architecture-example
 guozhigq/flutter_v2ex
 guozhigq/pilipala
+hacktons/convex_bottom_bar
 harmonoid/harmonoid
 hep-mh/flounder
 heruijun/flutter_boss
@@ -366,6 +372,7 @@ media-kit/media-kit
 meditohq/medito-app
 memspace/zefyr
 mevljas/flutter_alarm_clock
+mhmzdev/the-holy-quran-app
 miguelpruivo/flutter_file_picker
 miickel/couchpuzzler
 miru-project/miru-app
@@ -395,6 +402,7 @@ openfoodfacts/smooth-app
 ouzari/analog_clock_for_flutter
 pachisi456/clocktrol
 pauldemarco/flutter_blue
+pawlik92/flutter_whirlpool
 pd4d10/git-touch
 pedromassango/bottom_navy_bar
 peng8350/flutter_pulltorefresh
@@ -437,6 +445,7 @@ singerdmx/flutter-quill
 smartherd/DartTutorial
 spotiflacapp/SpotiFLAC-Mobile
 stryder-dev/flutter_platform_widgets
+sunarya-thito/shadcn_flutter
 supabase/supabase-flutter
 syncfusion/flutter-examples
 syncfusion/flutter-widgets
@@ -445,6 +454,7 @@ takeoutfm/takeout_assistant
 tekartik/sqflite
 tharwatsamy/Flutter-Beginners-Projects
 theahmedhany/blink_alarm_clock_app
+thielepaul/photoprism-mobile
 thunder-app/thunder
 tilakpatel22/employee-attendance-app-flutter
 toly1994328/FlutterUnit
@@ -453,6 +463,7 @@ tommyxchow/frosty
 trentpiercy/trace
 tuuhin/clockwork
 ubclaunchpad/time-tracker
+ubuntu/app-center
 vandadnp/flutter-tips-and-tricks
 venera-app/venera
 vicolo-dev/chrono
