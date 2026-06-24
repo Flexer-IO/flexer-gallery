@@ -6,8 +6,39 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  web_ui:
+    path: lib/daftspaniel_dartbinaryclock/deps/web_ui
+  custom_element:
+    path: lib/daftspaniel_dartbinaryclock/deps/custom_element
+  stack_trace:
+    path: lib/daftspaniel_dartbinaryclock/deps/stack_trace
+  watcher:
+    path: lib/daftspaniel_dartbinaryclock/deps/watcher
+  logging:
+    path: lib/daftspaniel_dartbinaryclock/deps/logging
+  source_maps:
+    path: lib/daftspaniel_dartbinaryclock/deps/source_maps
+  html5lib:
+    path: lib/daftspaniel_dartbinaryclock/deps/html5lib
+  csslib:
+    path: lib/daftspaniel_dartbinaryclock/deps/csslib
+  source_span:
+    path: lib/daftspaniel_dartbinaryclock/deps/source_span
+  collection:
+    path: lib/daftspaniel_dartbinaryclock/deps/collection
+  term_glyph:
+    path: lib/daftspaniel_dartbinaryclock/deps/term_glyph
+  analyzer_experimental:
+    path: lib/daftspaniel_dartbinaryclock/deps/analyzer_experimental
+  args:
+    path: lib/daftspaniel_dartbinaryclock/deps/args
+  unittest:
+    path: lib/daftspaniel_dartbinaryclock/deps/unittest
+  foo:
+    path: lib/daftspaniel_dartbinaryclock/deps/foo
   flutter_clock_helper:
-    path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
+    path:
+    path: lib/daftspaniel_dartbinaryclock/deps/path
   flutter:
     sdk: flutter
   shared_preferences: ^2.5.3

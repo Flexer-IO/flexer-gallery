@@ -1,0 +1,11 @@
+name: web_ui
+version: 0.4.28+1
+author: Web UI Authors <web-ui-dev@dartlang.org>
+description: (deprecated) See the polymer package
+homepage: https://github.com/dart-lang/web-ui
+environment:
+  sdk: '>=0.8.10+4'
+dev_dependencies:
+  benchmark_harness: '>=1.0.2 <1.0.3'
+  js: any
+  stack_trace: '>=0.6.3'

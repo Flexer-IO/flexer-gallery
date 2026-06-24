@@ -1,0 +1,10 @@
+name: analyzer_experimental
+author: Dart Team <misc@dartlang.org>
+description: Experimental static analyzer for Dart.
+homepage: http://www.dartlang.org
+dev_dependencies:
+  unittest: any
+
+version: 0.8.6
+environment:
+  sdk: ">=0.8.6"
