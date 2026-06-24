@@ -139,6 +139,7 @@ ResoCoder/flutter-tdd-clean-architecture-course
 Rohit19060/kings_clock_2
 Rohith-JN/Time-App
 Ronak99/ClockApp
+RxReader/wechat_kit
 RyanYuuki/AnymeX
 Seolong/new_alarm_clock
 SimformSolutionsPvtLtd/showcaseview
@@ -168,6 +169,7 @@ Tkko/Flutter_Pinput
 To-Rex/Flutter-Clock-App
 TomBursch/kitchenowl
 UnicornsOnLSD/finamp
+VB10/flutter-architecture-template
 VeryGoodOpenSource/very_good_cli
 Widle-Studio/Grocery-App
 WorldHealthOrganization/app
@@ -230,6 +232,7 @@ bostrot/wsl2-distro-manager
 brendan-duncan/image
 brianegan/flutter_architecture_samples
 brianegan/flutter_redux
+brianegan/scoped_model
 brinesoftwares/Flutter-AI-Rubik-cube-Solver
 btwld/mix
 bukunmialuko/flutter_ui_kit_obkm
@@ -251,6 +254,7 @@ creativecreatorormaybenot/portfolio
 creativecreatorormaybenot/wakelock
 dahliaOS/clock
 dahliaOS/pangolin_desktop
+daohoangson/flutter_widget_from_html
 darkmoonight/Rain
 dart-archive/clock
 dart-code-checker/dart-code-metrics
@@ -274,6 +278,8 @@ edde746/plezy
 edwin-learning/flutter_analog_and_digital_world_clock
 elainedb/flutter_voice-clock
 ente-io/ente
+ente/ente
+entronad/flutter_echarts
 entronad/graphic
 erluxman/awesomefluttertips
 felangel/bloc
@@ -284,6 +290,7 @@ filiph/state_experiments
 firebase/flutterfire
 flame-engine/flame
 fleaflet/flutter_map
+florent37/Flutter-AssetsAudioPlayer
 flutter-form-builder-ecosystem/flutter_form_builder
 flutter-mapbox-gl/maps
 flutter-ml/google_ml_kit_flutter
@@ -382,6 +389,7 @@ javiercbk/json_to_dart
 jayden320/flutter_shuqi
 jesusrp98/spacex-go
 jhomlala/betterplayer
+jhomlala/catcher
 jiangtian616/JHenTai
 jimmyff/crypto-clock
 jing332/AListFlutter
@@ -466,6 +474,7 @@ omar-alshyokh/flutter_flip_panel_plus
 openfoodfacts/smooth-app
 ouzari/analog_clock_for_flutter
 pachisi456/clocktrol
+pacifio/flutter_apps
 pauldemarco/flutter_blue
 pawlik92/flutter_whirlpool
 payam-zahedi/toastification
@@ -488,6 +497,7 @@ recepbasturk/clock_game
 reven-erlangga/android-clock
 rive-app/rive-flutter
 robertodoering/harpy
+rodydavis/signals.dart
 rohan20/flutter-chat-app
 roughike/inKino
 rrousselGit/flutter_hooks
@@ -508,6 +518,7 @@ serenader2014/flutter_carousel_slider
 serverpod/serverpod
 shankarkharel/World-Clock
 shaqian/flutter_realtime_detection
+sheikhhaziq/gyawun_music
 shenghy/flutter_shop
 shichunlei/flutter_app
 shorebirdtech/shorebird
@@ -534,6 +545,7 @@ tekartik/sqflite
 tharwatsamy/Flutter-Beginners-Projects
 theahmedhany/blink_alarm_clock_app
 theprantadutta/better_clock_flutter_app
+theyakka/qr.flutter
 thielepaul/photoprism-mobile
 thunder-app/thunder
 tilakpatel22/employee-attendance-app-flutter
