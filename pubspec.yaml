@@ -14,5 +14,6 @@ dependencies:
 
 flutter:
   assets:
+    - assets/marcelgarus_math_clock/OFL.txt
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
