@@ -6,13 +6,80 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  google_fonts:
+    path: lib/aditya_kd_flutter_clock_analog/deps/google_fonts
+  path_provider:
+    path: lib/aditya_kd_flutter_clock_analog/deps/path_provider
+  path_provider_platform_interface:
+    path: lib/aditya_kd_flutter_clock_analog/deps/path_provider_platform_interface
+  plugin_platform_interface:
+    path: lib/aditya_kd_flutter_clock_analog/deps/plugin_platform_interface
+  platform:
+    path: lib/aditya_kd_flutter_clock_analog/deps/platform
+  crypto:
+    path: lib/aditya_kd_flutter_clock_analog/deps/crypto
+  flutter_svg:
+    path: lib/aditya_kd_flutter_clock_analog/deps/flutter_svg
+  vector_graphics:
+    path: lib/aditya_kd_flutter_clock_analog/deps/vector_graphics
+  http:
+    path: lib/aditya_kd_flutter_clock_analog/deps/http
+  web:
+    path: lib/aditya_kd_flutter_clock_analog/deps/web
+  http_parser:
+    path: lib/aditya_kd_flutter_clock_analog/deps/http_parser
+  typed_data:
+    path: lib/aditya_kd_flutter_clock_analog/deps/typed_data
+  string_scanner:
+    path: lib/aditya_kd_flutter_clock_analog/deps/string_scanner
+  source_span:
+    path: lib/aditya_kd_flutter_clock_analog/deps/source_span
+  term_glyph:
+    path: lib/aditya_kd_flutter_clock_analog/deps/term_glyph
+  async:
+    path:
+    path: lib/aditya_kd_flutter_clock_analog/deps/path
+  vector_graphics_compiler:
+    path:
+    path: lib/aditya_kd_flutter_clock_analog/deps/path
+  xml:
+    path:
+    path: lib/aditya_kd_flutter_clock_analog/deps/path
+  petitparser:
+    path:
+    path: lib/aditya_kd_flutter_clock_analog/deps/path
+  collection:
+    path:
+    path: lib/aditya_kd_flutter_clock_analog/deps/path
+  path_parsing:
+    path:
+    path: lib/aditya_kd_flutter_clock_analog/deps/path
+  vector_math:
+    path:
+    path: lib/aditya_kd_flutter_clock_analog/deps/path
+  meta:
+    path:
+    path: lib/aditya_kd_flutter_clock_analog/deps/path
+  vector_graphics_codec:
+    path:
+    path: lib/aditya_kd_flutter_clock_analog/deps/path
   flutter_clock_helper:
-    path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
+    path:
+    path: lib/aditya_kd_flutter_clock_analog/deps/path
   flutter:
     sdk: flutter
   shared_preferences: ^2.5.3
 
 flutter:
   assets:
+    - assets/aditya_kd_flutter_clock_analog/icons/Liberty.svg
+    - assets/aditya_kd_flutter_clock_analog/icons/Moon.svg
+    - assets/aditya_kd_flutter_clock_analog/icons/Settings.svg
+    - assets/aditya_kd_flutter_clock_analog/icons/Sun.svg
+    - assets/aditya_kd_flutter_clock_analog/icons/Sydney.svg
+    - assets/aditya_kd_flutter_clock_analog/icons/clock.svg
+    - assets/aditya_kd_flutter_clock_analog/icons/stop_watch.svg
+    - assets/aditya_kd_flutter_clock_analog/icons/watch_2.svg
+    - assets/aditya_kd_flutter_clock_analog/icons/world.svg
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
