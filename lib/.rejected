@@ -80,6 +80,7 @@ JideGuru/FlutterSocialAppUIKit
 JideGuru/FlutterTravel
 K9i-0/ccpocket
 KRTirtho/spotube
+KarimElghamry/chillify
 Kavantix/sliver_tools
 KhoaSuperman/findseat
 KhubaibJamal/Flutter-Clock-Light-Dark_Theme
@@ -168,6 +169,7 @@ Tencent/mxflutter
 Tencent/tdesign-flutter
 ThangVuNguyenViet/clock_app
 The-ring-io/flutter_staggered_animations
+TheAlphaApp/flutter-task-planner-app
 TheAlphamerc/flutter_ecommerce_app
 Tkko/Flutter_Pinput
 To-Rex/Flutter-Clock-App
@@ -232,6 +234,7 @@ bizz84/layout-demo-flutter
 bizz84/starter_architecture_flutter_firebase
 bluefireteam/audioplayers
 bluefireteam/photo_view
+bmaroti9/Overmorrow
 boeledi/Streams-Block-Reactive-Programming-in-Flutter
 bostrot/wsl2-distro-manager
 brendan-duncan/image
@@ -314,6 +317,7 @@ flutter/samples
 flutter/website
 fluttercandies/NeteaseCloudMusic
 fluttercandies/extended_image
+fluttercandies/flutter_photo_manager
 fluttercandies/flutter_smart_dialog
 fluttercandies/flutter_wechat_assets_picker
 fluttercandies/wechat_flutter
@@ -328,6 +332,7 @@ fluttercommunity/plus_plugins
 fluttergems/awesome-open-source-flutter-apps
 flyerhq/flutter_chat_ui
 foss42/apidash
+foxsofter/flutter_thrio
 fregie/pho
 furkantektas/analog_clock
 fzyzcjy/flutter_rust_bridge
@@ -370,6 +375,7 @@ iamSahdeep/liquid_swipe_flutter
 iampawan/Flutter-Music-Player
 iampawan/Flutter-UI-Kit
 iampawan/FlutterExampleApps
+iampawan/FlutterWithFirebase
 iampawan/VelocityX
 ibhavikmakwana/FlutterPlayground
 ilgnefz/once_power
@@ -386,6 +392,7 @@ ishworpanta10/flutter_clock
 iteqno-id/fluboard
 iwrqk/iwrqk
 jagandeepbrar/lunasea
+jamesblasco/layout
 jamesblasco/modal_bottom_sheet
 jameskokoska/Cashew
 janoodleFTW/timy-messenger
@@ -499,6 +506,7 @@ rasitesdmr/pokeme
 realm/realm-dart
 realvorl/flutter-nixie-clock
 recepbasturk/clock_game
+reqable/re-editor
 reven-erlangga/android-clock
 rive-app/rive-flutter
 robertodoering/harpy
@@ -541,12 +549,14 @@ sooxt98/google_nav_bar
 spotiflacapp/SpotiFLAC-Mobile
 stryder-dev/flutter_platform_widgets
 sudipsarker14/alarm_clock
+sun-jiao/flut-renamer
 sunarya-thito/shadcn_flutter
 supabase/supabase-flutter
 syncfusion/flutter-examples
 syncfusion/flutter-widgets
 syphon-org/syphon
 takeoutfm/takeout_assistant
+techjarves/Uncensored-Local-AI-Multiplatform
 tekartik/sqflite
 tharwatsamy/Flutter-Beginners-Projects
 theahmedhany/blink_alarm_clock_app
@@ -584,6 +594,7 @@ wlan07/flutter_clock
 wshehab99/clock-app
 wuba/Fair
 wuzehua/techtrainingcamp-client-5
+xajik/thedeck
 xelaj/flutter_material_clock
 xiaoyaocz/flutter_dmzj
 xpavle00/Habo
@@ -604,5 +615,6 @@ yuan-dejavu/Flip-clock
 yubo725/flutter-osc
 yukilzw/dy_flutter
 yumi0629/FlutterUI
+zeshuaro/appainter
 zino-hofmann/graphql-flutter
 zoidberg-xgd/NekoTime
