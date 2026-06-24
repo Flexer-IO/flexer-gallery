@@ -6,8 +6,65 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  curved_navigation_bar:
+    path: lib/gulshid_digital_clock/deps/curved_navigation_bar
+  flutter_spinkit:
+    path: lib/gulshid_digital_clock/deps/flutter_spinkit
+  shimmer:
+    path: lib/gulshid_digital_clock/deps/shimmer
+  google_fonts:
+    path: lib/gulshid_digital_clock/deps/google_fonts
+  http:
+    path: lib/gulshid_digital_clock/deps/http
+  web:
+    path: lib/gulshid_digital_clock/deps/web
+  http_parser:
+    path: lib/gulshid_digital_clock/deps/http_parser
+  typed_data:
+    path: lib/gulshid_digital_clock/deps/typed_data
+  string_scanner:
+    path: lib/gulshid_digital_clock/deps/string_scanner
+  source_span:
+    path: lib/gulshid_digital_clock/deps/source_span
+  term_glyph:
+    path: lib/gulshid_digital_clock/deps/term_glyph
+  async:
+    path: lib/gulshid_digital_clock/deps/async
+  provider:
+    path: lib/gulshid_digital_clock/deps/provider
+  nested:
+    path: lib/gulshid_digital_clock/deps/nested
+  collection:
+    path: lib/gulshid_digital_clock/deps/collection
+  hive_flutter:
+    path: lib/gulshid_digital_clock/deps/hive_flutter
+  path_provider:
+    path:
+    path: lib/gulshid_digital_clock/deps/path
+  path_provider_platform_interface:
+    path:
+    path: lib/gulshid_digital_clock/deps/path
+  plugin_platform_interface:
+    path:
+    path: lib/gulshid_digital_clock/deps/path
+  platform:
+    path:
+    path: lib/gulshid_digital_clock/deps/path
+  hive:
+    path:
+    path: lib/gulshid_digital_clock/deps/path
+  crypto:
+    path:
+    path: lib/gulshid_digital_clock/deps/path
+  meta:
+    path:
+    path: lib/gulshid_digital_clock/deps/path
+  flutter_screenutil:
+    path:
+    path: lib/gulshid_digital_clock/deps/path
   flutter_clock_helper:
-    path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
+    path:
+    path: lib/gulshid_digital_clock/deps/path
   flutter:
     sdk: flutter
   shared_preferences: ^2.5.3
