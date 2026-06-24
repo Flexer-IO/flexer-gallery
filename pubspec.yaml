@@ -6,6 +6,14 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  rxdart:
+    path: lib/tensor_programming_clock_stream/deps/rxdart
+  provider:
+    path: lib/tensor_programming_clock_stream/deps/provider
+  nested:
+    path: lib/tensor_programming_clock_stream/deps/nested
+  collection:
+    path: lib/tensor_programming_clock_stream/deps/collection
   flutter_clock_helper:
     path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
   flutter:
