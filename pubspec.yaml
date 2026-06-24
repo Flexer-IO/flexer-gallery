@@ -6,8 +6,95 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  system_info2:
+    path: lib/quickcodes_clock_app/deps/system_info2
+  globbing:
+    path: lib/quickcodes_clock_app/deps/globbing
+  device_info_plus:
+    path: lib/quickcodes_clock_app/deps/device_info_plus
+  win32_registry:
+    path: lib/quickcodes_clock_app/deps/win32_registry
+  file:
+    path: lib/quickcodes_clock_app/deps/file
+  device_info_plus_platform_interface:
+    path: lib/quickcodes_clock_app/deps/device_info_plus_platform_interface
+  connectivity_plus:
+    path: lib/quickcodes_clock_app/deps/connectivity_plus
+  nm:
+    path: lib/quickcodes_clock_app/deps/nm
+  connectivity_plus_platform_interface:
+    path: lib/quickcodes_clock_app/deps/connectivity_plus_platform_interface
+  battery_plus:
+    path: lib/quickcodes_clock_app/deps/battery_plus
+  upower:
+    path: lib/quickcodes_clock_app/deps/upower
+  battery_plus_platform_interface:
+    path: lib/quickcodes_clock_app/deps/battery_plus_platform_interface
+  flip_board:
+    path: lib/quickcodes_clock_app/deps/flip_board
+  intl:
+    path: lib/quickcodes_clock_app/deps/intl
+  wakelock_plus:
+    path: lib/quickcodes_clock_app/deps/wakelock_plus
+  wakelock_plus_platform_interface:
+    path: lib/quickcodes_clock_app/deps/wakelock_plus_platform_interface
+  package_info_plus:
+    path: lib/quickcodes_clock_app/deps/package_info_plus
+  win32:
+    path: lib/quickcodes_clock_app/deps/win32
+  ffi_leak_tracker:
+    path: lib/quickcodes_clock_app/deps/ffi_leak_tracker
+  package_info_plus_platform_interface:
+    path: lib/quickcodes_clock_app/deps/package_info_plus_platform_interface
+  clock:
+    path: lib/quickcodes_clock_app/deps/clock
+  dbus:
+    path: lib/quickcodes_clock_app/deps/dbus
+  ffi:
+    path: lib/quickcodes_clock_app/deps/ffi
+  xml:
+    path: lib/quickcodes_clock_app/deps/xml
+  petitparser:
+    path: lib/quickcodes_clock_app/deps/petitparser
+  google_fonts:
+    path: lib/quickcodes_clock_app/deps/google_fonts
+  path_provider:
+    path: lib/quickcodes_clock_app/deps/path_provider
+  path_provider_platform_interface:
+    path: lib/quickcodes_clock_app/deps/path_provider_platform_interface
+  plugin_platform_interface:
+    path: lib/quickcodes_clock_app/deps/plugin_platform_interface
+  platform:
+    path: lib/quickcodes_clock_app/deps/platform
+  http:
+    path: lib/quickcodes_clock_app/deps/http
+  web:
+    path: lib/quickcodes_clock_app/deps/web
+  http_parser:
+    path: lib/quickcodes_clock_app/deps/http_parser
+  typed_data:
+    path: lib/quickcodes_clock_app/deps/typed_data
+  string_scanner:
+    path: lib/quickcodes_clock_app/deps/string_scanner
+  source_span:
+    path: lib/quickcodes_clock_app/deps/source_span
+  term_glyph:
+    path: lib/quickcodes_clock_app/deps/term_glyph
+  async:
+    path:
+    path: lib/quickcodes_clock_app/deps/path
+  meta:
+    path:
+    path: lib/quickcodes_clock_app/deps/path
+  collection:
+    path:
+    path: lib/quickcodes_clock_app/deps/path
+  crypto:
+    path:
+    path: lib/quickcodes_clock_app/deps/path
   flutter_clock_helper:
-    path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
+    path:
+    path: lib/quickcodes_clock_app/deps/path
   flutter:
     sdk: flutter
   shared_preferences: ^2.5.3
