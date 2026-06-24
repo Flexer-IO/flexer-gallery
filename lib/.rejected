@@ -127,6 +127,7 @@ OpenFlutter/fluwx
 PJ-ODS-2021/lww_crdt
 PerryPro/techtrainingcamp-client-7
 Pheonix-5/Clock
+PhilipsHue/flutter_reactive_ble
 PoojaB26/FlutterBasicWidgets
 Poujhit/Neumorphic-Clock-App
 Predidit/Kazumi
@@ -147,6 +148,7 @@ Ronak99/ClockApp
 RxReader/wechat_kit
 RyanYuuki/AnymeX
 Seolong/new_alarm_clock
+ShadyBoukhary/flutter_clean_architecture
 SimformSolutionsPvtLtd/showcaseview
 Sky24n/GreenTravel
 Sky24n/common_utils
@@ -214,6 +216,7 @@ amitsaini4556/world_clock
 anandnet/Harmony-Music
 angel-dart/angel
 appditto/natrium_wallet_flutter
+areslabs/flutter_mp
 arianneorpilla/jidoujisho
 arikato-Sanjay/clock_app
 arslankaleem7229/simple-clock-flutter
@@ -236,12 +239,14 @@ bluefireteam/audioplayers
 bluefireteam/photo_view
 bmaroti9/Overmorrow
 boeledi/Streams-Block-Reactive-Programming-in-Flutter
+bosskmk/pluto_grid
 bostrot/wsl2-distro-manager
 brendan-duncan/image
 brianegan/flutter_architecture_samples
 brianegan/flutter_redux
 brianegan/scoped_model
 brinesoftwares/Flutter-AI-Rubik-cube-Solver
+brocodev/flutter_projects
 btwld/mix
 bukunmialuko/flutter_ui_kit_obkm
 burhanrashid52/WhatTodo
@@ -276,6 +281,8 @@ deretame/Breeze
 desxz/smart_cyrptocurrency_clock
 diegoveloper/flutter-samples
 diegoveloper/flutter_keyboard_actions
+diegoveloper/flutter_percent_indicator
+dlutton/flutter_tts
 dnfield/flutter_svg
 doxtitech/yalarm
 dstark5/Openlib
@@ -324,6 +331,7 @@ fluttercandies/flutter_wechat_assets_picker
 fluttercandies/wechat_flutter
 flutterchina/azlistview
 flutterchina/flukit
+flutterchina/json_model
 fluttercommunity/chewie
 fluttercommunity/flutter_launcher_icons
 fluttercommunity/flutter_sticky_headers
@@ -410,6 +418,7 @@ jogboms/flutter_offline
 jogboms/flutter_spinkit
 jonataslaw/getx
 jonbhanson/flutter_native_splash
+josiahsrc/dough
 juicycleff/flutter-unity-view-widget
 juliansteenbakker/mobile_scanner
 juliuscanute/qr_code_scanner
@@ -453,6 +462,7 @@ media-kit/media-kit
 meditohq/medito-app
 memspace/zefyr
 mevljas/flutter_alarm_clock
+mhmzdev/devfolio
 mhmzdev/the-holy-quran-app
 miguelpruivo/flutter_file_picker
 miickel/couchpuzzler
@@ -479,6 +489,7 @@ niuhuan/daisy
 niuhuan/kobi
 nslogx/flutter_easyloading
 nylo-core/nylo
+o1298098/Flutter-Movie
 objectbox/objectbox-dart
 olayemii/flutter-ui-kits
 olexale/arkit_flutter_plugin
@@ -608,6 +619,7 @@ xumaohuai/Flutter-CuriosityApp
 xuyisheng/flutter_dojo
 xvrh/lottie-flutter
 yako-dev/flutter-settings-ui
+yako-dev/flutter_badges
 yang991178/fluent-reader-lite
 yasfdany/analog_clock_picker
 ycccccccy/wx_key
