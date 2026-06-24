@@ -6,6 +6,18 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  flare_splash_screen:
+    path: lib/anwar907_flutter_clock/deps/flare_splash_screen
+  flare_loading:
+    path: lib/anwar907_flutter_clock/deps/flare_loading
+  flare_flutter:
+    path: lib/anwar907_flutter_clock/deps/flare_flutter
+  collection:
+    path: lib/anwar907_flutter_clock/deps/collection
+  meta:
+    path: lib/anwar907_flutter_clock/deps/meta
+  analog_clock:
+    path: lib/anwar907_flutter_clock/deps/analog_clock
   flutter_clock_helper:
     path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
   flutter:
