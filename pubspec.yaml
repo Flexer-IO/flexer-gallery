@@ -6,8 +6,19 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  flutter_analog_clock:
+    path: lib/kudec61_analog_clock_packinstall/deps/flutter_analog_clock
+  intl:
+    path: lib/kudec61_analog_clock_packinstall/deps/intl
+  clock:
+    path:
+    path: lib/kudec61_analog_clock_packinstall/deps/path
+  meta:
+    path:
+    path: lib/kudec61_analog_clock_packinstall/deps/path
   flutter_clock_helper:
-    path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
+    path:
+    path: lib/kudec61_analog_clock_packinstall/deps/path
   flutter:
     sdk: flutter
   shared_preferences: ^2.5.3
