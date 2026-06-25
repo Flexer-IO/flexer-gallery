@@ -6,8 +6,56 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  jiffy:
+    path: lib/toharg2_sber_portal_clock/deps/jiffy
+  quiver:
+    path: lib/toharg2_sber_portal_clock/deps/quiver
+  matcher:
+    path: lib/toharg2_sber_portal_clock/deps/matcher
+  test_api:
+    path: lib/toharg2_sber_portal_clock/deps/test_api
+  boolean_selector:
+    path: lib/toharg2_sber_portal_clock/deps/boolean_selector
+  stream_channel:
+    path: lib/toharg2_sber_portal_clock/deps/stream_channel
+  async:
+    path: lib/toharg2_sber_portal_clock/deps/async
+  string_scanner:
+    path: lib/toharg2_sber_portal_clock/deps/string_scanner
+  source_span:
+    path: lib/toharg2_sber_portal_clock/deps/source_span
+  collection:
+    path: lib/toharg2_sber_portal_clock/deps/collection
+  term_glyph:
+    path: lib/toharg2_sber_portal_clock/deps/term_glyph
+  stack_trace:
+    path: lib/toharg2_sber_portal_clock/deps/stack_trace
+  intl:
+    path: lib/toharg2_sber_portal_clock/deps/intl
+  clock:
+    path:
+    path: lib/toharg2_sber_portal_clock/deps/path
+  screen_brightness:
+    path:
+    path: lib/toharg2_sber_portal_clock/deps/path
+  screen_brightness_platform_interface:
+    path:
+    path: lib/toharg2_sber_portal_clock/deps/path
+  plugin_platform_interface:
+    path:
+    path: lib/toharg2_sber_portal_clock/deps/path
+  meta:
+    path:
+    path: lib/toharg2_sber_portal_clock/deps/path
+  get:
+    path:
+    path: lib/toharg2_sber_portal_clock/deps/path
+  web:
+    path:
+    path: lib/toharg2_sber_portal_clock/deps/path
   flutter_clock_helper:
-    path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
+    path:
+    path: lib/toharg2_sber_portal_clock/deps/path
   flutter:
     sdk: flutter
   shared_preferences: ^2.5.3

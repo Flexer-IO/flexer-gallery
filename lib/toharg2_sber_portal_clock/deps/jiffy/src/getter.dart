@@ -1,0 +1,82 @@
+import 'enums/start_of_week.dart';
+import 'locale/locale.dart';
+import 'query.dart';
+
+class Getter {
+  DateTime dateTime(DateTime dateTime) => dateTime.copyWith();
+
+  int microsecond(DateTime dateTime) => dateTime.microsecond;
+
+  int microsecondsSinceEpoch(DateTime dateTime) {
+    return dateTime.microsecondsSinceEpoch;
+  }
+
+  int millisecond(DateTime dateTime) => dateTime.millisecond;
+
+  int millisecondsSinceEpoch(DateTime dateTime) {
+    return dateTime.millisecondsSinceEpoch;
+  }
+
+  int second(DateTime dateTime) => dateTime.second;
+
+  int minute(DateTime dateTime) => dateTime.minute;
+
+  int hour(DateTime dateTime) => dateTime.hour;
+
+  int date(DateTime dateTime) => dateTime.day;
+
+  int dayOfWeek(DateTime dateTime, StartOfWeek startOfWeek) {
+    var weekDays = [1, 2, 3, 4, 5, 6, 7, 1, 2];
+    var weekDayIndex = dateTime.weekday - 1;
+
+    switch (startOfWeek) {
+      case StartOfWeek.monday:
+        break;
+      case StartOfWeek.sunday:
+        weekDayIndex += 1;
+        break;
+      case StartOfWeek.saturday:
+        weekDayIndex += 2;
+        break;
+    }
+
+    return weekDays[weekDayIndex];
+  }
+
+  int daysInMonth(DateTime dateTime) =>
+      _daysInMonth(dateTime.year, dateTime.month);
+
+  int weekOfYear(DateTime dateTime, Locale locale) {
+    return ((dayOfYear(dateTime) -
+                dayOfWeek(dateTime, locale.startOfWeek) +
+                10) /
+            7)
+        .floor();
+  }
+
+  int month(DateTime dateTime) => dateTime.month;
+
+  int quarterOfYear(DateTime dateTime) => ((dateTime.month - 1) ~/ 3) + 1;
+
+  int dayOfYear(DateTime dateTime) {
+    var doy = _cumulativeDaysBeforeMonth[dateTime.month - 1] + dateTime.day;
+    if (dateTime.month > 2 && Query.isLeapYear(dateTime.year)) doy++;
+    return doy;
+  }
+
+  int year(DateTime dateTime) => dateTime.year;
+
+  int _daysInMonth(int year, int month) {
+    var result = daysInMonthArray[month];
+    if (month == 2 && Query.isLeapYear(year)) result++;
+    return result;
+  }
+
+  static final List<int> daysInMonthArray = List.from(
+      [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
+      growable: false);
+
+  static final List<int> _cumulativeDaysBeforeMonth = List.from(
+      [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334],
+      growable: false);
+}
