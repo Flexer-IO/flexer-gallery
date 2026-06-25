@@ -6,8 +6,21 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  flare_flutter:
+    path: lib/yerkbn_ant_clock/deps/flare_flutter
+  collection:
+    path: lib/yerkbn_ant_clock/deps/collection
+  intl:
+    path: lib/yerkbn_ant_clock/deps/intl
+  clock:
+    path:
+    path: lib/yerkbn_ant_clock/deps/path
+  meta:
+    path:
+    path: lib/yerkbn_ant_clock/deps/path
   flutter_clock_helper:
-    path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
+    path:
+    path: lib/yerkbn_ant_clock/deps/path
   flutter:
     sdk: flutter
   shared_preferences: ^2.5.3
