@@ -64,6 +64,7 @@ Frezyx/talker
 FriesI23/mhabit
 G-Ray/pikatorrent
 GanZhiXiong/GZXTaoBaoAppFlutter
+GanZhiXiong/gzx_dropdown_menu
 GetStream/stream-chat-flutter
 GhostenEditor/Ghosten-Player
 GiddyNaya/clockee
@@ -244,6 +245,7 @@ aws-amplify/amplify-flutter
 bailicangdu/native-xdm
 bdlukaa/fluent_ui
 befovy/fijkplayer
+benyaminbeyzaie/circular_bottom_navigation
 best-flutter/flutter_swiper
 beyondtranslate/beyondtranslate
 bggRGjQaUbCoE/PiliPlus
@@ -295,6 +297,7 @@ dengsgo/funny_time
 dengyin2000/dynamic_widget
 denissavishchev/the_clock
 deretame/Breeze
+designDo/flutter-checkio
 desxz/smart_cyrptocurrency_clock
 diegoveloper/flutter-samples
 diegoveloper/flutter_keyboard_actions
@@ -305,6 +308,7 @@ doxtitech/yalarm
 dstark5/Openlib
 duobaseio/forui
 duytq94/flutter-chat-demo
+e200/my-flutter-challenges
 echo-loop/Echo-Loop
 edde746/plezy
 edwin-learning/flutter_analog_and_digital_world_clock
@@ -319,6 +323,7 @@ espresso3389/lywsd02_demo
 felangel/bloc
 felangel/equatable
 felangel/mason
+felangel/mocktail
 felixblaschke/simple_animations
 filiph/state_experiments
 firebase/flutterfire
@@ -331,6 +336,7 @@ flutter-ml/google_ml_kit_flutter
 flutter-stripe/flutter_stripe
 flutter-team-archive/flutter_clock
 flutter-team-archive/gallery
+flutter-team-archive/io_flip
 flutter-team-archive/photobooth
 flutter-team-archive/pinball
 flutter-team-archive/plugins
@@ -358,6 +364,7 @@ fluttercommunity/flutter_workmanager
 fluttercommunity/font_awesome_flutter
 fluttercommunity/plus_plugins
 fluttergems/awesome-open-source-flutter-apps
+flutterkit/zerker
 flyerhq/flutter_chat_ui
 foss42/apidash
 foxsofter/flutter_thrio
@@ -430,6 +437,7 @@ jayden320/flutter_shuqi
 jesusrp98/spacex-go
 jhomlala/betterplayer
 jhomlala/catcher
+jhomlala/feather
 jiangtian616/JHenTai
 jimmyff/crypto-clock
 jing332/AListFlutter
@@ -547,6 +555,7 @@ realvorl/flutter-nixie-clock
 recepbasturk/clock_game
 reqable/re-editor
 reven-erlangga/android-clock
+rikulo/socket.io-client-dart
 rive-app/rive-flutter
 robertodoering/harpy
 rodydavis/flutter_login
@@ -574,6 +583,7 @@ serverpod/serverpod
 shankarkharel/World-Clock
 shaqian/flutter_realtime_detection
 sheikhhaziq/gyawun_music
+shekohex/flutterust
 shenghy/flutter_shop
 shichunlei/flutter_app
 shorebirdtech/shorebird
@@ -584,6 +594,7 @@ simolus3/drift
 simonoppowa/OpenNutriTracker
 simplezhli/flutter_deer
 singerdmx/flutter-quill
+sjjian/openhare
 smartherd/DartTutorial
 smkamranqadri/alarm_clock_app
 songxiaoliang/visitor-flutter
@@ -654,6 +665,7 @@ xvrh/lottie-flutter
 yako-dev/flutter-settings-ui
 yako-dev/flutter_badges
 yang991178/fluent-reader-lite
+yangyxd/flutter_picker
 yasfdany/analog_clock_picker
 ycccccccy/wx_key
 yechaoa/wanandroid_flutter
