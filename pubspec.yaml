@@ -6,8 +6,23 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  intl:
+    path: lib/nitobes_origamiflutterclock/deps/intl
+  clock:
+    path:
+    path: lib/nitobes_origamiflutterclock/deps/path
+  flare_flutter:
+    path:
+    path: lib/nitobes_origamiflutterclock/deps/path
+  collection:
+    path:
+    path: lib/nitobes_origamiflutterclock/deps/path
+  meta:
+    path:
+    path: lib/nitobes_origamiflutterclock/deps/path
   flutter_clock_helper:
-    path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
+    path:
+    path: lib/nitobes_origamiflutterclock/deps/path
   flutter:
     sdk: flutter
   shared_preferences: ^2.5.3
