@@ -1,6 +1,7 @@
 2697a/bujuan
 2811267153/screen_clock
 2d-inc/Flare-Flutter
+2d-inc/HistoryOfEverything
 4seer/openflutterecommerceapp
 990aa/kivixa
 ABausG/home_widget
@@ -148,6 +149,7 @@ Poujhit/Neumorphic-Clock-App
 Predidit/Kazumi
 Predidit/oneAnime
 Punithraaj/Complete-Analog-and-Digital-World-Clock-Flutter
+Pyozer/introduction_screen
 Quiggleson/4Chess
 RIP-Comm/sossoldi
 RafaelBarbosatec/bonfire
@@ -195,6 +197,7 @@ ThangVuNguyenViet/clock_app
 The-ring-io/flutter_staggered_animations
 TheAlphaApp/flutter-task-planner-app
 TheAlphamerc/flutter_ecommerce_app
+TheAlphamerc/flutter_login_signup
 TimeLord2010/clockify_analyser
 Tkko/Flutter_Pinput
 To-Rex/Flutter-Clock-App
@@ -215,6 +218,7 @@ Yubico/yubioath-flutter
 ZDfordream/FlutterTianYue
 ZhuJHua/moodiary
 aagarwal1012/Animated-Text-Kit
+aagarwal1012/IntroViews-Flutter
 aagarwal1012/Liquid-Pull-To-Refresh
 abuanwar072/Covid-19-Flutter-UI
 abuanwar072/E-commerce-App-UI-Flutter
@@ -241,6 +245,8 @@ amir-hossein-rajaezadeh/flutter_clock_app
 amirziyacode/Fluttter_Clock
 amitsaini4556/world_clock
 anandnet/Harmony-Music
+anasfik/openai
+andresaraujo/timeago.dart
 angel-dart/angel
 anuragkotwal/World-Clock-App
 appditto/natrium_wallet_flutter
@@ -264,6 +270,7 @@ best-flutter/flutter_swiper
 beyondtranslate/beyondtranslate
 bggRGjQaUbCoE/PiliPlus
 bitsdojo/bitsdojo_window
+bizz84/firebase_auth_demo_flutter
 bizz84/flutter-tips-and-tricks
 bizz84/layout-demo-flutter
 bizz84/starter_architecture_flutter_firebase
@@ -306,6 +313,7 @@ dart-archive/clock
 dart-code-checker/dart-code-metrics
 dart-lang/dart-pad
 dart-lang/http
+davidmigloz/langchain_dart
 deckerst/aves
 dengsgo/funny_time
 dengyin2000/dynamic_widget
@@ -508,6 +516,7 @@ material-components/material-components-flutter
 material-foundation/flutter-packages
 mateusz-bak/openreads
 matthiasn/lotti
+maxkrieger/voiceliner
 media-kit/media-kit
 meditohq/medito-app
 memspace/zefyr
@@ -596,6 +605,7 @@ rydmike/flex_color_scheme
 saber-notes/saber
 saldanaj97/Child-Friendly-Clock
 saliemmanuel/clockworker
+samarthagarwal/FlutterScreens
 sarbagyastha/youtube_player_flutter
 savagecarol/clock
 sayed3li97/FlutterClock-Challenge-BH
@@ -615,6 +625,7 @@ simc/auto_size_text
 simc/awesome-flutter-packages
 simc/dartx
 simolus3/drift
+simonbengtsson/airdash
 simonoppowa/OpenNutriTracker
 simplezhli/flutter_deer
 singerdmx/flutter-quill
@@ -665,6 +676,7 @@ vanmt05/basketball_clock
 venera-app/venera
 vengateshm/flutter_clock_app
 vicolo-dev/chrono
+vintage/scratcher
 voxrey/sober_clock
 vs4824/Flutter_Analog_Clock
 walid-rehamnia/Clocking-System
