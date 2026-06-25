@@ -25,6 +25,7 @@ Baseflow/flutter-permission-handler
 Baseflow/flutter_cache_manager
 Baseflow/flutter_cached_network_image
 BaselAllam/clockcommerce
+BirjuVachhani/adaptive_theme
 BirjuVachhani/ticking_widget
 BlueBubblesApp/bluebubbles-app
 CCExtractor/ultimate_alarm_clock
@@ -103,6 +104,7 @@ LeetaoGoooo/RSSAid
 LianjiaTech/bruno
 LianjiaTech/keframe
 LinwoodDev/Butterfly
+LiveLikeCounter/Flutter-Todolist
 Livinglist/Hacki
 LouisLou2/Clockie
 Lyokone/flutterlocation
@@ -133,6 +135,7 @@ NearHuscarl/flutter_login
 Norbert515/flutter_ide
 Notsfsssf/pixez-flutter
 OpenConsultingGroup/Taxi-App
+OpenFlutter/Flutter-Notebook
 OpenFlutter/flutter_screenutil
 OpenFlutter/fluwx
 PJ-ODS-2021/lww_crdt
@@ -162,6 +165,7 @@ Ronak99/ClockApp
 RxReader/wechat_kit
 RyanYuuki/AnymeX
 Sakurababycat/tableclock
+Santos-Enoque/complete_flutter_ecommerce
 Seolong/new_alarm_clock
 ShadyBoukhary/flutter_clean_architecture
 SiddiqShah/Clock
@@ -307,6 +311,7 @@ denissavishchev/the_clock
 deretame/Breeze
 designDo/flutter-checkio
 desxz/smart_cyrptocurrency_clock
+developerpaaji/Flutter-Dribbble-Challenge
 diegoveloper/flutter-samples
 diegoveloper/flutter_keyboard_actions
 diegoveloper/flutter_percent_indicator
@@ -316,6 +321,7 @@ doxtitech/yalarm
 dstark5/Openlib
 duobaseio/forui
 duytq94/flutter-chat-demo
+duytq94/flutter-intro-slider
 e200/my-flutter-challenges
 echo-loop/Echo-Loop
 edde746/plezy
@@ -358,6 +364,7 @@ flutter/website
 fluttercandies/NeteaseCloudMusic
 fluttercandies/extended_image
 fluttercandies/extended_text
+fluttercandies/flutter_image_compress
 fluttercandies/flutter_photo_manager
 fluttercandies/flutter_smart_dialog
 fluttercandies/flutter_wechat_assets_picker
@@ -371,6 +378,7 @@ fluttercommunity/flutter_sticky_headers
 fluttercommunity/flutter_workmanager
 fluttercommunity/font_awesome_flutter
 fluttercommunity/plus_plugins
+flutterfx/flutterfx_widgets
 fluttergems/awesome-open-source-flutter-apps
 flutterkit/zerker
 flyerhq/flutter_chat_ui
@@ -413,6 +421,7 @@ huangruiLearn/flutter_hrlweibo
 huextrat/Taskist
 hugeicons/hugeicons
 hungps/flutter_pokedex
+hydro-sdk/hydro-sdk
 hyochan/flutter_calendar_carousel
 iamSahdeep/liquid_swipe_flutter
 iampawan/Flutter-Music-Player
@@ -520,11 +529,13 @@ mylxsw/aidea
 namanshergill/diohub
 namidaco/namida
 nank1ro/flutter-shadcn-ui
+nathansdev/ContraFlutterKit
 naveeramesh/clock_app
 nightmare-space/adb_kit
 nightmare-space/any_share
 nightmare-space/code_lfa
 nikolajjsj/chess-clock
+nisrulz/flutter-examples
 niuhuan/daisy
 niuhuan/kobi
 nslogx/flutter_easyloading
@@ -575,6 +586,7 @@ rrousselGit/flutter_hooks
 rrousselGit/freezed
 rrousselGit/provider
 rrousselGit/riverpod
+rvamsikrishna/inview_notifier_list
 rxlabz/panache
 ryanheise/audio_service
 rydmike/flex_color_scheme
