@@ -6,8 +6,26 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  provider:
+    path: lib/luciferro01_clock/deps/provider
+  nested:
+    path: lib/luciferro01_clock/deps/nested
+  collection:
+    path: lib/luciferro01_clock/deps/collection
+  intl:
+    path: lib/luciferro01_clock/deps/intl
+  clock:
+    path:
+    path: lib/luciferro01_clock/deps/path
+  meta:
+    path:
+    path: lib/luciferro01_clock/deps/path
+  dotted_border:
+    path:
+    path: lib/luciferro01_clock/deps/path
   flutter_clock_helper:
-    path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
+    path:
+    path: lib/luciferro01_clock/deps/path
   flutter:
     sdk: flutter
   shared_preferences: ^2.5.3
