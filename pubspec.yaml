@@ -6,13 +6,20 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  flutter_gen:
+    path: lib/toglefritz_clocky_mcclockface/deps/flutter_gen
   flutter_clock_helper:
     path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
   flutter:
     sdk: flutter
   shared_preferences: ^2.5.3
 
+  analog_clock: ^0.1.0
+  google_fonts: ^5.1.0
+  intl: any
+  provider: ^6.0.5
 flutter:
   assets:
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
+
