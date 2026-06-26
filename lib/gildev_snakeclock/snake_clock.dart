@@ -6,7 +6,8 @@ import 'painters/snake.dart';
 import 'painters/indicators.dart';
 
 class SnakeClock extends StatefulWidget {
-  const SnakeClock({super.key});
+  final Map<Entity, Color?> colors;
+  const SnakeClock({super.key, required this.colors});
 
   @override
   State<SnakeClock> createState() => _SnakeClockState();
@@ -40,13 +41,10 @@ class _SnakeClockState extends State<SnakeClock> {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Map<Entity, Color?>.from(darkTheme);
-    colors[Entity.body] = colors[Entity.spring];
-
     return ClipRect(
       child: CustomPaint(
-        painter: SnakePainter(_dateTime, colors),
-        foregroundPainter: IndicationsPainter(_dateTime, colors, true),
+        painter: SnakePainter(_dateTime, widget.colors),
+        foregroundPainter: IndicationsPainter(_dateTime, widget.colors, true),
       ),
     );
   }

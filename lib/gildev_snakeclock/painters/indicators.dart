@@ -35,9 +35,21 @@ class IndicationsPainter extends CustomPainter {
     double startY = lineStartY;
 
     for (; startY < lineEndY; startY += space) {
-      canvas.drawLine(Offset(leftIndicatorPosX, startY), Offset(leftIndicatorPosX, startY + dashWidth), paint);
-      canvas.drawLine(Offset(centerIndicatorPosX, startY), Offset(centerIndicatorPosX, startY + dashWidth), paint);
-      canvas.drawLine(Offset(rightIndicatorPostX, startY), Offset(rightIndicatorPostX, startY + dashWidth), paint);
+      canvas.drawLine(
+        Offset(leftIndicatorPosX, startY),
+        Offset(leftIndicatorPosX, startY + dashWidth),
+        paint,
+      );
+      canvas.drawLine(
+        Offset(centerIndicatorPosX, startY),
+        Offset(centerIndicatorPosX, startY + dashWidth),
+        paint,
+      );
+      canvas.drawLine(
+        Offset(rightIndicatorPostX, startY),
+        Offset(rightIndicatorPostX, startY + dashWidth),
+        paint,
+      );
     }
 
     final textStyle = TextStyle(color: Colors.grey, fontSize: size.width / 36);
@@ -47,27 +59,54 @@ class IndicationsPainter extends CustomPainter {
       textDirection: TextDirection.ltr,
     );
     textPainter.layout(minWidth: 0, maxWidth: size.width);
-    textPainter.paint(canvas, Offset(leftIndicatorPosX - textPainter.width / 2, 0));
+    textPainter.paint(
+      canvas,
+      Offset(leftIndicatorPosX - textPainter.width / 2, 0),
+    );
 
     textPainter.text = TextSpan(text: centerIndicatorText, style: textStyle);
     textPainter.layout(minWidth: 0, maxWidth: size.width);
-    textPainter.paint(canvas, Offset(centerIndicatorPosX - textPainter.width / 2, 0));
+    textPainter.paint(
+      canvas,
+      Offset(centerIndicatorPosX - textPainter.width / 2, 0),
+    );
 
     textPainter.text = TextSpan(text: rightIndicatorText, style: textStyle);
     textPainter.layout(minWidth: 0, maxWidth: size.width);
-    textPainter.paint(canvas, Offset(rightIndicatorPostX - textPainter.width / 2, 0));
+    textPainter.paint(
+      canvas,
+      Offset(rightIndicatorPostX - textPainter.width / 2, 0),
+    );
 
     textPainter.text = TextSpan(text: leftIndicatorText, style: textStyle);
     textPainter.layout(minWidth: 0, maxWidth: size.width);
-    textPainter.paint(canvas, Offset(leftIndicatorPosX - textPainter.width / 2, size.height - textPainter.height));
+    textPainter.paint(
+      canvas,
+      Offset(
+        leftIndicatorPosX - textPainter.width / 2,
+        size.height - textPainter.height,
+      ),
+    );
 
     textPainter.text = TextSpan(text: centerIndicatorText, style: textStyle);
     textPainter.layout(minWidth: 0, maxWidth: size.width);
-    textPainter.paint(canvas, Offset(centerIndicatorPosX - textPainter.width / 2, size.height - textPainter.height));
+    textPainter.paint(
+      canvas,
+      Offset(
+        centerIndicatorPosX - textPainter.width / 2,
+        size.height - textPainter.height,
+      ),
+    );
 
     textPainter.text = TextSpan(text: rightIndicatorText, style: textStyle);
     textPainter.layout(minWidth: 0, maxWidth: size.width);
-    textPainter.paint(canvas, Offset(rightIndicatorPostX - textPainter.width / 2, size.height - textPainter.height));
+    textPainter.paint(
+      canvas,
+      Offset(
+        rightIndicatorPostX - textPainter.width / 2,
+        size.height - textPainter.height,
+      ),
+    );
 
     textPainter.textAlign = TextAlign.center;
     for (int hour = 0; hour < 12; hour++) {
@@ -79,7 +118,8 @@ class IndicationsPainter extends CustomPainter {
       }
       textPainter.text = TextSpan(text: hourText, style: textStyle);
       textPainter.layout(minWidth: 40, maxWidth: size.width);
-      double textY = snakeStartPosY + hour * snakeIntervalY - textPainter.height / 2;
+      double textY =
+          snakeStartPosY + hour * snakeIntervalY - textPainter.height / 2;
       textPainter.paint(canvas, Offset(0, textY));
       textPainter.paint(canvas, Offset(size.width - textPainter.width, textY));
     }
