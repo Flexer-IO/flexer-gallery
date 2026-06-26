@@ -36,13 +36,15 @@ class _RealWeatherCustomizerState extends State<RealWeatherCustomizer> {
   Future<void> _fetch() async {
     final data = await WeatherService.fetch();
     if (data == null || !mounted) return;
-    // unit must be celsius before setting temps so no conversion happens
-    _model.unit = TemperatureUnit.celsius;
-    _model.location = data.city;
-    _model.temperature = data.tempC;
-    _model.high = data.highC;
-    _model.low = data.lowC;
-    _model.weatherCondition = data.condition;
+    setState(() {
+      // unit must be celsius before setting temps so no conversion happens
+      _model.unit = TemperatureUnit.celsius;
+      _model.location = data.city;
+      _model.temperature = data.tempC;
+      _model.high = data.highC;
+      _model.low = data.lowC;
+      _model.weatherCondition = data.condition;
+    });
   }
 
   @override

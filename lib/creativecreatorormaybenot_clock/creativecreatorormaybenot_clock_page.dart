@@ -44,6 +44,9 @@ class _CreativecreatorormaybenotClockPageState
   void initState() {
     super.initState();
     _loadPrefs();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) setState(() {});
+    });
   }
 
   Future<void> _loadPrefs() async {
