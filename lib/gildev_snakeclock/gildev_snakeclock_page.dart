@@ -26,7 +26,10 @@ class _GildevSnakeclockPageState extends State<GildevSnakeclockPage> {
   Future<void> _loadPrefs() async {
     final prefs = await SharedPreferences.getInstance();
     final saved = prefs.getInt(_kSelectedKey);
-    if (saved != null && saved >= 0 && saved < snakePalettes.length && mounted) {
+    if (saved != null &&
+        saved >= 0 &&
+        saved < snakePalettes.length &&
+        mounted) {
       setState(() => _selectedIndex = saved);
     }
   }

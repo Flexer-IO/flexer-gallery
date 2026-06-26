@@ -61,7 +61,9 @@ class WeatherService {
       // region gives major city ("Baghdad"), areaName gives local district
       final rawCity =
           ((area['region'] as List).first as Map)['value'] as String;
-      final city = rawCity.replaceAll(RegExp(r'\s*Governorate$', caseSensitive: false), '').trim();
+      final city = rawCity
+          .replaceAll(RegExp(r'\s*Governorate$', caseSensitive: false), '')
+          .trim();
       final cond =
           (json['current_condition'] as List).first as Map<String, dynamic>;
       final tempC = double.parse(cond['temp_C'] as String);
