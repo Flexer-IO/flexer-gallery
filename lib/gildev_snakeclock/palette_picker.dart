@@ -76,8 +76,8 @@ class _SnakePalettePickerState extends State<SnakePalettePicker>
           children: [
             _TriggerButton(
               open: _open,
-              bodyColor: widget.palettes[widget.selectedIndex]
-                  .colors[Entity.body],
+              bodyColor:
+                  widget.palettes[widget.selectedIndex].colors[Entity.body],
               onTap: _handleTap,
             ),
             if (_open) ...[
@@ -140,9 +140,7 @@ class _TriggerButton extends StatelessWidget {
                 ],
               ),
               borderRadius: BorderRadius.circular(16),
-              border: Border.all(
-                color: Colors.white.withValues(alpha: 0.25),
-              ),
+              border: Border.all(color: Colors.white.withValues(alpha: 0.25)),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withValues(alpha: 0.35),
@@ -194,7 +192,9 @@ class _ColorDot extends StatelessWidget {
         shape: BoxShape.circle,
         color: color,
         border: Border.all(color: Colors.white, width: 1.2),
-        boxShadow: [BoxShadow(color: color.withValues(alpha: 0.8), blurRadius: 6)],
+        boxShadow: [
+          BoxShadow(color: color.withValues(alpha: 0.8), blurRadius: 6),
+        ],
       ),
     );
   }
@@ -225,9 +225,8 @@ class _DrawerPanelState extends State<_DrawerPanel> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!_controller.hasClients) return;
-      final itemCenter = _listPadding +
-          widget.selectedIndex * _itemExtent +
-          _itemExtent / 2;
+      final itemCenter =
+          _listPadding + widget.selectedIndex * _itemExtent + _itemExtent / 2;
       final viewport = _controller.position.viewportDimension;
       final target = (itemCenter - viewport / 2).clamp(
         0.0,
@@ -284,7 +283,10 @@ class _DrawerPanelState extends State<_DrawerPanel> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 _Header(count: widget.palettes.length),
-                Container(height: 1, color: Colors.white.withValues(alpha: 0.10)),
+                Container(
+                  height: 1,
+                  color: Colors.white.withValues(alpha: 0.10),
+                ),
                 Flexible(
                   child: ListView.builder(
                     controller: _controller,
@@ -418,8 +420,7 @@ class _PaletteTile extends StatelessWidget {
                   ],
                 ),
               ),
-              if (selected)
-                Icon(Icons.check_rounded, color: accent, size: 18),
+              if (selected) Icon(Icons.check_rounded, color: accent, size: 18),
             ],
           ),
         ),
