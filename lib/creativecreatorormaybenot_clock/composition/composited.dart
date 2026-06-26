@@ -120,9 +120,6 @@ class RenderCompositedClock
     // The children use this size and the challenge provides a fixed size anyway.
     size = constraints.biggest;
 
-    // Horizontal padding for both weather and temperature.
-    final horizontalPadding = size.width / 62;
-
     //<editor-fold desc="Laying out children">
     // Background
     final background = layoutChildren[ClockComponent.background]!,
@@ -133,24 +130,6 @@ class RenderCompositedClock
     backgroundData.clearRects();
 
     background.layout(BoxConstraints.tight(size));
-
-    // Weather — laid out before the ball/slide/analogTime closure so the rect
-    // is always registered on backgroundData even if that closure throws.
-    final weather = layoutChildren[ClockComponent.weather]!,
-        weatherData = layoutParentData[ClockComponent.weather]!,
-        weatherSize = Size.fromRadius(size.height / 4);
-    weather.layout(BoxConstraints.tight(weatherSize), parentUsesSize: false);
-
-    weatherData.offset = Offset(
-      horizontalPadding -
-          (horizontalPadding + weatherSize.width) * (1 - spinUpAnimation.value),
-      size.height / 2 - weatherSize.height / 2,
-    );
-    backgroundData.addRect(
-      ClockComponent.weather,
-      weatherData.offset,
-      weatherSize,
-    );
 
     // Ball
     final ball = layoutChildren[ClockComponent.ball]!,
@@ -243,6 +222,26 @@ class RenderCompositedClock
       ClockComponent.analogTime,
       analogTimeData.offset,
       analogTimeSize,
+    );
+
+    // Weather
+    final weather = layoutChildren[ClockComponent.weather]!,
+        weatherData = layoutParentData[ClockComponent.weather]!,
+        weatherSize = Size.fromRadius(size.height / 4);
+    weather.layout(BoxConstraints.tight(weatherSize), parentUsesSize: false);
+
+    // Horizontal padding for both weather and temperature.
+    final horizontalPadding = size.width / 62;
+
+    weatherData.offset = Offset(
+      horizontalPadding -
+          (horizontalPadding + weatherSize.width) * (1 - spinUpAnimation.value),
+      size.height / 2 - weatherSize.height / 2,
+    );
+    backgroundData.addRect(
+      ClockComponent.weather,
+      weatherData.offset,
+      weatherSize,
     );
 
     // Temperature

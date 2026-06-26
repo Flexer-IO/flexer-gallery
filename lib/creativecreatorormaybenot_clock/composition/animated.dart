@@ -18,15 +18,12 @@ class AnimatedClock extends ImplicitlyAnimatedWidget {
   /// [State.build] method of its state.
   final Map<ClockColor, Color> palette;
 
-  final VoidCallback? onBallArrival;
-
   const AnimatedClock({
     Key? key,
     Curve curve = Curves.linear,
     Duration duration = kThemeAnimationDuration,
     required this.model,
     required this.palette,
-    this.onBallArrival,
   }) : super(key: key, curve: curve, duration: duration);
 
   @override
@@ -70,7 +67,6 @@ class _AnimatedClockState extends AnimatedWidgetBaseState<AnimatedClock> {
     return Clock(
       model: widget.model,
       palette: _paletteTween!.evaluate(animation),
-      onBallArrival: widget.onBallArrival,
     );
   }
 }

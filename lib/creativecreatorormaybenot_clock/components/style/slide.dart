@@ -275,10 +275,10 @@ class RenderSlide
     updatePadding();
   }
 
-  Line2d? paddedTravelLine;
+  late Line2d paddedTravelLine;
 
   void updatePadding() {
-    if (!hasSize || paddedTravelLine == null) return;
+    if (!hasSize) return;
 
     BallTripStage stage;
     double animationValue;
@@ -316,7 +316,7 @@ class RenderSlide
     }
 
     // Only repaint when necessary.
-    if (newLine == paddedTravelLine!) {
+    if (newLine == paddedTravelLine) {
       return;
     }
 
@@ -326,8 +326,6 @@ class RenderSlide
 
   @override
   void paint(PaintingContext context, Offset offset) {
-    if (paddedTravelLine == null) return;
-
     final canvas = context.canvas;
 
     canvas.save();
@@ -338,7 +336,7 @@ class RenderSlide
       offset.dy + -compositionData.offset.dy,
     );
 
-    final travelPath = paddedTravelLine!.pathWithWidth(strokeWidth),
+    final travelPath = paddedTravelLine.pathWithWidth(strokeWidth),
         startPath = startLine.pathWithWidth(strokeWidth),
         endPath = endLine.pathWithWidth(strokeWidth);
 
