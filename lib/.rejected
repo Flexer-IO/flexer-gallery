@@ -3,6 +3,7 @@
 2d-inc/Flare-Flutter
 2d-inc/HistoryOfEverything
 4seer/openflutterecommerceapp
+826327700/flutter_plugins_demo
 990aa/kivixa
 ABausG/home_widget
 AbdulRahmanAlHamali/flutter_typeahead
@@ -12,9 +13,11 @@ Aditya1787/My-First-clock-app
 AgoraIO-Extensions/Agora-Flutter-SDK
 AhmedLSayed9/deliverzler
 AimesSoft/NipaPlay-Reload
+AliAnilKocak/Flutter-Shopping-UI-Kit
 AndreHaueisen/flushbar
 Anxcye/anx-reader
 AppFlowy-IO/AppFlowy
+AppFlowy-IO/appflowy-editor
 Apparence-io/CamerAwesome
 ArAmM7/clock
 ArkaprabhaChakraborty/ClockApp
@@ -207,6 +210,7 @@ Tkko/Flutter_Pinput
 To-Rex/Flutter-Clock-App
 TomBursch/kitchenowl
 UnicornsOnLSD/finamp
+Uuttssaavv/flutter-clean-architecture-riverpod
 VB10/flutter-architecture-template
 VarunS9000/World-Clock
 VeryGoodOpenSource/very_good_cli
@@ -238,6 +242,7 @@ aissat/easy_localization
 ajay-prabhakar/awesome-flutter-ui
 akshathjain/sliding_up_panel
 aleksanderwozniak/table_calendar
+alexmercerind/flutter_acrylic
 alibaba/fish-redux
 alibaba/flutter-go
 alibaba/flutter_boost
@@ -277,6 +282,7 @@ bitsdojo/bitsdojo_window
 bizz84/firebase_auth_demo_flutter
 bizz84/flutter-tips-and-tricks
 bizz84/layout-demo-flutter
+bizz84/nested-navigation-demo-flutter
 bizz84/starter_architecture_flutter_firebase
 bluefireteam/audioplayers
 bluefireteam/photo_view
@@ -284,6 +290,7 @@ bmaroti9/Overmorrow
 boeledi/Streams-Block-Reactive-Programming-in-Flutter
 bosskmk/pluto_grid
 bostrot/wsl2-distro-manager
+bravekingzhang/flutter_chat_box
 brendan-duncan/image
 brianegan/flutter_architecture_samples
 brianegan/flutter_redux
@@ -293,6 +300,7 @@ brocodev/flutter_projects
 btwld/mix
 bukunmialuko/flutter_ui_kit_obkm
 burhanrashid52/WhatTodo
+bytedance/RealRichText
 bytedance/flutter_ume
 canxin121/app_rhyme
 cfug/dio
@@ -332,6 +340,7 @@ diegoveloper/flutter_percent_indicator
 dlutton/flutter_tts
 dnfield/flutter_svg
 doxtitech/yalarm
+dreautall/waterfly-iii
 dstark5/Openlib
 duobaseio/forui
 duytq94/flutter-chat-demo
@@ -378,6 +387,7 @@ flutter/samples
 flutter/website
 fluttercandies/NeteaseCloudMusic
 fluttercandies/extended_image
+fluttercandies/extended_nested_scroll_view
 fluttercandies/extended_text
 fluttercandies/flutter_image_compress
 fluttercandies/flutter_photo_manager
@@ -399,6 +409,7 @@ flutterkit/zerker
 flyerhq/flutter_chat_ui
 foss42/apidash
 foxsofter/flutter_thrio
+free-explorers/veshell
 fregie/pho
 furkantektas/analog_clock
 fzyzcjy/flutter_rust_bridge
@@ -703,6 +714,7 @@ xiaoyaocz/flutter_dmzj
 xpavle00/Habo
 xritzx/Tix-Clock
 xsahil03x/before_after
+xsahil03x/giffy_dialog
 xuelongqy/flutter_easy_refresh
 xujiyou/zhihu-flutter
 xumaohuai/Flutter-CuriosityApp
