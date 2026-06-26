@@ -213,5 +213,5 @@ class SnakePainter extends CustomPainter {
 
   @override
   bool shouldRepaint(SnakePainter oldDelegate) =>
-      oldDelegate.time.second != time.second;
+      oldDelegate.time.second != time.second || oldDelegate.colors != colors;
 }

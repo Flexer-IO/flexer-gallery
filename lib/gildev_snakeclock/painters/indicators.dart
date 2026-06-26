@@ -126,5 +126,6 @@ class IndicationsPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(IndicationsPainter oldDelegate) => false;
+  bool shouldRepaint(IndicationsPainter oldDelegate) =>
+      oldDelegate.time.second != time.second || oldDelegate.colors != colors;
 }
