@@ -17,15 +17,17 @@ class _GildevSnakeclockPageState extends State<GildevSnakeclockPage> {
   @override
   Widget build(BuildContext context) {
     final palette = snakePalettes[_selectedIndex];
-    return Stack(
-      children: [
-        SnakeClock(colors: palette.colors),
-        SnakePalettePicker(
-          palettes: snakePalettes,
-          selectedIndex: _selectedIndex,
-          onSelected: (i) => setState(() => _selectedIndex = i),
-        ),
-      ],
+    return SafeArea(
+      child: Stack(
+        children: [
+          SnakeClock(colors: palette.colors),
+          SnakePalettePicker(
+            palettes: snakePalettes,
+            selectedIndex: _selectedIndex,
+            onSelected: (i) => setState(() => _selectedIndex = i),
+          ),
+        ],
+      ),
     );
   }
 }
