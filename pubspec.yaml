@@ -14,5 +14,6 @@ dependencies:
 
 flutter:
   assets:
+    - assets/shashilaheshan_flutter_clock_challenge/time.json
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
