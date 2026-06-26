@@ -76,7 +76,8 @@ class _ClockPalettePickerState extends State<ClockPalettePicker>
   @override
   Widget build(BuildContext context) {
     final currentPalette = allClockPalettes[widget.currentIndex];
-    final accent = currentPalette.colors[ClockColor.ballPrimary] ?? Colors.white;
+    final accent =
+        currentPalette.colors[ClockColor.ballPrimary] ?? Colors.white;
     return Positioned(
       top: 16,
       right: 12,
@@ -284,9 +285,15 @@ class _DrawerPanel extends StatelessWidget {
                   selectedCount: selected.length,
                   totalCount: allClockPalettes.length,
                 ),
-                Container(height: 1, color: Colors.white.withValues(alpha: 0.10)),
+                Container(
+                  height: 1,
+                  color: Colors.white.withValues(alpha: 0.10),
+                ),
                 _FilterTabs(current: filter, onChanged: onFilterChanged),
-                Container(height: 1, color: Colors.white.withValues(alpha: 0.07)),
+                Container(
+                  height: 1,
+                  color: Colors.white.withValues(alpha: 0.07),
+                ),
                 Flexible(
                   child: ListView.builder(
                     itemCount: filteredIndices.length,
@@ -427,7 +434,11 @@ class _Tab extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(icon, size: 13, color: Colors.white.withValues(alpha: active ? 1.0 : 0.5)),
+              Icon(
+                icon,
+                size: 13,
+                color: Colors.white.withValues(alpha: active ? 1.0 : 0.5),
+              ),
               const SizedBox(width: 4),
               Text(
                 label,
@@ -463,7 +474,8 @@ class _PaletteTile extends StatelessWidget {
     final bg = palette.colors[ClockColor.background] ?? Colors.black;
     final ball = palette.colors[ClockColor.ballPrimary] ?? Colors.white;
     final goo = palette.colors[ClockColor.goo] ?? Colors.grey;
-    final analog = palette.colors[ClockColor.analogTimeBackground] ?? Colors.grey;
+    final analog =
+        palette.colors[ClockColor.analogTimeBackground] ?? Colors.grey;
     final accent = ball;
 
     return Material(
@@ -534,7 +546,9 @@ class _PaletteTile extends StatelessWidget {
                   shape: BoxShape.circle,
                   color: checked ? accent : Colors.transparent,
                   border: Border.all(
-                    color: checked ? accent : Colors.white.withValues(alpha: 0.35),
+                    color: checked
+                        ? accent
+                        : Colors.white.withValues(alpha: 0.35),
                     width: 1.5,
                   ),
                 ),

@@ -57,16 +57,13 @@ class WeatherService {
       client.close();
 
       final json = jsonDecode(body) as Map<String, dynamic>;
-      final area =
-          (json['nearest_area'] as List).first as Map<String, dynamic>;
-      final city =
-          ((area['areaName'] as List).first as Map)['value'] as String;
+      final area = (json['nearest_area'] as List).first as Map<String, dynamic>;
+      final city = ((area['areaName'] as List).first as Map)['value'] as String;
       final cond =
           (json['current_condition'] as List).first as Map<String, dynamic>;
       final tempC = double.parse(cond['temp_C'] as String);
       final code = int.parse(cond['weatherCode'] as String);
-      final weather =
-          (json['weather'] as List).first as Map<String, dynamic>;
+      final weather = (json['weather'] as List).first as Map<String, dynamic>;
       final maxC = double.parse(weather['maxtempC'] as String);
       final minC = double.parse(weather['mintempC'] as String);
 

@@ -12,10 +12,7 @@ class ClockPalette {
   });
 }
 
-Map<ClockColor, Color> _build(
-  bool dark,
-  Map<ClockColor, Color> overrides,
-) {
+Map<ClockColor, Color> _build(bool dark, Map<ClockColor, Color> overrides) {
   final result = Map.of(Palette.base);
   result.addAll(dark ? Palette.dark : Palette.light);
   result.addAll(overrides);

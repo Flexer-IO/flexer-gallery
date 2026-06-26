@@ -24,7 +24,7 @@ class _RealWeatherCustomizerState extends State<RealWeatherCustomizer> {
     super.initState();
     _model = ClockModel()
       ..unit = TemperatureUnit.celsius
-      ..location = 'Detecting...'
+      ..location = ''
       ..temperature = 20
       ..high = 24
       ..low = 16
