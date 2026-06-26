@@ -4,7 +4,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'clock.dart';
 import 'clock_palettes.dart';
 import 'clock_palette_picker.dart';
-import 'real_customizer.dart';
 
 const _kSelectedKey = 'creativeclock_selected_palettes';
 const _kCurrentKey = 'creativeclock_current_palette';
@@ -44,9 +43,6 @@ class _CreativecreatorormaybenotClockPageState
   void initState() {
     super.initState();
     _loadPrefs();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) setState(() {});
-    });
   }
 
   Future<void> _loadPrefs() async {
@@ -113,7 +109,8 @@ class _CreativecreatorormaybenotClockPageState
     return ColoredBox(
       color: bg,
       child: SafeArea(
-        child: RealWeatherCustomizer(
+        child: Customizer(
+          mode: CustomizationFlow.automatic,
           builder: (context, model) => Stack(
             fit: StackFit.expand,
             children: [
