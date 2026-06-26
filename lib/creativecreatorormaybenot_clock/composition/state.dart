@@ -61,7 +61,8 @@ class _ClockState extends State<Clock> with TickerProviderStateMixin {
     spinUpController = AnimationController(
       vsync: this,
       duration: spinUpDuration,
-    )..forward();
+      value: 1.0,
+    );
 
     analogBounceController = AnimationController(
       vsync: this,
