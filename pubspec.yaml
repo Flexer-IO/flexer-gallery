@@ -6,13 +6,105 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  time_range_picker:
+    path: lib/olgeer_justclock/deps/time_range_picker
+  line_awesome_flutter:
+    path: lib/olgeer_justclock/deps/line_awesome_flutter
+  flutter_archive:
+    path: lib/olgeer_justclock/deps/flutter_archive
+  flutter_easyloading:
+    path: lib/olgeer_justclock/deps/flutter_easyloading
+  flutter_spinkit:
+    path: lib/olgeer_justclock/deps/flutter_spinkit
+  dio:
+    path: lib/olgeer_justclock/deps/dio
+  mime:
+    path: lib/olgeer_justclock/deps/mime
+  package_info_plus:
+    path: lib/olgeer_justclock/deps/package_info_plus
+  win32:
+    path: lib/olgeer_justclock/deps/win32
+  ffi_leak_tracker:
+    path: lib/olgeer_justclock/deps/ffi_leak_tracker
+  ffi:
+    path: lib/olgeer_justclock/deps/ffi
+  package_info_plus_platform_interface:
+    path: lib/olgeer_justclock/deps/package_info_plus_platform_interface
+  http:
+    path: lib/olgeer_justclock/deps/http
+  web:
+    path: lib/olgeer_justclock/deps/web
+  http_parser:
+    path: lib/olgeer_justclock/deps/http_parser
+  typed_data:
+    path: lib/olgeer_justclock/deps/typed_data
+  string_scanner:
+    path: lib/olgeer_justclock/deps/string_scanner
+  source_span:
+    path: lib/olgeer_justclock/deps/source_span
+  term_glyph:
+    path: lib/olgeer_justclock/deps/term_glyph
+  async:
+    path:
+    path: lib/olgeer_justclock/deps/path
+  collection:
+    path:
+    path: lib/olgeer_justclock/deps/path
+  clock:
+    path:
+    path: lib/olgeer_justclock/deps/path
+  path_provider:
+    path:
+    path: lib/olgeer_justclock/deps/path
+  path_provider_platform_interface:
+    path:
+    path: lib/olgeer_justclock/deps/path
+  plugin_platform_interface:
+    path:
+    path: lib/olgeer_justclock/deps/path
+  platform:
+    path:
+    path: lib/olgeer_justclock/deps/path
+  wakelock:
+    path:
+    path: lib/olgeer_justclock/deps/path
+  wakelock_macos:
+    path:
+    path: lib/olgeer_justclock/deps/path
+  wakelock_platform_interface:
+    path:
+    path: lib/olgeer_justclock/deps/path
+  meta:
+    path:
+    path: lib/olgeer_justclock/deps/path
+  colours:
+    path:
+    path: lib/olgeer_justclock/deps/path
+  colour:
+    path:
+    path: lib/olgeer_justclock/deps/path
+  pigment:
+    path:
+    path: lib/olgeer_justclock/deps/path
+  digital_clock:
+    path:
+    path: lib/olgeer_justclock/deps/path
+  flutter_picker:
+    path:
+    path: lib/olgeer_justclock/deps/path
+  logging:
+    path:
+    path: lib/olgeer_justclock/deps/path
   flutter_clock_helper:
-    path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
+    path:
+    path: lib/olgeer_justclock/deps/path
   flutter:
     sdk: flutter
   shared_preferences: ^2.5.3
 
 flutter:
   assets:
+    - assets/olgeer_justclock/translations/en-US.json
+    - assets/olgeer_justclock/translations/zh-CH.json
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true

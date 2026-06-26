@@ -1,0 +1,12 @@
+name: colour
+description: An easy way to use color in flutter (with Normal, HEX, RGB, ARGB, or RGBO format).
+version: 1.0.5
+homepage: https://github.com/salkuadrat/colour
+repository: https://github.com/salkuadrat/colour
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
