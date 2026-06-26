@@ -6,8 +6,23 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  intl:
+    path: lib/cruzelx_flutter_clock_challenge/deps/intl
+  clock:
+    path:
+    path: lib/cruzelx_flutter_clock_challenge/deps/path
+  flare_flutter:
+    path:
+    path: lib/cruzelx_flutter_clock_challenge/deps/path
+  collection:
+    path:
+    path: lib/cruzelx_flutter_clock_challenge/deps/path
+  meta:
+    path:
+    path: lib/cruzelx_flutter_clock_challenge/deps/path
   flutter_clock_helper:
-    path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
+    path:
+    path: lib/cruzelx_flutter_clock_challenge/deps/path
   flutter:
     sdk: flutter
   shared_preferences: ^2.5.3
