@@ -58,21 +58,32 @@ class WeatherService {
 
       final json = jsonDecode(body) as Map<String, dynamic>;
       final area = (json['nearest_area'] as List).first as Map<String, dynamic>;
-      final city = ((area['areaName'] as List).first as Map)['value'] as String;
+      // region gives major city ("Baghdad"), areaName gives local district
+      final rawCity =
+          ((area['region'] as List).first as Map)['value'] as String;
+      final city = rawCity.replaceAll(RegExp(r'\s*Governorate$', caseSensitive: false), '').trim();
       final cond =
           (json['current_condition'] as List).first as Map<String, dynamic>;
       final tempC = double.parse(cond['temp_C'] as String);
       final code = int.parse(cond['weatherCode'] as String);
+      final isDay = (cond['is_day'] as String?) == 'yes';
       final weather = (json['weather'] as List).first as Map<String, dynamic>;
       final maxC = double.parse(weather['maxtempC'] as String);
       final minC = double.parse(weather['mintempC'] as String);
+
+      var condition = _mapCode(code);
+      // wttr.in returns code 113 for clear regardless of day/night;
+      // WeatherCondition has no moon variant so use cloudy for clear night
+      if (!isDay && condition == WeatherCondition.sunny) {
+        condition = WeatherCondition.cloudy;
+      }
 
       _cached = WeatherData(
         city: city,
         tempC: tempC,
         highC: maxC,
         lowC: minC,
-        condition: _mapCode(code),
+        condition: condition,
       );
       _fetchedAt = now;
       return _cached;
