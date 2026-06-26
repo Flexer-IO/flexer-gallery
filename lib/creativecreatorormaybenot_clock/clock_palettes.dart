@@ -274,6 +274,7 @@ final List<ClockPalette> allClockPalettes = [
       ClockColor.weatherArrow: const Color(0xff002244),
       ClockColor.digitalTimeText: const Color(0xff002244),
       ClockColor.thermometerMount: const Color(0xff447799),
+      ClockColor.thermometerTube: const Color(0xffd8eef9),
     }),
   ),
   ClockPalette(
@@ -300,6 +301,7 @@ final List<ClockPalette> allClockPalettes = [
       ClockColor.weatherArrow: const Color(0xff004422),
       ClockColor.digitalTimeText: const Color(0xff004433),
       ClockColor.thermometerMount: const Color(0xff44885a),
+      ClockColor.thermometerTube: const Color(0xffd8f5e8),
     }),
   ),
   ClockPalette(
@@ -326,6 +328,7 @@ final List<ClockPalette> allClockPalettes = [
       ClockColor.weatherArrow: const Color(0xff552211),
       ClockColor.digitalTimeText: const Color(0xff441100),
       ClockColor.thermometerMount: const Color(0xffaa6644),
+      ClockColor.thermometerTube: const Color(0xfffae0d8),
     }),
   ),
   ClockPalette(
@@ -352,6 +355,7 @@ final List<ClockPalette> allClockPalettes = [
       ClockColor.weatherArrow: const Color(0xff330066),
       ClockColor.digitalTimeText: const Color(0xff440077),
       ClockColor.thermometerMount: const Color(0xff886699),
+      ClockColor.thermometerTube: const Color(0xffeae4ff),
     }),
   ),
 ];

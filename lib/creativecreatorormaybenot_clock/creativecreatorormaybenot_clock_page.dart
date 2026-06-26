@@ -19,12 +19,23 @@ class CreativecreatorormaybenotClockPage extends StatefulWidget {
 
 class _CreativecreatorormaybenotClockPageState
     extends State<CreativecreatorormaybenotClockPage> {
-  Set<int> _selected = {_firstDarkIndex()};
+  late Set<int> _selected = _defaultSelected();
   int _currentIdx = _firstDarkIndex();
 
   static int _firstDarkIndex() {
     final idx = allClockPalettes.indexWhere((p) => p.isDark);
     return idx < 0 ? 0 : idx;
+  }
+
+  static Set<int> _defaultSelected() {
+    final dark = allClockPalettes
+        .asMap()
+        .entries
+        .where((e) => e.value.isDark)
+        .take(2)
+        .map((e) => e.key)
+        .toSet();
+    return dark.isEmpty ? {0} : dark;
   }
 
   ClockPalette get _currentPalette => allClockPalettes[_currentIdx];
@@ -40,19 +51,17 @@ class _CreativecreatorormaybenotClockPageState
     final saved = prefs.getStringList(_kSelectedKey);
     final savedCurrent = prefs.getInt(_kCurrentKey);
     if (saved != null && saved.isNotEmpty) {
-      final indices =
-          saved
-              .map(int.tryParse)
-              .whereType<int>()
-              .where((i) => i >= 0 && i < allClockPalettes.length)
-              .toSet();
+      final indices = saved
+          .map(int.tryParse)
+          .whereType<int>()
+          .where((i) => i >= 0 && i < allClockPalettes.length)
+          .toSet();
       if (indices.isNotEmpty && mounted) {
         setState(() {
           _selected = indices;
-          _currentIdx =
-              (savedCurrent != null && indices.contains(savedCurrent))
-                  ? savedCurrent
-                  : indices.first;
+          _currentIdx = (savedCurrent != null && indices.contains(savedCurrent))
+              ? savedCurrent
+              : indices.first;
         });
       }
     }
@@ -103,6 +112,7 @@ class _CreativecreatorormaybenotClockPageState
       child: SafeArea(
         child: RealWeatherCustomizer(
           builder: (context, model) => Stack(
+            fit: StackFit.expand,
             children: [
               AnimatedClock(
                 model: model,
