@@ -6,8 +6,23 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  intl:
+    path: lib/swasthikjp_flutter_clock/deps/intl
+  clock:
+    path:
+    path: lib/swasthikjp_flutter_clock/deps/path
+  flare_flutter:
+    path:
+    path: lib/swasthikjp_flutter_clock/deps/path
+  collection:
+    path:
+    path: lib/swasthikjp_flutter_clock/deps/path
+  meta:
+    path:
+    path: lib/swasthikjp_flutter_clock/deps/path
   flutter_clock_helper:
-    path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
+    path:
+    path: lib/swasthikjp_flutter_clock/deps/path
   flutter:
     sdk: flutter
   shared_preferences: ^2.5.3
