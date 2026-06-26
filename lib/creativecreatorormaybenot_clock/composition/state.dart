@@ -16,8 +16,16 @@ class Clock extends StatefulWidget {
   /// See [Palette].
   final Map<ClockColor, Color> palette;
 
-  const Clock({Key? key, required this.model, required this.palette})
-    : super(key: key);
+  /// Called when the ball arrives at the clock face.
+  /// If provided, replaces the default vibrant-toggle behavior.
+  final VoidCallback? onBallArrival;
+
+  const Clock({
+    Key? key,
+    required this.model,
+    required this.palette,
+    this.onBallArrival,
+  }) : super(key: key);
 
   @override
   State createState() => _ClockState();
@@ -89,7 +97,12 @@ class _ClockState extends State<Clock> with TickerProviderStateMixin {
               ballArrivalController.reset();
 
               ballDepartureController.forward(from: 0);
-              Palette.of(context)!.vibrant = !Palette.of(context)!.vibrant;
+              if (widget.onBallArrival != null) {
+                widget.onBallArrival!();
+              } else {
+                Palette.of(context)?.vibrant =
+                    !(Palette.of(context)?.vibrant ?? true);
+              }
 
               // Starting the animation for the bouncing
               // of the element hit.
