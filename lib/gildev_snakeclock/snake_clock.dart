@@ -45,6 +45,7 @@ class _SnakeClockState extends State<SnakeClock> {
       child: CustomPaint(
         painter: SnakePainter(_dateTime, widget.colors),
         foregroundPainter: IndicationsPainter(_dateTime, widget.colors, true),
+        child: const SizedBox.expand(),
       ),
     );
   }
