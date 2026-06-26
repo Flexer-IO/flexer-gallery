@@ -58,7 +58,7 @@ class SnakePainter extends CustomPainter {
       if (time.hour < 9 || time.hour == 9 && time.minute < 29) {
         drawApple(
           canvas,
-          appleColors[Apple.yellow]!,
+          colors[Entity.body]!,
           snakeThickness,
           snakeStartPosX + snakeWidth * 30 / 60,
           snakeStartPosY + snakeIntervalY * 9,
@@ -68,7 +68,7 @@ class SnakePainter extends CustomPainter {
       if (time.hour < 13 || time.hour == 13 && time.minute < 29) {
         drawApple(
           canvas,
-          appleColors[Apple.red]!,
+          colors[Entity.body]!,
           snakeThickness,
           snakeStartPosX + snakeWidth * 30 / 60,
           snakeStartPosY + snakeIntervalY * 1,
@@ -77,7 +77,7 @@ class SnakePainter extends CustomPainter {
       if (time.hour < 19 || time.hour == 19 && time.minute < 29) {
         drawApple(
           canvas,
-          appleColors[Apple.green]!,
+          colors[Entity.body]!,
           snakeThickness,
           snakeStartPosX + snakeWidth * 30 / 60,
           snakeStartPosY + snakeIntervalY * 7,
