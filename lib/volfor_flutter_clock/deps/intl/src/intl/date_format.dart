@@ -419,6 +419,7 @@ class DateFormat {
   }
 
   DateTime _parseLoose(String inputString, bool utc) {
+    // ignore: deprecated_member_use
     var dateFields = DateBuilder(locale, dateTimeConstructor);
     if (utc) dateFields.utc = true;
     var stack = StringStack(inputString);
@@ -464,6 +465,7 @@ class DateFormat {
   DateTime _parse(String inputString, {bool utc = false, bool strict = false}) {
     // TODO(alanknight): The Closure code refers to special parsing of numeric
     // values with no delimiters, which we currently don't do. Should we?
+    // ignore: deprecated_member_use
     var dateFields = DateBuilder(locale, dateTimeConstructor);
     if (utc) dateFields.utc = true;
     dateFields.dateOnly = dateOnly;
@@ -739,7 +741,7 @@ class DateFormat {
   List<_DateFormatField> get _formatFields {
     if (_formatFieldsPrivate == null) {
       if (_pattern == null) _useDefaultPattern();
-      _formatFieldsPrivate = parsePattern(_pattern!);
+      _formatFieldsPrivate = parsePattern(_pattern!); // ignore: deprecated_member_use
     }
     return _formatFieldsPrivate!;
   }

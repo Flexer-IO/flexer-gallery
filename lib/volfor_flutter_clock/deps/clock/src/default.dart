@@ -35,7 +35,7 @@ Clock get clock => Zone.current[_clockKey] as Clock? ?? const Clock();
 /// This is [Zone]-scoped, so asynchronous callbacks spawned within [callback]
 /// will also use the new value for [clock].
 ///
-// ignore: deprecated_member_use_from_same_package
+// ignore: deprecated_member_use_from_same_package, deprecated_member_use
 /// If [isFinal] is `true`, calls to [withClock] within [callback] will throw a
 /// [StateError]. However, this parameter is deprecated and should be avoided.
 T withClock<T>(

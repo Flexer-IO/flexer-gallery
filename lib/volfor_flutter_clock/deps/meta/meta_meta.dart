@@ -173,6 +173,7 @@ class TargetKind {
   static const values = [
     classType,
     constructor,
+    // ignore: deprecated_member_use_from_same_package, deprecated_member_use
     directive,
     enumType,
     enumValue,

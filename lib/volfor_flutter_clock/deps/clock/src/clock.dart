@@ -33,7 +33,7 @@ class Clock {
 
   /// Creates a clock based on the given [currentTime], or on the system clock
   /// by default.
-  // ignore: deprecated_member_use_from_same_package
+  // ignore: deprecated_member_use_from_same_package, deprecated_member_use
   const Clock([DateTime Function() currentTime = systemTime])
     : _time = currentTime;
 
