@@ -77,5 +77,11 @@ class NeedlePainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(CustomPainter old) => false;
+  bool shouldRepaint(NeedlePainter old) =>
+      color != old.color ||
+      top != old.top ||
+      bottom != old.bottom ||
+      left != old.left ||
+      right != old.right ||
+      thickness != old.thickness;
 }

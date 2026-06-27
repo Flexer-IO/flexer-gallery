@@ -4,9 +4,14 @@ import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 
 class AnalogueClockFace extends StatelessWidget {
-  const AnalogueClockFace({Key? key, required this.now}) : super(key: key);
+  const AnalogueClockFace({
+    Key? key,
+    required this.now,
+    required this.textColor,
+  }) : super(key: key);
 
   final DateTime now;
+  final Color textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +30,7 @@ class AnalogueClockFace extends StatelessWidget {
             value: now.hour + (now.minute / 60.0),
             startAtZero: false,
             clockwise: clockwise,
+            color: textColor,
           ),
           RadialDial(
             length: 60,
@@ -34,6 +40,7 @@ class AnalogueClockFace extends StatelessWidget {
             useSeperators: true,
             divisor: 5,
             clockwise: clockwise,
+            color: textColor,
           ),
           RadialDial(
             length: 60,
@@ -43,6 +50,7 @@ class AnalogueClockFace extends StatelessWidget {
             useSeperators: true,
             divisor: 15,
             clockwise: clockwise,
+            color: textColor,
           ),
         ],
       ),

@@ -3,7 +3,7 @@ import 'package:showcase_library/showcase_contract.dart';
 import 'package:flutter/widgets.dart';
 
 const showcaseInfo = ShowcaseInfo(
-  showcaseName: 'Clock',
+  showcaseName: 'Radial Clock',
   githubRepoUrl: 'https://github.com/IsaTippens/flutter_clock',
   orientation: Orientation.landscape,
   description: 'Animated analogue clock that rotates its hands in real time.',

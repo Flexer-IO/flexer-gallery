@@ -53,5 +53,6 @@ class PinPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(CustomPainter old) => false;
+  bool shouldRepaint(PinPainter old) =>
+      color != old.color || radius != old.radius || alignment != old.alignment;
 }

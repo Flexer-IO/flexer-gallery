@@ -13,6 +13,7 @@ class RadialDial extends StatelessWidget {
     this.divisor = 2,
     this.startAtZero = true,
     this.clockwise = true,
+    this.color,
     this.child,
   })  : assert(divisor != 0),
         super(key: key);
@@ -25,6 +26,7 @@ class RadialDial extends StatelessWidget {
   final num divisor;
   final bool startAtZero;
   final bool clockwise;
+  final Color? color;
   final Widget? child;
 
   @override
@@ -80,7 +82,10 @@ class RadialDial extends StatelessWidget {
           transform: transform,
           child: Text(
             digit,
-            style: TextStyle(fontSize: textSize.toDouble()),
+            style: TextStyle(
+              fontSize: textSize.toDouble(),
+              color: color,
+            ),
           ),
         ),
       );
