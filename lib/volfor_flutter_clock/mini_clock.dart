@@ -132,13 +132,13 @@ class _MiniClockState extends State<MiniClock> with TickerProviderStateMixin {
   double _animDegreeHour = 0;
   double _animDegreeMinute = 0;
 
-  Animation<double> _animationHour;
-  Tween<double> _tweenHour;
-  AnimationController _controllerHour;
+  late Animation<double> _animationHour;
+  late Tween<double> _tweenHour;
+  late AnimationController _controllerHour;
 
-  Animation<double> _animationMinute;
-  Tween<double> _tweenMinute;
-  AnimationController _controllerMinute;
+  late Animation<double> _animationMinute;
+  late Tween<double> _tweenMinute;
+  late AnimationController _controllerMinute;
 
   void setNewDegrees(double degreeHour, double degreeMinute) {
     _tweenHour.begin = _tweenHour.end;
@@ -214,7 +214,7 @@ class _MiniClockState extends State<MiniClock> with TickerProviderStateMixin {
   }
 
   DegreeData getDegreeDataFromDigit(int digit, int position) {
-    List<double> degrees;
+    List<double> degrees = <double>[];
 
     switch (digit) {
       case 0:

@@ -6,19 +6,8 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
-  angles:
-    path: lib/volfor_flutter_clock/deps/angles
-  intl:
-    path: lib/volfor_flutter_clock/deps/intl
-  clock:
-    path:
-    path: lib/volfor_flutter_clock/deps/path
-  meta:
-    path:
-    path: lib/volfor_flutter_clock/deps/path
   flutter_clock_helper:
-    path:
-    path: lib/volfor_flutter_clock/deps/path
+    path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
   flutter:
     sdk: flutter
   shared_preferences: ^2.5.3
