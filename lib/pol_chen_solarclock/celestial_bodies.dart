@@ -123,56 +123,36 @@ class _EarthPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final rect = Rect.fromCircle(center: center, radius: radius);
 
-    // Sphere — lit from upper-left
+    // Atmosphere glow
+    canvas.drawCircle(
+      center,
+      radius * 1.25,
+      Paint()
+        ..color = const Color(0xFF4FC3F7).withValues(alpha: 0.20)
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 6),
+    );
+
+    // Sphere
     canvas.drawCircle(
       center,
       radius,
       Paint()
         ..shader = RadialGradient(
-          center: const Alignment(-0.3, -0.3),
+          center: const Alignment(-0.35, -0.35),
           colors: const [
-            Color(0xFF64B5F6),
-            Color(0xFF1565C0),
-            Color(0xFF0D1F6B),
+            Color(0xFF81D4FA),
+            Color(0xFF1976D2),
+            Color(0xFF0D2B6B),
           ],
-          stops: const [0.0, 0.6, 1.0],
+          stops: const [0.0, 0.55, 1.0],
         ).createShader(rect),
     );
 
-    // Cloud swirls clipped to disc
-    canvas.save();
-    canvas.clipPath(Path()..addOval(rect));
-
-    final cloudPaint = Paint()..color = Colors.white.withValues(alpha: 0.45);
-
-    // Diagonal cloud band across middle
-    canvas.drawOval(
-      Rect.fromCenter(
-        center: center + Offset(radius * 0.05, radius * 0.10),
-        width: radius * 1.6,
-        height: radius * 0.28,
-      ),
-      cloudPaint,
-    );
-    // Smaller upper cloud patch
-    canvas.drawOval(
-      Rect.fromCenter(
-        center: center + Offset(-radius * 0.25, -radius * 0.45),
-        width: radius * 0.80,
-        height: radius * 0.22,
-      ),
-      cloudPaint,
-    );
-
-    canvas.restore();
-
-    // Atmosphere ring
+    // Single specular dot — makes it read as a 3D sphere
     canvas.drawCircle(
-      center,
-      radius + radius * 0.10,
-      Paint()
-        ..color = const Color(0xFF80D8FF).withValues(alpha: 0.28)
-        ..maskFilter = MaskFilter.blur(BlurStyle.normal, radius * 0.15),
+      center + Offset(-radius * 0.30, -radius * 0.30),
+      radius * 0.18,
+      Paint()..color = Colors.white.withValues(alpha: 0.55),
     );
   }
 
