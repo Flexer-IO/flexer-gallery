@@ -130,8 +130,12 @@ class _EarthPainter extends CustomPainter {
       Path()..addOval(Rect.fromCircle(center: center, radius: radius)),
     );
 
-    // Ocean base
-    canvas.drawCircle(center, radius, Paint()..color = const Color(0xFF1565C0));
+    // Ocean base — palette earthColor
+    canvas.drawCircle(center, radius, Paint()..color = color);
+
+    // Derive land + ice from palette color
+    final land = Color.lerp(color, Colors.white, 0.40)!;
+    final ice = Color.lerp(color, Colors.white, 0.82)!;
 
     // Soft watercolor land blobs — blurred so edges bleed naturally
     void blob(Offset offset, double size, Color c) {
@@ -144,10 +148,10 @@ class _EarthPainter extends CustomPainter {
       );
     }
 
-    blob(const Offset(-0.20, -0.10), 0.55, const Color(0xFF2E7D32));
-    blob(const Offset(0.30, 0.15), 0.40, const Color(0xFF388E3C));
-    blob(const Offset(-0.05, 0.40), 0.30, const Color(0xFF43A047));
-    blob(const Offset(0.00, -0.55), 0.28, const Color(0xFFE0F7FA)); // polar ice
+    blob(const Offset(-0.20, -0.10), 0.55, land);
+    blob(const Offset(0.30, 0.15), 0.40, land);
+    blob(const Offset(-0.05, 0.40), 0.30, land);
+    blob(const Offset(0.00, -0.55), 0.28, ice);
 
     // Sphere depth — radial dark edge
     canvas.drawCircle(
