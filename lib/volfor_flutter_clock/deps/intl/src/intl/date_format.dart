@@ -742,9 +742,7 @@ class DateFormat {
     if (_formatFieldsPrivate == null) {
       if (_pattern == null) _useDefaultPattern();
       // ignore: deprecated_member_use
-      _formatFieldsPrivate = parsePattern(
-        _pattern!,
-      );
+      _formatFieldsPrivate = parsePattern(_pattern!);
     }
     return _formatFieldsPrivate!;
   }
