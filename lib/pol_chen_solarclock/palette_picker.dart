@@ -245,57 +245,60 @@ class _DrawerPanelState extends State<_DrawerPanel> {
       onPointerPanZoomStart: (_) =>
           const ShowcasePopVetoNotification().dispatch(context),
       child: ClipRRect(
-      borderRadius: BorderRadius.circular(20),
-      child: BackdropFilter(
-        filter: ui.ImageFilter.blur(sigmaX: 18, sigmaY: 18),
-        child: Container(
-          width: 220,
-          constraints: BoxConstraints(
-            maxHeight: MediaQuery.sizeOf(context).height * 0.65,
-          ),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                Colors.white.withValues(alpha: 0.10),
-                Colors.black.withValues(alpha: 0.32),
+        borderRadius: BorderRadius.circular(20),
+        child: BackdropFilter(
+          filter: ui.ImageFilter.blur(sigmaX: 18, sigmaY: 18),
+          child: Container(
+            width: 220,
+            constraints: BoxConstraints(
+              maxHeight: MediaQuery.sizeOf(context).height * 0.65,
+            ),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Colors.white.withValues(alpha: 0.10),
+                  Colors.black.withValues(alpha: 0.32),
+                ],
+              ),
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: Colors.white.withValues(alpha: 0.18)),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.45),
+                  blurRadius: 24,
+                  offset: const Offset(0, 10),
+                ),
               ],
             ),
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: Colors.white.withValues(alpha: 0.18)),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(alpha: 0.45),
-                blurRadius: 24,
-                offset: const Offset(0, 10),
-              ),
-            ],
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              _Header(count: SolarPalette.all.length),
-              Container(height: 1, color: Colors.white.withValues(alpha: 0.10)),
-              Flexible(
-                child: ListView(
-                  controller: _controller,
-                  itemExtent: _itemExtent,
-                  padding: const EdgeInsets.symmetric(vertical: _listPadding),
-                  children: [
-                    for (var i = 0; i < SolarPalette.all.length; i++)
-                      _PaletteTile(
-                        palette: SolarPalette.all[i],
-                        selected: widget.selectedIndex == i,
-                        onTap: () => widget.onSelected(i),
-                      ),
-                  ],
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _Header(count: SolarPalette.all.length),
+                Container(
+                  height: 1,
+                  color: Colors.white.withValues(alpha: 0.10),
                 ),
-              ),
-            ],
+                Flexible(
+                  child: ListView(
+                    controller: _controller,
+                    itemExtent: _itemExtent,
+                    padding: const EdgeInsets.symmetric(vertical: _listPadding),
+                    children: [
+                      for (var i = 0; i < SolarPalette.all.length; i++)
+                        _PaletteTile(
+                          palette: SolarPalette.all[i],
+                          selected: widget.selectedIndex == i,
+                          onTap: () => widget.onSelected(i),
+                        ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
-      ),
       ),
     );
   }
