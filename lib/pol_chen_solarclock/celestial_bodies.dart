@@ -130,55 +130,57 @@ class _EarthPainter extends CustomPainter {
       Path()..addOval(Rect.fromCircle(center: center, radius: radius)),
     );
 
-    final landColor = Color.lerp(color, Colors.green.shade300, 0.45)!;
-    final landPaint = Paint()..color = landColor;
+    // Fixed earthy land color — independent of palette
+    final landPaint = Paint()..color = const Color(0xFF3A7D44);
 
-    // Three continent-ish blobs
+    // Left landmass — tall narrow wedge (Eurasia-ish)
     canvas.drawOval(
       Rect.fromCenter(
-        center: center + Offset(-radius * 0.25, -radius * 0.2),
-        width: radius * 0.9,
-        height: radius * 0.7,
+        center: center + Offset(-radius * 0.22, -radius * 0.08),
+        width: radius * 0.42,
+        height: radius * 0.62,
       ),
       landPaint,
     );
+    // Right landmass — smaller (Americas-ish)
     canvas.drawOval(
       Rect.fromCenter(
-        center: center + Offset(radius * 0.35, radius * 0.3),
-        width: radius * 0.6,
-        height: radius * 0.75,
+        center: center + Offset(radius * 0.38, radius * 0.10),
+        width: radius * 0.30,
+        height: radius * 0.50,
       ),
       landPaint,
     );
+    // Bottom cap (Antarctica-ish)
     canvas.drawOval(
       Rect.fromCenter(
-        center: center + Offset(-radius * 0.1, radius * 0.5),
-        width: radius * 0.55,
-        height: radius * 0.35,
+        center: center + Offset(radius * 0.04, radius * 0.72),
+        width: radius * 0.38,
+        height: radius * 0.18,
       ),
       landPaint,
     );
 
     canvas.restore();
 
-    // Atmosphere ring
+    // Thin atmosphere ring
     canvas.drawCircle(
       center,
       radius,
       Paint()
-        ..color = Colors.lightBlue.withValues(alpha: 0.20)
+        ..color = Colors.lightBlue.withValues(alpha: 0.30)
         ..style = PaintingStyle.stroke
-        ..strokeWidth = radius * 0.22,
+        ..strokeWidth = radius * 0.10,
     );
 
     // Specular highlight
     canvas.drawOval(
       Rect.fromCenter(
         center: center + Offset(-radius * 0.28, -radius * 0.28),
-        width: radius * 0.45,
-        height: radius * 0.3,
+        width: radius * 0.38,
+        height: radius * 0.24,
       ),
-      Paint()..color = Colors.white.withValues(alpha: 0.20),
+      Paint()..color = Colors.white.withValues(alpha: 0.22),
     );
   }
 
