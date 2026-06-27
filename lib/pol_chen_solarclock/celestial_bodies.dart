@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 // Each widget uses SizedBox.expand + CustomPaint so it overlays the full Stack.
@@ -130,35 +132,49 @@ class _EarthPainter extends CustomPainter {
       Path()..addOval(Rect.fromCircle(center: center, radius: radius)),
     );
 
-    // Fixed earthy land color — independent of palette
-    final landPaint = Paint()..color = const Color(0xFF3A7D44);
+    // Globe lines — 2 latitude arcs + 1 vertical longitude arc
+    final linePaint = Paint()
+      ..color = Colors.white.withValues(alpha: 0.28)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = radius * 0.08
+      ..strokeCap = StrokeCap.round;
 
-    // Left landmass — tall narrow wedge (Eurasia-ish)
-    canvas.drawOval(
-      Rect.fromCenter(
-        center: center + Offset(-radius * 0.22, -radius * 0.08),
-        width: radius * 0.42,
-        height: radius * 0.62,
-      ),
-      landPaint,
+    // Equator (horizontal arc across full width)
+    canvas.drawArc(
+      Rect.fromCenter(center: center, width: radius * 2, height: radius * 0.7),
+      0,
+      pi,
+      false,
+      linePaint,
     );
-    // Right landmass — smaller (Americas-ish)
-    canvas.drawOval(
-      Rect.fromCenter(
-        center: center + Offset(radius * 0.38, radius * 0.10),
-        width: radius * 0.30,
-        height: radius * 0.50,
-      ),
-      landPaint,
+    canvas.drawArc(
+      Rect.fromCenter(center: center, width: radius * 2, height: radius * 0.7),
+      pi,
+      pi,
+      false,
+      linePaint,
     );
-    // Bottom cap (Antarctica-ish)
-    canvas.drawOval(
+
+    // Upper latitude line
+    canvas.drawArc(
       Rect.fromCenter(
-        center: center + Offset(radius * 0.04, radius * 0.72),
-        width: radius * 0.38,
-        height: radius * 0.18,
+        center: center + Offset(0, -radius * 0.42),
+        width: radius * 1.8,
+        height: radius * 0.45,
       ),
-      landPaint,
+      0,
+      pi,
+      false,
+      linePaint,
+    );
+
+    // Vertical longitude arc
+    canvas.drawArc(
+      Rect.fromCenter(center: center, width: radius * 0.8, height: radius * 2),
+      -pi / 2,
+      pi * 2,
+      false,
+      linePaint,
     );
 
     canvas.restore();
