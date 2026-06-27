@@ -4,7 +4,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
 
-import 'drawn_star.dart';
+import 'celestial_bodies.dart';
 import 'palette.dart';
 import 'universe.dart';
 
@@ -101,20 +101,17 @@ class _SolarClockState extends State<SolarClock> {
                   ),
                 ),
               ),
-              // Sun
-              DrawnStar(
+              SunBody(
                 color: widget.palette.sunColor,
                 radius: anchorRadius,
                 center: anchorCenter,
               ),
-              // Earth (hour)
-              DrawnStar(
+              EarthBody(
                 color: widget.palette.earthColor,
                 radius: hourRadius,
                 center: hourCenter,
               ),
-              // Moon (minute)
-              DrawnStar(
+              MoonBody(
                 color: widget.palette.moonColor,
                 radius: minuteRadius,
                 center: minuteCenter,
