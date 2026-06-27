@@ -122,23 +122,12 @@ class _EarthPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final rect = Rect.fromCircle(center: center, radius: radius);
-
-    // Atmosphere glow
-    canvas.drawCircle(
-      center,
-      radius * 1.25,
-      Paint()
-        ..color = const Color(0xFF4FC3F7).withValues(alpha: 0.20)
-        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 6),
-    );
-
-    // Sphere
     canvas.drawCircle(
       center,
       radius,
       Paint()
         ..shader = RadialGradient(
-          center: const Alignment(-0.35, -0.35),
+          center: const Alignment(-0.4, -0.4),
           colors: const [
             Color(0xFF81D4FA),
             Color(0xFF1976D2),
@@ -146,13 +135,6 @@ class _EarthPainter extends CustomPainter {
           ],
           stops: const [0.0, 0.55, 1.0],
         ).createShader(rect),
-    );
-
-    // Single specular dot — makes it read as a 3D sphere
-    canvas.drawCircle(
-      center + Offset(-radius * 0.30, -radius * 0.30),
-      radius * 0.18,
-      Paint()..color = Colors.white.withValues(alpha: 0.55),
     );
   }
 
