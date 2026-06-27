@@ -149,36 +149,29 @@ class _EarthPainter extends CustomPainter {
         ).createShader(rect),
     );
 
-    // Land patches — clipped to sphere, same style as moon craters
+    // Land — scattered dot clusters, clipped to sphere
     canvas.save();
     canvas.clipPath(Path()..addOval(rect));
 
     final landPaint = Paint()..color = const Color(0xFF2E7D32);
 
-    canvas.drawOval(
-      Rect.fromCenter(
-        center: center + Offset(-radius * 0.18, -radius * 0.12),
-        width: radius * 0.55,
-        height: radius * 0.38,
-      ),
-      landPaint,
-    );
-    canvas.drawOval(
-      Rect.fromCenter(
-        center: center + Offset(radius * 0.35, radius * 0.20),
-        width: radius * 0.28,
-        height: radius * 0.44,
-      ),
-      landPaint,
-    );
-    canvas.drawOval(
-      Rect.fromCenter(
-        center: center + Offset(-radius * 0.10, radius * 0.48),
-        width: radius * 0.36,
-        height: radius * 0.20,
-      ),
-      landPaint,
-    );
+    void dot(double ox, double oy, double r) =>
+        canvas.drawCircle(center + Offset(ox * radius, oy * radius), r * radius, landPaint);
+
+    // Cluster 1 — upper-left (Eurasia-ish)
+    dot(-0.22, -0.18, 0.16);
+    dot(-0.08, -0.22, 0.13);
+    dot(-0.30, -0.05, 0.11);
+    dot(-0.12, -0.08, 0.10);
+
+    // Cluster 2 — right (Americas-ish)
+    dot(0.32, 0.05, 0.12);
+    dot(0.38, 0.22, 0.10);
+    dot(0.28, 0.30, 0.08);
+
+    // Cluster 3 — bottom (Africa-ish)
+    dot(0.05, 0.38, 0.10);
+    dot(0.12, 0.50, 0.08);
 
     canvas.restore();
   }
