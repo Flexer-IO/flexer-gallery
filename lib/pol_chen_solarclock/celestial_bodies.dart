@@ -121,24 +121,23 @@ class _EarthPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    // Ocean base
-    canvas.drawCircle(center, radius, Paint()..color = color);
+    // Fixed realistic ocean
+    canvas.drawCircle(
+      center,
+      radius,
+      Paint()..color = const Color(0xFF1A6BB5),
+    );
 
-    // Clip continent blobs to the circle
+    // Clip blobs to circle
     canvas.save();
     canvas.clipPath(
       Path()..addOval(Rect.fromCircle(center: center, radius: radius)),
     );
 
-    // Ocean base — palette earthColor
-    canvas.drawCircle(center, radius, Paint()..color = color);
-
-    // Land: shift toward warm amber — contrasts naturally against any ocean hue
-    final land = Color.lerp(color, const Color(0xFFD4A030), 0.62)!;
-    // Ice: fixed pale blue-white — always reads as polar cap
+    // Fixed land + ice colours — look good regardless of palette
+    const land = Color(0xFF3D8B3D);
     const ice = Color(0xFFDFF0F8);
 
-    // Soft watercolor land blobs — blurred so edges bleed naturally
     void blob(Offset offset, double size, Color c) {
       canvas.drawCircle(
         center + offset * radius,
@@ -204,8 +203,12 @@ class _MoonPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    // Base
-    canvas.drawCircle(center, radius, Paint()..color = color);
+    // Fixed moon grey
+    canvas.drawCircle(
+      center,
+      radius,
+      Paint()..color = const Color(0xFFD8D8D8),
+    );
 
     // Clip craters to circle
     canvas.save();
@@ -213,8 +216,7 @@ class _MoonPainter extends CustomPainter {
       Path()..addOval(Rect.fromCircle(center: center, radius: radius)),
     );
 
-    final craterColor = Color.lerp(color, Colors.black, 0.28)!;
-    final craterPaint = Paint()..color = craterColor;
+    final craterPaint = Paint()..color = const Color(0xFFAAAAAA);
 
     // Three craters scaled to radius
     canvas.drawCircle(
