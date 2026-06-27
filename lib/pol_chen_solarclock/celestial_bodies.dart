@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 // Each widget uses SizedBox.expand + CustomPaint so it overlays the full Stack.
@@ -132,49 +130,38 @@ class _EarthPainter extends CustomPainter {
       Path()..addOval(Rect.fromCircle(center: center, radius: radius)),
     );
 
-    // Globe lines — 2 latitude arcs + 1 vertical longitude arc
-    final linePaint = Paint()
-      ..color = Colors.white.withValues(alpha: 0.28)
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = radius * 0.08
-      ..strokeCap = StrokeCap.round;
-
-    // Equator (horizontal arc across full width)
-    canvas.drawArc(
-      Rect.fromCenter(center: center, width: radius * 2, height: radius * 0.7),
-      0,
-      pi,
-      false,
-      linePaint,
-    );
-    canvas.drawArc(
-      Rect.fromCenter(center: center, width: radius * 2, height: radius * 0.7),
-      pi,
-      pi,
-      false,
-      linePaint,
+    // Sweep gradient — ocean blues + land greens + polar ice, painterly blend
+    canvas.drawCircle(
+      center,
+      radius,
+      Paint()
+        ..shader = SweepGradient(
+          colors: const [
+            Color(0xFF1565C0), // deep ocean
+            Color(0xFF2E7D32), // forest green
+            Color(0xFF43A047), // land
+            Color(0xFF00ACC1), // shallow sea
+            Color(0xFFE0F2F1), // polar ice
+            Color(0xFF1976D2), // ocean
+            Color(0xFF2E7D32), // land again
+            Color(0xFF1565C0), // back to ocean
+          ],
+          transform: GradientRotation(0.6),
+        ).createShader(Rect.fromCircle(center: center, radius: radius)),
     );
 
-    // Upper latitude line
-    canvas.drawArc(
-      Rect.fromCenter(
-        center: center + Offset(0, -radius * 0.42),
-        width: radius * 1.8,
-        height: radius * 0.45,
-      ),
-      0,
-      pi,
-      false,
-      linePaint,
-    );
-
-    // Vertical longitude arc
-    canvas.drawArc(
-      Rect.fromCenter(center: center, width: radius * 0.8, height: radius * 2),
-      -pi / 2,
-      pi * 2,
-      false,
-      linePaint,
+    // Inner radial depth — darkens edges slightly, adds sphere feel
+    canvas.drawCircle(
+      center,
+      radius,
+      Paint()
+        ..shader = RadialGradient(
+          colors: [
+            Colors.transparent,
+            Colors.black.withValues(alpha: 0.28),
+          ],
+          stops: const [0.6, 1.0],
+        ).createShader(Rect.fromCircle(center: center, radius: radius)),
     );
 
     canvas.restore();
