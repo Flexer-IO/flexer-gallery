@@ -6,6 +6,5 @@ const showcaseInfo = ShowcaseInfo(
   showcaseName: 'Flipper Clock',
   githubRepoUrl: 'https://github.com/HSCOGT/Flipper-Clock',
   orientation: Orientation.landscape,
-  description:
-      'A flipping‑tile clock with vibrant animations.',
+  description: 'A flipping‑tile clock with vibrant animations.',
 );
