@@ -133,9 +133,10 @@ class _EarthPainter extends CustomPainter {
     // Ocean base — palette earthColor
     canvas.drawCircle(center, radius, Paint()..color = color);
 
-    // Derive land + ice from palette color
-    final land = Color.lerp(color, Colors.white, 0.40)!;
-    final ice = Color.lerp(color, Colors.white, 0.82)!;
+    // Land: shift toward warm amber — contrasts naturally against any ocean hue
+    final land = Color.lerp(color, const Color(0xFFD4A030), 0.62)!;
+    // Ice: fixed pale blue-white — always reads as polar cap
+    const ice = Color(0xFFDFF0F8);
 
     // Soft watercolor land blobs — blurred so edges bleed naturally
     void blob(Offset offset, double size, Color c) {
