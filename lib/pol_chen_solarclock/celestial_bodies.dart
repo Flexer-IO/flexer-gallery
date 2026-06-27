@@ -130,37 +130,33 @@ class _EarthPainter extends CustomPainter {
       Path()..addOval(Rect.fromCircle(center: center, radius: radius)),
     );
 
-    // Sweep gradient — ocean blues + land greens + polar ice, painterly blend
-    canvas.drawCircle(
-      center,
-      radius,
-      Paint()
-        ..shader = SweepGradient(
-          colors: const [
-            Color(0xFF1565C0), // deep ocean
-            Color(0xFF2E7D32), // forest green
-            Color(0xFF43A047), // land
-            Color(0xFF00ACC1), // shallow sea
-            Color(0xFFE0F2F1), // polar ice
-            Color(0xFF1976D2), // ocean
-            Color(0xFF2E7D32), // land again
-            Color(0xFF1565C0), // back to ocean
-          ],
-          transform: GradientRotation(0.6),
-        ).createShader(Rect.fromCircle(center: center, radius: radius)),
-    );
+    // Ocean base
+    canvas.drawCircle(center, radius, Paint()..color = const Color(0xFF1565C0));
 
-    // Inner radial depth — darkens edges slightly, adds sphere feel
+    // Soft watercolor land blobs — blurred so edges bleed naturally
+    void blob(Offset offset, double size, Color c) {
+      canvas.drawCircle(
+        center + offset * radius,
+        size * radius,
+        Paint()
+          ..color = c
+          ..maskFilter = MaskFilter.blur(BlurStyle.normal, radius * 0.35),
+      );
+    }
+
+    blob(const Offset(-0.20, -0.10), 0.55, const Color(0xFF2E7D32));
+    blob(const Offset(0.30, 0.15), 0.40, const Color(0xFF388E3C));
+    blob(const Offset(-0.05, 0.40), 0.30, const Color(0xFF43A047));
+    blob(const Offset(0.00, -0.55), 0.28, const Color(0xFFE0F7FA)); // polar ice
+
+    // Sphere depth — radial dark edge
     canvas.drawCircle(
       center,
       radius,
       Paint()
         ..shader = RadialGradient(
-          colors: [
-            Colors.transparent,
-            Colors.black.withValues(alpha: 0.28),
-          ],
-          stops: const [0.6, 1.0],
+          colors: [Colors.transparent, Colors.black.withValues(alpha: 0.32)],
+          stops: const [0.55, 1.0],
         ).createShader(Rect.fromCircle(center: center, radius: radius)),
     );
 
