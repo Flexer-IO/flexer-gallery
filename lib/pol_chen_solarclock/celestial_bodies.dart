@@ -148,6 +148,39 @@ class _EarthPainter extends CustomPainter {
           stops: const [0.0, 0.55, 1.0],
         ).createShader(rect),
     );
+
+    // Land patches — clipped to sphere, same style as moon craters
+    canvas.save();
+    canvas.clipPath(Path()..addOval(rect));
+
+    final landPaint = Paint()..color = const Color(0xFF2E7D32);
+
+    canvas.drawOval(
+      Rect.fromCenter(
+        center: center + Offset(-radius * 0.18, -radius * 0.12),
+        width: radius * 0.55,
+        height: radius * 0.38,
+      ),
+      landPaint,
+    );
+    canvas.drawOval(
+      Rect.fromCenter(
+        center: center + Offset(radius * 0.35, radius * 0.20),
+        width: radius * 0.28,
+        height: radius * 0.44,
+      ),
+      landPaint,
+    );
+    canvas.drawOval(
+      Rect.fromCenter(
+        center: center + Offset(-radius * 0.10, radius * 0.48),
+        width: radius * 0.36,
+        height: radius * 0.20,
+      ),
+      landPaint,
+    );
+
+    canvas.restore();
   }
 
   @override
