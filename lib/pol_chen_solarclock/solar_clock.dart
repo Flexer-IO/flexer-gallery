@@ -110,6 +110,7 @@ class _SolarClockState extends State<SolarClock> {
                 color: widget.palette.earthColor,
                 radius: hourRadius,
                 center: hourCenter,
+                sunCenter: anchorCenter,
               ),
               MoonBody(
                 color: widget.palette.moonColor,

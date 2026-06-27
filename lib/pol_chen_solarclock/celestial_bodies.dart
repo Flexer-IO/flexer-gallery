@@ -29,16 +29,20 @@ class EarthBody extends StatelessWidget {
     required this.center,
     required this.radius,
     required this.color,
+    required this.sunCenter,
   });
 
   final Offset center;
   final double radius;
   final Color color;
+  final Offset sunCenter;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox.expand(
-      child: CustomPaint(painter: _EarthPainter(center, radius, color)),
+      child: CustomPaint(
+        painter: _EarthPainter(center, radius, color, sunCenter),
+      ),
     );
   }
 }
@@ -113,21 +117,29 @@ class _SunPainter extends CustomPainter {
 // ─── Earth ──────────────────────────────────────────────────────────────────
 
 class _EarthPainter extends CustomPainter {
-  const _EarthPainter(this.center, this.radius, this.color);
+  const _EarthPainter(this.center, this.radius, this.color, this.sunCenter);
 
   final Offset center;
   final double radius;
   final Color color;
+  final Offset sunCenter;
 
   @override
   void paint(Canvas canvas, Size size) {
     final rect = Rect.fromCircle(center: center, radius: radius);
+
+    // Direction from Earth toward Sun — normalized to [-0.5, 0.5] for Alignment
+    final toSun = sunCenter - center;
+    final dist = toSun.distance;
+    final nx = dist > 0 ? (toSun.dx / dist) * 0.45 : -0.4;
+    final ny = dist > 0 ? (toSun.dy / dist) * 0.45 : -0.4;
+
     canvas.drawCircle(
       center,
       radius,
       Paint()
         ..shader = RadialGradient(
-          center: const Alignment(-0.4, -0.4),
+          center: Alignment(nx, ny),
           colors: const [
             Color(0xFF81D4FA),
             Color(0xFF1976D2),
@@ -140,7 +152,7 @@ class _EarthPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_EarthPainter old) =>
-      old.center != center || old.radius != radius;
+      old.center != center || old.radius != radius || old.sunCenter != sunCenter;
 }
 
 // ─── Moon ───────────────────────────────────────────────────────────────────
