@@ -47,80 +47,76 @@ class _SolarClockState extends State<SolarClock> {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final size = Size(constraints.maxWidth, constraints.maxHeight);
-        final time =
-            '${_now.hour}:${_now.minute.toString().padLeft(2, '0')}:${_now.second.toString().padLeft(2, '0')}';
+    final size = MediaQuery.sizeOf(context);
+    final time =
+        '${_now.hour}:${_now.minute.toString().padLeft(2, '0')}:${_now.second.toString().padLeft(2, '0')}';
 
-        final ratio = size.height / 414.0;
-        final anchorRadius = 48.0 * ratio;
-        final anchorCenter = size.center(Offset.zero);
+    final ratio = size.height / 414.0;
+    final anchorRadius = 48.0 * ratio;
+    final anchorCenter = size.center(Offset.zero);
 
-        final hourRadius = 18.0 * ratio;
-        final hourOrbitRadius = size.height / 2.0 - hourRadius - 20.0 * ratio;
-        final hourRadian =
-            _now.hour * _deg2rad(360 / 12) +
-            _now.minute * _deg2rad(360 / 12 / 60) +
-            _now.second * _deg2rad(360 / 12 / 60 / 60) -
-            pi / 2.0;
-        final hourCenter =
-            anchorCenter + Offset.fromDirection(hourRadian, hourOrbitRadius);
+    final hourRadius = 18.0 * ratio;
+    final hourOrbitRadius = size.height / 2.0 - hourRadius - 20.0 * ratio;
+    final hourRadian =
+        _now.hour * _deg2rad(360 / 12) +
+        _now.minute * _deg2rad(360 / 12 / 60) +
+        _now.second * _deg2rad(360 / 12 / 60 / 60) -
+        pi / 2.0;
+    final hourCenter =
+        anchorCenter + Offset.fromDirection(hourRadian, hourOrbitRadius);
 
-        final minuteRadius = 8.0 * ratio;
-        final minuteOrbitRadius = hourRadius + 10.0 * ratio + minuteRadius;
-        final minuteRadian =
-            _now.minute * _deg2rad(360 / 60) +
-            _now.second * _deg2rad(360 / 60 / 60) -
-            pi / 2.0;
-        final minuteCenter =
-            hourCenter + Offset.fromDirection(minuteRadian, minuteOrbitRadius);
+    final minuteRadius = 8.0 * ratio;
+    final minuteOrbitRadius = hourRadius + 10.0 * ratio + minuteRadius;
+    final minuteRadian =
+        _now.minute * _deg2rad(360 / 60) +
+        _now.second * _deg2rad(360 / 60 / 60) -
+        pi / 2.0;
+    final minuteCenter =
+        hourCenter + Offset.fromDirection(minuteRadian, minuteOrbitRadius);
 
-        return Semantics.fromProperties(
-          properties: SemanticsProperties(
-            label: 'Solar Clock, time $time',
-            value: time,
+    return Semantics.fromProperties(
+      properties: SemanticsProperties(
+        label: 'Solar Clock, time $time',
+        value: time,
+      ),
+      child: Stack(
+        children: [
+          // Full-screen animated space background
+          Positioned.fill(
+            child: Universe(
+              bgStart: widget.palette.bgStart,
+              bgEnd: widget.palette.bgEnd,
+            ),
           ),
-          child: Stack(
-            children: [
-              // Full-screen animated space background
-              Positioned.fill(
-                child: Universe(
-                  bgStart: widget.palette.bgStart,
-                  bgEnd: widget.palette.bgEnd,
-                ),
-              ),
-              // Clock face: orbit ring + 12 hour markers
-              Positioned.fill(
-                child: CustomPaint(
-                  painter: _ClockFacePainter(
-                    center: anchorCenter,
-                    orbitRadius: hourOrbitRadius,
-                    markerColor: widget.palette.markerColor,
-                    ratio: ratio,
-                  ),
-                ),
-              ),
-              SunBody(
-                color: widget.palette.sunColor,
-                radius: anchorRadius,
+          // Clock face: orbit ring + 12 hour markers
+          Positioned.fill(
+            child: CustomPaint(
+              painter: _ClockFacePainter(
                 center: anchorCenter,
+                orbitRadius: hourOrbitRadius,
+                markerColor: widget.palette.markerColor,
+                ratio: ratio,
               ),
-              EarthBody(
-                color: widget.palette.earthColor,
-                radius: hourRadius,
-                center: hourCenter,
-                sunCenter: anchorCenter,
-              ),
-              MoonBody(
-                color: widget.palette.moonColor,
-                radius: minuteRadius,
-                center: minuteCenter,
-              ),
-            ],
+            ),
           ),
-        );
-      },
+          SunBody(
+            color: widget.palette.sunColor,
+            radius: anchorRadius,
+            center: anchorCenter,
+          ),
+          EarthBody(
+            color: widget.palette.earthColor,
+            radius: hourRadius,
+            center: hourCenter,
+            sunCenter: anchorCenter,
+          ),
+          MoonBody(
+            color: widget.palette.moonColor,
+            radius: minuteRadius,
+            center: minuteCenter,
+          ),
+        ],
+      ),
     );
   }
 }

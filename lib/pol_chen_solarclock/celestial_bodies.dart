@@ -124,16 +124,49 @@ class _EarthPainter extends CustomPainter {
   final Color color;
   final Offset sunCenter;
 
+  // Three smooth organic blobs in normalized sphere coords (-1..1).
+  // Coarse enough to look clean at small radii; clipped to the sphere circle.
+
+  // Americas — left side
+  static final _americas = Path()
+    ..moveTo(-0.62, -0.52)
+    ..quadraticBezierTo(-0.10, -0.58, -0.08, -0.10)
+    ..quadraticBezierTo(-0.12, 0.48, -0.42, 0.66)
+    ..quadraticBezierTo(-0.72, 0.52, -0.72, 0.05)
+    ..quadraticBezierTo(-0.80, -0.28, -0.62, -0.52)
+    ..close();
+
+  // Eurasia + Africa — right side
+  static final _eurasiaAfrica = Path()
+    ..moveTo(0.08, -0.66)
+    ..quadraticBezierTo(0.68, -0.58, 0.74, 0.02)
+    ..quadraticBezierTo(0.58, 0.32, 0.28, 0.66)
+    ..quadraticBezierTo(0.06, 0.72, -0.04, 0.46)
+    ..quadraticBezierTo(-0.08, 0.08, 0.08, -0.22)
+    ..quadraticBezierTo(0.02, -0.46, 0.08, -0.66)
+    ..close();
+
+  // Australia — small blob lower-right
+  static final _australia = Path()
+    ..moveTo(0.55, 0.26)
+    ..quadraticBezierTo(0.82, 0.20, 0.84, 0.46)
+    ..quadraticBezierTo(0.74, 0.58, 0.54, 0.50)
+    ..close();
+
   @override
   void paint(Canvas canvas, Size size) {
     final rect = Rect.fromCircle(center: center, radius: radius);
 
-    // Direction from Earth toward Sun — normalized to [-0.5, 0.5] for Alignment
     final toSun = sunCenter - center;
     final dist = toSun.distance;
+    // Alignment offset for radial gradient ([-0.5, 0.5] range)
     final nx = dist > 0 ? (toSun.dx / dist) * 0.45 : -0.4;
     final ny = dist > 0 ? (toSun.dy / dist) * 0.45 : -0.4;
+    // Raw unit sun direction for terminator / limb glow positioning
+    final sdx = dist > 0 ? toSun.dx / dist : -0.89;
+    final sdy = dist > 0 ? toSun.dy / dist : -0.89;
 
+    // Ocean sphere with sun-facing highlight
     canvas.drawCircle(
       center,
       radius,
@@ -149,30 +182,35 @@ class _EarthPainter extends CustomPainter {
         ).createShader(rect),
     );
 
-    // Land — scattered dot clusters, clipped to sphere
+    // Continent blobs — translate+scale so paths live in normalized coords
     canvas.save();
     canvas.clipPath(Path()..addOval(rect));
+    canvas.translate(center.dx, center.dy);
+    canvas.scale(radius, radius);
+    final land = Paint()..color = const Color(0xFF43A047);
+    canvas.drawPath(_americas, land);
+    canvas.drawPath(_eurasiaAfrica, land);
+    canvas.drawPath(_australia, land);
+    canvas.restore();
 
-    final landPaint = Paint()..color = const Color(0xFF2E7D32);
-
-    void dot(double ox, double oy, double r) =>
-        canvas.drawCircle(center + Offset(ox * radius, oy * radius), r * radius, landPaint);
-
-    // Cluster 1 — upper-left (Eurasia-ish)
-    dot(-0.22, -0.18, 0.16);
-    dot(-0.08, -0.22, 0.13);
-    dot(-0.30, -0.05, 0.11);
-    dot(-0.12, -0.08, 0.10);
-
-    // Cluster 2 — right (Americas-ish)
-    dot(0.32, 0.05, 0.12);
-    dot(0.38, 0.22, 0.10);
-    dot(0.28, 0.30, 0.08);
-
-    // Cluster 3 — bottom (Africa-ish)
-    dot(0.05, 0.38, 0.10);
-    dot(0.12, 0.50, 0.08);
-
+    // Night-side terminator — darkens land + ocean on shadow side uniformly
+    canvas.save();
+    canvas.clipPath(Path()..addOval(rect));
+    canvas.drawCircle(
+      center + Offset(-sdx * radius * 0.52, -sdy * radius * 0.52),
+      radius * 1.05,
+      Paint()
+        ..color = const Color(0xBB000820)
+        ..maskFilter = MaskFilter.blur(BlurStyle.normal, radius * 0.58),
+    );
+    // Atmospheric limb glow on sun-facing edge — ties Earth to the sun's halo
+    canvas.drawCircle(
+      center + Offset(sdx * radius * 0.52, sdy * radius * 0.52),
+      radius * 0.72,
+      Paint()
+        ..color = const Color(0x2A9FDDFF)
+        ..maskFilter = MaskFilter.blur(BlurStyle.normal, radius * 0.38),
+    );
     canvas.restore();
   }
 
