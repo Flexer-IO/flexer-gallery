@@ -121,75 +121,81 @@ class _EarthPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    // Fixed realistic ocean
-    canvas.drawCircle(
-      center,
-      radius,
-      Paint()..color = const Color(0xFF1A6BB5),
-    );
+    final rect = Rect.fromCircle(center: center, radius: radius);
 
-    // Clip blobs to circle
-    canvas.save();
-    canvas.clipPath(
-      Path()..addOval(Rect.fromCircle(center: center, radius: radius)),
-    );
-
-    // Fixed land + ice colours — look good regardless of palette
-    const land = Color(0xFF3D8B3D);
-    const ice = Color(0xFFDFF0F8);
-
-    void blob(Offset offset, double size, Color c) {
-      canvas.drawCircle(
-        center + offset * radius,
-        size * radius,
-        Paint()
-          ..color = c
-          ..maskFilter = MaskFilter.blur(BlurStyle.normal, radius * 0.35),
-      );
-    }
-
-    blob(const Offset(-0.20, -0.10), 0.55, land);
-    blob(const Offset(0.30, 0.15), 0.40, land);
-    blob(const Offset(-0.05, 0.40), 0.30, land);
-    blob(const Offset(0.00, -0.55), 0.28, ice);
-
-    // Sphere depth — radial dark edge
+    // Ocean — sphere-lit radial gradient, bright upper-left → dark edge
     canvas.drawCircle(
       center,
       radius,
       Paint()
         ..shader = RadialGradient(
-          colors: [Colors.transparent, Colors.black.withValues(alpha: 0.32)],
-          stops: const [0.55, 1.0],
-        ).createShader(Rect.fromCircle(center: center, radius: radius)),
+          center: const Alignment(-0.35, -0.35),
+          colors: const [
+            Color(0xFF5BC8F5), // lit ocean
+            Color(0xFF1565C0), // mid ocean
+            Color(0xFF0A2A6E), // shadow edge
+          ],
+          stops: const [0.0, 0.55, 1.0],
+        ).createShader(rect),
+    );
+
+    // Clip landmasses to circle — sharp edges, no blur
+    canvas.save();
+    canvas.clipPath(Path()..addOval(rect));
+
+    // Eurasia-ish — large left-center mass
+    canvas.drawOval(
+      Rect.fromCenter(
+        center: center + Offset(-radius * 0.12, -radius * 0.08),
+        width: radius * 0.72,
+        height: radius * 0.55,
+      ),
+      Paint()..color = const Color(0xFF2E7D32),
+    );
+    // Americas-ish — taller right mass
+    canvas.drawOval(
+      Rect.fromCenter(
+        center: center + Offset(radius * 0.44, radius * 0.08),
+        width: radius * 0.28,
+        height: radius * 0.60,
+      ),
+      Paint()..color = const Color(0xFF388E3C),
+    );
+    // Polar ice cap — top
+    canvas.drawOval(
+      Rect.fromCenter(
+        center: center + Offset(0, -radius * 0.82),
+        width: radius * 0.80,
+        height: radius * 0.30,
+      ),
+      Paint()..color = const Color(0xFFE8F4FD),
+    );
+
+    // Cloud wisps — white, semi-transparent
+    canvas.drawOval(
+      Rect.fromCenter(
+        center: center + Offset(radius * 0.10, radius * 0.22),
+        width: radius * 0.65,
+        height: radius * 0.18,
+      ),
+      Paint()..color = Colors.white.withValues(alpha: 0.30),
     );
 
     canvas.restore();
 
-    // Thin atmosphere ring
+    // Atmosphere halo
     canvas.drawCircle(
       center,
-      radius,
+      radius + radius * 0.12,
       Paint()
-        ..color = Colors.lightBlue.withValues(alpha: 0.30)
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = radius * 0.10,
-    );
-
-    // Specular highlight
-    canvas.drawOval(
-      Rect.fromCenter(
-        center: center + Offset(-radius * 0.28, -radius * 0.28),
-        width: radius * 0.38,
-        height: radius * 0.24,
-      ),
-      Paint()..color = Colors.white.withValues(alpha: 0.22),
+        ..color = const Color(0xFF80DEEA).withValues(alpha: 0.22)
+        ..maskFilter = MaskFilter.blur(BlurStyle.normal, radius * 0.18),
     );
   }
 
   @override
   bool shouldRepaint(_EarthPainter old) =>
-      old.center != center || old.radius != radius || old.color != color;
+      old.center != center || old.radius != radius;
 }
 
 // ─── Moon ───────────────────────────────────────────────────────────────────
