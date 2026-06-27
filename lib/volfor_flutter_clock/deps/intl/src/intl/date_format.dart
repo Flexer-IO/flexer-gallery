@@ -741,7 +741,10 @@ class DateFormat {
   List<_DateFormatField> get _formatFields {
     if (_formatFieldsPrivate == null) {
       if (_pattern == null) _useDefaultPattern();
-      _formatFieldsPrivate = parsePattern(_pattern!); // ignore: deprecated_member_use
+      // ignore: deprecated_member_use
+      _formatFieldsPrivate = parsePattern(
+        _pattern!,
+      );
     }
     return _formatFieldsPrivate!;
   }
