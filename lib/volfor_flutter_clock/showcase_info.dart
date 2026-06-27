@@ -6,5 +6,5 @@ const showcaseInfo = ShowcaseInfo(
   showcaseName: 'Dial Clock',
   githubRepoUrl: 'https://github.com/Volfor/flutter_clock',
   orientation: Orientation.landscape,
-  description: 'A visually appealing animated clock widget for Flutter.',
+  description: 'A visually appealing animated clock.',
 );
