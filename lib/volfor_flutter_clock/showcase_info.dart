@@ -3,7 +3,7 @@ import 'package:showcase_library/showcase_contract.dart';
 import 'package:flutter/widgets.dart';
 
 const showcaseInfo = ShowcaseInfo(
-  showcaseName: 'Clock',
+  showcaseName: 'Dial Clock',
   githubRepoUrl: 'https://github.com/Volfor/flutter_clock',
   orientation: Orientation.landscape,
   description: 'A visually appealing animated clock widget for Flutter.',
