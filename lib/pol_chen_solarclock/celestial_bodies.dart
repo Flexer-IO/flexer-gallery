@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 // Each widget uses SizedBox.expand + CustomPaint so it overlays the full Stack.
@@ -95,25 +93,6 @@ class _SunPainter extends CustomPainter {
         ..color = color.withValues(alpha: 0.18)
         ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 8),
     );
-
-    // Rays — 12 spikes alternating long/short
-    final rayPaint = Paint()
-      ..color = color.withValues(alpha: 0.55)
-      ..strokeWidth = 1.5
-      ..strokeCap = StrokeCap.round
-      ..style = PaintingStyle.stroke;
-
-    for (var i = 0; i < 12; i++) {
-      final angle = i * (pi / 6);
-      final isLong = i % 3 == 0;
-      final inner = radius * 1.12;
-      final outer = radius * (isLong ? 1.38 : 1.25);
-      canvas.drawLine(
-        center + Offset.fromDirection(angle, inner),
-        center + Offset.fromDirection(angle, outer),
-        rayPaint,
-      );
-    }
 
     // Core disc
     canvas.drawCircle(center, radius, paint);
