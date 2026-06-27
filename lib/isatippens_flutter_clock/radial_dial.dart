@@ -15,8 +15,8 @@ class RadialDial extends StatelessWidget {
     this.clockwise = true,
     this.color,
     this.child,
-  })  : assert(divisor != 0),
-        super(key: key);
+  }) : assert(divisor != 0),
+       super(key: key);
 
   final num length;
   final num distance;
@@ -34,10 +34,7 @@ class RadialDial extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
-        Stack(
-          alignment: Alignment.center,
-          children: _buildDialDigits(context),
-        ),
+        Stack(alignment: Alignment.center, children: _buildDialDigits(context)),
         child ?? Container(),
       ],
     );
@@ -57,7 +54,8 @@ class RadialDial extends StatelessWidget {
         digit = i.toString();
       }
 
-      final angle = i * angleDivisor -
+      final angle =
+          i * angleDivisor -
           radians(360 * value / length) +
           (clockwise ? 3.14 : -3.14 / 2);
       final transform = Matrix4.identity();
@@ -82,10 +80,7 @@ class RadialDial extends StatelessWidget {
           transform: transform,
           child: Text(
             digit,
-            style: TextStyle(
-              fontSize: textSize.toDouble(),
-              color: color,
-            ),
+            style: TextStyle(fontSize: textSize.toDouble(), color: color),
           ),
         ),
       );

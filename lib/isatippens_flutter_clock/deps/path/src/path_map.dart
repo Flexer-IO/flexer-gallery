@@ -21,18 +21,19 @@ class PathMap<V> extends MapView<String?, V> {
   /// [other] represent the same logical path, the last key's value will be
   /// used.
   PathMap.of(Map<String, V> other, {p.Context? context})
-      : super(_create(context)..addAll(other));
+    : super(_create(context)..addAll(other));
 
   /// Creates a map that uses [context] for equality and hashing.
   static Map<String?, V> _create<V>(p.Context? context) {
     context ??= p.context;
     return LinkedHashMap(
-        equals: (path1, path2) {
-          if (path1 == null) return path2 == null;
-          if (path2 == null) return false;
-          return context!.equals(path1, path2);
-        },
-        hashCode: (path) => path == null ? 0 : context!.hash(path),
-        isValidKey: (path) => path is String || path == null);
+      equals: (path1, path2) {
+        if (path1 == null) return path2 == null;
+        if (path2 == null) return false;
+        return context!.equals(path1, path2);
+      },
+      hashCode: (path) => path == null ? 0 : context!.hash(path),
+      isValidKey: (path) => path is String || path == null,
+    );
   }
 }

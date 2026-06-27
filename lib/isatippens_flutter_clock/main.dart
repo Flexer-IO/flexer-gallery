@@ -22,10 +22,7 @@ class ClockApp extends StatelessWidget {
         backgroundColor: Color(0xFF120905),
         body: SafeArea(
           child: Center(
-            child: AspectRatio(
-              aspectRatio: 5 / 3,
-              child: AnalogueClock(),
-            ),
+            child: AspectRatio(aspectRatio: 5 / 3, child: AnalogueClock()),
           ),
         ),
       ),

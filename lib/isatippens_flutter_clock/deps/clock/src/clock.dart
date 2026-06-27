@@ -35,7 +35,7 @@ class Clock {
   /// by default.
   // ignore: deprecated_member_use_from_same_package
   const Clock([DateTime Function() currentTime = systemTime])
-      : _time = currentTime;
+    : _time = currentTime;
 
   /// Creates [Clock] that always considers the current time to be [time].
   Clock.fixed(DateTime time) : _time = (() => time);
@@ -52,38 +52,44 @@ class Clock {
   /// Returns the point in time that's given amount of time ago.
   ///
   /// The amount of time is the sum of the individual parts.
-  DateTime ago(
-          {int days = 0,
-          int hours = 0,
-          int minutes = 0,
-          int seconds = 0,
-          int milliseconds = 0,
-          int microseconds = 0}) =>
-      agoBy(Duration(
-          days: days,
-          hours: hours,
-          minutes: minutes,
-          seconds: seconds,
-          milliseconds: milliseconds,
-          microseconds: microseconds));
+  DateTime ago({
+    int days = 0,
+    int hours = 0,
+    int minutes = 0,
+    int seconds = 0,
+    int milliseconds = 0,
+    int microseconds = 0,
+  }) => agoBy(
+    Duration(
+      days: days,
+      hours: hours,
+      minutes: minutes,
+      seconds: seconds,
+      milliseconds: milliseconds,
+      microseconds: microseconds,
+    ),
+  );
 
   /// Returns the point in time that's given amount of time from now.
   ///
   /// The amount of time is the sum of the individual parts.
-  DateTime fromNow(
-          {int days = 0,
-          int hours = 0,
-          int minutes = 0,
-          int seconds = 0,
-          int milliseconds = 0,
-          int microseconds = 0}) =>
-      fromNowBy(Duration(
-          days: days,
-          hours: hours,
-          minutes: minutes,
-          seconds: seconds,
-          milliseconds: milliseconds,
-          microseconds: microseconds));
+  DateTime fromNow({
+    int days = 0,
+    int hours = 0,
+    int minutes = 0,
+    int seconds = 0,
+    int milliseconds = 0,
+    int microseconds = 0,
+  }) => fromNowBy(
+    Duration(
+      days: days,
+      hours: hours,
+      minutes: minutes,
+      seconds: seconds,
+      milliseconds: milliseconds,
+      microseconds: microseconds,
+    ),
+  );
 
   /// Return the point in time [microseconds] ago.
   DateTime microsAgo(int microseconds) => ago(microseconds: microseconds);
@@ -138,8 +144,15 @@ class Clock {
     var month = (time.month - months - 1) % 12 + 1;
     var year = time.year - (months + 12 - time.month) ~/ 12;
     var day = clampDayOfMonth(year: year, month: month, day: time.day);
-    return DateTime(year, month, day, time.hour, time.minute, time.second,
-        time.millisecond);
+    return DateTime(
+      year,
+      month,
+      day,
+      time.hour,
+      time.minute,
+      time.second,
+      time.millisecond,
+    );
   }
 
   /// Return the point in time [months] from now on the same date.
@@ -151,8 +164,15 @@ class Clock {
     var month = (time.month + months - 1) % 12 + 1;
     var year = time.year + (months + time.month - 1) ~/ 12;
     var day = clampDayOfMonth(year: year, month: month, day: time.day);
-    return DateTime(year, month, day, time.hour, time.minute, time.second,
-        time.millisecond);
+    return DateTime(
+      year,
+      month,
+      day,
+      time.hour,
+      time.minute,
+      time.second,
+      time.millisecond,
+    );
   }
 
   /// Return the point in time [years] ago on the same date.
@@ -163,8 +183,15 @@ class Clock {
     var time = now();
     var year = time.year - years;
     var day = clampDayOfMonth(year: year, month: time.month, day: time.day);
-    return DateTime(year, time.month, day, time.hour, time.minute, time.second,
-        time.millisecond);
+    return DateTime(
+      year,
+      time.month,
+      day,
+      time.hour,
+      time.minute,
+      time.second,
+      time.millisecond,
+    );
   }
 
   /// Return the point in time [years] from now on the same date.

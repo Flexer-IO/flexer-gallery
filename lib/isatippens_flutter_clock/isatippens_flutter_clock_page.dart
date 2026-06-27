@@ -100,8 +100,7 @@ class _IsatippensFlutterClockPageState
       future: _palettesFuture,
       builder: (context, snapshot) {
         final palettes = snapshot.data;
-        final palette =
-            palettes != null ? _currentPalette(palettes) : null;
+        final palette = palettes != null ? _currentPalette(palettes) : null;
         final bg = palette?.bg ?? Colors.black;
 
         return Scaffold(

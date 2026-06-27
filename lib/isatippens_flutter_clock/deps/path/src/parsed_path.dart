@@ -75,7 +75,12 @@ class ParsedPath {
   }
 
   ParsedPath._(
-      this.style, this.root, this.isRootRelative, this.parts, this.separators);
+    this.style,
+    this.root,
+    this.isRootRelative,
+    this.parts,
+    this.separators,
+  );
 
   String get basename {
     final copy = clone();
@@ -129,8 +134,11 @@ class ParsedPath {
 
     // Canonicalize separators.
     parts = newParts;
-    separators =
-        List.filled(newParts.length + 1, style.separator, growable: true);
+    separators = List.filled(
+      newParts.length + 1,
+      style.separator,
+      growable: true,
+    );
     if (!isAbsolute || newParts.isEmpty || !style.needsSeparator(root!)) {
       separators[0] = '';
     }
@@ -187,11 +195,16 @@ class ParsedPath {
   List<String> _splitExtension([int level = 1]) {
     if (level <= 0) {
       throw RangeError.value(
-          level, 'level', "level's value must be greater than 0");
+        level,
+        'level',
+        "level's value must be greater than 0",
+      );
     }
 
-    final file =
-        parts.cast<String?>().lastWhere((p) => p != '', orElse: () => null);
+    final file = parts.cast<String?>().lastWhere(
+      (p) => p != '',
+      orElse: () => null,
+    );
 
     if (file == null) return ['', ''];
     if (file == '..') return ['..', ''];
@@ -206,5 +219,10 @@ class ParsedPath {
   }
 
   ParsedPath clone() => ParsedPath._(
-      style, root, isRootRelative, List.from(parts), List.from(separators));
+    style,
+    root,
+    isRootRelative,
+    List.from(parts),
+    List.from(separators),
+  );
 }

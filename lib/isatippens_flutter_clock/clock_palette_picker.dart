@@ -304,8 +304,7 @@ class _DrawerPanelState extends State<_DrawerPanel> {
                 ],
               ),
               borderRadius: BorderRadius.circular(20),
-              border:
-                  Border.all(color: Colors.white.withValues(alpha: 0.18)),
+              border: Border.all(color: Colors.white.withValues(alpha: 0.18)),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withValues(alpha: 0.45),
@@ -319,20 +318,20 @@ class _DrawerPanelState extends State<_DrawerPanel> {
               children: [
                 _Header(count: widget.palettes.length),
                 Container(
-                    height: 1,
-                    color: Colors.white.withValues(alpha: 0.10)),
+                  height: 1,
+                  color: Colors.white.withValues(alpha: 0.10),
+                ),
                 Flexible(
                   child: ListView(
                     controller: _controller,
                     itemExtent: _itemExtent,
-                    padding:
-                        const EdgeInsets.symmetric(vertical: _listPadding),
+                    padding: const EdgeInsets.symmetric(vertical: _listPadding),
                     children: [
                       for (final m in ClockPaletteMode.values)
                         _ModeTile(
                           mode: m,
-                          selected: widget.selectedIndex == null &&
-                              widget.mode == m,
+                          selected:
+                              widget.selectedIndex == null && widget.mode == m,
                           onTap: () => widget.onModeSelected(m),
                         ),
                       for (var i = 0; i < widget.palettes.length; i++)
@@ -407,16 +406,16 @@ class _ModeTile extends StatelessWidget {
   final VoidCallback onTap;
 
   String get _label => switch (mode) {
-        ClockPaletteMode.all => 'All palettes',
-        ClockPaletteMode.dark => 'Dark only',
-        ClockPaletteMode.light => 'Light only',
-      };
+    ClockPaletteMode.all => 'All palettes',
+    ClockPaletteMode.dark => 'Dark only',
+    ClockPaletteMode.light => 'Light only',
+  };
 
   IconData get _icon => switch (mode) {
-        ClockPaletteMode.all => Icons.shuffle_rounded,
-        ClockPaletteMode.dark => Icons.dark_mode_rounded,
-        ClockPaletteMode.light => Icons.light_mode_rounded,
-      };
+    ClockPaletteMode.all => Icons.shuffle_rounded,
+    ClockPaletteMode.dark => Icons.dark_mode_rounded,
+    ClockPaletteMode.light => Icons.light_mode_rounded,
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -427,8 +426,7 @@ class _ModeTile extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           decoration: BoxDecoration(
-            color:
-                selected ? Colors.white.withValues(alpha: 0.10) : null,
+            color: selected ? Colors.white.withValues(alpha: 0.10) : null,
             border: Border(
               left: BorderSide(
                 color: selected ? Colors.white : Colors.transparent,
@@ -450,8 +448,7 @@ class _ModeTile extends StatelessWidget {
               ),
               const Spacer(),
               if (selected)
-                const Icon(Icons.check_rounded,
-                    color: Colors.white, size: 18),
+                const Icon(Icons.check_rounded, color: Colors.white, size: 18),
             ],
           ),
         ),
@@ -480,8 +477,7 @@ class _PaletteTile extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           decoration: BoxDecoration(
-            color:
-                selected ? Colors.white.withValues(alpha: 0.10) : null,
+            color: selected ? Colors.white.withValues(alpha: 0.10) : null,
             border: Border(
               left: BorderSide(
                 color: selected ? accent : Colors.transparent,
@@ -502,8 +498,7 @@ class _PaletteTile extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              if (selected)
-                Icon(Icons.check_rounded, color: accent, size: 18),
+              if (selected) Icon(Icons.check_rounded, color: accent, size: 18),
             ],
           ),
         ),

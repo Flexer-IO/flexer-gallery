@@ -10,7 +10,7 @@ enum WeatherConditions {
   Windy,
   Snowy,
   Drizzle,
-  Smog
+  Smog,
 }
 
 class TemperatureModel extends ChangeNotifier {

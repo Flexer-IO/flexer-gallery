@@ -42,7 +42,10 @@ class _MicroMoney implements MicroMoney {
   _MicroMoney operator ~/(divisor) {
     if (divisor is! int) {
       throw ArgumentError.value(
-          divisor, 'divisor', '_MicroMoney ~/ only supports int arguments.');
+        divisor,
+        'divisor',
+        '_MicroMoney ~/ only supports int arguments.',
+      );
     }
     return _MicroMoney((_integerPart ~/ divisor) * _multiplier);
   }
@@ -50,10 +53,14 @@ class _MicroMoney implements MicroMoney {
   _MicroMoney operator *(other) {
     if (other is! int) {
       throw ArgumentError.value(
-          other, 'other', '_MicroMoney * only supports int arguments.');
+        other,
+        'other',
+        '_MicroMoney * only supports int arguments.',
+      );
     }
     return _MicroMoney(
-        (_integerPart * other) * _multiplier + (_fractionPart * other));
+      (_integerPart * other) * _multiplier + (_fractionPart * other),
+    );
   }
 
   /// Note that this only really supports remainder from an int,
@@ -61,7 +68,10 @@ class _MicroMoney implements MicroMoney {
   _MicroMoney remainder(other) {
     if (other is! int) {
       throw ArgumentError.value(
-          other, 'other', '_MicroMoney.remainder only supports int arguments.');
+        other,
+        'other',
+        '_MicroMoney.remainder only supports int arguments.',
+      );
     }
     return _MicroMoney(_micros.remainder(other * _multiplier));
   }

@@ -54,6 +54,8 @@ bool isLeapYear(int year) =>
 /// date value to fit within the month. For example, jumping from March 31 one
 /// month back takes us to February 28 (or 29 during a leap year), as February
 /// doesn't have 31-st date.
-int clampDayOfMonth(
-        {required int year, required int month, required int day}) =>
-    day.clamp(1, daysInMonth(year, month));
+int clampDayOfMonth({
+  required int year,
+  required int month,
+  required int day,
+}) => day.clamp(1, daysInMonth(year, month));

@@ -38,9 +38,14 @@ class CompositeMessageLookup implements MessageLookup {
   /// translated version with the values in [args] interpolated.  If nothing is
   /// found, return the result of [ifAbsent] or [messageText].
   @override
-  String? lookupMessage(String? messageText, String? locale, String? name,
-      List<Object>? args, String? meaning,
-      {MessageIfAbsent? ifAbsent}) {
+  String? lookupMessage(
+    String? messageText,
+    String? locale,
+    String? name,
+    List<Object>? args,
+    String? meaning, {
+    MessageIfAbsent? ifAbsent,
+  }) {
     // If passed null, use the default.
     var knownLocale = locale ?? Intl.getCurrentLocale();
     var messages = (knownLocale == _lastLocale)
@@ -51,14 +56,23 @@ class CompositeMessageLookup implements MessageLookup {
     if (messages == null) {
       return ifAbsent == null ? messageText : ifAbsent(messageText, args);
     }
-    return messages.lookupMessage(messageText, locale, name, args, meaning,
-        ifAbsent: ifAbsent);
+    return messages.lookupMessage(
+      messageText,
+      locale,
+      name,
+      args,
+      meaning,
+      ifAbsent: ifAbsent,
+    );
   }
 
   /// Find the right message lookup for [locale].
   MessageLookupByLibrary? _lookupMessageCatalog(String locale) {
-    var verifiedLocale = Intl.verifiedLocale(locale, localeExists,
-        onFailure: (locale) => locale);
+    var verifiedLocale = Intl.verifiedLocale(
+      locale,
+      localeExists,
+      onFailure: (locale) => locale,
+    );
     _lastLocale = locale;
     _lastLookup = availableMessages[verifiedLocale];
     return _lastLookup;
@@ -100,9 +114,14 @@ abstract class MessageLookupByLibrary {
   /// Ultimately, the information about the enclosing function and its arguments
   /// will be extracted automatically but for the time being it must be passed
   /// explicitly in the [name] and [args] arguments.
-  String? lookupMessage(String? messageText, String? locale, String? name,
-      List<Object>? args, String? meaning,
-      {MessageIfAbsent? ifAbsent}) {
+  String? lookupMessage(
+    String? messageText,
+    String? locale,
+    String? name,
+    List<Object>? args,
+    String? meaning, {
+    MessageIfAbsent? ifAbsent,
+  }) {
     var actualName = computeMessageName(name, messageText, meaning);
     Object? translation;
     if (actualName != null) {

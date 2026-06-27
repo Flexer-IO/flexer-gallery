@@ -56,8 +56,9 @@ class TargetKind {
   /// part file, whether it's a `library`, `import`, `export`, `part`, or
   /// `part of` directive.
   @Deprecated(
-      "Use a more specific TargetKind, like 'TargetKind.exportDirective',"
-      "'TargetKind.library', or 'TargetKind.partOfDirective'")
+    "Use a more specific TargetKind, like 'TargetKind.exportDirective',"
+    "'TargetKind.library', or 'TargetKind.partOfDirective'",
+  )
   static const directive = TargetKind._('directives', 'directive');
 
   /// Indicates that an annotation is valid on any enum declaration.
@@ -67,8 +68,10 @@ class TargetKind {
   static const enumValue = TargetKind._('enum values', 'enumValue');
 
   /// Indicates that an annotation is valid on any export directive.
-  static const exportDirective =
-      TargetKind._('export directives', 'exportDirective');
+  static const exportDirective = TargetKind._(
+    'export directives',
+    'exportDirective',
+  );
 
   /// Indicates that an annotation is valid on any extension declaration.
   static const extension = TargetKind._('extensions', 'extension');
@@ -96,8 +99,10 @@ class TargetKind {
   static const getter = TargetKind._('getters', 'getter');
 
   /// Indicates that an annotation is valid on any import directive.
-  static const importDirective =
-      TargetKind._('import directives', 'importDirective');
+  static const importDirective = TargetKind._(
+    'import directives',
+    'importDirective',
+  );
 
   /// Indicates that an annotation is valid on any method declaration, both
   /// instance and static methods, whether it's in a class, enum, mixin,
@@ -110,14 +115,18 @@ class TargetKind {
   /// Indicates that an annotation is valid on any optional formal parameter
   /// declaration, whether it's in a constructor, function (named or anonymous),
   /// function type, function-typed formal parameter, or method.
-  static const optionalParameter =
-      TargetKind._('optional parameters', 'optionalParameter');
+  static const optionalParameter = TargetKind._(
+    'optional parameters',
+    'optionalParameter',
+  );
 
   /// Indicates that an annotation is valid on any overridable instance member
   /// declaration, whether it's in a class, enum, extension type, or mixin. This
   /// includes instance fields, getters, setters, methods, and operators.
-  static const overridableMember =
-      TargetKind._('overridable members', 'overridableMember');
+  static const overridableMember = TargetKind._(
+    'overridable members',
+    'overridableMember',
+  );
 
   /// Indicates that an annotation is valid on any formal parameter declaration,
   /// whether it's in a constructor, function (named or anonymous), function
@@ -125,8 +134,10 @@ class TargetKind {
   static const parameter = TargetKind._('parameters', 'parameter');
 
   /// Indicates that an annotation is valid on any "part of" directive.
-  static const partOfDirective =
-      TargetKind._('"part of" directives', 'partOfDirective');
+  static const partOfDirective = TargetKind._(
+    '"part of" directives',
+    'partOfDirective',
+  );
 
   /// Indicates that an annotation is valid on any setter declaration, both
   /// instance or static setters, whether it's in a class, enum, mixin,
@@ -135,15 +146,19 @@ class TargetKind {
 
   /// Indicates that an annotation is valid on any top-level variable
   /// declaration.
-  static const topLevelVariable =
-      TargetKind._('top-level variables', 'topLevelVariable');
+  static const topLevelVariable = TargetKind._(
+    'top-level variables',
+    'topLevelVariable',
+  );
 
   /// Indicates that an annotation is valid on any declaration that introduces a
   /// type. This includes classes, enums, mixins, and typedefs, but does not
   /// include extensions because extensions don't introduce a type.
   // TODO(srawlins): This should include extension types.
-  static const type =
-      TargetKind._('types (classes, enums, mixins, or typedefs)', 'type');
+  static const type = TargetKind._(
+    'types (classes, enums, mixins, or typedefs)',
+    'type',
+  );
 
   /// Indicates that an annotation is valid on any typedef declaration.
   static const typedefType = TargetKind._('typedefs', 'typedefType');

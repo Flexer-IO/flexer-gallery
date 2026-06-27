@@ -69,11 +69,15 @@ class NeedlePainter extends CustomPainter {
     final p2 = Offset(size.width / 2 - left + right, size.height - bottom);
     canvas.drawLine(p1, p2, paint);
     canvas.drawCircle(
-        Offset(size.width / 2 - left + right, 0 + top), thickness / 2, paint);
+      Offset(size.width / 2 - left + right, 0 + top),
+      thickness / 2,
+      paint,
+    );
     canvas.drawCircle(
-        Offset(size.width / 2 - left + right, size.height - bottom),
-        thickness / 2,
-        paint);
+      Offset(size.width / 2 - left + right, size.height - bottom),
+      thickness / 2,
+      paint,
+    );
   }
 
   @override
