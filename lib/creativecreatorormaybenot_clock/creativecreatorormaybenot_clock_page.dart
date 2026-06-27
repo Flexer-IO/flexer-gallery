@@ -68,7 +68,6 @@ class _CreativecreatorormaybenotClockPageState
         ? data[0]
         : data[0].copyWith(data[i]);
 
-    final tf = d.timeFormat;
     final loc = d.location;
     final cond = d.condition;
     final u = d.unit;
@@ -76,7 +75,6 @@ class _CreativecreatorormaybenotClockPageState
     final hi = d.high;
     final lo = d.low;
 
-    if (tf != null) _model.is24HourFormat = tf == TimeFormat.standard;
     if (loc != null) _model.location = loc;
     if (cond != null) _model.weatherCondition = cond;
     if (u != null) _model.unit = u;
@@ -161,10 +159,15 @@ class _CreativecreatorormaybenotClockPageState
         child: Stack(
           fit: StackFit.expand,
           children: [
-            AnimatedClock(
-              model: _model,
-              palette: palette.colors,
-              onBallArrival: _onBallArrival,
+            Center(
+              child: AspectRatio(
+                aspectRatio: 5 / 3,
+                child: AnimatedClock(
+                  model: _model,
+                  palette: palette.colors,
+                  onBallArrival: _onBallArrival,
+                ),
+              ),
             ),
             ClockPalettePicker(
               selected: _selected,
