@@ -92,19 +92,16 @@ class _SunPainter extends CustomPainter {
         ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 8),
     );
 
-    // Core disc — radial gradient: bright white center → palette color edge
+    // Core disc — flat fill
+    canvas.drawCircle(center, radius, Paint()..color = color);
+
+    // Centered soft bloom on top
     canvas.drawCircle(
       center,
-      radius,
+      radius * 0.55,
       Paint()
-        ..shader = RadialGradient(
-          colors: [
-            Color.lerp(color, Colors.white, 0.75)!,
-            color,
-            Color.lerp(color, Colors.black, 0.15)!,
-          ],
-          stops: const [0.0, 0.65, 1.0],
-        ).createShader(Rect.fromCircle(center: center, radius: radius)),
+        ..color = Colors.white.withValues(alpha: 0.30)
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 10),
     );
   }
 
