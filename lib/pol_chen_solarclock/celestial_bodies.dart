@@ -74,8 +74,6 @@ class _SunPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint()..color = color;
-
     // Outer halo
     canvas.drawCircle(
       center,
@@ -94,14 +92,19 @@ class _SunPainter extends CustomPainter {
         ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 8),
     );
 
-    // Core disc
-    canvas.drawCircle(center, radius, paint);
-
-    // Bright inner highlight
+    // Core disc — radial gradient: bright white center → palette color edge
     canvas.drawCircle(
-      center + Offset(-radius * 0.25, -radius * 0.25),
-      radius * 0.35,
-      Paint()..color = Colors.white.withValues(alpha: 0.25),
+      center,
+      radius,
+      Paint()
+        ..shader = RadialGradient(
+          colors: [
+            Color.lerp(color, Colors.white, 0.75)!,
+            color,
+            Color.lerp(color, Colors.black, 0.15)!,
+          ],
+          stops: const [0.0, 0.65, 1.0],
+        ).createShader(Rect.fromCircle(center: center, radius: radius)),
     );
   }
 
