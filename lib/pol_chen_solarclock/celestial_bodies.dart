@@ -123,73 +123,56 @@ class _EarthPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final rect = Rect.fromCircle(center: center, radius: radius);
 
-    // Ocean — sphere-lit radial gradient, bright upper-left → dark edge
+    // Sphere — lit from upper-left
     canvas.drawCircle(
       center,
       radius,
       Paint()
         ..shader = RadialGradient(
-          center: const Alignment(-0.35, -0.35),
+          center: const Alignment(-0.3, -0.3),
           colors: const [
-            Color(0xFF5BC8F5), // lit ocean
-            Color(0xFF1565C0), // mid ocean
-            Color(0xFF0A2A6E), // shadow edge
+            Color(0xFF64B5F6),
+            Color(0xFF1565C0),
+            Color(0xFF0D1F6B),
           ],
-          stops: const [0.0, 0.55, 1.0],
+          stops: const [0.0, 0.6, 1.0],
         ).createShader(rect),
     );
 
-    // Clip landmasses to circle — sharp edges, no blur
+    // Cloud swirls clipped to disc
     canvas.save();
     canvas.clipPath(Path()..addOval(rect));
 
-    // Eurasia-ish — large left-center mass
-    canvas.drawOval(
-      Rect.fromCenter(
-        center: center + Offset(-radius * 0.12, -radius * 0.08),
-        width: radius * 0.72,
-        height: radius * 0.55,
-      ),
-      Paint()..color = const Color(0xFF2E7D32),
-    );
-    // Americas-ish — taller right mass
-    canvas.drawOval(
-      Rect.fromCenter(
-        center: center + Offset(radius * 0.44, radius * 0.08),
-        width: radius * 0.28,
-        height: radius * 0.60,
-      ),
-      Paint()..color = const Color(0xFF388E3C),
-    );
-    // Polar ice cap — top
-    canvas.drawOval(
-      Rect.fromCenter(
-        center: center + Offset(0, -radius * 0.82),
-        width: radius * 0.80,
-        height: radius * 0.30,
-      ),
-      Paint()..color = const Color(0xFFE8F4FD),
-    );
+    final cloudPaint = Paint()..color = Colors.white.withValues(alpha: 0.45);
 
-    // Cloud wisps — white, semi-transparent
+    // Diagonal cloud band across middle
     canvas.drawOval(
       Rect.fromCenter(
-        center: center + Offset(radius * 0.10, radius * 0.22),
-        width: radius * 0.65,
-        height: radius * 0.18,
+        center: center + Offset(radius * 0.05, radius * 0.10),
+        width: radius * 1.6,
+        height: radius * 0.28,
       ),
-      Paint()..color = Colors.white.withValues(alpha: 0.30),
+      cloudPaint,
+    );
+    // Smaller upper cloud patch
+    canvas.drawOval(
+      Rect.fromCenter(
+        center: center + Offset(-radius * 0.25, -radius * 0.45),
+        width: radius * 0.80,
+        height: radius * 0.22,
+      ),
+      cloudPaint,
     );
 
     canvas.restore();
 
-    // Atmosphere halo
+    // Atmosphere ring
     canvas.drawCircle(
       center,
-      radius + radius * 0.12,
+      radius + radius * 0.10,
       Paint()
-        ..color = const Color(0xFF80DEEA).withValues(alpha: 0.22)
-        ..maskFilter = MaskFilter.blur(BlurStyle.normal, radius * 0.18),
+        ..color = const Color(0xFF80D8FF).withValues(alpha: 0.28)
+        ..maskFilter = MaskFilter.blur(BlurStyle.normal, radius * 0.15),
     );
   }
 
