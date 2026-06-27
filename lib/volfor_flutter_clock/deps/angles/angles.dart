@@ -20,11 +20,11 @@ class Angle implements Comparable<Angle> {
   /// Create an angle defined by degrees.
   /// One full turn equals 360 degrees.
   const Angle.degrees(final double degrees)
-      : _storage = degrees / 180.0 * math.pi;
+    : _storage = degrees / 180.0 * math.pi;
 
   @Deprecated("Use Angle.degrees instead")
   const Angle.fromDegrees(final double degrees)
-      : _storage = degrees / 180.0 * math.pi;
+    : _storage = degrees / 180.0 * math.pi;
 
   /// Create an angle from radians.
   /// One full turn equals 2pi radians.
@@ -36,11 +36,11 @@ class Angle implements Comparable<Angle> {
   /// Create an angle defined by gradians.
   /// One full turn equals 400 gradians.
   const Angle.gradians(final double gradians)
-      : _storage = gradians / 200.0 * math.pi;
+    : _storage = gradians / 200.0 * math.pi;
 
   @Deprecated("Use Angle.gradians instead")
   const Angle.fromGradians(final double gradians)
-      : _storage = gradians / 200.0 * math.pi;
+    : _storage = gradians / 200.0 * math.pi;
 
   /// Create an angle defined by turns.
   /// One full turn equals 1 turn.

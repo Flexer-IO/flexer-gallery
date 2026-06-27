@@ -71,15 +71,16 @@ class _DigitalClockState extends State<DigitalClock> {
       _dateTime = DateTime.now();
       // Update once per minute. If you want to update every second, use the
       // following code.
-//      _timer = Timer(
-//        Duration(minutes: 1) -
-//            Duration(seconds: _dateTime.second) -
-//            Duration(milliseconds: _dateTime.millisecond),
-//        _updateTime,
-//      );
+      //      _timer = Timer(
+      //        Duration(minutes: 1) -
+      //            Duration(seconds: _dateTime.second) -
+      //            Duration(milliseconds: _dateTime.millisecond),
+      //        _updateTime,
+      //      );
 
-      final hour = DateFormat(widget.model.is24HourFormat ? 'HH' : 'hh')
-          .format(_dateTime);
+      final hour = DateFormat(
+        widget.model.is24HourFormat ? 'HH' : 'hh',
+      ).format(_dateTime);
       final minute = DateFormat('mm').format(_dateTime);
       final second = DateFormat('ss').format(_dateTime);
 
@@ -99,11 +100,12 @@ class _DigitalClockState extends State<DigitalClock> {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final bg = widget.palette?.background ??
-        (isDark ? Colors.black : Colors.white);
-    final arrows = widget.palette?.arrows ??
-        (isDark ? Colors.white : Colors.black);
-    final circlesBg = widget.palette?.circlesBackground ??
+    final bg =
+        widget.palette?.background ?? (isDark ? Colors.black : Colors.white);
+    final arrows =
+        widget.palette?.arrows ?? (isDark ? Colors.white : Colors.black);
+    final circlesBg =
+        widget.palette?.circlesBackground ??
         (isDark ? Colors.white12 : Colors.black12);
 
     return LayoutBuilder(

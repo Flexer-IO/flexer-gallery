@@ -538,8 +538,9 @@ const Object reopen = _Reopen();
 /// To learn more about `required`, check out the documentation on
 /// [named parameters](https://dart.dev/language/functions#named-parameters).
 @Deprecated(
-    'In Dart 2.12 and later, use the built-in `required` keyword to mark a '
-    'named parameter as required.')
+  'In Dart 2.12 and later, use the built-in `required` keyword to mark a '
+  'named parameter as required.',
+)
 const Required required = Required();
 
 /// Annotation on class that must not be subclassed outside of its package.
@@ -637,11 +638,7 @@ const Object visibleForTesting = _VisibleForTesting();
 /// error message if a subclass is not immutable.
 ///
 /// See [immutable] for more details.
-@Target({
-  TargetKind.classType,
-  TargetKind.extensionType,
-  TargetKind.mixinType,
-})
+@Target({TargetKind.classType, TargetKind.extensionType, TargetKind.mixinType})
 class Immutable {
   /// A human-readable explanation of the reason why the class is immutable.
   final String reason;
@@ -686,8 +683,9 @@ class RecordUse {
 /// To learn more about `required`, check out the documentation on
 /// [named parameters](https://dart.dev/language/functions#named-parameters).
 @Deprecated(
-    'In Dart 2.12 and later, use the built-in `required` keyword to mark a '
-    'named parameter as required.')
+  'In Dart 2.12 and later, use the built-in `required` keyword to mark a '
+  'named parameter as required.',
+)
 class Required {
   /// A human-readable explanation of the reason why the annotated parameter is
   /// required. For example, the annotation might look like:
@@ -815,9 +813,7 @@ class _Experimental {
   const _Experimental();
 }
 
-@Target({
-  TargetKind.method,
-})
+@Target({TargetKind.method})
 class _Factory {
   const _Factory();
 }
@@ -838,31 +834,22 @@ class _IsTestGroup {
   const _IsTestGroup();
 }
 
-@Target({
-  TargetKind.constructor,
-})
+@Target({TargetKind.constructor})
 class _Literal {
   const _Literal();
 }
 
-@Target({
-  TargetKind.parameter,
-  TargetKind.extensionType,
-})
+@Target({TargetKind.parameter, TargetKind.extensionType})
 class _MustBeConst {
   const _MustBeConst();
 }
 
-@Target({
-  TargetKind.overridableMember,
-})
+@Target({TargetKind.overridableMember})
 class _MustBeOverridden {
   const _MustBeOverridden();
 }
 
-@Target({
-  TargetKind.overridableMember,
-})
+@Target({TargetKind.overridableMember})
 class _MustCallSuper {
   const _MustCallSuper();
 }
@@ -901,17 +888,12 @@ class _Redeclare {
   const _Redeclare();
 }
 
-@Target({
-  TargetKind.classType,
-  TargetKind.mixinType,
-})
+@Target({TargetKind.classType, TargetKind.mixinType})
 class _Reopen {
   const _Reopen();
 }
 
-@Target({
-  TargetKind.classType,
-})
+@Target({TargetKind.classType})
 class _Sealed {
   const _Sealed();
 }
@@ -921,9 +903,7 @@ class _Virtual {
   const _Virtual();
 }
 
-@Target({
-  TargetKind.overridableMember,
-})
+@Target({TargetKind.overridableMember})
 class _VisibleForOverriding {
   const _VisibleForOverriding();
 }

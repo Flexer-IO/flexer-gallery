@@ -37,18 +37,21 @@ class _DigitState extends State<Digit> {
   void initState() {
     super.initState();
 
-    widget.numberStreamController.stream.listen((number) {
-      int digit;
-      if (widget.isTens) {
-        digit = int.parse((number as String).substring(0, 1));
-      } else {
-        digit = int.parse((number as String).substring(1, 2));
-      }
+    widget.numberStreamController.stream.listen(
+      (number) {
+        int digit;
+        if (widget.isTens) {
+          digit = int.parse((number as String).substring(0, 1));
+        } else {
+          digit = int.parse((number as String).substring(1, 2));
+        }
 
-      digitStream.add(digit);
-    }, onError: (error) {
-      debugPrint("Error: $error");
-    });
+        digitStream.add(digit);
+      },
+      onError: (error) {
+        debugPrint("Error: $error");
+      },
+    );
   }
 
   @override
@@ -89,7 +92,7 @@ class _DigitState extends State<Digit> {
                 widget.arrowsColor,
                 widget.background,
                 widget.cellSize,
-              )
+              ),
             ],
           ),
           Column(
@@ -118,9 +121,9 @@ class _DigitState extends State<Digit> {
                 widget.arrowsColor,
                 widget.background,
                 widget.cellSize,
-              )
+              ),
             ],
-          )
+          ),
         ],
       ),
     );

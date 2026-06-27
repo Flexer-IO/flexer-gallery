@@ -46,9 +46,12 @@ T withClock<T>(
 }) {
   if ((Zone.current[_isFinalKey] ?? false) == true) {
     throw StateError(
-        'Cannot call withClock() within a call to withClock(isFinal = true).');
+      'Cannot call withClock() within a call to withClock(isFinal = true).',
+    );
   }
 
-  return runZoned(callback,
-      zoneValues: {_clockKey: clock, _isFinalKey: isFinal});
+  return runZoned(
+    callback,
+    zoneValues: {_clockKey: clock, _isFinalKey: isFinal},
+  );
 }

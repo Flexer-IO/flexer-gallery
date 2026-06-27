@@ -199,10 +199,7 @@ class _TriggerButton extends StatelessWidget {
 }
 
 class _DrawerPanel extends StatefulWidget {
-  const _DrawerPanel({
-    required this.selectedIndex,
-    required this.onSelected,
-  });
+  const _DrawerPanel({required this.selectedIndex, required this.onSelected});
 
   final int selectedIndex;
   final ValueChanged<int> onSelected;
@@ -267,9 +264,7 @@ class _DrawerPanelState extends State<_DrawerPanel> {
                 ],
               ),
               borderRadius: BorderRadius.circular(20),
-              border: Border.all(
-                color: Colors.white.withValues(alpha: 0.18),
-              ),
+              border: Border.all(color: Colors.white.withValues(alpha: 0.18)),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withValues(alpha: 0.45),
@@ -291,8 +286,7 @@ class _DrawerPanelState extends State<_DrawerPanel> {
                     controller: _controller,
                     itemCount: kClockPalettes.length,
                     itemExtent: _itemExtent,
-                    padding:
-                        const EdgeInsets.symmetric(vertical: _listPadding),
+                    padding: const EdgeInsets.symmetric(vertical: _listPadding),
                     itemBuilder: (context, i) => _PaletteTile(
                       palette: kClockPalettes[i],
                       selected: widget.selectedIndex == i,

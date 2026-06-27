@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'deps/angles/angles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 
 //region degrees data
 List<List<double>> _degreesFor_0 = [
@@ -182,12 +181,15 @@ class _MiniClockState extends State<MiniClock> with TickerProviderStateMixin {
         });
       });
 
-    widget.digitStreamController.stream.listen((digit) {
-      var degreeData = getDegreeDataFromDigit(digit, widget.position);
-      setNewDegrees(degreeData.degreeHour, degreeData.degreeMinute);
-    }, onError: (error) {
-      debugPrint("Error: $error");
-    });
+    widget.digitStreamController.stream.listen(
+      (digit) {
+        var degreeData = getDegreeDataFromDigit(digit, widget.position);
+        setNewDegrees(degreeData.degreeHour, degreeData.degreeMinute);
+      },
+      onError: (error) {
+        debugPrint("Error: $error");
+      },
+    );
   }
 
   @override
@@ -310,7 +312,10 @@ class MiniClockPainter extends CustomPainter {
 
     canvas.drawCircle(Offset(centerX, centerY), radius, _circlePaint);
     canvas.drawCircle(
-        Offset(centerX, centerY), _arrowPaint.strokeWidth / 2, _centerPaint);
+      Offset(centerX, centerY),
+      _arrowPaint.strokeWidth / 2,
+      _centerPaint,
+    );
 
     canvas.drawLine(
       Offset(centerX, centerY),
