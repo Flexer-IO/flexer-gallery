@@ -51,6 +51,7 @@ Clon1998/mobileraker
 Codelessly/ResponsiveFramework
 CoderMikeHe/flutter_wechat
 ComicSparks/jasmine
+ComicSparks/nhentai-cross
 ComicSparks/pikapika
 ComicSparks/wax
 Crazy-MT/flutter_flip_clock
@@ -156,6 +157,7 @@ OpenConsultingGroup/Taxi-App
 OpenFlutter/Flutter-Notebook
 OpenFlutter/flutter_screenutil
 OpenFlutter/fluwx
+OpenListTeam/OpenList-Mobile
 PJ-ODS-2021/lww_crdt
 PerryPro/techtrainingcamp-client-7
 Pheonix-5/Clock
@@ -169,6 +171,7 @@ Pyozer/introduction_screen
 Quiggleson/4Chess
 RIP-Comm/sossoldi
 RafaelBarbosatec/bonfire
+RafaelBarbosatec/tutorial_coach_mark
 Rafkev/clock
 Rahul-Blatz/Complete-Analog-and-Digital-World-Clock-Flutter
 Rahul-Blatz/Flutter-World-Clock-and-Alarm-UI
@@ -198,6 +201,7 @@ Sky24n/GreenTravel
 Sky24n/common_utils
 Sky24n/flustars
 Sky24n/flutter_wanandroid
+SmallStoneSK/flutter_training_app
 Solido/awesome-flutter
 SongTube/SongTube-App
 SrikantKanekar/ClockApp-Flutter
@@ -224,6 +228,7 @@ TimeLord2010/clockify_analyser
 Tkko/Flutter_Pinput
 To-Rex/Flutter-Clock-App
 TomBursch/kitchenowl
+UnboundTechCo/defyxVPN
 UnicornsOnLSD/finamp
 Uuttssaavv/flutter-clean-architecture-riverpod
 VB10/flutter-architecture-template
@@ -272,6 +277,7 @@ amchii/FloatingClock
 amir-hossein-rajaezadeh/flutter_clock_app
 amirziyacode/Fluttter_Clock
 amitsaini4556/world_clock
+amugofjava/anytime_podcast_player
 anandnet/Harmony-Music
 anasfik/openai
 andresaraujo/timeago.dart
@@ -309,6 +315,7 @@ bluefireteam/audioplayers
 bluefireteam/photo_view
 bmaroti9/Overmorrow
 boeledi/Streams-Block-Reactive-Programming-in-Flutter
+boeledi/flutter_crush
 bosskmk/pluto_grid
 bostrot/wsl2-distro-manager
 brandontanyu/world_clock_app
@@ -327,8 +334,10 @@ bytedance/RealRichText
 bytedance/flutter_ume
 canhuah/WanAndroid-Flutter
 canxin121/app_rhyme
+carp-dk/flutter-plugins
 cfug/dio
 chaiebmohamed/my_flutter_alarm
+chaldea-center/chaldea
 charliewwdev/douyin
 chen08209/FlClash
 chinabrant/flutter_study
@@ -419,6 +428,7 @@ fluttercandies/extended_nested_scroll_view
 fluttercandies/extended_text
 fluttercandies/flutter_image_compress
 fluttercandies/flutter_photo_manager
+fluttercandies/flutter_scrollview_observer
 fluttercandies/flutter_smart_dialog
 fluttercandies/flutter_wechat_assets_picker
 fluttercandies/wechat_flutter
@@ -471,6 +481,7 @@ halildurmus/win32
 hanifsgy/clockApp
 harmonoid/harmonoid
 harryboi17/World-Time_Flutter-App
+hekaiyou/jedi
 hep-mh/flounder
 heruijun/flutter_boss
 hnvn/flutter_flip_panel
@@ -775,6 +786,7 @@ yasfdany/analog_clock_picker
 ycccccccy/wx_key
 yechaoa/wanandroid_flutter
 youxinLu/flutter_mall
+ys1231/appproxy
 yuan-dejavu/Flip-clock
 yubo725/flutter-osc
 yukilzw/dy_flutter
