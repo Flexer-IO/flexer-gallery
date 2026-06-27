@@ -31,11 +31,22 @@ class _CreativecreatorormaybenotClockPageState
   int _dataIdx = 0;
 
   static int _firstDarkIndex() {
-    final idx = allClockPalettes.indexWhere((p) => p.isDark);
-    return idx < 0 ? 0 : idx;
+    final idx = allClockPalettes.indexWhere((p) => p.name == 'Deep Ocean');
+    if (idx >= 0) return idx;
+    final dark = allClockPalettes.indexWhere((p) => p.isDark);
+    return dark < 0 ? 0 : dark;
   }
 
   static Set<int> _defaultSelected() {
+    const defaults = {'Deep Ocean', 'Neon Noir'};
+    final indices = allClockPalettes
+        .asMap()
+        .entries
+        .where((e) => defaults.contains(e.value.name))
+        .map((e) => e.key)
+        .toSet();
+    if (indices.length == defaults.length) return indices;
+    // fallback: first 2 dark palettes
     final dark = allClockPalettes
         .asMap()
         .entries

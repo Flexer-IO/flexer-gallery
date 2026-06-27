@@ -3,7 +3,7 @@ import 'package:showcase_library/showcase_contract.dart';
 import 'package:flutter/widgets.dart';
 
 const showcaseInfo = ShowcaseInfo(
-  showcaseName: 'SolarClock',
+  showcaseName: 'Solar Clock',
   githubRepoUrl: 'https://github.com/pol-chen/SolarClock',
   orientation: Orientation.landscape,
   description:

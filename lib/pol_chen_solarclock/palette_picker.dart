@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
+import 'package:showcase_library/showcase_contract.dart';
 
 import 'palette.dart';
 
@@ -240,7 +241,10 @@ class _DrawerPanelState extends State<_DrawerPanel> {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
+    return Listener(
+      onPointerPanZoomStart: (_) =>
+          const ShowcasePopVetoNotification().dispatch(context),
+      child: ClipRRect(
       borderRadius: BorderRadius.circular(20),
       child: BackdropFilter(
         filter: ui.ImageFilter.blur(sigmaX: 18, sigmaY: 18),
@@ -291,6 +295,7 @@ class _DrawerPanelState extends State<_DrawerPanel> {
             ],
           ),
         ),
+      ),
       ),
     );
   }

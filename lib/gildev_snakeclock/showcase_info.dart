@@ -3,7 +3,7 @@ import 'package:showcase_library/showcase_contract.dart';
 import 'package:flutter/widgets.dart';
 
 const showcaseInfo = ShowcaseInfo(
-  showcaseName: 'SnakeClock',
+  showcaseName: 'Snake Clock',
   githubRepoUrl: 'https://github.com/GilDev/SnakeClock',
   orientation: Orientation.landscape,
   description: 'A playful clock where a snake moves to show the time.',
