@@ -17,11 +17,7 @@ class DrawnStar extends Star {
     return Center(
       child: SizedBox.expand(
         child: CustomPaint(
-          painter: _StarPainter(
-            color: color,
-            radius: radius,
-            center: center,
-          ),
+          painter: _StarPainter(color: color, radius: radius, center: center),
         ),
       ),
     );

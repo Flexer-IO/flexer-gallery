@@ -48,18 +48,24 @@ class _UniverseState extends State<Universe> with TickerProviderStateMixin {
     final tweens = [0.0, 1.0];
     final intervals = [const Interval(0.0, 0.5), const Interval(0.5, 1.0)];
     _fadeAnimations = List.generate(4, (i) {
-      final anim = Tween<double>(
-        begin: tweens[i ~/ 2],
-        end: tweens[(4 - i - 1) ~/ 2],
-      ).animate(CurvedAnimation(
-        parent: _twinkleController,
-        curve: intervals[i % 2],
-      ));
+      final anim =
+          Tween<double>(
+            begin: tweens[i ~/ 2],
+            end: tweens[(4 - i - 1) ~/ 2],
+          ).animate(
+            CurvedAnimation(
+              parent: _twinkleController,
+              curve: intervals[i % 2],
+            ),
+          );
       anim.addListener(() => setState(() {}));
       return anim;
     });
     _sizeAnimation = Tween<double>(begin: 0, end: 4).animate(
-      CurvedAnimation(parent: _twinkleController, curve: const Interval(0, 0.5)),
+      CurvedAnimation(
+        parent: _twinkleController,
+        curve: const Interval(0, 0.5),
+      ),
     )..addListener(() => setState(() {}));
     _twinkleController.addStatusListener((s) {
       if (s == AnimationStatus.completed) _twinkleController.reverse();

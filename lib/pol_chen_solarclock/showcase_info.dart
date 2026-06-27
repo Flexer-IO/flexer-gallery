@@ -6,5 +6,6 @@ const showcaseInfo = ShowcaseInfo(
   showcaseName: 'SolarClock',
   githubRepoUrl: 'https://github.com/pol-chen/SolarClock',
   orientation: Orientation.landscape,
-  description: 'A solar‑system themed clock with animated sun, earth, and moon.',
+  description:
+      'A solar‑system themed clock with animated sun, earth, and moon.',
 );

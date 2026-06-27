@@ -76,7 +76,8 @@ class _SolarClockState extends State<SolarClock> {
 
         final hourRadius = 18.0 * ratio;
         final hourDistance = size.height / 2.0 - hourRadius - 20.0 * ratio;
-        final hourRadian = _now.hour * _deg2rad(360 / 12) +
+        final hourRadian =
+            _now.hour * _deg2rad(360 / 12) +
             _now.minute * _deg2rad(360 / 12 / 60) +
             _now.second * _deg2rad(360 / 12 / 60 / 60) -
             pi / 2.0;
@@ -85,7 +86,8 @@ class _SolarClockState extends State<SolarClock> {
 
         final minuteRadius = 8.0 * ratio;
         final minuteDistance = hourRadius + 10.0 * ratio + minuteRadius;
-        final minuteRadian = _now.minute * _deg2rad(360 / 60) +
+        final minuteRadian =
+            _now.minute * _deg2rad(360 / 60) +
             _now.second * _deg2rad(360 / 60 / 60) -
             pi / 2.0;
         final minuteCenter =

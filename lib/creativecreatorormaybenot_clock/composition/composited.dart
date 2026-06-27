@@ -393,16 +393,16 @@ class RenderCompositedClock
       offset,
       Matrix4.identity()
         // Perspective from the bottom center.
-        ..translate(size.width / 2, size.height)
+        ..multiply(Matrix4.translationValues(size.width / 2, size.height, 0))
         ..multiply(Matrix4.identity()..setEntry(3, 2, 1.7e-3))
-        ..translate(-size.width / 2, -size.height)
+        ..multiply(Matrix4.translationValues(-size.width / 2, -size.height, 0))
         // Move to the bottom center (the center part
         // does not really matter because the rotation
         // is about the whole axis) and rotate about the
         // X-axis to create a flip up effect.
-        ..translate(size.width / 2, size.height)
+        ..multiply(Matrix4.translationValues(size.width / 2, size.height, 0))
         ..multiply(Matrix4.rotationX(-pi / 2 * (1 - spinUpAnimation.value)))
-        ..translate(-size.width / 2, -size.height),
+        ..multiply(Matrix4.translationValues(-size.width / 2, -size.height, 0)),
       _paintChildren,
     );
   }

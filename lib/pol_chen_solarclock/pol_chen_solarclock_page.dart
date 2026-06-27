@@ -9,9 +9,7 @@ class PolChenSolarclockPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ClockCustomizer(
-        (ClockModel model) => SolarClock(model),
-      ),
+      body: ClockCustomizer((ClockModel model) => SolarClock(model)),
     );
   }
 }
