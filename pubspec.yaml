@@ -6,8 +6,7 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
-  flutter_clock_helper:
-    path: lib/miickel_flutter_particle_clock/deps/flutter_clock_helper
+  intl: ^0.20.2
   flutter:
     sdk: flutter
   shared_preferences: ^2.5.3
