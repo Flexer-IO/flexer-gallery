@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 void main() {
-  runApp(ClockApp());
-  SystemChrome.setEnabledSystemUIOverlays([]);
+  runApp(const ClockApp());
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.landscapeLeft,
     DeviceOrientation.landscapeRight,
@@ -14,16 +14,20 @@ void main() {
 }
 
 class ClockApp extends StatelessWidget {
+  const ClockApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    Widget _clock = AnalogueClock(
+    final clock = AnalogueClock(
       model: TemperatureModel(),
     );
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.system,
       theme: ThemeData(
-        backgroundColor: Colors.white,
+        colorScheme: const ColorScheme.light(
+          primary: Color(0xFFBDBDBD),
+        ),
         scaffoldBackgroundColor: Colors.white,
         primaryColor: Colors.grey.shade300,
       ),
@@ -31,7 +35,7 @@ class ClockApp extends StatelessWidget {
       home: Scaffold(
         body: SafeArea(
           child: Center(
-            child: AspectRatio(aspectRatio: 5 / 3, child: _clock),
+            child: AspectRatio(aspectRatio: 5 / 3, child: clock),
           ),
         ),
       ),

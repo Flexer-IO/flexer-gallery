@@ -1,20 +1,19 @@
-import 'needle.dart';
-
 import 'package:flutter/material.dart';
 
-///Essentially just a circle that is meant to 'hold' a [Needle] in place
+/// Essentially just a circle that is meant to 'hold' a [Needle] in place
 class Pin extends StatelessWidget {
-  const Pin(
-      {Key key,
-      this.alignment = Alignment.center,
-      this.radius = 10,
-      this.color = Colors.black,
-      this.child})
-      : super(key: key);
+  const Pin({
+    Key? key,
+    this.alignment = Alignment.center,
+    this.radius = 10,
+    this.color = Colors.black,
+    this.child,
+  }) : super(key: key);
   final Alignment alignment;
   final double radius;
   final Color color;
-  final Widget child;
+  final Widget? child;
+
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
@@ -25,11 +24,16 @@ class Pin extends StatelessWidget {
 }
 
 class PinPainter extends CustomPainter {
-  const PinPainter({this.alignment, this.radius, this.color});
+  const PinPainter({
+    required this.alignment,
+    required this.radius,
+    required this.color,
+  });
 
   final Alignment alignment;
   final Color color;
   final double radius;
+
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint();
@@ -43,7 +47,7 @@ class PinPainter extends CustomPainter {
     } else if (alignment == Alignment.topCenter) {
       center = Offset(size.width / 2, 0);
     } else {
-      center = Offset(0, 0);
+      center = const Offset(0, 0);
     }
     canvas.drawCircle(center, radius, paint);
   }

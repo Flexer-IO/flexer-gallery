@@ -1,53 +1,57 @@
 import 'package:flutter/material.dart';
 
 class Needle extends StatelessWidget {
-  const Needle(
-      {Key key,
-      this.top = 0,
-      this.bottom = 0,
-      this.left = 0,
-      this.right = 0,
-      this.thickness = 4,
-      this.color = Colors.red,
-      this.child})
-      : super(key: key);
+  const Needle({
+    Key? key,
+    this.top = 0,
+    this.bottom = 0,
+    this.left = 0,
+    this.right = 0,
+    this.thickness = 4,
+    this.color = Colors.red,
+    this.child,
+  }) : super(key: key);
   final double top;
   final double bottom;
   final double left;
   final double right;
   final double thickness;
   final Color color;
-  final Widget child;
+  final Widget? child;
+
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
       painter: NeedlePainter(
-          top: top,
-          bottom: bottom,
-          left: left,
-          right: right,
-          thickness: thickness,
-          color: color),
+        top: top,
+        bottom: bottom,
+        left: left,
+        right: right,
+        thickness: thickness,
+        color: color,
+      ),
       size: MediaQuery.of(context).size,
-      child: child != null ? child : Container(),
+      child: child ?? Container(),
     );
   }
 }
 
 class NeedlePainter extends CustomPainter {
-  const NeedlePainter(
-      {this.top,
-      this.bottom,
-      this.left,
-      this.right,
-      this.thickness,
-      this.color});
+  const NeedlePainter({
+    required this.top,
+    required this.bottom,
+    required this.left,
+    required this.right,
+    required this.thickness,
+    required this.color,
+  });
   final Color color;
   final double top;
   final double bottom;
   final double left;
   final double right;
   final double thickness;
+
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint();
@@ -69,7 +73,7 @@ class NeedlePainter extends CustomPainter {
     canvas.drawCircle(
         Offset(size.width / 2 - left + right, size.height - bottom),
         thickness / 2,
-        paint); //nice small touch
+        paint);
   }
 
   @override

@@ -1,21 +1,20 @@
 import 'radial_dial.dart';
 
-import 'package:flutter/rendering.dart';
-import 'deps/intl/intl.dart';
-import 'package:flutter/foundation.dart';
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 
 class AnalogueClockFace extends StatelessWidget {
-  const AnalogueClockFace({Key key, @required this.now}) : super(key: key);
+  const AnalogueClockFace({Key? key, required this.now}) : super(key: key);
 
   final DateTime now;
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final clockwise = false;
-    
-    return Semantics.fromProperties(
-      properties: SemanticsProperties(value: DateFormat.Hms().format(now)),
+    const clockwise = false;
+
+    return Semantics(
+      value: DateFormat.Hms().format(now),
       explicitChildNodes: true,
       child: Stack(
         children: [

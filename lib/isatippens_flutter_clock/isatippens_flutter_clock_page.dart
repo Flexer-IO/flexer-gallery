@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../analogue_clock.dart';
-import '../model.dart';
+import 'analogue_clock.dart';
+import 'model.dart';
 
 class IsatippensFlutterClockPage extends StatelessWidget {
   const IsatippensFlutterClockPage({super.key});
