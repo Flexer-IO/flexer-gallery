@@ -1,8 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'clock.dart';
 import 'clock_palette_picker.dart';
+import 'deps/flutter_clock_helper/model.dart';
 import 'clock_palettes.dart';
 
 const _kSelectedKey = 'creativeclock_selected_palettes';
@@ -18,8 +21,14 @@ class CreativecreatorormaybenotClockPage extends StatefulWidget {
 
 class _CreativecreatorormaybenotClockPageState
     extends State<CreativecreatorormaybenotClockPage> {
+  // Palette state
   late Set<int> _selected = _defaultSelected();
   int _currentIdx = _firstDarkIndex();
+
+  // Clock model state (replaces Customizer/AutomatedCustomizer)
+  late final ClockModel _model;
+  Timer? _dataTimer;
+  int _dataIdx = 0;
 
   static int _firstDarkIndex() {
     final idx = allClockPalettes.indexWhere((p) => p.isDark);
@@ -42,7 +51,46 @@ class _CreativecreatorormaybenotClockPageState
   @override
   void initState() {
     super.initState();
+    _model = ClockModel();
+    _model.addListener(_onModelChange);
+    _applyData(0);
+    _dataTimer = Timer.periodic(nextDataEvery, (_) {
+      _dataIdx = (_dataIdx + 1) % data.length;
+      _applyData(_dataIdx);
+    });
     _loadPrefs();
+  }
+
+  void _onModelChange() => setState(() {});
+
+  void _applyData(int i) {
+    final d = i == 0
+        ? data[0]
+        : data[0].copyWith(data[i]);
+
+    final tf = d.timeFormat;
+    final loc = d.location;
+    final cond = d.condition;
+    final u = d.unit;
+    final temp = d.temperature;
+    final hi = d.high;
+    final lo = d.low;
+
+    if (tf != null) _model.is24HourFormat = tf == TimeFormat.standard;
+    if (loc != null) _model.location = loc;
+    if (cond != null) _model.weatherCondition = cond;
+    if (u != null) _model.unit = u;
+    if (temp != null) _model.temperature = temp;
+    if (hi != null) _model.high = hi;
+    if (lo != null) _model.low = lo;
+  }
+
+  @override
+  void dispose() {
+    _dataTimer?.cancel();
+    _model.removeListener(_onModelChange);
+    _model.dispose();
+    super.dispose();
   }
 
   Future<void> _loadPrefs() async {
@@ -110,23 +158,20 @@ class _CreativecreatorormaybenotClockPageState
     return ColoredBox(
       color: bg,
       child: SafeArea(
-        child: Customizer(
-          mode: CustomizationFlow.automatic,
-          builder: (context, model) => Stack(
-            fit: StackFit.expand,
-            children: [
-              AnimatedClock(
-                model: model,
-                palette: palette.colors,
-                onBallArrival: _onBallArrival,
-              ),
-              ClockPalettePicker(
-                selected: _selected,
-                currentIndex: _currentIdx,
-                onToggle: _togglePalette,
-              ),
-            ],
-          ),
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            AnimatedClock(
+              model: _model,
+              palette: palette.colors,
+              onBallArrival: _onBallArrival,
+            ),
+            ClockPalettePicker(
+              selected: _selected,
+              currentIndex: _currentIdx,
+              onToggle: _togglePalette,
+            ),
+          ],
         ),
       ),
     );
