@@ -50,7 +50,7 @@ final _searchKeyword = () {
   return raw.isEmpty ? 'flutter' : raw;
 }();
 
-const _minStars = 0; // AI evaluates regardless of stars — no floor.
+const _minStars = 10;
 const _maxCandidatesToEvaluate = 12; // hard cap — keeps runtime predictable
 const _maxPerRun = 3;
 const _geminiDelaySec = 5; // inter-call delay (Gemini free tier = 15 req/min)
