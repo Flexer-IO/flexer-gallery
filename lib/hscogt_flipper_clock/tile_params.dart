@@ -4,13 +4,16 @@ class TileParams {
   bool isActive;
   Color primaryColor;
   Color secondaryColor;
+  Color inactiveColor;
   String text;
-  IconData icon;
+  IconData? icon;
 
-  TileParams(
-      {this.isActive = false,
-      this.primaryColor = const Color.fromRGBO(35, 47, 74, 1),
-      this.secondaryColor = const Color.fromRGBO(35, 47, 74, 1),
-      this.text = "",
-      this.icon});
+  TileParams({
+    this.isActive = false,
+    this.primaryColor = const Color(0xFF232F4A),
+    this.secondaryColor = const Color(0xFF232F4A),
+    this.inactiveColor = const Color(0xFF232F4A),
+    this.text = '',
+    this.icon,
+  });
 }

@@ -1,47 +1,62 @@
-import 'package:auto_size_text/auto_size_text.dart';
-import 'tile_params.dart';
-import 'package:flutter/material.dart';
 import 'dart:math';
 
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/material.dart';
+
+import 'tile_params.dart';
+
 class Tile extends StatefulWidget {
+  const Tile({super.key, required this.tileParams});
+
   final TileParams tileParams;
 
-  Tile({this.tileParams});
-
   @override
-  _TileState createState() => _TileState();
+  State<Tile> createState() => _TileState();
 }
 
 class _TileState extends State<Tile> with SingleTickerProviderStateMixin {
   double _ratio = 0.0;
-  AnimationController _controller;
+  late AnimationController _controller;
+  late Color _primaryColor;
+  late Color _secondaryColor;
+  double _glow = 0;
 
-  //Data
   bool get isActive => widget.tileParams.isActive;
-  String get textToDisplay => widget.tileParams.text;
   Color get primaryColor => widget.tileParams.primaryColor;
   Color get secondaryColor => widget.tileParams.secondaryColor;
-  IconData get icon => widget.tileParams.icon;
-
-  Color _primaryColor;
-  Color _secondaryColor;
-  double _glow = 0;
+  IconData? get icon => widget.tileParams.icon;
 
   @override
   void initState() {
     super.initState();
-    _primaryColor = primaryColor;
-    _secondaryColor = secondaryColor;
-    _controller = AnimationController(vsync: this);
-    _controller.duration = Duration(milliseconds: 1000);
+    if (isActive) {
+      _primaryColor = primaryColor;
+      _secondaryColor = secondaryColor;
+    } else {
+      _primaryColor = widget.tileParams.inactiveColor;
+      _secondaryColor = widget.tileParams.inactiveColor;
+    }
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1000),
+    );
     _controller.addListener(_tick);
     isActive ? _controller.reverse() : _controller.forward();
   }
 
   @override
   void didUpdateWidget(Tile oldWidget) {
-    isActive ? _controller.reverse() : _controller.forward();
     super.didUpdateWidget(oldWidget);
+    setState(() {
+      if (isActive) {
+        _primaryColor = primaryColor;
+        _secondaryColor = secondaryColor;
+      } else {
+        _primaryColor = widget.tileParams.inactiveColor;
+        _secondaryColor = widget.tileParams.inactiveColor;
+      }
+    });
+    isActive ? _controller.reverse() : _controller.forward();
   }
 
   @override
@@ -52,64 +67,64 @@ class _TileState extends State<Tile> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    double ratio = max(0.0, min(1.0, _ratio));
-
-    Matrix4 mtx = Matrix4.identity()
+    final ratio = max(0.0, min(1.0, _ratio));
+    final mtx = Matrix4.identity()
       ..setEntry(3, 2, 0.001)
       ..setEntry(1, 2, 0.2)
       ..rotateX(pi * (ratio - 1.0));
 
     return Transform(
-        alignment: Alignment.center,
-        transform: mtx,
-        child: Padding(
-          padding: const EdgeInsets.all(0.7),
-          child: Stack(children: [
+      alignment: Alignment.center,
+      transform: mtx,
+      child: Padding(
+        padding: const EdgeInsets.all(0.7),
+        child: Stack(
+          children: [
             Container(
               decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.bottomCenter,
-                    end: Alignment.topCenter,
-                    colors: [_primaryColor, _secondaryColor],
+                gradient: LinearGradient(
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
+                  colors: [_primaryColor, _secondaryColor],
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: _secondaryColor,
+                    blurRadius: isActive ? _glow : 0,
+                    spreadRadius: isActive ? _glow : 0,
                   ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: _secondaryColor,
-                      blurRadius: isActive ? _glow : 0,
-                      spreadRadius: isActive ? _glow : 0,
-                    )
-                  ]),
+                ],
+              ),
             ),
             Center(
               child: AutoSizeText(
-                textToDisplay,
-                style: TextStyle(
+                widget.tileParams.text,
+                style: const TextStyle(
                   fontFamily: 'Poppins',
                   fontSize: 22,
                   color: Colors.white,
                 ),
               ),
             ),
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.all(2.0),
-                child: FittedBox(
-                  fit: BoxFit.contain,
-                  child: Icon(
-                    icon,
-                    color: Colors.white,
+            if (icon != null)
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(2.0),
+                  child: FittedBox(
+                    fit: BoxFit.contain,
+                    child: Icon(icon, color: Colors.white),
                   ),
                 ),
               ),
-            ),
-          ]),
-        ));
+          ],
+        ),
+      ),
+    );
   }
 
   void _tick() {
     setState(() {
       _ratio = Curves.easeInQuad.transform(_controller.value);
-      //Updates color at the middle of the flip transition.
       if (isActive) {
         if (_ratio < 0.5) {
           _primaryColor = primaryColor;
@@ -118,8 +133,8 @@ class _TileState extends State<Tile> with SingleTickerProviderStateMixin {
         }
       } else {
         if (_ratio > 0.5) {
-          _primaryColor = Color.fromRGBO(35, 47, 74, 1);
-          _secondaryColor = Color.fromRGBO(35, 47, 74, 1);
+          _primaryColor = widget.tileParams.inactiveColor;
+          _secondaryColor = widget.tileParams.inactiveColor;
         }
       }
     });
