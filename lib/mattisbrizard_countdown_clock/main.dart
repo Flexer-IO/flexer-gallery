@@ -13,5 +13,14 @@
  Widget ClockCustomizer(Widget Function(ClockModel) builder) => builder(ClockModel());
  
  void main() {
-   runApp(ClockCustomizer((ClockModel model) => const CountdownClock()));
+   runApp(
+     ClockCustomizer(
+       (ClockModel model) => const CountdownClock(
+         bgColor: Color(0xFF000000),
+         remainingColor: Color(0xFFFFFFFF),
+         elapsedColor: Color(0x1FFFFFFF),
+         highlightColor: Color(0xFF05827D),
+       ),
+     ),
+   );
  }

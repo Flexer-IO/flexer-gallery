@@ -2,8 +2,6 @@ import 'dart:async';
 
 import 'countdown.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 
 /// Describes the time countdown types available.
 enum CountdownType {
@@ -24,6 +22,9 @@ class TimeCountdown extends StatefulWidget {
     required this.countdownType,
     required this.diameter,
     required this.strokeWidth,
+    required this.remainingColor,
+    required this.elapsedColor,
+    required this.highlightColor,
     Key? key,
   }) : super(key: key);
 
@@ -37,6 +38,10 @@ class TimeCountdown extends StatefulWidget {
 
   /// The strokewidth of the countdown.
   final double strokeWidth;
+
+  final Color remainingColor;
+  final Color elapsedColor;
+  final Color highlightColor;
 
   @override
   _TimeCountdownState createState() => _TimeCountdownState();
@@ -92,7 +97,6 @@ class _TimeCountdownState extends State<TimeCountdown> {
 
   @override
   Widget build(BuildContext context) {
-    final bool isLightTheme = Theme.of(context).brightness == Brightness.light;
     final int totalUnit =
         (widget.countdownType == CountdownType.hour) ? 24 : 60;
     int timeElapsed = 0;
@@ -116,11 +120,10 @@ class _TimeCountdownState extends State<TimeCountdown> {
         gapFactor: gapFactor ?? 6,
         countdownTotal: totalUnit,
         countdownRemaining: totalUnit - timeElapsed,
-        countdownCurrentColor:
-            isLightTheme ? Colors.amber : const Color(0xFF05827D),
+        countdownCurrentColor: widget.highlightColor,
         strokeWidth: widget.strokeWidth,
-        countdownRemainingColor: isLightTheme ? Colors.black : Colors.white,
-        countdownTotalColor: isLightTheme ? Colors.black12 : Colors.white12,
+        countdownRemainingColor: widget.remainingColor,
+        countdownTotalColor: widget.elapsedColor,
       ),
     );
   }

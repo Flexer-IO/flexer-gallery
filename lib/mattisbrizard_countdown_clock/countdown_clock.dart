@@ -2,18 +2,24 @@ import 'time_countdown.dart';
 import 'package:flutter/material.dart';
 
 /// A clock that focuses on the remaining time instead of the elapsed time.
-///
-/// Has a `light` and `dark` representation by switching the theme brightness.
 class CountdownClock extends StatelessWidget {
-  /// Creates a [CountdownClock].
-  const CountdownClock();
+  const CountdownClock({
+    super.key,
+    required this.bgColor,
+    required this.remainingColor,
+    required this.elapsedColor,
+    required this.highlightColor,
+  });
+
+  final Color bgColor;
+  final Color remainingColor;
+  final Color elapsedColor;
+  final Color highlightColor;
 
   @override
   Widget build(BuildContext context) {
-    final bool isLightTheme = Theme.of(context).brightness == Brightness.light;
-
     return Container(
-      color: isLightTheme ? Colors.white : Colors.black,
+      color: bgColor,
       child: Padding(
         padding: const EdgeInsets.all(15),
         child: LayoutBuilder(
@@ -28,16 +34,25 @@ class CountdownClock extends StatelessWidget {
                   countdownType: CountdownType.hour,
                   diameter: diameter,
                   strokeWidth: stroke,
+                  remainingColor: remainingColor,
+                  elapsedColor: elapsedColor,
+                  highlightColor: highlightColor,
                 ),
                 TimeCountdown(
                   countdownType: CountdownType.minute,
                   diameter: diameter - 2 * stroke - gap,
                   strokeWidth: stroke,
+                  remainingColor: remainingColor,
+                  elapsedColor: elapsedColor,
+                  highlightColor: highlightColor,
                 ),
                 TimeCountdown(
                   countdownType: CountdownType.second,
                   diameter: diameter - 4 * stroke - 2 * gap,
                   strokeWidth: (diameter - 4 * stroke - 2 * gap) / 2,
+                  remainingColor: remainingColor,
+                  elapsedColor: elapsedColor,
+                  highlightColor: highlightColor,
                 ),
               ],
             );
