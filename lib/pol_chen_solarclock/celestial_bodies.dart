@@ -216,7 +216,9 @@ class _EarthPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_EarthPainter old) =>
-      old.center != center || old.radius != radius || old.sunCenter != sunCenter;
+      old.center != center ||
+      old.radius != radius ||
+      old.sunCenter != sunCenter;
 }
 
 // ─── Moon ───────────────────────────────────────────────────────────────────
@@ -231,11 +233,7 @@ class _MoonPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     // Fixed moon grey
-    canvas.drawCircle(
-      center,
-      radius,
-      Paint()..color = const Color(0xFFD8D8D8),
-    );
+    canvas.drawCircle(center, radius, Paint()..color = const Color(0xFFD8D8D8));
 
     // Clip craters to circle
     canvas.save();
