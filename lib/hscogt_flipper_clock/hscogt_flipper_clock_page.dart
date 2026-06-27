@@ -9,8 +9,7 @@ class HscogtFlipperClockPage extends StatefulWidget {
   const HscogtFlipperClockPage({super.key});
 
   @override
-  State<HscogtFlipperClockPage> createState() =>
-      _HscogtFlipperClockPageState();
+  State<HscogtFlipperClockPage> createState() => _HscogtFlipperClockPageState();
 }
 
 class _HscogtFlipperClockPageState extends State<HscogtFlipperClockPage> {

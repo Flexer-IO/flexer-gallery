@@ -73,8 +73,10 @@ class _DigitalClockState extends State<DigitalClock> {
   void _refreshNumbers(String time) {
     for (var i = 0; i < 4; i++) {
       final areaIndexes = _getAreaIndexes(i + 1);
-      final activeIndexes =
-          _getIndexesForNumber(int.parse(time[i]), _getAreaIndexes(i + 1));
+      final activeIndexes = _getIndexesForNumber(
+        int.parse(time[i]),
+        _getAreaIndexes(i + 1),
+      );
       for (final idx in areaIndexes) {
         _tiles[idx].isActive = activeIndexes.contains(idx);
       }
@@ -187,7 +189,8 @@ class _DigitalClockState extends State<DigitalClock> {
           child: Row(
             children: List.generate(
               17,
-              (col) => Expanded(child: Tile(tileParams: _tiles[row * 17 + col])),
+              (col) =>
+                  Expanded(child: Tile(tileParams: _tiles[row * 17 + col])),
             ),
           ),
         ),

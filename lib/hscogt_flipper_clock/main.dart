@@ -6,9 +6,7 @@ import 'digital_clock.dart';
 void main() {
   runApp(
     MaterialApp(
-      home: Scaffold(
-        body: DigitalClock(palette: kFlipperPalettes.first),
-      ),
+      home: Scaffold(body: DigitalClock(palette: kFlipperPalettes.first)),
     ),
   );
 }
