@@ -65,8 +65,8 @@ class _ClockPalettePickerState extends State<ClockPalettePicker>
   @override
   Widget build(BuildContext context) {
     final safePad = MediaQuery.paddingOf(context);
-    final dotColor =
-        allClockPalettes[widget.currentIndex].colors[ClockColor.analogTimeBackground];
+    final dotColor = allClockPalettes[widget.currentIndex]
+        .colors[ClockColor.analogTimeBackground];
     return Positioned(
       top: safePad.top + 16,
       right: safePad.right + 12,
@@ -77,11 +77,7 @@ class _ClockPalettePickerState extends State<ClockPalettePicker>
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            _TriggerButton(
-              open: _open,
-              dotColor: dotColor,
-              onTap: _handleTap,
-            ),
+            _TriggerButton(open: _open, dotColor: dotColor, onTap: _handleTap),
             if (_open) ...[
               const SizedBox(height: 10),
               TweenAnimationBuilder<double>(

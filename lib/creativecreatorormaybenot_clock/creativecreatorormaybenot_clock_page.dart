@@ -64,9 +64,7 @@ class _CreativecreatorormaybenotClockPageState
   void _onModelChange() => setState(() {});
 
   void _applyData(int i) {
-    final d = i == 0
-        ? data[0]
-        : data[0].copyWith(data[i]);
+    final d = i == 0 ? data[0] : data[0].copyWith(data[i]);
 
     final loc = d.location;
     final cond = d.condition;
@@ -104,10 +102,9 @@ class _CreativecreatorormaybenotClockPageState
       if (indices.isNotEmpty && mounted) {
         setState(() {
           _selected = indices;
-          _currentIdx =
-              (savedCurrent != null && indices.contains(savedCurrent))
-                  ? savedCurrent
-                  : indices.first;
+          _currentIdx = (savedCurrent != null && indices.contains(savedCurrent))
+              ? savedCurrent
+              : indices.first;
         });
       }
     }
