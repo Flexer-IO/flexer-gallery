@@ -650,9 +650,7 @@ class _DrawerPanelState extends State<_DrawerPanel> {
                 ],
               ),
               borderRadius: BorderRadius.circular(20),
-              border: Border.all(
-                color: Colors.white.withValues(alpha: 0.18),
-              ),
+              border: Border.all(color: Colors.white.withValues(alpha: 0.18)),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withValues(alpha: 0.45),
@@ -674,9 +672,7 @@ class _DrawerPanelState extends State<_DrawerPanel> {
                     controller: _controller,
                     itemCount: kCountdownPalettes.length,
                     itemExtent: _itemExtent,
-                    padding: const EdgeInsets.symmetric(
-                      vertical: _listPadding,
-                    ),
+                    padding: const EdgeInsets.symmetric(vertical: _listPadding),
                     itemBuilder: (context, i) => _PaletteTile(
                       palette: kCountdownPalettes[i],
                       selected: widget.selectedIndex == i,
@@ -804,11 +800,7 @@ class _PaletteTile extends StatelessWidget {
                 ),
               ),
               if (selected)
-                Icon(
-                  Icons.check_rounded,
-                  color: palette.highlight,
-                  size: 18,
-                ),
+                Icon(Icons.check_rounded, color: palette.highlight, size: 18),
             ],
           ),
         ),

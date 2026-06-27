@@ -97,8 +97,9 @@ class _TimeCountdownState extends State<TimeCountdown> {
 
   @override
   Widget build(BuildContext context) {
-    final int totalUnit =
-        (widget.countdownType == CountdownType.hour) ? 24 : 60;
+    final int totalUnit = (widget.countdownType == CountdownType.hour)
+        ? 24
+        : 60;
     int timeElapsed = 0;
     double? gapFactor;
     switch (widget.countdownType) {

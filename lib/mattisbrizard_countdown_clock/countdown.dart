@@ -15,11 +15,11 @@ class Countdown extends StatelessWidget {
     this.countdownCurrentColor,
     this.gapFactor = 6,
     this.strokeWidth,
-  })  : assert(diameter > 0.0),
-        assert(countdownTotal > 0),
-        assert(countdownRemaining >= 0 && countdownRemaining <= countdownTotal),
-        assert(gapFactor > 0.0),
-        super(key: key);
+  }) : assert(diameter > 0.0),
+       assert(countdownTotal > 0),
+       assert(countdownRemaining >= 0 && countdownRemaining <= countdownTotal),
+       assert(gapFactor > 0.0),
+       super(key: key);
 
   /// The outer diameter of the circular countdown widget.
   final double diameter;
@@ -59,7 +59,8 @@ class Countdown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double paintStrokeWidth = (strokeWidth != null &&
+    final double paintStrokeWidth =
+        (strokeWidth != null &&
             strokeWidth! > 0 &&
             strokeWidth! <= diameter / 2)
         ? strokeWidth!
@@ -74,10 +75,7 @@ class Countdown extends StatelessWidget {
         gapFactor: gapFactor,
         strokeWidth: paintStrokeWidth,
       ),
-      size: Size(
-        diameter - paintStrokeWidth,
-        diameter - paintStrokeWidth,
-      ),
+      size: Size(diameter - paintStrokeWidth, diameter - paintStrokeWidth),
     );
   }
 }

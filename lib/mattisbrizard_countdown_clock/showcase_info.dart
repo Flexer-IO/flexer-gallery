@@ -6,5 +6,6 @@ const showcaseInfo = ShowcaseInfo(
   showcaseName: 'Countdown Clock',
   githubRepoUrl: 'https://github.com/MattisBrizard/countdown_clock',
   orientation: Orientation.landscape,
-  description: 'A beautiful countdown clock face visualizing the remaining time of your day.',
+  description:
+      'A beautiful countdown clock face visualizing the remaining time of your day.',
 );
