@@ -3,6 +3,7 @@
 2d-inc/Flare-Flutter
 2d-inc/HistoryOfEverything
 4seer/openflutterecommerceapp
+7-USH/TeVe
 826327700/flutter_plugins_demo
 990aa/kivixa
 ABausG/home_widget
@@ -37,6 +38,8 @@ Baseflow/flutter-permission-handler
 Baseflow/flutter_cache_manager
 Baseflow/flutter_cached_network_image
 BaselAllam/clockcommerce
+Begzar/BegzarApp
+BilalShahid13/PersistentBottomNavBar
 BirjuVachhani/adaptive_theme
 BirjuVachhani/ticking_widget
 BlueBubblesApp/bluebubbles-app
@@ -265,6 +268,7 @@ aagarwal1012/Animated-Text-Kit
 aagarwal1012/IntroViews-Flutter
 aagarwal1012/Liquid-Pull-To-Refresh
 abhi16180/photon
+abner/flutter_js
 abuanwar072/20-Error-States-Flutter
 abuanwar072/Covid-19-Flutter-UI
 abuanwar072/E-commerce-App-UI-Flutter
@@ -280,6 +284,7 @@ adar2378/pin_code_fields
 adisaptr/flutter_alarm_app
 adityadroid/Messio
 afgprogrammer/Flutter-Complete-e-commerce
+afgprogrammer/Flutter-examples
 afzalali15/flutter_alarm_clock
 air-controller/air-controller-desktop
 aissat/easy_localization
@@ -320,6 +325,7 @@ atornel/RestaurantAppUIKit
 atsign-foundation/at_client_sdk
 authpass/authpass
 avioli/uni_links
+avirias/Grey
 awdanowski/lmmhsclock_old
 aws-amplify/amplify-flutter
 bailicangdu/native-xdm
@@ -438,6 +444,7 @@ ffacu/ClockApp
 filiph/state_experiments
 firebase/flutterfire
 fireship-io/flutter-firebase-quizapp-course
+firgia/FD-Project-Management
 flame-engine/flame
 fleaflet/flutter_map
 florent37/Flutter-AssetsAudioPlayer
@@ -667,6 +674,7 @@ nightmare-space/adb_kit
 nightmare-space/any_share
 nightmare-space/code_lfa
 nikolajjsj/chess-clock
+nini22P/iris
 nisrulz/flutter-examples
 niuhuan/daisy
 niuhuan/kobi
@@ -682,6 +690,7 @@ olexale/arkit_flutter_plugin
 olmps/memo
 omar-alshyokh/flutter_flip_panel_plus
 openfoodfacts/smooth-app
+osociety/vernet
 ouzari/analog_clock_for_flutter
 pachisi456/clocktrol
 pacifio/flutter_apps
@@ -701,7 +710,9 @@ pinchbv/floor
 prateekmedia/appimagepool
 prateekmedia/pstube
 profchi/Chess_Clock
+q805699513/flutter_books
 quickemu-project/quickgui
+quire-io/scroll-to-index
 rafaelsetragni/awesome_notifications
 rafalbednarczuk/curved_navigation_bar
 raj457036/CopyCat-Clipboard
@@ -829,6 +840,7 @@ wger-project/flutter
 wgh136/PicaComic
 whiz25/world_clock_app
 widgetbook/widgetbook
+wiredashio/wiredash-sdk
 wlan07/flutter_clock
 woltapp/wolt_modal_sheet
 wshehab99/clock-app
