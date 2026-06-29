@@ -6,6 +6,12 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  provider:
+    path: lib/fluttercandies_flutter_custom_calendar/deps/provider
+  nested:
+    path: lib/fluttercandies_flutter_custom_calendar/deps/nested
+  collection:
+    path: lib/fluttercandies_flutter_custom_calendar/deps/collection
   intl: ^0.20.2
   flutter:
     sdk: flutter
