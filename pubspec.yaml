@@ -6,6 +6,36 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  transparent_image:
+    path: lib/legoffmael_video_editor/deps/transparent_image
+  video_thumbnail:
+    path: lib/legoffmael_video_editor/deps/video_thumbnail
+  path_provider:
+    path: lib/legoffmael_video_editor/deps/path_provider
+  path_provider_platform_interface:
+    path: lib/legoffmael_video_editor/deps/path_provider_platform_interface
+  platform:
+    path: lib/legoffmael_video_editor/deps/platform
+  video_player:
+    path: lib/legoffmael_video_editor/deps/video_player
+  video_player_platform_interface:
+    path: lib/legoffmael_video_editor/deps/video_player_platform_interface
+  plugin_platform_interface:
+    path: lib/legoffmael_video_editor/deps/plugin_platform_interface
+  meta:
+    path: lib/legoffmael_video_editor/deps/meta
+  html:
+    path: lib/legoffmael_video_editor/deps/html
+  csslib:
+    path: lib/legoffmael_video_editor/deps/csslib
+  source_span:
+    path: lib/legoffmael_video_editor/deps/source_span
+  collection:
+    path: lib/legoffmael_video_editor/deps/collection
+  term_glyph:
+    path: lib/legoffmael_video_editor/deps/term_glyph
+  path:
+    path: lib/legoffmael_video_editor/deps/path
   intl: ^0.20.2
   flutter:
     sdk: flutter
