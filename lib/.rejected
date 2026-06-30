@@ -99,6 +99,7 @@ FriesI23/mhabit
 G-Ray/pikatorrent
 GanZhiXiong/GZXTaoBaoAppFlutter
 GanZhiXiong/gzx_dropdown_menu
+GeekyAnts/flutter-starter
 GetDutchie/brick
 GetStream/stream-chat-flutter
 GhostenEditor/Ghosten-Player
@@ -157,6 +158,7 @@ MarcBrede/chess_clock
 MarcusNg/flutter_facebook_responsive_ui
 Maximgbb/clock_app
 Mayandev/morec
+MeandNi/flutter_zhihu
 Medformatik/CrossDrop
 Merrit/nyrna
 MertSaygili/Clock-Project
@@ -165,6 +167,7 @@ MikeAfegbua/clockapp
 Milad-Akarie/auto_route_library
 Milad-Akarie/smooth_page_indicator
 Mindinventory/clock_loader
+MisterJimson/flutter_keyboard_visibility
 MoHamed-B-M/Tempo
 MohammedAsaadAsaad/quds_ui_kit
 Mouhaned-55/tictac_clock_app
@@ -187,6 +190,7 @@ OpenFlutter/k_chart
 OpenListTeam/OpenList-Mobile
 Origogi/Flutter-Credit-Card-Input-Form
 PJ-ODS-2021/lww_crdt
+PalisadoesFoundation/talawa
 Parabeac/parabeac_core
 PerryPro/techtrainingcamp-client-7
 Pheonix-5/Clock
@@ -223,6 +227,7 @@ Sakurababycat/tableclock
 SaltyAom/niku
 SandroMaglione/fpdart
 Santos-Enoque/complete_flutter_ecommerce
+ScerIO/packages.flutter
 Seolong/new_alarm_clock
 Shabaquib/flutter_world_clock
 ShadyBoukhary/flutter_clean_architecture
@@ -469,6 +474,7 @@ felangel/mocktail
 felixblaschke/simple_animations
 ferraridamiano/ConverterNOW
 ffacu/ClockApp
+filiph/hn_app
 filiph/state_experiments
 firebase/flutterfire
 fireship-io/flutter-firebase-quizapp-course
@@ -527,6 +533,7 @@ foxsofter/flutter_thrio
 free-explorers/veshell
 freeCodeCamp/mobile
 fregie/pho
+fujidaiti/smooth_sheets
 furkantektas/analog_clock
 fzyzcjy/flutter_convenient_test
 fzyzcjy/flutter_portal
@@ -619,6 +626,7 @@ joanpablo/reactive_forms
 jogboms/flutter_offline
 jogboms/flutter_spinkit
 jogboms/time.dart
+jonataslaw/get_server
 jonataslaw/getx
 jonbhanson/flutter_native_splash
 josiahsrc/dough
@@ -626,7 +634,9 @@ juicycleff/flutter-unity-view-widget
 juliansteenbakker/mobile_scanner
 juliuscanute/qr_code_scanner
 junaidjamel/Clock-Alarm-app-with-SqfLite
+justkawal/excel
 kaina404/FlutterDouBan
+kalismeras61/flutter_page_transition
 kalismeras61/flutter_wallet_ui
 kalismeras61/flutter_web_dashboard
 kang-airtc/flutter-book
@@ -634,6 +644,7 @@ kangpeiqin/bilivideo_down
 kareem-Abed/ClockMaster
 ketanchoyal/Our-E-School
 kirya355/clock_app_example_bloc
+kkkunny/bilitv
 klilmhdi/alarm_clock_app
 kodecocodes/flta-materials
 kodjodevf/mangayomi
@@ -744,6 +755,7 @@ pd4d10/git-touch
 pedromassango/bottom_navy_bar
 peng8350/flutter_pulltorefresh
 persilee/flutter_ctrip
+petitparser/dart-petitparser
 phoenixsky/fun_android_flutter
 phucgaoxam/slide_countdown_clock
 pichillilorenzo/flutter_browser_app
