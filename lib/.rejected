@@ -46,6 +46,7 @@ BirjuVachhani/adaptive_theme
 BirjuVachhani/ticking_widget
 BlueBubblesApp/bluebubbles-app
 CCExtractor/ultimate_alarm_clock
+CCY0122/WanAndroid_Flutter
 CaiJingLong/flutter_ijkplayer
 Canardoux/flutter_sound
 CarGuo/gsy_flutter_demo
@@ -184,12 +185,15 @@ OpenFlutter/flutter_screenutil
 OpenFlutter/fluwx
 OpenFlutter/k_chart
 OpenListTeam/OpenList-Mobile
+Origogi/Flutter-Credit-Card-Input-Form
 PJ-ODS-2021/lww_crdt
 Parabeac/parabeac_core
 PerryPro/techtrainingcamp-client-7
 Pheonix-5/Clock
 PhilipsHue/flutter_reactive_ble
+PicGo/flutter-picgo
 PoojaB26/FlutterBasicWidgets
+PoojaB26/ParsingJSON-Flutter
 Poujhit/Neumorphic-Clock-App
 Predidit/Kazumi
 Predidit/oneAnime
@@ -400,6 +404,7 @@ chuabingquan/helm
 chulwoo-park/timelines
 codegrue/card_settings
 cometchat/cometchat-uikit-flutter
+comigor/artemis
 conghaonet/flutter_analog_clock
 creativecreatorormaybenot/funvas
 creativecreatorormaybenot/logo
@@ -602,6 +607,7 @@ javico2609/flutter-challenges
 javiercbk/json_to_dart
 jayden320/flutter_shuqi
 jesusrp98/spacex-go
+jhflovehqy/flutter_bolg_manage
 jhomlala/alice
 jhomlala/betterplayer
 jhomlala/catcher
@@ -705,6 +711,7 @@ namidaco/namida
 nank1ro/flutter-shadcn-ui
 nathansdev/ContraFlutterKit
 naveeramesh/clock_app
+ngu2008/wanandroid
 nightmare-space/adb_kit
 nightmare-space/any_share
 nightmare-space/code_lfa
@@ -780,6 +787,7 @@ rrousselGit/functional_widget
 rrousselGit/provider
 rrousselGit/riverpod
 rvamsikrishna/inview_notifier_list
+rxlabz/audioplayer
 rxlabz/panache
 ryanheise/audio_service
 rydmike/flex_color_scheme
@@ -791,6 +799,7 @@ samarthagarwal/FlutterScreens
 sarbagyastha/youtube_player_flutter
 savagecarol/clock
 sayed3li97/FlutterClock-Challenge-BH
+sbis04/video_trimmer
 schultek/jaspr
 seaneagan/clock
 seasick/dreamclock
@@ -878,6 +887,7 @@ voxrey/sober_clock
 vs4824/Flutter_Analog_Clock
 walid-rehamnia/Clocking-System
 wasabeef/flutter-architecture-blueprints
+wasabia/three_dart
 wendux/flutter_in_action_source_code
 wger-project/flutter
 wgh136/PicaComic
@@ -895,6 +905,7 @@ xdd666t/flutter_use
 xelaj/flutter_material_clock
 xiaoyaocz/flutter_dmzj
 xlist-io/xlist
+xournalpp/xournalpp_mobile
 xpavle00/Habo
 xqwzts/flutter_radial_menu
 xritzx/Tix-Clock
@@ -909,6 +920,7 @@ yako-dev/flutter-settings-ui
 yako-dev/flutter_badges
 yang991178/fluent-reader-lite
 yangyxd/flutter_picker
+yaoyao2mm/cheatreader
 yasfdany/analog_clock_picker
 ycccccccy/wx_key
 yechaoa/wanandroid_flutter
