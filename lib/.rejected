@@ -99,6 +99,7 @@ FlutterOpen/flutter-ui-nice
 ForceDestroy/OverClock
 FoxSensei001/LoveIwara
 FraserNicholson/alamb_clock_app
+Frezyx/bottom_bar_with_sheet
 Frezyx/talker
 FriesI23/mhabit
 Furqankhanzada/flutter_eCommerce_ui_kit
@@ -154,6 +155,7 @@ Kounex/obs_blade
 Kuingsmile/PicHoro
 LZQL/clock_in_amap
 LZQL/clock_in_map
+LanarsInc/animated-bottom-navigation-bar-flutter
 LanarsInc/direct-select-flutter
 LaoMengFlutter/flutter-do
 LeetaoGoooo/RSSAid
@@ -438,6 +440,7 @@ chaldea-center/chaldea
 charliewwdev/douyin
 chen08209/FlClash
 chinabrant/flutter_study
+chinabrant/popup_menu
 chipweinberger/flutter_blue_plus
 christopherjneelankavil/clockapp
 chuabingquan/helm
@@ -454,6 +457,7 @@ creativecreatorormaybenot/portfolio
 creativecreatorormaybenot/wakelock
 cscoderr/flutter_advanced
 csdcorp/speech_to_text
+csells/go_router
 dahliaOS/clock
 dahliaOS/pangolin_desktop
 daohoangson/flutter_widget_from_html
@@ -464,6 +468,7 @@ dart-archive/linter
 dart-code-checker/dart-code-metrics
 dart-lang/dart-pad
 dart-lang/http
+dart-lang/leak_tracker
 davidmigloz/langchain_dart
 dddevid/Musly
 deckerst/aves
@@ -491,6 +496,7 @@ dstark5/Openlib
 ducafecat/flutter_ducafecat_news_getx
 duobaseio/forui
 duytq94/flutter-chat-demo
+duytq94/flutter-fb-reactions-animation
 duytq94/flutter-intro-slider
 e200/my-flutter-challenges
 echo-loop/Echo-Loop
@@ -506,6 +512,7 @@ entronad/graphic
 erluxman/awesomefluttertips
 espresso3389/lywsd02_demo
 faob-dev/folding_cell
+fayeed/dash_chat
 felangel/bloc
 felangel/cubit
 felangel/equatable
@@ -559,6 +566,7 @@ flutterchina/azlistview
 flutterchina/flukit
 flutterchina/json_model
 fluttercommunity/chewie
+fluttercommunity/flutter-draggable-scrollbar
 fluttercommunity/flutter_after_layout
 fluttercommunity/flutter_blurhash
 fluttercommunity/flutter_launcher_icons
@@ -704,6 +712,7 @@ kubenav/kubenav
 lambiengcode/analog-clock
 larryaasen/upgrader
 leancodepl/patrol
+leetomlee123/book
 leo-elstin/Flutter-UI-Kits
 leoafarias/fvm
 leoafarias/sidekick
@@ -787,6 +796,7 @@ niuhuan/kobi
 nkalahanov/animated_clock_indicator
 nslogx/flutter_easyloading
 ntminhdn/Flutter-Bloc-CleanArchitecture
+nullxception/boorusphere
 nylo-core/nylo
 o1298098/Flutter-Movie
 objectbox/objectbox-dart
@@ -812,6 +822,7 @@ pedromassango/bottom_navy_bar
 peng8350/flutter_pulltorefresh
 persilee/flutter_ctrip
 petitparser/dart-petitparser
+philip-brink/DragAndDropLists
 phoenixsky/fun_android_flutter
 phucgaoxam/slide_countdown_clock
 pichillilorenzo/flutter_browser_app
