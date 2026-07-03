@@ -159,6 +159,7 @@ Kindness-Kismet/Stelliberty
 KishoreSreedharan/Clock_View
 Kounex/obs_blade
 Kuingsmile/PicHoro
+KyleKun/one_second_diary
 LZQL/clock_in_amap
 LZQL/clock_in_map
 LanarsInc/animated-bottom-navigation-bar-flutter
@@ -206,6 +207,7 @@ Nandanrmenon/florid
 NearHuscarl/flutter_login
 Norbert515/BookSearch
 Norbert515/flutter_ide
+Norbert515/flutter_sequence_animation
 Notsfsssf/pixez-flutter
 OldMetalmind/cloom_clock
 OneSignal/OneSignal-Flutter-SDK
@@ -303,6 +305,7 @@ TheAlphamerc/flutter_healthcare_app
 TheAlphamerc/flutter_login_signup
 TheAlphamerc/flutter_wallet_app
 TimeLord2010/clockify_analyser
+TinoGuo/pin_input_text_field
 Tkko/Flutter_Pinput
 To-Rex/Flutter-Clock-App
 TolyFx/toly_ui
@@ -389,6 +392,7 @@ anandnet/Harmony-Music
 anasfik/openai
 andresaraujo/timeago.dart
 angel-dart/angel
+annshsingh/FlutterWidgetGuide
 antz22/ultimate-guide-to-flutter
 anuragkotwal/World-Clock-App
 appditto/natrium_wallet_flutter
@@ -403,6 +407,7 @@ arikato-Sanjay/clock_app
 armangencer/world_clock_flutter
 arnoldlev/SmartAlarm
 arslankaleem7229/simple-clock-flutter
+aryzhov/flutter-expandable
 ashishrawat2911/firekart_app
 asjqkkkk/flutter-todos
 asjqkkkk/markdown_widget
@@ -443,6 +448,7 @@ boeledi/Streams-Block-Reactive-Programming-in-Flutter
 boeledi/flutter_crush
 bosskmk/pluto_grid
 bostrot/wsl2-distro-manager
+brandonp2412/Flexify
 brandontanyu/world_clock_app
 braulio94/menu_flutter
 bravekingzhang/flutter_chat_box
@@ -626,11 +632,13 @@ fregie/pho
 fujidaiti/smooth_sheets
 funwithflutter/flutter_confetti
 furkantektas/analog_clock
+furkantektas/timeline_list
 fzyzcjy/flutter_convenient_test
 fzyzcjy/flutter_portal
 fzyzcjy/flutter_rust_bridge
 fzyzcjy/flutter_smooth
 gedoor/LegadoFlutter
+gemini-cli-extensions/flutter
 getsentry/sentry-dart
 glorylab/wave
 go-vikunja/app
@@ -733,6 +741,7 @@ juliansteenbakker/mobile_scanner
 juliuscanute/qr_code_scanner
 junaidjamel/Clock-Alarm-app-with-SqfLite
 justkawal/excel
+k-paxian/dart-json-mapper
 kaina404/FlutterDouBan
 kalismeras61/flutter_page_transition
 kalismeras61/flutter_wallet_ui
@@ -753,6 +762,7 @@ konifar/droidkaigi2018-flutter
 krille-chan/fluffychat
 kshitij5/Clockly
 kubenav/kubenav
+kunkun12/Flutter_shop
 lambiengcode/analog-clock
 larryaasen/upgrader
 leancodepl/patrol
@@ -972,6 +982,7 @@ slovnicki/beamer
 smartclock-app/Clock
 smartherd/DartTutorial
 smkamranqadri/alarm_clock_app
+softmarshmallow/flutter-timeline
 solid-software/flutter_vlc_player
 songxiaoliang/visitor-flutter
 sony/flutter-elinux
@@ -1056,6 +1067,7 @@ wshehab99/clock-app
 wtus/flutter_kaiyan
 wuba/Fair
 wuzehua/techtrainingcamp-client-5
+wwandreww/esc_pos_printer
 xajik/thedeck
 xdd666t/flutter_use
 xelaj/flutter_material_clock
