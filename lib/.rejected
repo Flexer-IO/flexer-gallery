@@ -168,6 +168,7 @@ LianjiaTech/keframe
 LinwoodDev/Butterfly
 LiveLikeCounter/Flutter-Todolist
 Livinglist/Hacki
+LonelyCpp/flutter_weather
 LouisLou2/Clockie
 Lyokone/flutterlocation
 MCarlomagno/FaceRecognitionAuth
@@ -409,6 +410,7 @@ avirias/Grey
 awdanowski/lmmhsclock_old
 aws-amplify/amplify-flutter
 bailicangdu/native-xdm
+bdero/flutter_scene
 bdlukaa/fluent_ui
 befovy/fijkplayer
 benoitletondor/Beer-Me-Up
@@ -490,7 +492,9 @@ dart-code-checker/dart-code-metrics
 dart-lang/dart-pad
 dart-lang/http
 dart-lang/leak_tracker
+davidche1116/Sms
 davidmigloz/langchain_dart
+davigmacode/flutter_smart_select
 dddevid/Musly
 deckerst/aves
 delay/flutter_starter
@@ -555,6 +559,7 @@ fleaflet/flutter_map
 florent37/Flutter-AssetsAudioPlayer
 flow-mn/flow
 flschweiger/reply
+flutter-devs/flutter_Ecommerce_UI_clone
 flutter-form-builder-ecosystem/flutter_form_builder
 flutter-mapbox-gl/maps
 flutter-ml/google_ml_kit_flutter
@@ -583,6 +588,7 @@ fluttercandies/flutter_photo_manager
 fluttercandies/flutter_scrollview_observer
 fluttercandies/flutter_smart_dialog
 fluttercandies/flutter_wechat_assets_picker
+fluttercandies/flutter_wechat_camera_picker
 fluttercandies/like_button
 fluttercandies/waterfall_flow
 fluttercandies/wechat_flutter
@@ -753,6 +759,7 @@ letsar/flutter_sticky_header
 lichess-org/mobile
 lijy91-archives-repos/widget-livebook
 linagora/tmail-flutter
+livekit/client-sdk-flutter
 livelivecoding/flutter-weather-app
 localdev-josh/Clock-App
 localsend/localsend
@@ -787,6 +794,7 @@ medyas/flutter_zoom_drawer
 medz/dart-orm
 memspace/zefyr
 mevljas/flutter_alarm_clock
+mhadaily/flutter-architecture-ddd
 mhmzdev/devfolio
 mhmzdev/the-holy-quran-app
 miguelpruivo/flutter_file_picker
@@ -842,6 +850,7 @@ olexale/arkit_flutter_plugin
 olmps/memo
 omar-alshyokh/flutter_flip_panel_plus
 openfoodfacts/smooth-app
+openimsdk/open-im-sdk-flutter
 openimsdk/openim-flutter-demo
 osociety/vernet
 ouzari/analog_clock_for_flutter
@@ -869,6 +878,7 @@ piggyvault/piggyvault
 pinchbv/floor
 pingbird/boxy
 pingbird/puro
+pizi-0/flutter-scrcpygui
 prateekmedia/appimagepool
 prateekmedia/pstube
 profchi/Chess_Clock
@@ -899,6 +909,7 @@ rodydavis/plugins
 rodydavis/signals.dart
 rohan20/flutter-chat-app
 roipeker/graphx
+roughike/flutter_facebook_login
 roughike/inKino
 rrousselGit/flutter_hooks
 rrousselGit/freezed
@@ -1045,6 +1056,7 @@ xinthink/flutter-keep
 xlist-io/xlist
 xournalpp/xournalpp_mobile
 xpavle00/Habo
+xqwzts/flutter_circular_chart
 xqwzts/flutter_radial_menu
 xritzx/Tix-Clock
 xsahil03x/before_after
