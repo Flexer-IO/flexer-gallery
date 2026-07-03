@@ -95,6 +95,7 @@ Felix-Seip/ArduinoWordClock
 Ferry-200/coriander_player
 FilledStacks/flutter-tutorials
 FilledStacks/responsive_builder
+FirebaseExtended/flutterfire_desktop
 Flutter-Bounty-Hunters/super_editor
 FlutterGen/flutter_gen
 FlutterOpen/flutter-ui-nice
@@ -135,6 +136,7 @@ JadenZhong/wechat-flutter
 JakobLybarger/Clock
 Jatin5120/Clock
 JellyBookOrg/JellyBook
+Jesway/flutter_translate
 JideGuru/FileX
 JideGuru/FlutterEbookApp
 JideGuru/FlutterFoodybite
@@ -168,6 +170,7 @@ LiveLikeCounter/Flutter-Todolist
 Livinglist/Hacki
 LouisLou2/Clockie
 Lyokone/flutterlocation
+MCarlomagno/FaceRecognitionAuth
 MDeLuise/plant-it
 MMMzq/bot_toast
 MaikuB/flutter_local_notifications
@@ -236,6 +239,7 @@ Rafkev/clock
 Rahul-Blatz/Complete-Analog-and-Digital-World-Clock-Flutter
 Rahul-Blatz/Flutter-World-Clock-and-Alarm-UI
 Rannie/flui
+RareSense/Nova3D
 RealCorebb/bbClock-V2-app
 RealNoitasinagro/epoch
 Realank/flutter_datetime_picker
@@ -351,6 +355,7 @@ aeyrium/bezier-chart
 afgprogrammer/Flutter-Complete-e-commerce
 afgprogrammer/Flutter-examples
 afzalali15/flutter_alarm_clock
+ahmet-cetinkaya/whph
 air-controller/air-controller-desktop
 aissat/easy_localization
 ajay-prabhakar/awesome-flutter-ui
@@ -381,6 +386,7 @@ angel-dart/angel
 antz22/ultimate-guide-to-flutter
 anuragkotwal/World-Clock-App
 appditto/natrium_wallet_flutter
+apptreesoftware/flutter_google_map_view
 appwrite/sdk-for-flutter
 araf0216/ChronoSync
 arafaysaleem/ez_tickets_app
@@ -487,6 +493,7 @@ dart-lang/leak_tracker
 davidmigloz/langchain_dart
 dddevid/Musly
 deckerst/aves
+delay/flutter_starter
 dengsgo/funny_time
 dengyin2000/dynamic_widget
 deniscolak/smart-admin-dashboard
@@ -644,6 +651,7 @@ hanifsgy/clockApp
 harmonoid/harmonoid
 harryboi17/World-Time_Flutter-App
 hekaiyou/jedi
+hekaiyou/talk_casually
 hep-mh/flounder
 heruijun/flutter_boss
 hnvn/flutter_flip_panel
@@ -800,6 +808,7 @@ mu-fazil-vk/FluxTube
 mumu-lhl/Ciyue
 mxflutter/mxflutter
 mylxsw/aidea
+naaammme/pilipro
 nabil6391/graphview
 naco-siren/mogicians-manual
 namanshergill/diohub
@@ -812,6 +821,7 @@ nightmare-space/adb_kit
 nightmare-space/any_share
 nightmare-space/code_lfa
 nikolajjsj/chess-clock
+ninghao/ninghao_flutter
 nini22P/iris
 nisrulz/flutter-examples
 niuhuan/daisy
@@ -836,6 +846,7 @@ openimsdk/openim-flutter-demo
 osociety/vernet
 ouzari/analog_clock_for_flutter
 owlistic-notes/owlistic
+pa-jesusf/KikoFlu
 pachisi456/clocktrol
 pacifio/flutter_apps
 parse-community/Parse-SDK-Flutter
@@ -1065,4 +1076,5 @@ zhujian1989/flutter_study
 zino-hofmann/graphql-flutter
 zjs81/meshcore-open
 zoidberg-xgd/NekoTime
+zubairehman/Portfolio-Demo
 zulip/zulip-flutter
