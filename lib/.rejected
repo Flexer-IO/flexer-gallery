@@ -182,6 +182,7 @@ MMMzq/bot_toast
 MaikuB/flutter_local_notifications
 MakeshVineeth/world_clock
 MarcBrede/chess_clock
+MarcioQuimbundo/flutter_desktop_challenges
 MarcusNg/flutter_chat_ui
 MarcusNg/flutter_facebook_responsive_ui
 MarcusNg/flutter_netflix_responsive_ui
@@ -264,6 +265,7 @@ Ronak99/ClockApp
 RxReader/wechat_kit
 RyanYuuki/AnymeX
 SAGARSURI/MyMovies
+SachinGanesh/screenshot
 Sakurababycat/tableclock
 SaltyAom/niku
 SandroMaglione/fpdart
@@ -450,6 +452,7 @@ bluefireteam/audioplayers
 bluefireteam/dashbook
 bluefireteam/photo_view
 bmaroti9/Overmorrow
+boeledi/RangeSlider
 boeledi/Streams-Block-Reactive-Programming-in-Flutter
 boeledi/flutter_crush
 bosskmk/pluto_grid
@@ -524,6 +527,7 @@ denissavishchev/the_clock
 deretame/Breeze
 designDo/flutter-checkio
 desxz/smart_cyrptocurrency_clock
+devefy/Flutter-Adidas-Shoes-Ecommerce-App-UI
 developerpaaji/Flutter-Dribbble-Challenge
 devil-cyber/WorldClockApp
 devmuaz/flutter-clean-architecture
@@ -568,6 +572,7 @@ felangel/equatable
 felangel/flow_builder
 felangel/mason
 felangel/mocktail
+felixblaschke/flutterplasma
 felixblaschke/simple_animations
 ferraridamiano/ConverterNOW
 ffacu/ClockApp
@@ -613,6 +618,7 @@ fluttercandies/flutter_smart_dialog
 fluttercandies/flutter_wechat_assets_picker
 fluttercandies/flutter_wechat_camera_picker
 fluttercandies/like_button
+fluttercandies/loading_more_list
 fluttercandies/waterfall_flow
 fluttercandies/wechat_flutter
 flutterchina/azlistview
@@ -656,6 +662,7 @@ gokadzev/Musify
 gonuit/flutter-custom-refresh-indicator
 google/flutter-provide
 google/flutter.widgets
+google/flutter_flux
 google/inject.dart
 gql-dart/ferry
 gskinner/flutter_animate
@@ -680,6 +687,7 @@ hacktons/convex_bottom_bar
 hackware1993/Flutter_ConstraintLayout
 halildurmus/win32
 hanifsgy/clockApp
+hanxu317317/city_pickers
 harmonoid/harmonoid
 harryboi17/World-Time_Flutter-App
 hekaiyou/jedi
@@ -687,6 +695,7 @@ hekaiyou/talk_casually
 hep-mh/flounder
 heruijun/flutter_boss
 hhtokpinar/sqfEntity
+hm21/pro_image_editor
 hnvn/flutter_flip_panel
 hnvn/flutter_image_cropper
 honmaple/maple-file
@@ -810,6 +819,7 @@ mabDc/eso
 macosui/macos_ui
 manishmeganathan/metronome
 manudevcode/flutter_alarm_app
+mapbox/mapbox-maps-flutter
 marchellodev/sharik
 marcoedomingos/pixel_watch_flutter
 material-components/material-components-flutter
@@ -1131,6 +1141,7 @@ zanderso/chicago
 zesage/flutter_compass
 zeshuaro/appainter
 zgm1992/flutter_calendar_alarm_clock
+zhibuyu/Flutter_Stocks
 zhujian1989/ZhihuDailyPurifyByFlutter
 zhujian1989/flutter_study
 zino-hofmann/graphql-flutter
