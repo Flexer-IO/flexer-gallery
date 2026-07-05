@@ -32,6 +32,7 @@ AppFlowy-IO/appflowy-editor
 Apparence-io/CamerAwesome
 ArAmM7/clock
 ArkaprabhaChakraborty/ClockApp
+AseemWangoo/flutter_programs
 AshutoshPatole/FlutterUI
 Asliddin009/alarm_clock_study
 AurangzebHusain/one_clock
@@ -49,6 +50,7 @@ BilalShahid13/PersistentBottomNavBar
 BirjuVachhani/adaptive_theme
 BirjuVachhani/ticking_widget
 BlueBubblesApp/bluebubbles-app
+BrunoJurkovic/flip_card
 CCExtractor/ultimate_alarm_clock
 CCY0122/WanAndroid_Flutter
 CRED-CLUB/neopop-flutter
@@ -100,6 +102,7 @@ F6dev/clock_app
 FabianGermany/ChallengingAlarmClockApp
 FadyWaheed11/Clock_design
 FaheemAsghar01/AlarmClock
+Far-Se/tabame
 Felix-Seip/ArduinoWordClock
 Ferry-200/coriander_player
 FilledStacks/flutter-tutorials
@@ -128,6 +131,7 @@ GiddyNaya/clockee
 GimelStudio/GimelStudio
 Hamad-Anwar/Neumorphic-Analog-Clockify
 Hash-Studios/Prism
+Hash-Studios/e-learning-app
 Haxeeb71/ClockG
 HemantKArya/BloomeeTunes
 Hendi-arch/hendi-clock-app
@@ -635,6 +639,7 @@ flutter/website
 fluttercandies/NeteaseCloudMusic
 fluttercandies/extended_image
 fluttercandies/extended_nested_scroll_view
+fluttercandies/extended_tabs
 fluttercandies/extended_text
 fluttercandies/extended_text_field
 fluttercandies/flutter_image_compress
@@ -651,6 +656,7 @@ flutterchina/azlistview
 flutterchina/flukit
 flutterchina/json_model
 flutterchina/lpinyin
+fluttercommunity/backdrop
 fluttercommunity/chewie
 fluttercommunity/flutter-draggable-scrollbar
 fluttercommunity/flutter_after_layout
@@ -682,6 +688,7 @@ fzyzcjy/flutter_convenient_test
 fzyzcjy/flutter_portal
 fzyzcjy/flutter_rust_bridge
 fzyzcjy/flutter_smooth
+gbtb16/kiwi
 gedoor/LegadoFlutter
 gemini-cli-extensions/flutter
 getsentry/sentry-dart
@@ -804,12 +811,14 @@ kalismeras61/flutter_wallet_ui
 kalismeras61/flutter_web_dashboard
 kang-airtc/flutter-book
 kangpeiqin/bilivideo_down
+kaparray/NewsDaily
 kareem-Abed/ClockMaster
 ketanchoyal/Our-E-School
 khoadng/Boorusama
 kirya355/clock_app_example_bloc
 kkkunny/bilitv
 klilmhdi/alarm_clock_app
+klisiewicz/flutter-bloc-patterns
 kmcgill88/admob_flutter
 kodecocodes/flta-materials
 kodjodevf/mangayomi
@@ -965,6 +974,7 @@ pizi-0/flutter-scrcpygui
 prateekmedia/appimagepool
 prateekmedia/pstube
 profchi/Chess_Clock
+putraxor/flutter-book-app
 putraxor/flutter-login-ui
 q805699513/flutter_books
 qq326646683/flutter_tencentplayer
@@ -1090,6 +1100,7 @@ thielepaul/photoprism-mobile
 thunder-app/thunder
 tilakpatel22/employee-attendance-app-flutter
 tilatrivia/clocktower-notebook
+togettoyou/flutter-one-app
 toly1994328/FlutterUnit
 tomassasovsky/cupertino_clock
 tomialagbe/flutter_ui_challenges
@@ -1192,5 +1203,6 @@ zhujian1989/flutter_study
 zino-hofmann/graphql-flutter
 zjs81/meshcore-open
 zoidberg-xgd/NekoTime
+zsakvo/wenku8x
 zubairehman/Portfolio-Demo
 zulip/zulip-flutter
