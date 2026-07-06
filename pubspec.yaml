@@ -6,6 +6,106 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  url_launcher:
+    path: lib/rahiche_riveo_page_curl/deps/url_launcher
+  url_launcher_platform_interface:
+    path: lib/rahiche_riveo_page_curl/deps/url_launcher_platform_interface
+  device_frame:
+    path: lib/rahiche_riveo_page_curl/deps/device_frame
+  freezed_annotation:
+    path: lib/rahiche_riveo_page_curl/deps/freezed_annotation
+  json_annotation:
+    path: lib/rahiche_riveo_page_curl/deps/json_annotation
+  flutter_svg:
+    path: lib/rahiche_riveo_page_curl/deps/flutter_svg
+  vector_graphics:
+    path: lib/rahiche_riveo_page_curl/deps/vector_graphics
+  vector_graphics_compiler:
+    path: lib/rahiche_riveo_page_curl/deps/vector_graphics_compiler
+  xml:
+    path: lib/rahiche_riveo_page_curl/deps/xml
+  petitparser:
+    path: lib/rahiche_riveo_page_curl/deps/petitparser
+  path_parsing:
+    path: lib/rahiche_riveo_page_curl/deps/path_parsing
+  vector_graphics_codec:
+    path: lib/rahiche_riveo_page_curl/deps/vector_graphics_codec
+  flutter_animate:
+    path: lib/rahiche_riveo_page_curl/deps/flutter_animate
+  cached_network_image:
+    path: lib/rahiche_riveo_page_curl/deps/cached_network_image
+  octo_image:
+    path: lib/rahiche_riveo_page_curl/deps/octo_image
+  cached_network_image_platform_interface:
+    path: lib/rahiche_riveo_page_curl/deps/cached_network_image_platform_interface
+  flutter_cache_manager:
+    path: lib/rahiche_riveo_page_curl/deps/flutter_cache_manager
+  sqflite:
+    path: lib/rahiche_riveo_page_curl/deps/sqflite
+  sqflite_platform_interface:
+    path: lib/rahiche_riveo_page_curl/deps/sqflite_platform_interface
+  sqflite_common:
+    path: lib/rahiche_riveo_page_curl/deps/sqflite_common
+  rxdart:
+    path: lib/rahiche_riveo_page_curl/deps/rxdart
+  clock:
+    path: lib/rahiche_riveo_page_curl/deps/clock
+  flutter_shaders:
+    path: lib/rahiche_riveo_page_curl/deps/flutter_shaders
+  vector_math:
+    path: lib/rahiche_riveo_page_curl/deps/vector_math
+  audioplayers:
+    path: lib/rahiche_riveo_page_curl/deps/audioplayers
+  synchronized:
+    path: lib/rahiche_riveo_page_curl/deps/synchronized
+  http:
+    path: lib/rahiche_riveo_page_curl/deps/http
+  web:
+    path: lib/rahiche_riveo_page_curl/deps/web
+  http_parser:
+    path: lib/rahiche_riveo_page_curl/deps/http_parser
+  typed_data:
+    path: lib/rahiche_riveo_page_curl/deps/typed_data
+  string_scanner:
+    path: lib/rahiche_riveo_page_curl/deps/string_scanner
+  source_span:
+    path: lib/rahiche_riveo_page_curl/deps/source_span
+  term_glyph:
+    path: lib/rahiche_riveo_page_curl/deps/term_glyph
+  async:
+    path: lib/rahiche_riveo_page_curl/deps/async
+  file:
+    path: lib/rahiche_riveo_page_curl/deps/file
+  uuid:
+    path:
+    path: lib/rahiche_riveo_page_curl/deps/path
+  crypto:
+    path:
+    path: lib/rahiche_riveo_page_curl/deps/path
+  fixnum:
+    path:
+    path: lib/rahiche_riveo_page_curl/deps/path
+  path_provider:
+    path:
+    path: lib/rahiche_riveo_page_curl/deps/path
+  path_provider_platform_interface:
+    path:
+    path: lib/rahiche_riveo_page_curl/deps/path
+  platform:
+    path:
+    path: lib/rahiche_riveo_page_curl/deps/path
+  audioplayers_platform_interface:
+    path:
+    path: lib/rahiche_riveo_page_curl/deps/path
+  plugin_platform_interface:
+    path:
+    path: lib/rahiche_riveo_page_curl/deps/path
+  meta:
+    path:
+    path: lib/rahiche_riveo_page_curl/deps/path
+  collection:
+    path:
+    path: lib/rahiche_riveo_page_curl/deps/path
   intl: ^0.20.2
   flutter:
     sdk: flutter
