@@ -118,6 +118,7 @@ FlutterOpen/flutter-ui-nice
 ForceDestroy/OverClock
 FoxSensei001/LoveIwara
 FraserNicholson/alamb_clock_app
+Frave07/Flutter-Delivery-App
 Frezyx/bottom_bar_with_sheet
 Frezyx/sidebarx
 Frezyx/talker
@@ -148,6 +149,7 @@ Idean/Flutter-Neumorphic
 Im-Kevin/cool_ui
 Ivaskuu/dashboard
 JGeek00/adguard-home-manager
+JHBitencourt/beautiful_timelines
 JHBitencourt/timeline_tile
 JO2K-Development/CLOCKEDIN-Frontend
 JadenZhong/wechat-flutter
@@ -200,6 +202,7 @@ MaikuB/flutter_local_notifications
 MakeshVineeth/world_clock
 MarcBrede/chess_clock
 MarcelGarus/marquee
+MarcinusX/snappable
 MarcioQuimbundo/flutter_desktop_challenges
 MarcusNg/flutter_chat_ui
 MarcusNg/flutter_facebook_responsive_ui
@@ -630,6 +633,7 @@ flutter-form-builder-ecosystem/flutter_form_builder
 flutter-mapbox-gl/maps
 flutter-ml/google_ml_kit_flutter
 flutter-stripe/flutter_stripe
+flutter-studio/flutter-icons
 flutter-team-archive/flutter_clock
 flutter-team-archive/gallery
 flutter-team-archive/io_flip
@@ -666,6 +670,7 @@ flutterchina/azlistview
 flutterchina/flukit
 flutterchina/json_model
 flutterchina/lpinyin
+flutterchina/nine_grid_view
 fluttercommunity/backdrop
 fluttercommunity/chewie
 fluttercommunity/flutter-draggable-scrollbar
@@ -824,6 +829,7 @@ kang-airtc/flutter-book
 kangpeiqin/bilivideo_down
 kaparray/NewsDaily
 kareem-Abed/ClockMaster
+katariyanikhil/SaveIt
 ketanchoyal/Our-E-School
 khoadng/Boorusama
 kirya355/clock_app_example_bloc
@@ -831,6 +837,7 @@ kkkunny/bilitv
 klilmhdi/alarm_clock_app
 klisiewicz/flutter-bloc-patterns
 kmcgill88/admob_flutter
+knopp/flutter_reorderable_list
 kodecocodes/flta-materials
 kodjodevf/mangayomi
 koel/player
@@ -842,6 +849,7 @@ kunkun12/Flutter_shop
 kzjn10/Flutter_Bloc_Movie
 lambiengcode/analog-clock
 larryaasen/upgrader
+leancodepl/marionette_mcp
 leancodepl/patrol
 leetomlee123/book
 leo-elstin/Flutter-UI-Kits
@@ -924,6 +932,7 @@ mylxsw/aidea
 naaammme/pilipro
 nabil6391/graphview
 naco-siren/mogicians-manual
+namanh11611/flutter_mvvm_riverpod
 namanshergill/diohub
 namidaco/namida
 nank1ro/flutter-shadcn-ui
@@ -1037,6 +1046,7 @@ rvamsikrishna/flutter_ui_challenge_planets_app
 rvamsikrishna/inview_notifier_list
 rxlabz/audioplayer
 rxlabz/panache
+rxlabz/speech_recognition
 ryanheise/audio_service
 rydmike/flex_color_scheme
 saber-notes/saber
@@ -1058,6 +1068,7 @@ schultek/jaspr
 seaneagan/clock
 seasick/dreamclock
 serenader2014/flutter_carousel_slider
+sergiandreplace/planets-flutter
 serverpod/serverpod
 shankarkharel/World-Clock
 shaqian/flutter_realtime_detection
