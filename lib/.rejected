@@ -32,6 +32,8 @@ AppFlowy-IO/AppFlowy
 AppFlowy-IO/appflowy-editor
 Apparence-io/CamerAwesome
 ArAmM7/clock
+Arenukvern/mcp_flutter
+ArizArmeidi/FlutterWeather
 ArkaprabhaChakraborty/ClockApp
 AseemWangoo/flutter_programs
 AshutoshPatole/FlutterUI
@@ -46,6 +48,7 @@ Baseflow/flutter-permission-handler
 Baseflow/flutter_cache_manager
 Baseflow/flutter_cached_network_image
 BaselAllam/clockcommerce
+BeamlakAschalew/flixquest
 Begzar/BegzarApp
 BilalShahid13/PersistentBottomNavBar
 BirjuVachhani/adaptive_theme
@@ -323,6 +326,7 @@ TNT-Likely/BeeCount
 TOM88812/xiaozhi-android-client
 Tarikul711/flutter-ecommerce
 Tarikul711/flutter-food-delivery-app-ui
+TatsuUkraine/flutter_sticky_infinite_list
 Tencent/mxflutter
 Tencent/tdesign-flutter
 TerminalStudio/xterm.dart
@@ -393,6 +397,7 @@ adityadroid/Messio
 aeyrium/bezier-chart
 afgprogrammer/Flutter-Complete-e-commerce
 afgprogrammer/Flutter-Shoes-Shop-App
+afgprogrammer/Flutter-Splash-Screen-Animation
 afgprogrammer/Flutter-examples
 afgprogrammer/Flutter-food-delivery-app-ui
 afzalali15/flutter_alarm_clock
@@ -459,6 +464,7 @@ bdlukaa/fluent_ui
 befovy/fijkplayer
 benoitletondor/Beer-Me-Up
 benyaminbeyzaie/circular_bottom_navigation
+benznest/flutter_rounded_date_picker
 bernaferrari/color-studio
 best-flutter/flutter_swiper
 best-flutter/transformer_page_view
@@ -794,6 +800,7 @@ jing332/AListFlutter
 joanpablo/reactive_forms
 jogboms/flutter_offline
 jogboms/flutter_spinkit
+jogboms/tailor_made
 jogboms/time.dart
 join-the-flock/flock
 jonasbark/flutter_in_app_update
@@ -832,6 +839,7 @@ krille-chan/fluffychat
 kshitij5/Clockly
 kubenav/kubenav
 kunkun12/Flutter_shop
+kzjn10/Flutter_Bloc_Movie
 lambiengcode/analog-clock
 larryaasen/upgrader
 leancodepl/patrol
@@ -874,6 +882,7 @@ marcos930807/awesomeDialogs
 material-components/material-components-flutter
 material-foundation/flutter-packages
 mateusz-bak/openreads
+mattermoran/map_launcher
 matthewfx/sleek_circular_slider
 matthewtory/trinity-orientation-2018
 matthiasn/lotti
@@ -993,6 +1002,7 @@ raj457036/CopyCat-Clipboard
 rajatDeveloper/flutter_world_clock_app_using_api_
 raoxwup/haka_comic
 rasitesdmr/pokeme
+rayliverified/FlutterGames
 realm/realm-dart
 realth000/tsdm_client
 realvorl/flutter-nixie-clock
