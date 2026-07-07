@@ -1,0 +1,34 @@
+import 'package:flutter/material.dart';
+
+const Color kCanvasColor = Color(0xfff2f3f7);
+
+const Color lightPrimary = Color(0xFF6200EE);
+const Color lightAccent = Color(0xFF03DAC6);
+const Color lightBG = Color(0xFFFFFFFF);
+
+final ThemeData lightTheme = ThemeData(
+  useMaterial3: false,
+  primaryColor: lightPrimary,
+  colorScheme: ColorScheme.fromSwatch().copyWith(
+    secondary: lightAccent,
+    brightness: Brightness.light,
+  ),
+  scaffoldBackgroundColor: lightBG,
+  appBarTheme: AppBarTheme(
+    backgroundColor: lightPrimary.withOpacity(0.7),
+    elevation: 0.0,
+    titleTextStyle: const TextStyle(
+      color: Colors.white,
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+    ),
+    iconTheme: const IconThemeData(color: Colors.white),
+  ),
+  bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    backgroundColor: lightPrimary.withOpacity(0.7),
+  ),
+  inputDecorationTheme: const InputDecorationTheme(
+    border: InputBorder.none,
+    focusedBorder: InputBorder.none,
+  ),
+);
