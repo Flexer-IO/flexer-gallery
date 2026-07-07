@@ -132,12 +132,14 @@ GanZhiXiong/GZXTaoBaoAppFlutter
 GanZhiXiong/gzx_dropdown_menu
 GeekyAnts/flutter-starter
 GetDutchie/brick
+GetStream/flutter-samples
 GetStream/stream-chat-flutter
 GhostenEditor/Ghosten-Player
 GiancarloCode/form_bloc
 GiddyNaya/clockee
 GimelStudio/GimelStudio
 Hamad-Anwar/Neumorphic-Analog-Clockify
+Harsh-23/Musify
 Hash-Studios/Prism
 Hash-Studios/e-learning-app
 Haxeeb71/ClockG
@@ -259,6 +261,7 @@ Origogi/Flutter-Credit-Card-Input-Form
 PJ-ODS-2021/lww_crdt
 PalisadoesFoundation/talawa
 Parabeac/parabeac_core
+PatilShreyas/Flutter2GoogleSheets-Demo
 PerryPro/techtrainingcamp-client-7
 Pheonix-5/Clock
 PhilipsHue/flutter_reactive_ble
@@ -415,6 +418,7 @@ afgprogrammer/Flutter-Shoes-Shop-App
 afgprogrammer/Flutter-Splash-Screen-Animation
 afgprogrammer/Flutter-examples
 afgprogrammer/Flutter-food-delivery-app-ui
+afgprogrammer/Flutter-home-service-app
 afzalali15/flutter_alarm_clock
 ahmet-cetinkaya/whph
 ai-dashboad/flutter-skill
@@ -476,6 +480,7 @@ awdanowski/lmmhsclock_old
 aws-amplify/amplify-flutter
 azihsoyn/flutter_mlkit
 bailicangdu/native-xdm
+bannzai/Pilll
 bdero/flutter_scene
 bdlukaa/fluent_ui
 befovy/fijkplayer
@@ -488,6 +493,7 @@ best-flutter/transformer_page_view
 beyondtranslate/beyondtranslate
 bggRGjQaUbCoE/PiliPlus
 bimsina/notes-app
+biplobsd/running_services_monitor
 bitsdojo/bitsdojo_window
 bizz84/firebase_auth_demo_flutter
 bizz84/flutter-tips-and-tricks
@@ -625,6 +631,7 @@ espresso3389/lywsd02_demo
 ethanblake4/dart_eval
 ethanblake4/flutter_eval
 evan361425/flutter-pos-system
+fabiomsr/Flutter-StepByStep
 fablue/lime-flutter
 faob-dev/folding_cell
 fayeed/dash_chat
@@ -710,6 +717,7 @@ flutterdata/flutter_data
 flutterfx/flutterfx_widgets
 fluttergems/awesome-open-source-flutter-apps
 flutterkit/zerker
+flutternetwork/WiFiFlutter
 flyerhq/flutter_chat_ui
 fmtjava/Flutter_Eyepetizer
 foss42/apidash
@@ -1075,11 +1083,13 @@ roipeker/graphx
 roshanrahman/flutter-notes-app
 roughike/flutter_facebook_login
 roughike/inKino
+rrifafauzikomara/MovieApp
 rrousselGit/flutter_hooks
 rrousselGit/freezed
 rrousselGit/functional_widget
 rrousselGit/provider
 rrousselGit/riverpod
+rrousselGit/state_notifier
 rvamsikrishna/flutter_fluid_slider
 rvamsikrishna/flutter_ui_challenge_planets_app
 rvamsikrishna/inview_notifier_list
@@ -1111,6 +1121,7 @@ serenader2014/flutter_carousel_slider
 sergiandreplace/planets-flutter
 serverpod/serverpod
 shankarkharel/World-Clock
+shaoting0730/Flutter_learn_demo
 shaqian/flutter_realtime_detection
 sheikhhaziq/gyawun_music
 shekohex/flutterust
