@@ -11,8 +11,14 @@ dependencies:
     sdk: flutter
   shared_preferences: ^2.5.3
   auto_size_text: ^3.0.0
+  dotted_border: ^2.0.0+1
+  eva_icons_flutter: ^3.0.2
+  get: ^4.3.8
+  percent_indicator: ^3.4.0
+  timeago: ^3.1.0
 flutter:
   assets:
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
+
 
