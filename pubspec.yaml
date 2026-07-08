@@ -6,6 +6,72 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  quiver:
+    path: lib/pawlik92_flutter_parallax_scroll/deps/quiver
+  matcher:
+    path: lib/pawlik92_flutter_parallax_scroll/deps/matcher
+  test_api:
+    path: lib/pawlik92_flutter_parallax_scroll/deps/test_api
+  boolean_selector:
+    path: lib/pawlik92_flutter_parallax_scroll/deps/boolean_selector
+  stream_channel:
+    path: lib/pawlik92_flutter_parallax_scroll/deps/stream_channel
+  stack_trace:
+    path: lib/pawlik92_flutter_parallax_scroll/deps/stack_trace
+  flutter_svg:
+    path: lib/pawlik92_flutter_parallax_scroll/deps/flutter_svg
+  vector_graphics:
+    path: lib/pawlik92_flutter_parallax_scroll/deps/vector_graphics
+  vector_graphics_compiler:
+    path: lib/pawlik92_flutter_parallax_scroll/deps/vector_graphics_compiler
+  xml:
+    path: lib/pawlik92_flutter_parallax_scroll/deps/xml
+  petitparser:
+    path: lib/pawlik92_flutter_parallax_scroll/deps/petitparser
+  path_parsing:
+    path: lib/pawlik92_flutter_parallax_scroll/deps/path_parsing
+  vector_math:
+    path: lib/pawlik92_flutter_parallax_scroll/deps/vector_math
+  vector_graphics_codec:
+    path: lib/pawlik92_flutter_parallax_scroll/deps/vector_graphics_codec
+  rxdart:
+    path: lib/pawlik92_flutter_parallax_scroll/deps/rxdart
+  google_fonts:
+    path: lib/pawlik92_flutter_parallax_scroll/deps/google_fonts
+  path_provider:
+    path: lib/pawlik92_flutter_parallax_scroll/deps/path_provider
+  path_provider_platform_interface:
+    path: lib/pawlik92_flutter_parallax_scroll/deps/path_provider_platform_interface
+  plugin_platform_interface:
+    path: lib/pawlik92_flutter_parallax_scroll/deps/plugin_platform_interface
+  platform:
+    path: lib/pawlik92_flutter_parallax_scroll/deps/platform
+  http:
+    path: lib/pawlik92_flutter_parallax_scroll/deps/http
+  web:
+    path: lib/pawlik92_flutter_parallax_scroll/deps/web
+  http_parser:
+    path: lib/pawlik92_flutter_parallax_scroll/deps/http_parser
+  typed_data:
+    path: lib/pawlik92_flutter_parallax_scroll/deps/typed_data
+  string_scanner:
+    path: lib/pawlik92_flutter_parallax_scroll/deps/string_scanner
+  source_span:
+    path: lib/pawlik92_flutter_parallax_scroll/deps/source_span
+  term_glyph:
+    path: lib/pawlik92_flutter_parallax_scroll/deps/term_glyph
+  async:
+    path:
+    path: lib/pawlik92_flutter_parallax_scroll/deps/path
+  meta:
+    path:
+    path: lib/pawlik92_flutter_parallax_scroll/deps/path
+  collection:
+    path:
+    path: lib/pawlik92_flutter_parallax_scroll/deps/path
+  crypto:
+    path:
+    path: lib/pawlik92_flutter_parallax_scroll/deps/path
   intl: ^0.20.2
   flutter:
     sdk: flutter
@@ -13,6 +79,15 @@ dependencies:
   auto_size_text: ^3.0.0
 flutter:
   assets:
+    - assets/pawlik92_flutter_parallax_scroll/svg/background_icons.svg
+    - assets/pawlik92_flutter_parallax_scroll/svg/layer1.svg
+    - assets/pawlik92_flutter_parallax_scroll/svg/layer2.svg
+    - assets/pawlik92_flutter_parallax_scroll/svg/layer2_icons.svg
+    - assets/pawlik92_flutter_parallax_scroll/svg/layer3.svg
+    - assets/pawlik92_flutter_parallax_scroll/svg/layer3_icons.svg
+    - assets/pawlik92_flutter_parallax_scroll/svg/money.svg
+    - assets/pawlik92_flutter_parallax_scroll/svg/mountains.svg
+    - assets/pawlik92_flutter_parallax_scroll/svg/stars.svg
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
 
