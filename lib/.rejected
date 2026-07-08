@@ -118,6 +118,7 @@ FilledStacks/responsive_builder
 FirebaseExtended/flutterfire_desktop
 Flutter-Bounty-Hunters/super_editor
 FlutterGen/flutter_gen
+FlutterOpen/flutter-layouts-exampls
 FlutterOpen/flutter-ui-nice
 ForceDestroy/OverClock
 FoxSensei001/LoveIwara
@@ -169,6 +170,7 @@ JideGuru/FlutterFoodybite
 JideGuru/FlutterFurnitureAppUI
 JideGuru/FlutterSocialAppUIKit
 JideGuru/FlutterTravel
+JonasWanke/timetable
 JordanADavies/liquid_progress_indicator
 JustLookAtNow/pt_mate
 JustinFincher/FlutterClock
@@ -382,6 +384,7 @@ Xmarmalade/alisthelper
 YYFlutter/flutter-custom-dialog
 YYFlutter/flutter-ui
 YazeedAlKhalaf/Flutter_Installer
+YehudaKremer/msix
 Yetam42/Alarm-Clock
 Yubico/yubioath-flutter
 ZDfordream/FlutterTianYue
@@ -428,6 +431,7 @@ ai-dashboad/flutter-skill
 air-controller/air-controller-desktop
 aissat/easy_localization
 ajay-prabhakar/awesome-flutter-ui
+ajilo297/Flutter-Dotted-Border
 akshathjain/sliding_up_panel
 aleksanderwozniak/deer
 aleksanderwozniak/table_calendar
@@ -579,6 +583,7 @@ dart-code-checker/dart-code-metrics
 dart-lang/dart-pad
 dart-lang/http
 dart-lang/leak_tracker
+davefaliskie/travel_treasury
 davidche1116/Sms
 davidmigloz/langchain_dart
 davigmacode/flutter_smart_select
@@ -658,6 +663,7 @@ fireship-io/flutter-firebase-quizapp-course
 firgia/FD-Project-Management
 flame-engine/flame
 fleaflet/flutter_map
+fleather-editor/fleather
 flet-dev/serious-python
 florent37/Flutter-AssetsAudioPlayer
 flow-mn/flow
@@ -773,6 +779,7 @@ guilherme-v/flutter-clean-architecture-example
 guozhigq/flutter_v2ex
 guozhigq/pilipala
 gvenusleo/MeRead
+gwhcn/flutter_k_chart
 hacktons/convex_bottom_bar
 hackware1993/Flutter_ConstraintLayout
 halildurmus/win32
@@ -822,6 +829,7 @@ iotjin/jh_flutter_demo
 isar/hive
 isar/isar
 ishaan-arya/wake-me-up
+ishandeveloper/Chatter-App
 ishworpanta10/flutter_clock
 iteqno-id/fluboard
 iwrqk/iwrqk
@@ -917,6 +925,7 @@ lohanidamodar/flutter_ui_challenges
 lollipopkit/flutter_gpt_box
 lollipopkit/flutter_server_box
 longer96/flutter_pickers
+longhoang2984/flutter_payment_app_ui
 lotusprey/otraku
 lucasmontano/Mobile-Performance-Test
 lucinhu/bili_you
@@ -933,6 +942,7 @@ manishmeganathan/metronome
 manudevcode/flutter_alarm_app
 mapbox/mapbox-maps-flutter
 maplibre/flutter-maplibre-gl
+marcglasberg/i18n_extension
 marchellodev/sharik
 marcoedomingos/pixel_watch_flutter
 marcos930807/awesomeDialogs
