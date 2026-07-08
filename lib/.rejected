@@ -101,6 +101,7 @@ Dn-a/flutter_tags
 DonutWare/Fladder
 DroidsOnRoids/flutter-roadmap
 Dropsource/monarch
+EXERLOG/exer_log
 EdsonBueno/infinite_scroll_pagination
 Elvis-Sarfo/clock-in-admin
 EmadBeltaje/flutter_getx_template
@@ -119,6 +120,7 @@ FilledStacks/responsive_builder
 FirebaseExtended/flutterfire_desktop
 Flutter-Bounty-Hunters/super_editor
 FlutterGen/flutter_gen
+FlutterOpen/flutter-canvas
 FlutterOpen/flutter-layouts-exampls
 FlutterOpen/flutter-ui-nice
 ForceDestroy/OverClock
@@ -218,6 +220,7 @@ MarcinusX/snappable
 MarcioQuimbundo/flutter_desktop_challenges
 MarcusNg/flutter_chat_ui
 MarcusNg/flutter_facebook_responsive_ui
+MarcusNg/flutter_instagram_clone
 MarcusNg/flutter_netflix_responsive_ui
 MarcusNg/flutter_travel_ui
 Maximgbb/clock_app
@@ -313,6 +316,7 @@ SachinGanesh/screenshot
 Sakurababycat/tableclock
 Salakar/zapp.run
 SaltyAom/niku
+Sameera-Perera/Flutter-TDD-Clean-Architecture-E-Commerce-App
 SandroMaglione/fpdart
 Santos-Enoque/complete_flutter_ecommerce
 Santos-Enoque/uber_clone_with_flutter
@@ -333,6 +337,7 @@ Sky24n/GreenTravel
 Sky24n/common_utils
 Sky24n/flustars
 Sky24n/flutter_wanandroid
+Skyost/RateMyApp
 SmallStoneSK/flutter_training_app
 Solido/awesome-flutter
 SongTube/SongTube-App
@@ -340,6 +345,7 @@ SrikantKanekar/ClockApp-Flutter
 StacDev/stac
 Stacked-Org/stacked
 Sub6Resources/flutter_html
+SunPointed/MPFlutterChart
 SunPointed/word_clock
 SushiiReboot/Nothing-Clock
 Sutthiphong-H/clocking
@@ -371,6 +377,7 @@ UnboundTechCo/defyxVPN
 UndeadSec/SocialFishMobile
 UnicornsOnLSD/finamp
 Uuttssaavv/flutter-clean-architecture-riverpod
+VB10/Flutter-Full-Learn
 VB10/flutter-architecture-template
 VarunS9000/World-Clock
 VeryGoodOpenSource/very_good_analysis
@@ -586,6 +593,7 @@ dart-lang/dart-pad
 dart-lang/http
 dart-lang/leak_tracker
 davefaliskie/travel_treasury
+david-legend/flutter_catalog
 davidche1116/Sms
 davidmigloz/langchain_dart
 davigmacode/flutter_smart_select
@@ -640,6 +648,7 @@ ente-io/ente
 ente/ente
 entronad/flutter_echarts
 entronad/graphic
+epam-cross-platform-lab/swagger-dart-code-generator
 erluxman/awesomefluttertips
 espresso3389/lywsd02_demo
 ethanblake4/dart_eval
@@ -829,6 +838,7 @@ impruthvi/Clock
 instaflutter/flutter-login-screen-firebase-auth-facebook-login
 invertase/dart_custom_lint
 invertase/melos
+invertase/spec
 invoiceninja/admin-portal
 ionicfirebaseapp/getwidget
 iotjin/jh_flutter_demo
@@ -1210,6 +1220,7 @@ therezacuet/Motion-Tab-Bar
 thevvh/flutter_chatgpt
 theyakka/qr.flutter
 thielepaul/photoprism-mobile
+thingsboard/flutter_thingsboard_app
 thunder-app/thunder
 tiagojencmartins/unicornspeeddial
 tilakpatel22/employee-attendance-app-flutter
