@@ -143,6 +143,7 @@ GIfatahTH/states_rebuilder
 GanZhiXiong/GZXTaoBaoAppFlutter
 GanZhiXiong/gzx_dropdown_menu
 GeekyAnts/flutter-starter
+GeekyAnts/flutter-web-admin-dashbaord
 GetDutchie/brick
 GetStream/flutter-samples
 GetStream/stream-chat-flutter
@@ -435,6 +436,7 @@ abuanwar072/eBook_app_Flutter
 abuanwar072/furniture_app_flutter
 aceeedev/toki
 adar2378/pin_code_fields
+adeeteya/FlutterMarkdownEditor
 adisaptr/flutter_alarm_app
 adityadroid/Messio
 aeyrium/bezier-chart
@@ -452,6 +454,7 @@ aissat/easy_localization
 ajay-prabhakar/awesome-flutter-ui
 ajilo297/Flutter-Dotted-Border
 akshathjain/sliding_up_panel
+akvelon/flutter-code-editor
 aleksanderwozniak/deer
 aleksanderwozniak/table_calendar
 alexcmgit/kanade
@@ -520,6 +523,7 @@ best-flutter/transformer_page_view
 beyondtranslate/beyondtranslate
 bggRGjQaUbCoE/PiliPlus
 bimsina/notes-app
+bimsina/wallpaper
 biplobsd/running_services_monitor
 bitsdojo/bitsdojo_window
 bizz84/firebase_auth_demo_flutter
@@ -564,6 +568,7 @@ canhuah/WanAndroid-Flutter
 canxin121/app_rhyme
 carp-dk/flutter-plugins
 caseyryan/flutter_multi_formatter
+celest-dev/celest
 cfug/dio
 cfug/flutter.cn
 chaiebmohamed/my_flutter_alarm
@@ -573,6 +578,7 @@ chen08209/FlClash
 chinabrant/flutter_study
 chinabrant/popup_menu
 chipweinberger/flutter_blue_plus
+chn-sunch/flutter_mycommunity_app
 chrisedg87/flutter_rounded_loading_button
 christopherjneelankavil/clockapp
 chuabingquan/helm
@@ -759,6 +765,7 @@ fluttergems/awesome-open-source-flutter-apps
 flutterkit/zerker
 flutternetwork/WiFiFlutter
 flyerhq/flutter_chat_ui
+flyerhq/flutter_firebase_chat_core
 fmtjava/Flutter_Eyepetizer
 foss42/apidash
 foxsofter/flutter_thrio
@@ -838,6 +845,7 @@ hyochan/flutter_calendar_carousel
 hyochan/flutter_inapp_purchase
 iakdis/librecamera
 iamEtornam/Tasky-Mobile-App
+iamSahdeep/fu_uber
 iamSahdeep/liquid_swipe_flutter
 iampawan/30DaysOfFlutter
 iampawan/CryptoApp
@@ -1066,6 +1074,7 @@ olayemii/uberr-ui
 olexale/arkit_flutter_plugin
 olmps/memo
 omar-alshyokh/flutter_flip_panel_plus
+omarahmedx14/flutter_advanced_course
 ookami-kb/storybook_flutter
 openfoodfacts/smooth-app
 openimsdk/open-im-sdk-flutter
@@ -1267,6 +1276,7 @@ transistorsoft/flutter_background_fetch
 transistorsoft/flutter_background_geolocation
 trentpiercy/flutter-candlesticks
 trentpiercy/trace
+triannoviandi/movie-ticketing-app
 truelearnerarjun/clock
 tsacdop/tsacdop
 tsukumijima/Real-ESRGAN-GUI
@@ -1274,6 +1284,7 @@ tunitowen/fancy_bottom_navigation
 tuuhin/clockwork
 ubclaunchpad/time-tracker
 ubuntu-flutter-community/musicpod
+ubuntu-flutter-community/settings
 ubuntu/app-center
 ubuntu/archive_yaru.dart
 ubuntu/yaru.dart
