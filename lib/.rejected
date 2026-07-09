@@ -52,6 +52,7 @@ Baseflow/flutter_cached_network_image
 BaselAllam/clockcommerce
 BeamlakAschalew/flixquest
 Begzar/BegzarApp
+Betterment/alchemist
 BilalShahid13/PersistentBottomNavBar
 BirjuVachhani/adaptive_theme
 BirjuVachhani/ticking_widget
@@ -62,6 +63,7 @@ CCExtractor/ultimate_alarm_clock
 CCY0122/WanAndroid_Flutter
 CRED-CLUB/neopop-flutter
 CaiJingLong/flutter_ijkplayer
+CaiJingLong/flutter_photo
 Canardoux/flutter_sound
 CarGuo/gsy_flutter_demo
 CarGuo/gsy_github_app_flutter
@@ -128,6 +130,7 @@ FoxSensei001/LoveIwara
 FraserNicholson/alamb_clock_app
 Frave07/Flutter-Delivery-App
 Frezyx/bottom_bar_with_sheet
+Frezyx/group_button
 Frezyx/sidebarx
 Frezyx/talker
 FriesI23/mhabit
@@ -355,6 +358,7 @@ TOM88812/xiaozhi-android-client
 Tarikul711/flutter-ecommerce
 Tarikul711/flutter-food-delivery-app-ui
 TatsuUkraine/flutter_sticky_infinite_list
+TechnoPrashant/Sizer
 Tencent/mxflutter
 Tencent/tdesign-flutter
 TerminalStudio/xterm.dart
@@ -540,6 +544,7 @@ brendan-duncan/image
 brianegan/flutter_architecture_samples
 brianegan/flutter_redux
 brianegan/scoped_model
+brij-digital/espresso-cash-public
 brinesoftwares/Flutter-AI-Rubik-cube-Solver
 britannio/in_app_review
 brocodev/flutter_projects
@@ -704,6 +709,7 @@ flutter/flutter
 flutter/games
 flutter/packages
 flutter/samples
+flutter/tests
 flutter/website
 fluttercandies/NeteaseCloudMusic
 fluttercandies/extended_image
@@ -929,6 +935,7 @@ letsar/flutter_slidable
 letsar/flutter_staggered_grid_view
 letsar/flutter_sticky_header
 lichess-org/mobile
+lightningminers/flutter-book
 lijy91-archives-repos/widget-livebook
 linagora/tmail-flutter
 livekit/client-sdk-flutter
@@ -1035,6 +1042,7 @@ o1298098/Flutter-Movie
 objectbox/objectbox-dart
 obnil/flutter_music_app
 oguzhanmavii/flutter_clock_app
+oguzhnatly/flutter_carplay
 olayemii/flutter-ui-kits
 olayemii/uberr-ui
 olexale/arkit_flutter_plugin
@@ -1072,6 +1080,7 @@ piggyvault/piggyvault
 pinchbv/floor
 pingbird/boxy
 pingbird/puro
+pixes-app/pixes
 pizi-0/flutter-scrcpygui
 poppingmoon/aria
 prateekmedia/appimagepool
@@ -1115,6 +1124,7 @@ rodydavis/plugins
 rodydavis/signals.dart
 rohan20/flutter-chat-app
 roipeker/graphx
+roshancodespace/ShonenX
 roshanrahman/flutter-notes-app
 roughike/flutter_facebook_login
 roughike/inKino
