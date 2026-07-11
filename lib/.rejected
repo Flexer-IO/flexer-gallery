@@ -97,6 +97,7 @@ DavBfr/dart_pdf
 Davies-K/Taskez
 Deepak-coder80/ClockTime
 DenisovAV/flutter_gemma
+DenisovAV/flutter_tv
 DevStack06/Whatsapp-Clone-Flutter
 Dimibe/grouped_list
 Dinesh-Sowndar/flutter-iot-app-ui
@@ -288,6 +289,7 @@ PalisadoesFoundation/talawa
 Parabeac/parabeac_core
 PatilShreyas/Flutter2GoogleSheets-Demo
 PerryPro/techtrainingcamp-client-7
+PeterHdd/Firebase-Flutter-tutorials
 Pheonix-5/Clock
 PhilipsHue/flutter_reactive_ble
 PicGo/flutter-picgo
@@ -426,6 +428,7 @@ ZDfordream/FlutterTianYue
 ZQ330093887/GankFlutter
 ZhuJHua/moodiary
 Zverik/every_door
+aa2013/ClipShare
 aagarwal1012/Animated-Text-Kit
 aagarwal1012/IntroViews-Flutter
 aagarwal1012/Liquid-Pull-To-Refresh
@@ -545,6 +548,7 @@ best-flutter/flutter_swiper
 best-flutter/transformer_page_view
 beyondtranslate/beyondtranslate
 bggRGjQaUbCoE/PiliPlus
+bhrott/flutter-masked-text
 bimsina/Matinee-Flutter
 bimsina/notes-app
 bimsina/wallpaper
@@ -558,6 +562,7 @@ bizz84/movie_app_state_management_flutter
 bizz84/nested-navigation-demo-flutter
 bizz84/open_weather_example_flutter
 bizz84/starter_architecture_flutter_firebase
+bizz84/tmdb_movie_app_riverpod
 black-currant/novel-fpg
 blackmann/story_view
 bluefireteam/audioplayers
@@ -629,6 +634,7 @@ csells/go_router
 dahliaOS/clock
 dahliaOS/pangolin_desktop
 daohoangson/flutter_widget_from_html
+dario-digregorio/flutter_responsive
 darioielardi/flutter_speed_dial
 darkmoonight/Rain
 darkmoonight/Zest
@@ -830,6 +836,7 @@ google/flutter.widgets
 google/flutter_flux
 google/inject.dart
 gql-dart/ferry
+gql-dart/gql
 gskinner/flutter_animate
 gskinnerTeam/flokk
 gskinnerTeam/flutter-adaptive-demo
@@ -944,6 +951,7 @@ jonasbark/flutter_in_app_update
 jonasbark/flutter_stripe_payment
 jonataslaw/get_server
 jonataslaw/getx
+jonataslaw/readmore
 jonbhanson/flutter_native_splash
 josiahsrc/dough
 jspw/Ubuntu-Launcher
@@ -985,6 +993,7 @@ kunkun12/Flutter_shop
 kzjn10/Flutter_Bloc_Movie
 lambiengcode/analog-clock
 larryaasen/upgrader
+lazycatlabs/flutter_auth_app
 leancodepl/marionette_mcp
 leancodepl/patrol
 leetomlee123/book
@@ -1282,6 +1291,7 @@ sososdk/flash
 spotiflacapp/SpotiFLAC-Mobile
 sqmw/desk_tidy
 sterrenb/flutterhole
+steveruizok/perfect-freehand-dart
 stryder-dev/flutter_platform_widgets
 sudipsarker14/alarm_clock
 sun-jiao/flut-renamer
@@ -1354,6 +1364,7 @@ vedangf/clock_app
 vedartm/rick-and-morty-info
 venera-app/venera
 vengateshm/flutter_clock_app
+vi-k/bubble
 vicolo-dev/chrono
 vineeshvk/chat-app-flutter
 vinothvino42/SwiggyUI
@@ -1379,6 +1390,7 @@ wkl007/flutter_trip
 wlan07/flutter_clock
 wolfenrain/fluttium
 woltapp/wolt_modal_sheet
+wqandroid/avflutter
 wshehab99/clock-app
 wtus/flutter_kaiyan
 wuba/Fair
