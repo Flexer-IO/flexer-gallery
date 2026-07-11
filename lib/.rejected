@@ -450,6 +450,7 @@ abuanwar072/Plant-App-Flutter-UI
 abuanwar072/Production-Ready-Doctor-Consultant-App-UI-
 abuanwar072/Quiz-App-Flutter
 abuanwar072/Recipe-App---Flutter-UI
+abuanwar072/Responsive-and-Animated-Portfolio-Flutter
 abuanwar072/Travel-App-UI-using-Flutter
 abuanwar072/Welcome-Login-Signup-Page-Flutter
 abuanwar072/eBook_app_Flutter
@@ -489,6 +490,7 @@ allan-hx/flutter-weui
 aloisdeniel/figma-to-flutter
 aloisdeniel/flutter_device_preview
 aloisdeniel/flutter_sheet_localization
+altive/flutter_app_template
 am15h/tflite_flutter_plugin
 amake/orgro
 amangautam1/flutter-musicplayer
@@ -552,6 +554,7 @@ bhrott/flutter-masked-text
 bimsina/Matinee-Flutter
 bimsina/notes-app
 bimsina/wallpaper
+bingoogolapple/bga_issue_blog
 biplobsd/running_services_monitor
 bitsdojo/bitsdojo_window
 bizz84/bottom_bar_fab_flutter
@@ -646,6 +649,7 @@ dart-lang/http
 dart-lang/leak_tracker
 davefaliskie/travel_treasury
 david-legend/flutter_catalog
+david-legend/nimbus
 davidche1116/Sms
 davidmigloz/langchain_dart
 davigmacode/flutter_smart_select
@@ -803,11 +807,13 @@ fluttergems/awesome-open-source-flutter-apps
 flutterkit/zerker
 fluttermapp/flutter_widgets
 flutternetwork/WiFiFlutter
+fluxerapp/flutter_client
 flyerhq/flutter_chat_ui
 flyerhq/flutter_firebase_chat_core
 fmtjava/Flutter_Eyepetizer
 foss42/apidash
 foxsofter/flutter_thrio
+frappe/mobile
 free-explorers/veshell
 freeCodeCamp/mobile
 fregie/pho
@@ -852,6 +858,7 @@ gskinnerTeam/flutter-universal-platform
 gskinnerTeam/flutter-wonderous-app
 gskinnerTeam/flutter_vignettes
 gstory0404/flutter_unionad
+gtk-flutter/libadwaita
 guilherme-v/flutter-clean-architecture-example
 guozhigq/flutter_v2ex
 guozhigq/pilipala
@@ -870,6 +877,7 @@ hekaiyou/jedi
 hekaiyou/talk_casually
 hep-mh/flounder
 heruijun/flutter_boss
+hetu-script/hetu-script
 hhtokpinar/sqfEntity
 himanshuchauhan981/E-commerce-app-using-flutter-and-firebase
 hm21/pro_image_editor
@@ -882,6 +890,7 @@ huextrat/Taskist
 hugeicons/hugeicons
 hui-z/image_gallery_saver
 hungps/flutter_pokedex
+hurshi/dio-http-cache
 hydro-sdk/hydro-sdk
 hyochan/flutter_calendar_carousel
 hyochan/flutter_inapp_purchase
@@ -991,6 +1000,7 @@ kshitij5/Clockly
 kubenav/kubenav
 kunkun12/Flutter_shop
 kzjn10/Flutter_Bloc_Movie
+l3lackcurtains/flutter-for-wordpress-app
 lambiengcode/analog-clock
 larryaasen/upgrader
 lazycatlabs/flutter_auth_app
@@ -1276,6 +1286,7 @@ singerdmx/flutter-quill
 singleton-altman/MoviePilotLite
 sjjian/openhare
 skkallayath/photofilters
+sky-flutter/Flutter-Shopping-Cart
 slang-i18n/slang
 slovnicki/beamer
 smartclock-app/Clock
@@ -1394,6 +1405,7 @@ wqandroid/avflutter
 wshehab99/clock-app
 wtus/flutter_kaiyan
 wuba/Fair
+wuba/FairPushy
 wuzehua/techtrainingcamp-client-5
 wwandreww/esc_pos_printer
 xajik/thedeck
