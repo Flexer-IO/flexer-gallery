@@ -1,0 +1,58 @@
+import 'dart:async';
+import 'dart:developer';
+
+import 'gen/assets.gen.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
+import 'package:bloc/bloc.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
+
+// Stub implementation for ScoreCubit to resolve missing import.
+class ScoreCubit extends Cubit<dynamic> {
+  ScoreCubit() : super(null);
+}
+
+class AppBlocObserver extends BlocObserver {
+  @override
+  void onChange(BlocBase<dynamic> bloc, Change<dynamic> change) {
+    if (bloc is ScoreCubit) {
+      return;
+    }
+
+    // ignore: dead_code
+    super.onChange(bloc, change);
+    log('onChange(${bloc.runtimeType}, $change)');
+  }
+
+  @override
+  void onError(BlocBase<dynamic> bloc, Object error, StackTrace stackTrace) {
+    log('onError(${bloc.runtimeType}, $error, $stackTrace)');
+    super.onError(bloc, error, stackTrace);
+  }
+}
+
+Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
+  FlutterError.onError = (details) {
+    log(details.exceptionAsString(), stackTrace: details.stack);
+  };
+
+  WidgetsFlutterBinding.ensureInitialized();
+  final storage = await HydratedStorage.build(
+    storageDirectory: kIsWeb
+        ? HydratedStorage.webStorageDirectory
+        : await getApplicationDocumentsDirectory(),
+  );
+
+  HydratedBloc.storage = storage;
+
+  Bloc.observer = AppBlocObserver();
+
+  LicenseRegistry.addLicense(() async* {
+    final macondo = await rootBundle.loadString(Assets.licenses.macondo.ofl);
+    yield LicenseEntryWithLineBreaks(['macondo'], macondo);
+  });
+
+  runApp(await builder());
+}
