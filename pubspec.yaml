@@ -6,6 +6,64 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  flame:
+    path: lib/float_like_a_dash_sting_like_a_dart_ghostrigger/deps/flame
+  ordered_set:
+    path: lib/float_like_a_dash_sting_like_a_dart_ghostrigger/deps/ordered_set
+  vector_math:
+    path: lib/float_like_a_dash_sting_like_a_dart_ghostrigger/deps/vector_math
+  audioplayers:
+    path: lib/float_like_a_dash_sting_like_a_dart_ghostrigger/deps/audioplayers
+  synchronized:
+    path: lib/float_like_a_dash_sting_like_a_dart_ghostrigger/deps/synchronized
+  http:
+    path: lib/float_like_a_dash_sting_like_a_dart_ghostrigger/deps/http
+  web:
+    path: lib/float_like_a_dash_sting_like_a_dart_ghostrigger/deps/web
+  http_parser:
+    path: lib/float_like_a_dash_sting_like_a_dart_ghostrigger/deps/http_parser
+  typed_data:
+    path: lib/float_like_a_dash_sting_like_a_dart_ghostrigger/deps/typed_data
+  string_scanner:
+    path: lib/float_like_a_dash_sting_like_a_dart_ghostrigger/deps/string_scanner
+  source_span:
+    path: lib/float_like_a_dash_sting_like_a_dart_ghostrigger/deps/source_span
+  term_glyph:
+    path: lib/float_like_a_dash_sting_like_a_dart_ghostrigger/deps/term_glyph
+  async:
+    path: lib/float_like_a_dash_sting_like_a_dart_ghostrigger/deps/async
+  file:
+    path: lib/float_like_a_dash_sting_like_a_dart_ghostrigger/deps/file
+  uuid:
+    path:
+    path: lib/float_like_a_dash_sting_like_a_dart_ghostrigger/deps/path
+  crypto:
+    path:
+    path: lib/float_like_a_dash_sting_like_a_dart_ghostrigger/deps/path
+  fixnum:
+    path:
+    path: lib/float_like_a_dash_sting_like_a_dart_ghostrigger/deps/path
+  path_provider:
+    path:
+    path: lib/float_like_a_dash_sting_like_a_dart_ghostrigger/deps/path
+  path_provider_platform_interface:
+    path:
+    path: lib/float_like_a_dash_sting_like_a_dart_ghostrigger/deps/path
+  platform:
+    path:
+    path: lib/float_like_a_dash_sting_like_a_dart_ghostrigger/deps/path
+  audioplayers_platform_interface:
+    path:
+    path: lib/float_like_a_dash_sting_like_a_dart_ghostrigger/deps/path
+  plugin_platform_interface:
+    path:
+    path: lib/float_like_a_dash_sting_like_a_dart_ghostrigger/deps/path
+  meta:
+    path:
+    path: lib/float_like_a_dash_sting_like_a_dart_ghostrigger/deps/path
+  collection:
+    path:
+    path: lib/float_like_a_dash_sting_like_a_dart_ghostrigger/deps/path
   intl: ^0.20.2
   flutter:
     sdk: flutter
