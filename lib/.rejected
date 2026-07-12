@@ -120,6 +120,7 @@ Elvis-Sarfo/clock-in-admin
 EmadBeltaje/flutter_getx_template
 Ephenodrom/Dart-Basic-Utils
 ErfanRht/MovieLab
+ErfanRht/Tasker
 EricZeller/flutter-world-clock-v2
 F6dev/clock_app
 FabianGermany/ChallengingAlarmClockApp
@@ -347,6 +348,7 @@ SachinGanesh/screenshot
 Sakurababycat/tableclock
 Salakar/zapp.run
 SaltyAom/niku
+Samaritan1011001/Trovami
 Sameera-Perera/Flutter-TDD-Clean-Architecture-E-Commerce-App
 SandroMaglione/fpdart
 Santos-Enoque/complete_flutter_ecommerce
@@ -365,6 +367,7 @@ SimformSolutionsPvtLtd/chatview
 SimformSolutionsPvtLtd/flutter_calendar_view
 SimformSolutionsPvtLtd/flutter_credit_card
 SimformSolutionsPvtLtd/showcaseview
+SinaSys/flutter_ecommerce_app
 SinaSys/flutter_go_rest_app
 SinaSys/flutter_japanese_restaurant_app
 Sky24n/GreenTravel
@@ -498,6 +501,7 @@ alibaba/flutter-go
 alibaba/flutter_boost
 alibaba/power_image
 allan-hx/flutter-weui
+allanclempe/ether-wallet-flutter
 aloisdeniel/figma-to-flutter
 aloisdeniel/flutter_device_preview
 aloisdeniel/flutter_sheet_localization
@@ -646,6 +650,7 @@ creativecreatorormaybenot/wakelock
 cscoderr/flutter_advanced
 csdcorp/speech_to_text
 csells/go_router
+d3xvn/flip_box_bar
 dahliaOS/clock
 dahliaOS/pangolin_desktop
 daohoangson/flutter_widget_from_html
@@ -660,6 +665,7 @@ dart-lang/dart-pad
 dart-lang/http
 dart-lang/leak_tracker
 davefaliskie/travel_treasury
+david-legend/david-legend.github.io
 david-legend/flutter_catalog
 david-legend/nimbus
 davidche1116/Sms
@@ -675,6 +681,7 @@ denissavishchev/the_clock
 deretame/Breeze
 designDo/flutter-checkio
 desxz/smart_cyrptocurrency_clock
+detached-space/totals
 devefy/Flutter-Adidas-Shoes-Ecommerce-App-UI
 developerpaaji/Flutter-Dribbble-Challenge
 devil-cyber/WorldClockApp
@@ -1010,6 +1017,7 @@ klilmhdi/alarm_clock_app
 klisiewicz/flutter-bloc-patterns
 kmcgill88/admob_flutter
 knopp/flutter_reorderable_list
+knopp/flutter_zero
 kodecocodes/flta-materials
 kodjodevf/mangayomi
 koel/player
@@ -1156,16 +1164,19 @@ objectbox/objectbox-dart
 obnil/flutter_music_app
 oguzhanmavii/flutter_clock_app
 oguzhnatly/flutter_carplay
+olayemii/chyker-foods
 olayemii/flutter-ui-kits
 olayemii/uberr-ui
 olexale/arkit_flutter_plugin
 olmps/memo
+olutter/crop
 omar-alshyokh/flutter_flip_panel_plus
 omarahmedx14/flutter_advanced_course
 ookami-kb/storybook_flutter
 openfoodfacts/smooth-app
 openimsdk/open-im-sdk-flutter
 openimsdk/openim-flutter-demo
+opxica/modular-ui
 osociety/vernet
 ouzari/analog_clock_for_flutter
 owlistic-notes/owlistic
@@ -1179,6 +1190,7 @@ pauldemarco/flutter_blue
 pawlik92/flutter_whirlpool
 payam-zahedi/toastification
 pd4d10/git-touch
+pd4d10/highlight.dart
 pd4d10/unpub
 pedromassango/bottom_navy_bar
 pedromassango/flutter_delivery
