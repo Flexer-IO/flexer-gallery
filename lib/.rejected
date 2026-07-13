@@ -255,6 +255,7 @@ MarcusNg/flutter_instagram_clone
 MarcusNg/flutter_netflix_responsive_ui
 MarcusNg/flutter_travel_ui
 Maximgbb/clock_app
+MayLau-CbL/flutter_horizontal_data_table
 Mayandev/morec
 MeandNi/flutter_zhihu
 Medformatik/CrossDrop
@@ -281,6 +282,7 @@ NaserElziadna/doddle
 NearHuscarl/flutter_login
 Norbert515/BookSearch
 Norbert515/flutter_ide
+Norbert515/flutter_list_drag_and_drop
 Norbert515/flutter_sequence_animation
 Norbert515/flutter_villains
 Norbert515/nocterm
@@ -293,6 +295,7 @@ OpenConsultingGroup/Flutter-Music-App
 OpenConsultingGroup/Taxi-App
 OpenFlutter/Flutter-Notebook
 OpenFlutter/PullToRefresh
+OpenFlutter/flutter_listview_loadmore
 OpenFlutter/flutter_oktoast
 OpenFlutter/flutter_screenutil
 OpenFlutter/fluwx
@@ -342,6 +345,7 @@ ResoCoder/flutter-tdd-clean-architecture-course
 RevenueCat/purchases-flutter
 RivaanRanawat/blog-app-clean-architecture
 Roaa94/flutter_airbnb_ui
+Robert-Stackflow/CloudOTP
 RohanPatel1303/ClockInClockOut
 Rohit19060/kings_clock_2
 Rohith-JN/Time-App
@@ -362,6 +366,7 @@ Santos-Enoque/complete_flutter_ecommerce
 Santos-Enoque/flutter-web-dashboard-template
 Santos-Enoque/uber_clone_with_flutter
 ScerIO/packages.flutter
+SebastienBtr/Dash-Chat-2
 Seolong/new_alarm_clock
 Shabaquib/flutter_world_clock
 ShadyBoukhary/flutter_clean_architecture
@@ -811,6 +816,7 @@ fluttercandies/flutter_wechat_assets_picker
 fluttercandies/flutter_wechat_camera_picker
 fluttercandies/like_button
 fluttercandies/loading_more_list
+fluttercandies/ncov_2019
 fluttercandies/waterfall_flow
 fluttercandies/wechat_flutter
 flutterchina/azlistview
@@ -1187,6 +1193,7 @@ objectbox/objectbox-dart
 obnil/flutter_music_app
 oguzhanmavii/flutter_clock_app
 oguzhnatly/flutter_carplay
+okadan/flutter-nfc-manager
 olayemii/chyker-foods
 olayemii/flutter-ui-kits
 olayemii/flutter-web-portfolio
@@ -1371,6 +1378,7 @@ sun-jiao/flut-renamer
 sunarya-thito/shadcn_flutter
 supabase/supabase-flutter
 surtecha/karman-deprecated
+svga/SVGAPlayer-Flutter
 syncfusion/flutter-examples
 syncfusion/flutter-widgets
 syphon-org/syphon
@@ -1382,6 +1390,7 @@ tavasolireza/Hangman-Game-Flutter
 tec8297729/flutter_flexible
 techjarves/Uncensored-Local-AI-Multiplatform
 tekartik/sqflite
+telsacoin/telsavideo
 tensorflow/flutter-tflite
 tharwatsamy/Flutter-Beginners-Projects
 theSoberSobber/Docker-Manager
