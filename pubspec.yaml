@@ -6,6 +6,8 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  avatar_glow:
+    path: lib/sagarshende23_reflectly_flutter_app/deps/avatar_glow
   intl: ^0.20.2
   flutter:
     sdk: flutter
