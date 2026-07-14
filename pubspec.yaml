@@ -6,6 +6,75 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  url_launcher_web:
+    path: lib/ecklf_flutters/deps/url_launcher_web
+  audioplayers:
+    path: lib/ecklf_flutters/deps/audioplayers
+  synchronized:
+    path: lib/ecklf_flutters/deps/synchronized
+  http:
+    path: lib/ecklf_flutters/deps/http
+  web:
+    path: lib/ecklf_flutters/deps/web
+  http_parser:
+    path: lib/ecklf_flutters/deps/http_parser
+  typed_data:
+    path: lib/ecklf_flutters/deps/typed_data
+  string_scanner:
+    path: lib/ecklf_flutters/deps/string_scanner
+  source_span:
+    path: lib/ecklf_flutters/deps/source_span
+  term_glyph:
+    path: lib/ecklf_flutters/deps/term_glyph
+  async:
+    path: lib/ecklf_flutters/deps/async
+  file:
+    path: lib/ecklf_flutters/deps/file
+  uuid:
+    path:
+    path: lib/ecklf_flutters/deps/path
+  crypto:
+    path:
+    path: lib/ecklf_flutters/deps/path
+  fixnum:
+    path:
+    path: lib/ecklf_flutters/deps/path
+  path_provider:
+    path:
+    path: lib/ecklf_flutters/deps/path
+  path_provider_platform_interface:
+    path:
+    path: lib/ecklf_flutters/deps/path
+  platform:
+    path:
+    path: lib/ecklf_flutters/deps/path
+  audioplayers_platform_interface:
+    path:
+    path: lib/ecklf_flutters/deps/path
+  url_launcher:
+    path:
+    path: lib/ecklf_flutters/deps/path
+  url_launcher_platform_interface:
+    path:
+    path: lib/ecklf_flutters/deps/path
+  plugin_platform_interface:
+    path:
+    path: lib/ecklf_flutters/deps/path
+  flame:
+    path:
+    path: lib/ecklf_flutters/deps/path
+  ordered_set:
+    path:
+    path: lib/ecklf_flutters/deps/path
+  vector_math:
+    path:
+    path: lib/ecklf_flutters/deps/path
+  meta:
+    path:
+    path: lib/ecklf_flutters/deps/path
+  collection:
+    path:
+    path: lib/ecklf_flutters/deps/path
   intl: ^0.20.2
   flutter:
     sdk: flutter
@@ -13,6 +82,7 @@ dependencies:
   auto_size_text: ^3.0.0
 flutter:
   assets:
+    - assets/ecklf_flutters/fonts/OFL.txt
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
 
