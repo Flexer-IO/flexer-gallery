@@ -76,6 +76,7 @@ BrutalCoding/aub.ai
 CCExtractor/taskwarrior-flutter
 CCExtractor/ultimate_alarm_clock
 CCY0122/WanAndroid_Flutter
+CHB61/multi_select_flutter
 CRED-CLUB/neopop-flutter
 CaiJingLong/flutter_ijkplayer
 CaiJingLong/flutter_photo
@@ -88,10 +89,12 @@ Chevey339/kelivo
 Clam-/CLOK
 Clancey/simple_auth
 Clon1998/mobileraker
+CluvexStudio/ZedSecure
 Codelessly/ResponsiveFramework
 CodemateLtd/FlutterMates
 CoderJava/Flutter-News-App
 CoderMikeHe/flutter_wechat
+CoderTitan/mahuaPet
 ComicSparks/jasmine
 ComicSparks/nhentai-cross
 ComicSparks/pikapika
@@ -462,6 +465,7 @@ YazeedAlKhalaf/Flutter_Installer
 YehudaKremer/msix
 Yetam42/Alarm-Clock
 Yubico/yubioath-flutter
+YumNumm/EQMonitor
 ZDfordream/FlutterTianYue
 ZQ330093887/GankFlutter
 ZhuJHua/moodiary
@@ -593,6 +597,7 @@ best-flutter/transformer_page_view
 beyondtranslate/beyondtranslate
 bggRGjQaUbCoE/PiliPlus
 bhrott/flutter-masked-text
+bilguunint/movieapp
 bimsina/Matinee-Flutter
 bimsina/notes-app
 bimsina/wallpaper
@@ -698,6 +703,7 @@ davidche1116/Sms
 davidmigloz/langchain_dart
 davigmacode/flutter_smart_select
 dddevid/Musly
+deandreamatias/tv-randshow
 deckerst/aves
 delay/flutter_starter
 dengsgo/funny_time
@@ -738,6 +744,7 @@ dvmjoshi/flutter_firebase
 dylanwuzh/flutter-cupertino-date-picker
 e200/my-flutter-challenges
 eBay/flutter_glove_box
+easemob/im_flutter_sdk
 echo-loop/Echo-Loop
 edde746/plezy
 edufolly/flutter_bluetooth_serial
@@ -777,6 +784,7 @@ felixblaschke/simple_animations
 felixblaschke/supercharged
 ferraridamiano/ConverterNOW
 ffacu/ClockApp
+figengungor/clippy_flutter
 filiph/hn_app
 filiph/state_experiments
 finamp-app/finamp
@@ -1178,6 +1186,7 @@ mpflutter/mpflutter
 mu-fazil-vk/FluxTube
 muhammadtalhasultan/Flutter-Food-Delivery-App
 muhammadtalhasultan/Sirat-E-Mustaqeem
+muhammadtalhasultan/calendar_timeline
 mumu-lhl/Ciyue
 mxflutter/mxflutter
 mylxsw/aidea
@@ -1193,6 +1202,7 @@ nathansdev/ContraFlutterKit
 naveeramesh/clock_app
 neffex97/Tiwee
 nekomiyaxneko/flutter_MyBilibili
+nfcim/flutter_nfc_kit
 nfcim/nfsee
 ngu2008/wanandroid
 nightmare-space/adb_kit
@@ -1418,6 +1428,7 @@ talazoabi/SmartAlarmClock_W25
 tanersener/flutter-ffmpeg
 tattwei46/flutter_login_demo
 tavasolireza/Hangman-Game-Flutter
+tcd93/flutter-pos
 tec8297729/flutter_flexible
 techjarves/Uncensored-Local-AI-Multiplatform
 tekartik/sqflite
