@@ -7,11 +7,19 @@
       "name": "showcase_library",
       "version": "0.0.0",
       "dependencies": [
+        "auto_size_text",
         "flutter",
-        "flutter_clock_helper",
+        "intl",
         "shared_preferences"
       ],
       "devDependencies": []
+    },
+    {
+      "name": "auto_size_text",
+      "version": "3.0.0",
+      "dependencies": [
+        "flutter"
+      ]
     },
     {
       "name": "flutter",
@@ -24,11 +32,6 @@
         "sky_engine",
         "vector_math"
       ]
-    },
-    {
-      "name": "flutter_clock_helper",
-      "version": "1.0.0+1",
-      "dependencies": []
     },
     {
       "name": "vector_math",
@@ -61,6 +64,15 @@
       "name": "characters",
       "version": "1.4.1",
       "dependencies": []
+    },
+    {
+      "name": "intl",
+      "version": "0.20.3",
+      "dependencies": [
+        "clock",
+        "meta",
+        "path"
+      ]
     },
     {
       "name": "shared_preferences",
@@ -98,6 +110,11 @@
         "path_provider_platform_interface",
         "shared_preferences_platform_interface"
       ]
+    },
+    {
+      "name": "clock",
+      "version": "1.1.2",
+      "dependencies": []
     },
     {
       "name": "shared_preferences_platform_interface",
@@ -173,7 +190,7 @@
     },
     {
       "name": "path_provider_linux",
-      "version": "2.2.1",
+      "version": "2.2.2",
       "dependencies": [
         "ffi",
         "flutter",
@@ -207,7 +224,7 @@
     },
     {
       "name": "shared_preferences_android",
-      "version": "2.4.26",
+      "version": "2.4.27",
       "dependencies": [
         "flutter",
         "meta",
