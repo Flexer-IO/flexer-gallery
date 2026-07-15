@@ -6,6 +6,60 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  flutter_svg:
+    path: lib/dinesh_sowndar_flutter_furniture_app_ui_challenge/deps/flutter_svg
+  vector_graphics:
+    path: lib/dinesh_sowndar_flutter_furniture_app_ui_challenge/deps/vector_graphics
+  vector_graphics_compiler:
+    path: lib/dinesh_sowndar_flutter_furniture_app_ui_challenge/deps/vector_graphics_compiler
+  xml:
+    path: lib/dinesh_sowndar_flutter_furniture_app_ui_challenge/deps/xml
+  petitparser:
+    path: lib/dinesh_sowndar_flutter_furniture_app_ui_challenge/deps/petitparser
+  path_parsing:
+    path: lib/dinesh_sowndar_flutter_furniture_app_ui_challenge/deps/path_parsing
+  vector_math:
+    path: lib/dinesh_sowndar_flutter_furniture_app_ui_challenge/deps/vector_math
+  vector_graphics_codec:
+    path: lib/dinesh_sowndar_flutter_furniture_app_ui_challenge/deps/vector_graphics_codec
+  animate_do:
+    path: lib/dinesh_sowndar_flutter_furniture_app_ui_challenge/deps/animate_do
+  google_fonts:
+    path: lib/dinesh_sowndar_flutter_furniture_app_ui_challenge/deps/google_fonts
+  path_provider:
+    path: lib/dinesh_sowndar_flutter_furniture_app_ui_challenge/deps/path_provider
+  path_provider_platform_interface:
+    path: lib/dinesh_sowndar_flutter_furniture_app_ui_challenge/deps/path_provider_platform_interface
+  plugin_platform_interface:
+    path: lib/dinesh_sowndar_flutter_furniture_app_ui_challenge/deps/plugin_platform_interface
+  platform:
+    path: lib/dinesh_sowndar_flutter_furniture_app_ui_challenge/deps/platform
+  http:
+    path: lib/dinesh_sowndar_flutter_furniture_app_ui_challenge/deps/http
+  web:
+    path: lib/dinesh_sowndar_flutter_furniture_app_ui_challenge/deps/web
+  http_parser:
+    path: lib/dinesh_sowndar_flutter_furniture_app_ui_challenge/deps/http_parser
+  typed_data:
+    path: lib/dinesh_sowndar_flutter_furniture_app_ui_challenge/deps/typed_data
+  string_scanner:
+    path: lib/dinesh_sowndar_flutter_furniture_app_ui_challenge/deps/string_scanner
+  source_span:
+    path: lib/dinesh_sowndar_flutter_furniture_app_ui_challenge/deps/source_span
+  term_glyph:
+    path: lib/dinesh_sowndar_flutter_furniture_app_ui_challenge/deps/term_glyph
+  async:
+    path:
+    path: lib/dinesh_sowndar_flutter_furniture_app_ui_challenge/deps/path
+  meta:
+    path:
+    path: lib/dinesh_sowndar_flutter_furniture_app_ui_challenge/deps/path
+  collection:
+    path:
+    path: lib/dinesh_sowndar_flutter_furniture_app_ui_challenge/deps/path
+  crypto:
+    path:
+    path: lib/dinesh_sowndar_flutter_furniture_app_ui_challenge/deps/path
   intl: ^0.20.2
   flutter:
     sdk: flutter
@@ -13,6 +67,13 @@ dependencies:
   auto_size_text: ^3.0.0
 flutter:
   assets:
+    - assets/dinesh_sowndar_flutter_furniture_app_ui_challenge/svg/add.svg
+    - assets/dinesh_sowndar_flutter_furniture_app_ui_challenge/svg/back_arrow.svg
+    - assets/dinesh_sowndar_flutter_furniture_app_ui_challenge/svg/bell.svg
+    - assets/dinesh_sowndar_flutter_furniture_app_ui_challenge/svg/home.svg
+    - assets/dinesh_sowndar_flutter_furniture_app_ui_challenge/svg/right_arrow.svg
+    - assets/dinesh_sowndar_flutter_furniture_app_ui_challenge/svg/search.svg
+    - assets/dinesh_sowndar_flutter_furniture_app_ui_challenge/svg/user.svg
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
 
