@@ -2,6 +2,7 @@
 15dd/hikari_novel_flutter
 1812z/HyperIsland
 2697a/bujuan
+2697a/bujuan-sixbugs
 2811267153/screen_clock
 2d-inc/Flare-Flutter
 2d-inc/HistoryOfEverything
@@ -323,6 +324,7 @@ OpenListApp/OpenListApp
 OpenListTeam/OpenList-Mobile
 Origogi/Flutter-Credit-Card-Input-Form
 PJ-ODS-2021/lww_crdt
+PacktPublishing/Flutter-Design-Patterns-and-Best-Practices
 PalisadoesFoundation/talawa
 Parabeac/parabeac_core
 PatilShreyas/Flutter2GoogleSheets-Demo
@@ -377,6 +379,7 @@ RxReader/wechat_kit
 RyanYuuki/AnymeX
 SAGARSURI/MyMovies
 SachinGanesh/screenshot
+SadaqaWorks/Quran-Flutter
 Sakurababycat/tableclock
 Salakar/zapp.run
 SaltyAom/niku
@@ -444,6 +447,7 @@ TheAlphamerc/flutter_login_signup
 TheAlphamerc/flutter_news_app
 TheAlphamerc/flutter_pokedex
 TheAlphamerc/flutter_wallet_app
+Tienisto/rhttp
 TimeLord2010/clockify_analyser
 TinoGuo/pin_input_text_field
 Tkko/Flutter_Pinput
@@ -563,6 +567,7 @@ amitsaini4556/world_clock
 amugofjava/anytime_podcast_player
 anandnet/Harmony-Music
 anasfik/openai
+andreciornavei/flutter-getx-concept
 andresaraujo/timeago.dart
 angel-dart/angel
 annshsingh/FlutterWidgetGuide
@@ -686,6 +691,7 @@ codegrue/card_settings
 coingaming/moon_flutter
 cometchat/cometchat-uikit-flutter
 comigor/artemis
+conceptadev/mix
 conghaonet/flutter_analog_clock
 conghaonet/githao
 creatint/light
@@ -1138,6 +1144,7 @@ longer96/flutter-demo
 longer96/flutter_pickers
 longhoang2984/flutter_payment_app_ui
 lotusprey/otraku
+loup-v/geolocation
 lpongetti/flutter_map_marker_cluster
 lucasmontano/Mobile-Performance-Test
 lucinhu/bili_you
@@ -1224,6 +1231,7 @@ namanh11611/flutter_mvvm_riverpod
 namanshergill/diohub
 namidaco/namida
 nank1ro/flutter-shadcn-ui
+nank1ro/solidart
 nateshmbhat/touchable
 nathansdev/ContraFlutterKit
 naveeramesh/clock_app
@@ -1329,6 +1337,7 @@ raj457036/CopyCat-Clipboard
 rajatDeveloper/flutter_world_clock_app_using_api_
 rajayogan/flutterui-curveddesigns
 rajayogan/flutterui-furnitureapp
+randyvalencia/mediapp
 raoxwup/haka_comic
 rasitesdmr/pokeme
 rayliverified/FlutterGames
@@ -1532,6 +1541,7 @@ w4mxl/V2LF
 walid-rehamnia/Clocking-System
 wang-bin/fvp
 wasabeef/flutter-architecture-blueprints
+wasabeef/flutter_use
 wasabia/three_dart
 weblineindia/Flutter-OTP-Authentication
 wendux/flutter_in_action_2
@@ -1600,6 +1610,7 @@ yukilzw/dy_flutter
 yumi0629/FlutterUI
 yxwandroid/flutter_plugin_record
 zanderso/chicago
+zbejas/portarius
 zesage/flutter_compass
 zesage/flutter_cube
 zeshuaro/appainter
