@@ -285,6 +285,7 @@ MichaelFenwick/Clock
 MikeAfegbua/clockapp
 Milad-Akarie/auto_route_library
 Milad-Akarie/smooth_page_indicator
+MilkFeng/lumina
 Mindinventory/clock_loader
 MissYoung/Flutter_shop
 MisterJimson/flutter_keyboard_visibility
@@ -322,6 +323,7 @@ OpenFlutter/fluwx
 OpenFlutter/k_chart
 OpenListApp/OpenListApp
 OpenListTeam/OpenList-Mobile
+OpenStrap/edge
 Origogi/Flutter-Credit-Card-Input-Form
 PJ-ODS-2021/lww_crdt
 PacktPublishing/Flutter-Design-Patterns-and-Best-Practices
@@ -525,6 +527,7 @@ afgprogrammer/Flutter-Complete-e-commerce
 afgprogrammer/Flutter-Login-Signup-page
 afgprogrammer/Flutter-Shoes-Shop-App
 afgprogrammer/Flutter-Splash-Screen-Animation
+afgprogrammer/Flutter-e-commerce-app-example
 afgprogrammer/Flutter-ecommerce-app-with-getx
 afgprogrammer/Flutter-examples
 afgprogrammer/Flutter-food-delivery-app-ui
@@ -691,6 +694,7 @@ codegrue/card_settings
 coingaming/moon_flutter
 cometchat/cometchat-uikit-flutter
 comigor/artemis
+conceptadev/fvm
 conceptadev/mix
 conghaonet/flutter_analog_clock
 conghaonet/githao
@@ -839,6 +843,7 @@ flutter-thrio/flutter_thrio
 flutter-tizen/flutter-tizen
 flutter-webrtc/dart-sip-ua
 flutter-webrtc/flutter-webrtc-demo
+flutter/cocoon
 flutter/devtools
 flutter/flutter
 flutter/games
@@ -909,6 +914,7 @@ fujidaiti/smooth_sheets
 funwithflutter/flutter_confetti
 furkantektas/analog_clock
 furkantektas/timeline_list
+fysoul17/google_maps_place_picker
 fzyzcjy/dart_interactive
 fzyzcjy/flutter_convenient_test
 fzyzcjy/flutter_portal
@@ -1089,6 +1095,7 @@ keshav-space/safenotes
 ketanchoyal/Our-E-School
 kevmoo/peanut.dart
 kherel/animated_theme_switcher
+kherel/flutter_fun
 khoadng/Boorusama
 kirya355/clock_app_example_bloc
 kkkunny/bilitv
@@ -1126,6 +1133,7 @@ lichess-org/mobile
 lightningminers/flutter-book
 lijy91-archives-repos/widget-livebook
 linagora/tmail-flutter
+line/flutter_line_sdk
 liodali/osm_flutter
 lishuhao/sy_flutter_widgets
 livekit/client-sdk-flutter
@@ -1218,6 +1226,7 @@ mu-fazil-vk/FluxTube
 muhammadtalhasultan/Flutter-Food-Delivery-App
 muhammadtalhasultan/Sirat-E-Mustaqeem
 muhammadtalhasultan/calendar_timeline
+muhammadtalhasultan/flutter-login-ui-kit
 mumu-lhl/Ciyue
 muslimpack/HisnElmoslem_App
 mxflutter/mxflutter
@@ -1347,6 +1356,7 @@ realvorl/flutter-nixie-clock
 recepbasturk/clock_game
 redevrx/chat_gpt_sdk
 redsolver/noteless
+renggli/dart-xml
 reqable/re-editor
 retromp3/retro
 reven-erlangga/android-clock
@@ -1454,6 +1464,7 @@ stryder-dev/flutter_platform_widgets
 sudipsarker14/alarm_clock
 sun-jiao/flut-renamer
 sunarya-thito/shadcn_flutter
+supabase-community/flutter-chat
 supabase/supabase-flutter
 surtecha/karman-deprecated
 svga/SVGAPlayer-Flutter
