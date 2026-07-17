@@ -11,8 +11,11 @@ dependencies:
     sdk: flutter
   shared_preferences: ^2.5.3
   auto_size_text: ^3.0.0
+  json_annotation: ^2.0.0
 flutter:
   assets:
+    - assets/pinkeshdarji_superherointeraction/json/characters.json
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
+
 
