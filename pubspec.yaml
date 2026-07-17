@@ -6,6 +6,8 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  rxdart:
+    path: lib/wiltonribeiro_gooey_tabbar_flutter/deps/rxdart
   intl: ^0.20.2
   flutter:
     sdk: flutter
