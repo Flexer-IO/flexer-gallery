@@ -152,6 +152,7 @@ FilledStacks/responsive_builder
 FirebaseExtended/flutterfire_desktop
 Flutter-Bounty-Hunters/super_editor
 FlutterEurope/conference2020
+FlutterFlow/flutterflow-ui
 FlutterGen/flutter_gen
 FlutterOpen/flutter-canvas
 FlutterOpen/flutter-layouts-exampls
@@ -213,6 +214,7 @@ Jamalianpour/time_planner
 Jatin5120/Clock
 JellyBookOrg/JellyBook
 Jesway/flutter_translate
+JiangJuHong/FlutterTencentImPlugin
 JideGuru/FileX
 JideGuru/FlutterEbookApp
 JideGuru/FlutterFoodybite
@@ -254,6 +256,7 @@ LemmurOrg/lemmur
 LianjiaTech/bruno
 LianjiaTech/keframe
 LiewJunTung/pin_code_text_field
+LinusU/flutter_web_auth
 LinwoodDev/Butterfly
 LiveLikeCounter/Flutter-Todolist
 Livinglist/Hacki
@@ -678,6 +681,7 @@ bregydoc/pigment
 brendan-duncan/image
 brianegan/flutter_architecture_samples
 brianegan/flutter_redux
+brianegan/flutter_stetho
 brianegan/scoped_model
 brij-digital/espresso-cash-public
 brinesoftwares/Flutter-AI-Rubik-cube-Solver
@@ -720,6 +724,7 @@ conceptadev/mix
 conghaonet/flutter_analog_clock
 conghaonet/githao
 conventoangelo/OverKeys
+crazecoder/flutter_luban
 creatint/light
 creativecreatorormaybenot/funvas
 creativecreatorormaybenot/logo
@@ -1027,6 +1032,7 @@ iakdis/librecamera
 iamEtornam/Tasky-Mobile-App
 iamSahdeep/fu_uber
 iamSahdeep/liquid_swipe_flutter
+iamabhishek229313/tinder_clone
 iampawan/30DaysOfFlutter
 iampawan/CryptoApp
 iampawan/Flutter-Music-Player
@@ -1080,6 +1086,7 @@ jayden320/flutter_shuqi
 jaysavsani07/math-metrix
 jellyflix-app/jellyflix
 jeremy-friesen/flutter-video-chat
+jeroen1602/lighthouse_pm
 jesusrp98/spacex-go
 jhflovehqy/flutter_bolg_manage
 jhomlala/alice
@@ -1124,6 +1131,7 @@ kangpeiqin/bilivideo_down
 kaparray/NewsDaily
 kareem-Abed/ClockMaster
 katariyanikhil/SaveIt
+kby-ai/FaceRecognition-Flutter
 kekland/equinox
 keshav-space/safenotes
 ketanchoyal/Our-E-School
@@ -1143,6 +1151,7 @@ kodecocodes/flta-materials
 kodjodevf/mangayomi
 koel/player
 konifar/droidkaigi2018-flutter
+koudle/The-Guide-to-the-Flutter
 kra-mo/Sly
 krille-chan/fluffychat
 kshitij5/Clockly
@@ -1201,6 +1210,7 @@ lyming99/wenznote
 m3uzz/date_time_picker
 mabDc/eso
 macosui/macos_ui
+mahmudahsan/flutter
 manishmeganathan/metronome
 manudevcode/flutter_alarm_app
 mapbox/mapbox-maps-flutter
@@ -1441,6 +1451,7 @@ rxlabz/audioplayer
 rxlabz/panache
 rxlabz/speech_recognition
 ryanheise/audio_service
+rydmike/flex_color_picker
 rydmike/flex_color_scheme
 saber-notes/saber
 sabinbajracharya/fluttery-todo
