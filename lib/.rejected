@@ -172,6 +172,7 @@ GIfatahTH/states_rebuilder
 GLEECBTC/gleec-wallet
 GanZhiXiong/GZXTaoBaoAppFlutter
 GanZhiXiong/gzx_dropdown_menu
+GeekyAnts/FlatApp-Firebase-Flutter
 GeekyAnts/flutter-starter
 GeekyAnts/flutter-web-admin-dashbaord
 GetDutchie/brick
@@ -279,6 +280,7 @@ MarcusNg/flutter_instagram_clone
 MarcusNg/flutter_netflix_responsive_ui
 MarcusNg/flutter_spotify_ui
 MarcusNg/flutter_travel_ui
+MarcusNg/flutter_voice
 Maximgbb/clock_app
 MayLau-CbL/flutter_horizontal_data_table
 Mayandev/morec
@@ -521,6 +523,7 @@ abuanwar072/Quiz-App-Flutter
 abuanwar072/Recipe-App---Flutter-UI
 abuanwar072/Responsive-Blog-Theme-using-Flutter
 abuanwar072/Responsive-and-Animated-Portfolio-Flutter
+abuanwar072/Smart-Home-Animated-App-using-Flutter
 abuanwar072/Travel-App-UI-using-Flutter
 abuanwar072/Welcome-Login-Signup-Page-Flutter
 abuanwar072/eBook_app_Flutter
@@ -585,6 +588,7 @@ anasfik/openai
 andreciornavei/flutter-getx-concept
 andresaraujo/timeago.dart
 angel-dart/angel
+anicdh/date_range_picker
 anirudhsharma392/Slider-Button
 annshsingh/FlutterWidgetGuide
 antz22/ultimate-guide-to-flutter
@@ -670,6 +674,7 @@ brandonp2412/Flexify
 brandontanyu/world_clock_app
 braulio94/menu_flutter
 bravekingzhang/flutter_chat_box
+bregydoc/pigment
 brendan-duncan/image
 brianegan/flutter_architecture_samples
 brianegan/flutter_redux
@@ -757,6 +762,7 @@ dengyin2000/dynamic_widget
 deniscolak/smart-admin-dashboard
 denissavishchev/the_clock
 deretame/Breeze
+desi-programmer/flutter-quizstar
 designDo/flutter-checkio
 desxz/smart_cyrptocurrency_clock
 detached-space/totals
@@ -1106,6 +1112,7 @@ julvikramsupandi/flutter-pos-app-ui
 junaidjamel/Clock-Alarm-app-with-SqfLite
 justkawal/UI
 justkawal/excel
+justsoft/video_thumbnail
 k-paxian/dart-json-mapper
 kaina404/FlutterDouBan
 kalismeras61/flutter_awesome_design_pages
@@ -1204,6 +1211,7 @@ marcglasberg/indexed_list_view
 marchellodev/sharik
 marcoedomingos/pixel_watch_flutter
 marcos930807/awesomeDialogs
+martinoyovo/airline-app
 material-components/material-components-flutter
 material-foundation/flutter-packages
 mateusz-bak/openreads
@@ -1661,6 +1669,7 @@ yuan-dejavu/Flip-clock
 yubo725/flutter-osc
 yuexunshi/flutter_demo
 yukilzw/dy_flutter
+yukino-org/kazahana-v3
 yumi0629/FlutterUI
 yxwandroid/flutter_plugin_record
 zanderso/chicago
