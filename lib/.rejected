@@ -9,6 +9,7 @@
 385841539/flutter_BaseWidget
 4Q-s-r-o/signature
 4seer/openflutterecommerceapp
+55Builds/Flutter-FFNavigationBar
 6tail/lunar-flutter
 7-USH/TeVe
 781flyingdutchman/background_downloader
@@ -144,6 +145,7 @@ ErfanRht/Tasker
 EricZeller/flutter-world-clock-v2
 ExpTechTW/DPIP
 F6dev/clock_app
+FNOSP/FlyNarwhal
 FabianGermany/ChallengingAlarmClockApp
 FadyWaheed11/Clock_design
 FaheemAsghar01/AlarmClock
@@ -468,6 +470,7 @@ Tecode/flutter_book
 Telosnex/fonnx
 Tencent/mxflutter
 Tencent/tdesign-flutter
+TencentCloud/chat-uikit-flutter
 TerminalStudio/dartssh2
 TerminalStudio/xterm.dart
 ThangVuNguyenViet/clock_app
@@ -503,6 +506,7 @@ VincentJouanne/flutter-bloc-clean-architecture
 Vito0912/abs_flutter
 WaledGoba220/Clock_App
 Widle-Studio/Grocery-App
+Wolfteam/Shiori
 WorldHealthOrganization/app
 WuXiaolong/flutter_movie
 X-Wei/flutter_catalog
@@ -600,6 +604,7 @@ aloisdeniel/flutter_device_preview
 aloisdeniel/flutter_sheet_localization
 alperefesahin/flutter_social_chat
 altive/flutter_app_template
+am15h/object_detection_flutter
 am15h/tflite_flutter_plugin
 amake/orgro
 amangautam1/flutter-musicplayer
@@ -727,6 +732,7 @@ bulgariamitko/flutterflowtutorials
 burhanrashid52/WhatTodo
 bytedance/RealRichText
 bytedance/flutter_ume
+calcitem/Sanmill
 canhuah/WanAndroid-Flutter
 canxin121/app_rhyme
 carp-dk/flutter-plugins
@@ -768,7 +774,9 @@ creativecreatorormaybenot/wakelock
 cscoderr/flutter_advanced
 csdcorp/speech_to_text
 csells/go_router
+cuiocean/ZY-Player-TV
 d3xvn/flip_box_bar
+d3xvn/flutter_chess_board
 dahliaOS/clock
 dahliaOS/pangolin_desktop
 daohoangson/flutter_widget_from_html
@@ -885,6 +893,7 @@ filiph/hn_app
 filiph/state_experiments
 finamp-app/finamp
 firebase/flutterfire
+firebase/quickstart-flutter
 fireship-io/flutter-firebase-quizapp-course
 firgia/FD-Project-Management
 flame-engine/flame
@@ -997,6 +1006,7 @@ fzyzcjy/flutter_portal
 fzyzcjy/flutter_rust_bridge
 fzyzcjy/flutter_smooth
 gbtb16/kiwi
+gdgluanda/rapidinho
 gedoor/LegadoFlutter
 geeker-ai/geek_chat
 gemini-cli-extensions/flutter
@@ -1594,6 +1604,7 @@ sooxt98/google_nav_bar
 sososdk/flash
 spotiflacapp/SpotiFLAC-Mobile
 sqmw/desk_tidy
+srilovesflutter/flutterexamples
 sterrenb/flutterhole
 steveruizok/perfect-freehand-dart
 stryder-dev/flutter_platform_widgets
