@@ -290,6 +290,7 @@ MarcusNg/flutter_netflix_responsive_ui
 MarcusNg/flutter_spotify_ui
 MarcusNg/flutter_travel_ui
 MarcusNg/flutter_voice
+MariaMelnik/flutter_date_pickers
 Maximgbb/clock_app
 MayLau-CbL/flutter_horizontal_data_table
 Mayandev/morec
@@ -316,6 +317,7 @@ MuhammadHasan-Git/animated_analog_clock
 Mustafa7Ibrahim/clock
 Myzel394/locus
 NabinStha2/ClockApp
+Nabinji/100-DaysOf-Futter
 Nandanrmenon/florid
 NaserElziadna/doddle
 NearHuscarl/flutter_login
@@ -345,6 +347,7 @@ OpenListTeam/OpenList-Mobile
 OpenStrap/edge
 Origogi/Flutter-Credit-Card-Input-Form
 PJ-ODS-2021/lww_crdt
+PacktPublishing/Flutter-Cookbook
 PacktPublishing/Flutter-Design-Patterns-and-Best-Practices
 PalisadoesFoundation/talawa
 Parabeac/parabeac_core
@@ -603,6 +606,7 @@ amirk3321/booking-management-dashboard
 amirk3321/whatsApp_clone
 amirziyacode/Fluttter_Clock
 amitsaini4556/world_clock
+amsokol/flutter-grpc-tutorial
 amugofjava/anytime_podcast_player
 anandnet/Harmony-Music
 anasfik/openai
@@ -778,6 +782,7 @@ davefaliskie/travel_treasury
 david-legend/david-legend.github.io
 david-legend/flutter_catalog
 david-legend/nimbus
+davidanaya/flutter-circular-slider
 davidche1116/Sms
 davidmigloz/langchain_dart
 davidmigloz/pixels2flutter
@@ -1077,6 +1082,7 @@ iampawan/FlutterStackOverflowApp
 iampawan/FlutterWithFirebase
 iampawan/PKSkeleton
 iampawan/PokemonApp
+iampawan/PortfolioX
 iampawan/VelocityX
 iamvivekkaushik/DatePickerTimelineFlutter
 iamyogik/Argon-Flutter-Buttons
@@ -1162,6 +1168,7 @@ kalismeras61/flutter_awesome_design_pages
 kalismeras61/flutter_page_transition
 kalismeras61/flutter_wallet_ui
 kalismeras61/flutter_web_dashboard
+kalismeras61/foodapp
 kang-airtc/flutter-book
 kangpeiqin/bilivideo_down
 kaparray/NewsDaily
@@ -1276,6 +1283,7 @@ maxim-saplin/data_table_2
 maxkrieger/voiceliner
 mchome/flutter_advanced_networkimage
 mchome/flutter_colorpicker
+mchome/flutter_statusbarcolor
 mcrovero/rubber
 md-siam/package_of_the_day
 md-siam/widget_of_the_day
@@ -1480,6 +1488,7 @@ rodydavis/flutter_login
 rodydavis/flutter_piano
 rodydavis/plugins
 rodydavis/signals.dart
+rodydavis/storyboard
 rohan20/flutter-chat-app
 roipeker/graphx
 roshancodespace/ShonenX
@@ -1649,11 +1658,13 @@ ubuntu/app-center
 ubuntu/archive_yaru.dart
 ubuntu/yaru.dart
 ueman/feedback
+uintdev/qrserv
 ultralytics/yolo-flutter-app
 ulusoyca/Flutter-ShareWhatYouKnow
 uniporter/clockwork
 urmilshroff/dashboard_reborn
 usman18/Flutter-UI-Kit
+v-modal/vmodal_sdk_flutter
 vandadnp/flutter-tips-and-tricks
 vanmt05/basketball_clock
 varunsalian/debrify
