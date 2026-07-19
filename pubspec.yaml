@@ -11,8 +11,17 @@ dependencies:
     sdk: flutter
   shared_preferences: ^2.5.3
   auto_size_text: ^3.0.0
+  dotted_border: ^2.0.0+2
+  fitted_text_field_container: ^2.0.0
+  lottie: ^1.2.2
+  staggered_grid_view_flutter: ^0.0.4
 flutter:
   assets:
+    - assets/himanshugarg08_flutter_give_collect_money/collect_money.json
+    - assets/himanshugarg08_flutter_give_collect_money/face_id_scan.json
+    - assets/himanshugarg08_flutter_give_collect_money/payment.json
+    - assets/himanshugarg08_flutter_give_collect_money/receive_money.json
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
+
 
