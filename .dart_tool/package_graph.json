@@ -7,11 +7,37 @@
       "name": "showcase_library",
       "version": "0.0.0",
       "dependencies": [
+        "auto_size_text",
+        "dotted_border",
+        "fitted_text_field_container",
         "flutter",
-        "flutter_clock_helper",
-        "shared_preferences"
+        "intl",
+        "lottie",
+        "shared_preferences",
+        "staggered_grid_view_flutter"
       ],
       "devDependencies": []
+    },
+    {
+      "name": "staggered_grid_view_flutter",
+      "version": "0.0.4",
+      "dependencies": [
+        "flutter"
+      ]
+    },
+    {
+      "name": "fitted_text_field_container",
+      "version": "2.0.0",
+      "dependencies": [
+        "flutter"
+      ]
+    },
+    {
+      "name": "auto_size_text",
+      "version": "3.0.0",
+      "dependencies": [
+        "flutter"
+      ]
     },
     {
       "name": "flutter",
@@ -24,11 +50,6 @@
         "sky_engine",
         "vector_math"
       ]
-    },
-    {
-      "name": "flutter_clock_helper",
-      "version": "1.0.0+1",
-      "dependencies": []
     },
     {
       "name": "vector_math",
@@ -61,6 +82,33 @@
       "name": "characters",
       "version": "1.4.1",
       "dependencies": []
+    },
+    {
+      "name": "intl",
+      "version": "0.20.3",
+      "dependencies": [
+        "clock",
+        "meta",
+        "path"
+      ]
+    },
+    {
+      "name": "dotted_border",
+      "version": "2.1.0",
+      "dependencies": [
+        "flutter",
+        "path_drawing"
+      ]
+    },
+    {
+      "name": "path_drawing",
+      "version": "1.0.1",
+      "dependencies": [
+        "flutter",
+        "meta",
+        "path_parsing",
+        "vector_math"
+      ]
     },
     {
       "name": "shared_preferences",
@@ -100,6 +148,11 @@
       ]
     },
     {
+      "name": "clock",
+      "version": "1.1.2",
+      "dependencies": []
+    },
+    {
       "name": "shared_preferences_platform_interface",
       "version": "2.4.2",
       "dependencies": [
@@ -112,6 +165,14 @@
       "version": "2.1.8",
       "dependencies": [
         "meta"
+      ]
+    },
+    {
+      "name": "path_parsing",
+      "version": "1.1.0",
+      "dependencies": [
+        "meta",
+        "vector_math"
       ]
     },
     {
@@ -135,6 +196,16 @@
       "name": "web",
       "version": "1.1.1",
       "dependencies": []
+    },
+    {
+      "name": "lottie",
+      "version": "1.4.3",
+      "dependencies": [
+        "archive",
+        "flutter",
+        "path",
+        "vector_math"
+      ]
     },
     {
       "name": "path",
@@ -173,7 +244,7 @@
     },
     {
       "name": "path_provider_linux",
-      "version": "2.2.1",
+      "version": "2.2.2",
       "dependencies": [
         "ffi",
         "flutter",
@@ -207,11 +278,33 @@
     },
     {
       "name": "shared_preferences_android",
-      "version": "2.4.26",
+      "version": "2.4.27",
       "dependencies": [
         "flutter",
         "meta",
         "shared_preferences_platform_interface"
+      ]
+    },
+    {
+      "name": "archive",
+      "version": "3.6.1",
+      "dependencies": [
+        "crypto",
+        "path"
+      ]
+    },
+    {
+      "name": "crypto",
+      "version": "3.0.7",
+      "dependencies": [
+        "typed_data"
+      ]
+    },
+    {
+      "name": "typed_data",
+      "version": "1.4.0",
+      "dependencies": [
+        "collection"
       ]
     }
   ],
