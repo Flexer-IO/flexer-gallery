@@ -6,6 +6,8 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  flutter_screenutil:
+    path: lib/devefy_flutter_login_page_ui/deps/flutter_screenutil
   intl: ^0.20.2
   flutter:
     sdk: flutter
