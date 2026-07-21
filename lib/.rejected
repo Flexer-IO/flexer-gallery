@@ -142,11 +142,13 @@ DroidsOnRoids/flutter-roadmap
 Dropsource/monarch
 DuanJiaNing/makeaplan_public
 EXERLOG/exer_log
+EdsonBueno/focus_detector
 EdsonBueno/infinite_scroll_pagination
 Elvis-Sarfo/clock-in-admin
 EmadBeltaje/flutter_getx_template
 Empty-57/ZeroBit-Player
 Ephenodrom/Dart-Basic-Utils
+Ephenodrom/Flutter-Global-Config
 ErfanRht/MovieLab
 ErfanRht/Tasker
 EricZeller/flutter-world-clock-v2
@@ -276,6 +278,7 @@ LemmurOrg/lemmur
 LianjiaTech/bruno
 LianjiaTech/keframe
 LiewJunTung/pin_code_text_field
+LinXunFeng/flutter_chat_packages
 LinusU/flutter_web_auth
 LinwoodDev/Butterfly
 LiveLikeCounter/Flutter-Todolist
@@ -514,6 +517,7 @@ UnicornsOnLSD/finamp
 Uuttssaavv/flutter-clean-architecture-riverpod
 VB10/Flutter-Full-Learn
 VB10/flutter-architecture-template
+VarunS2002/Flutter-Sudoku
 VarunS9000/World-Clock
 VeryGoodOpenSource/very_good_analysis
 VeryGoodOpenSource/very_good_cli
@@ -922,8 +926,10 @@ figengungor/clippy_flutter
 filiph/hn_app
 filiph/state_experiments
 finamp-app/finamp
+finogeeks/mop-flutter-sdk
 firebase/flutterfire
 firebase/quickstart-flutter
+fireship-io/flutter-firebase-course
 fireship-io/flutter-firebase-quizapp-course
 firgia/FD-Project-Management
 flame-engine/flame
@@ -1231,6 +1237,7 @@ kalismeras61/flutter_page_transition
 kalismeras61/flutter_wallet_ui
 kalismeras61/flutter_web_dashboard
 kalismeras61/foodapp
+kamranbekirovyz/bunpod
 kang-airtc/flutter-book
 kangpeiqin/bilivideo_down
 kaparray/NewsDaily
@@ -1302,6 +1309,7 @@ lohanidamodar/flutter_opentrivia
 lohanidamodar/flutter_ui_challenges
 lollipopkit/flutter_gpt_box
 lollipopkit/flutter_server_box
+londonappbrewery/Clima-Flutter-Completed
 londonappbrewery/flash-chat-flutter
 londonappbrewery/quizzler-flutter
 long1eu/flutter_i18n
@@ -1360,6 +1368,7 @@ medz/dart-orm
 meetqy/flutter_luckin_coffee
 memspace/zefyr
 merixstudio/flutter-vizier-challenge
+mevans/flutter-furniture
 mevljas/flutter_alarm_clock
 mhadaily/flutter-architecture-ddd
 mhmzdev/devfolio
