@@ -6,6 +6,34 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  path_provider:
+    path: lib/maheshj01_paint_redesigned/deps/path_provider
+  path_provider_platform_interface:
+    path: lib/maheshj01_paint_redesigned/deps/path_provider_platform_interface
+  plugin_platform_interface:
+    path: lib/maheshj01_paint_redesigned/deps/plugin_platform_interface
+  platform:
+    path: lib/maheshj01_paint_redesigned/deps/platform
+  desktop_drop:
+    path: lib/maheshj01_paint_redesigned/deps/desktop_drop
+  cross_file:
+    path: lib/maheshj01_paint_redesigned/deps/cross_file
+  web:
+    path: lib/maheshj01_paint_redesigned/deps/web
+  meta:
+    path: lib/maheshj01_paint_redesigned/deps/meta
+  universal_platform:
+    path: lib/maheshj01_paint_redesigned/deps/universal_platform
+  font_awesome_flutter:
+    path: lib/maheshj01_paint_redesigned/deps/font_awesome_flutter
+  window_size:
+    path: lib/maheshj01_paint_redesigned/deps/window_size
+  provider:
+    path: lib/maheshj01_paint_redesigned/deps/provider
+  nested:
+    path: lib/maheshj01_paint_redesigned/deps/nested
+  collection:
+    path: lib/maheshj01_paint_redesigned/deps/collection
   intl: ^0.20.2
   flutter:
     sdk: flutter
