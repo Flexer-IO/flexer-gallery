@@ -6,6 +6,45 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  google_fonts:
+    path: lib/genabdulrehman_credit_card_animation/deps/google_fonts
+  crypto:
+    path: lib/genabdulrehman_credit_card_animation/deps/crypto
+  path_provider:
+    path: lib/genabdulrehman_credit_card_animation/deps/path_provider
+  path_provider_platform_interface:
+    path: lib/genabdulrehman_credit_card_animation/deps/path_provider_platform_interface
+  plugin_platform_interface:
+    path: lib/genabdulrehman_credit_card_animation/deps/plugin_platform_interface
+  platform:
+    path: lib/genabdulrehman_credit_card_animation/deps/platform
+  http:
+    path: lib/genabdulrehman_credit_card_animation/deps/http
+  async:
+    path: lib/genabdulrehman_credit_card_animation/deps/async
+  web:
+    path: lib/genabdulrehman_credit_card_animation/deps/web
+  meta:
+    path: lib/genabdulrehman_credit_card_animation/deps/meta
+  http_parser:
+    path: lib/genabdulrehman_credit_card_animation/deps/http_parser
+  typed_data:
+    path: lib/genabdulrehman_credit_card_animation/deps/typed_data
+  string_scanner:
+    path: lib/genabdulrehman_credit_card_animation/deps/string_scanner
+  source_span:
+    path: lib/genabdulrehman_credit_card_animation/deps/source_span
+  term_glyph:
+    path: lib/genabdulrehman_credit_card_animation/deps/term_glyph
+  collection:
+    path:
+    path: lib/genabdulrehman_credit_card_animation/deps/path
+  blurrycontainer:
+    path:
+    path: lib/genabdulrehman_credit_card_animation/deps/path
+  animate_do:
+    path:
+    path: lib/genabdulrehman_credit_card_animation/deps/path
   intl: ^0.20.2
   flutter:
     sdk: flutter
