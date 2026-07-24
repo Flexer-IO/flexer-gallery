@@ -6,6 +6,155 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  json_annotation:
+    path: lib/bdero_flutter_scene_example/deps/json_annotation
+  gamepads:
+    path: lib/bdero_flutter_scene_example/deps/gamepads
+  gamepads_platform_interface:
+    path: lib/bdero_flutter_scene_example/deps/gamepads_platform_interface
+  flutter_soloud:
+    path: lib/bdero_flutter_scene_example/deps/flutter_soloud
+  path_provider:
+    path: lib/bdero_flutter_scene_example/deps/path_provider
+  path_provider_platform_interface:
+    path: lib/bdero_flutter_scene_example/deps/path_provider_platform_interface
+  platform:
+    path: lib/bdero_flutter_scene_example/deps/platform
+  plugin_platform_interface:
+    path: lib/bdero_flutter_scene_example/deps/plugin_platform_interface
+  http:
+    path: lib/bdero_flutter_scene_example/deps/http
+  flutter_animate:
+    path: lib/bdero_flutter_scene_example/deps/flutter_animate
+  flutter_shaders:
+    path: lib/bdero_flutter_scene_example/deps/flutter_shaders
+  flutter_scene:
+    path: lib/bdero_flutter_scene_example/deps/flutter_scene
+  flutter_gpu_shaders:
+    path: lib/bdero_flutter_scene_example/deps/flutter_gpu_shaders
+  flat_buffers:
+    path: lib/bdero_flutter_scene_example/deps/flat_buffers
+  flutter_gpu:
+    path: lib/bdero_flutter_scene_example/deps/flutter_gpu
+  data_assets:
+    path: lib/bdero_flutter_scene_example/deps/data_assets
+  hooks:
+    path: lib/bdero_flutter_scene_example/deps/hooks
+  native_toolchain_c:
+    path: lib/bdero_flutter_scene_example/deps/native_toolchain_c
+  code_assets:
+    path: lib/bdero_flutter_scene_example/deps/code_assets
+  test:
+    path: lib/bdero_flutter_scene_example/deps/test
+  node_preamble:
+    path: lib/bdero_flutter_scene_example/deps/node_preamble
+  io:
+    path: lib/bdero_flutter_scene_example/deps/io
+  shelf_web_socket:
+    path: lib/bdero_flutter_scene_example/deps/shelf_web_socket
+  web_socket_channel:
+    path: lib/bdero_flutter_scene_example/deps/web_socket_channel
+  web_socket:
+    path: lib/bdero_flutter_scene_example/deps/web_socket
+  web:
+    path: lib/bdero_flutter_scene_example/deps/web
+  shelf_packages_handler:
+    path: lib/bdero_flutter_scene_example/deps/shelf_packages_handler
+  shelf_static:
+    path: lib/bdero_flutter_scene_example/deps/shelf_static
+  mime:
+    path: lib/bdero_flutter_scene_example/deps/mime
+  http_multi_server:
+    path: lib/bdero_flutter_scene_example/deps/http_multi_server
+  webkit_inspection_protocol:
+    path: lib/bdero_flutter_scene_example/deps/webkit_inspection_protocol
+  logging:
+    path: lib/bdero_flutter_scene_example/deps/logging
+  shelf:
+    path: lib/bdero_flutter_scene_example/deps/shelf
+  http_parser:
+    path: lib/bdero_flutter_scene_example/deps/http_parser
+  test_core:
+    path: lib/bdero_flutter_scene_example/deps/test_core
+  coverage:
+    path: lib/bdero_flutter_scene_example/deps/coverage
+  cli_config:
+    path: lib/bdero_flutter_scene_example/deps/cli_config
+  args:
+    path: lib/bdero_flutter_scene_example/deps/args
+  vm_service:
+    path: lib/bdero_flutter_scene_example/deps/vm_service
+  pool:
+    path: lib/bdero_flutter_scene_example/deps/pool
+  frontend_server_client:
+    path: lib/bdero_flutter_scene_example/deps/frontend_server_client
+  analyzer:
+    path: lib/bdero_flutter_scene_example/deps/analyzer
+  package_config:
+    path: lib/bdero_flutter_scene_example/deps/package_config
+  glob:
+    path: lib/bdero_flutter_scene_example/deps/glob
+  file:
+    path: lib/bdero_flutter_scene_example/deps/file
+  watcher:
+    path: lib/bdero_flutter_scene_example/deps/watcher
+  convert:
+    path: lib/bdero_flutter_scene_example/deps/convert
+  typed_data:
+    path: lib/bdero_flutter_scene_example/deps/typed_data
+  yaml:
+    path: lib/bdero_flutter_scene_example/deps/yaml
+  pub_semver:
+    path: lib/bdero_flutter_scene_example/deps/pub_semver
+  _fe_analyzer_shared:
+    path: lib/bdero_flutter_scene_example/deps/_fe_analyzer_shared
+  source_map_stack_trace:
+    path: lib/bdero_flutter_scene_example/deps/source_map_stack_trace
+  source_maps:
+    path: lib/bdero_flutter_scene_example/deps/source_maps
+  test_api:
+    path: lib/bdero_flutter_scene_example/deps/test_api
+  stack_trace:
+    path: lib/bdero_flutter_scene_example/deps/stack_trace
+  boolean_selector:
+    path: lib/bdero_flutter_scene_example/deps/boolean_selector
+  string_scanner:
+    path: lib/bdero_flutter_scene_example/deps/string_scanner
+  source_span:
+    path: lib/bdero_flutter_scene_example/deps/source_span
+  term_glyph:
+    path: lib/bdero_flutter_scene_example/deps/term_glyph
+  stream_channel:
+    path: lib/bdero_flutter_scene_example/deps/stream_channel
+  async:
+    path: lib/bdero_flutter_scene_example/deps/async
+  record_use:
+    path: lib/bdero_flutter_scene_example/deps/record_use
+  crypto:
+    path: lib/bdero_flutter_scene_example/deps/crypto
+  image:
+    path: lib/bdero_flutter_scene_example/deps/image
+  xml:
+    path: lib/bdero_flutter_scene_example/deps/xml
+  petitparser:
+    path: lib/bdero_flutter_scene_example/deps/petitparser
+  archive:
+    path: lib/bdero_flutter_scene_example/deps/archive
+  posix:
+    path:
+    path: lib/bdero_flutter_scene_example/deps/path
+  meta:
+    path:
+    path: lib/bdero_flutter_scene_example/deps/path
+  ffi:
+    path:
+    path: lib/bdero_flutter_scene_example/deps/path
+  collection:
+    path:
+    path: lib/bdero_flutter_scene_example/deps/path
+  vector_math:
+    path:
+    path: lib/bdero_flutter_scene_example/deps/path
   intl: ^0.20.2
   flutter:
     sdk: flutter

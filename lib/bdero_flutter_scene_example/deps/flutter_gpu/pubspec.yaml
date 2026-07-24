@@ -1,0 +1,13 @@
+name: flutter_gpu
+description: Stub package for flutter_gpu
+version: 0.0.1
+homepage: https://flutter.dev/
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=1.17.0"
+
+dev_dependencies:
+  flutter_lints: ^2.0.0
+
+flutter:
