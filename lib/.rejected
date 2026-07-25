@@ -13,6 +13,7 @@
 55Builds/Flutter-FFNavigationBar
 6tail/lunar-flutter
 7-USH/TeVe
+7449/flutter_example
 781flyingdutchman/background_downloader
 826327700/flutter_plugins_demo
 990aa/kivixa
@@ -277,6 +278,7 @@ KRTirtho/spotube
 Kaiteki-Fedi/Kaiteki
 Kanscape/Novella
 KarimElghamry/chillify
+Kartik1607/FlutterUI
 Kavantix/sliver_tools
 KhoaSuperman/findseat
 KhubaibJamal/Flutter-Clock-Light-Dark_Theme
@@ -1416,6 +1418,7 @@ long1eu/flutter_i18n
 longer96/flutter-demo
 longer96/flutter_pickers
 longhoang2984/flutter_payment_app_ui
+loongwind/flutter_app_core
 lotusprey/otraku
 loup-v/geolocation
 love-flutter/flutter-column
@@ -1436,6 +1439,7 @@ maheshj01/searchfield
 mahmudahsan/flutter
 manishmeganathan/metronome
 manudevcode/flutter_alarm_app
+maoqitian/flutter_wanandroid
 mapbox/mapbox-maps-flutter
 maplibre/flutter-maplibre-gl
 marcglasberg/async_redux
@@ -1480,6 +1484,7 @@ mhmzdev/devfolio
 mhmzdev/hacktoberfest-flutter
 mhmzdev/the-holy-quran-app
 michaelroudnitski/Tabs
+microsoft/flutter-dualscreen
 miguelpruivo/flutter_file_picker
 miickel/couchpuzzler
 minafarideleia/complete_advanced_flutter
@@ -1510,10 +1515,12 @@ moritz-weber/mucke
 mpflutter/mpflutter
 mrezkys/flutter_presence
 mu-fazil-vk/FluxTube
+muhammad369/ResponsiveGrid_Flutter
 muhammadtalhasultan/Flutter-Food-Delivery-App
 muhammadtalhasultan/Sirat-E-Mustaqeem
 muhammadtalhasultan/calendar_timeline
 muhammadtalhasultan/flutter-login-ui-kit
+muhammadtalhasultan/flutter-slide-to-act
 muhammedessa/Full-flutter-API-CRUD-with-login-and-register-laravel-PHP-mysql
 mumu-lhl/Ciyue
 muslimpack/HisnElmoslem_App
@@ -1579,6 +1586,7 @@ olmps/memo
 olutter/crop
 omar-alshyokh/flutter_flip_panel_plus
 omarahmedx14/flutter_advanced_course
+onlyGuo/chatgpt_desktop
 ookami-kb/storybook_flutter
 openfoodfacts/openfoodfacts-dart
 openfoodfacts/smooth-app
@@ -1807,6 +1815,7 @@ splashbyte/animated_toggle_switch
 spotiflacapp/SpotiFLAC-Mobile
 sqmw/desk_tidy
 srilovesflutter/flutterexamples
+sskEvan/joke_fun_flutter
 sterrenb/flutterhole
 steveruizok/perfect-freehand-dart
 stryder-dev/flutter_platform_widgets
@@ -1981,6 +1990,7 @@ xujiyou/zhihu-flutter
 xumaohuai/Flutter-CuriosityApp
 xuyisheng/flutter_dojo
 xvrh/lottie-flutter
+xwh817/flutter_music_player
 yako-dev/flutter-full-screen-menu
 yako-dev/flutter-settings-ui
 yako-dev/flutter_badges
