@@ -197,6 +197,7 @@ FoxSensei001/LoveIwara
 FraserNicholson/alamb_clock_app
 Frave07/Flutter-Delivery-App
 Frezyx/bottom_bar_with_sheet
+Frezyx/flutter_json_view
 Frezyx/group_button
 Frezyx/sidebarx
 Frezyx/talker
@@ -762,6 +763,7 @@ best-flutter/flutter_dropdown_menu
 best-flutter/flutter_swiper
 best-flutter/transformer_page_view
 beyondtranslate/beyondtranslate
+beyondtranslate/beyondtranslate-ce
 bggRGjQaUbCoE/PiliPlus
 bhrott/flutter-masked-text
 bilguunint/movieapp
@@ -977,6 +979,7 @@ fabiomsr/Flutter-StepByStep
 fablue/lime-flutter
 faob-dev/folding_cell
 farmassistX/farmassist
+fayaz07/flutter_firebase
 fayeed/dash_chat
 fayeed/flutter_parsed_text
 featurehub-io/featurehub
@@ -1317,6 +1320,7 @@ jonsamwell/flutter_simple_dependency_injection
 josiahsrc/dough
 jspw/Ubuntu-Launcher
 juicycleff/flutter-unity-view-widget
+juliansteenbakker/flutter_ble_peripheral
 juliansteenbakker/mobile_scanner
 julienlebren/flutter_firebase_phone_auth_riverpod
 juliuscanute/qr_code_scanner
@@ -1350,6 +1354,7 @@ kevlatus/flutter_fortune_wheel
 kevmoo/peanut.dart
 kherel/animated_theme_switcher
 kherel/flutter_fun
+kherel/reviews_slider
 khoadng/Boorusama
 kirya355/clock_app_example_bloc
 kkkunny/bilitv
@@ -1379,6 +1384,7 @@ leancodepl/patrol
 leetomlee123/book
 leo-elstin/Flutter-UI-Kits
 leoafarias/fvm
+leoafarias/pub_api_client
 leoafarias/sidekick
 leonardocaldas/flutter-polygon-clipper
 leonzone/loading
@@ -1487,6 +1493,7 @@ michaelroudnitski/Tabs
 microsoft/flutter-dualscreen
 miguelpruivo/flutter_file_picker
 miickel/couchpuzzler
+mikyll/ROQuiz
 minafarideleia/complete_advanced_flutter
 mintylinux/Meshcore-Wardrive-Android
 miquelbeltran/flutter95
@@ -1708,6 +1715,7 @@ roshanrahman/flutter-notes-app
 roughike/flutter_facebook_login
 roughike/inKino
 roughike/streaming_shared_preferences
+rounaktadvi/internet_connection_checker
 rrifafauzikomara/MovieApp
 rrousselGit/boundary
 rrousselGit/flutter_hooks
@@ -1879,6 +1887,7 @@ tomialagbe/flutter_ui_challenges
 tommyxchow/frosty
 toplustar/clock_game
 toshiossada/flutter_micro_frontend
+traccar/traccar-manager
 transistorsoft/flutter_background_fetch
 transistorsoft/flutter_background_geolocation
 trentpiercy/flutter-candlesticks
