@@ -11,8 +11,12 @@ dependencies:
     sdk: flutter
   shared_preferences: ^2.5.3
   auto_size_text: ^3.0.0
+  flutter_animate: ^4.5.2
+  flutter_inset_shadow: ^2.0.3
+  visibility_detector: ^0.4.0+2
 flutter:
   assets:
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
+
 
