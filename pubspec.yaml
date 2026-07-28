@@ -6,6 +6,20 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  percent_indicator:
+    path: lib/umair13adil_tensorflow_lite_flutter/deps/percent_indicator
+  tflite:
+    path: lib/umair13adil_tensorflow_lite_flutter/deps/tflite
+  camera:
+    path: lib/umair13adil_tensorflow_lite_flutter/deps/camera
+  camera_platform_interface:
+    path: lib/umair13adil_tensorflow_lite_flutter/deps/camera_platform_interface
+  stream_transform:
+    path: lib/umair13adil_tensorflow_lite_flutter/deps/stream_transform
+  plugin_platform_interface:
+    path: lib/umair13adil_tensorflow_lite_flutter/deps/plugin_platform_interface
+  meta:
+    path: lib/umair13adil_tensorflow_lite_flutter/deps/meta
   intl: ^0.20.2
   flutter:
     sdk: flutter
@@ -13,6 +27,7 @@ dependencies:
   auto_size_text: ^3.0.0
 flutter:
   assets:
+    - assets/umair13adil_tensorflow_lite_flutter/labels.txt
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
 
