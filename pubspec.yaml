@@ -11,8 +11,33 @@ dependencies:
     sdk: flutter
   shared_preferences: ^2.5.3
   auto_size_text: ^3.0.0
+  collection: null
+  equatable: ^2.0.5
+  flutter_hooks: ^0.18.5+1
+  flutter_lottie: ^0.2.0
+  flutter_riverpod: ^2.0.2
+  flutter_svg: ^1.1.6
+  hooks_riverpod: ^2.1.3
+  lottie: ^2.1.0
+  riverpod: ^2.0.2
+  rxdart: ^0.27.5
+  url_launcher: ^6.1.9
+  uuid: ^3.0.6
 flutter:
   assets:
+    - assets/igniti0n_flutter_algorithms_visualization/lotties/delete.json
+    - assets/igniti0n_flutter_algorithms_visualization/lotties/flag_with_sparkle.json
+    - assets/igniti0n_flutter_algorithms_visualization/lotties/maze.json
+    - assets/igniti0n_flutter_algorithms_visualization/lotties/path_finding.json
+    - assets/igniti0n_flutter_algorithms_visualization/svg/brick.svg
+    - assets/igniti0n_flutter_algorithms_visualization/svg/eraser.svg
+    - assets/igniti0n_flutter_algorithms_visualization/svg/eraser_colored.svg
+    - assets/igniti0n_flutter_algorithms_visualization/svg/flag.svg
+    - assets/igniti0n_flutter_algorithms_visualization/svg/github_logo.svg
+    - assets/igniti0n_flutter_algorithms_visualization/svg/play_button.svg
+    - assets/igniti0n_flutter_algorithms_visualization/svg/route_tracked.svg
+    - assets/igniti0n_flutter_algorithms_visualization/svg/stopwatch.svg
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
+
 
