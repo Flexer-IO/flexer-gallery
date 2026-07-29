@@ -6,7 +6,18 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
-  intl: ^0.20.2
+  table_calendar:
+    path: lib/lohanidamodar_flutter_calendar/deps/table_calendar
+  simple_gesture_detector:
+    path: lib/lohanidamodar_flutter_calendar/deps/simple_gesture_detector
+  meta:
+    path: lib/lohanidamodar_flutter_calendar/deps/meta
+  clock:
+    path: lib/lohanidamodar_flutter_calendar/deps/clock
+  path:
+    path: lib/lohanidamodar_flutter_calendar/deps/path
+  intl:
+    path: lib/lohanidamodar_flutter_calendar/deps/intl
   flutter:
     sdk: flutter
   shared_preferences: ^2.5.3
