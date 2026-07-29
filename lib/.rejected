@@ -561,6 +561,7 @@ Tencent/tdesign-flutter
 TencentCloud/chat-uikit-flutter
 TerminalStudio/dartssh2
 TerminalStudio/xterm.dart
+Thalisonh/minimalist-flutter
 ThangVuNguyenViet/clock_app
 The-ring-io/flutter_staggered_animations
 TheAlphaApp/flutter-task-planner-app
@@ -597,6 +598,7 @@ VeyselSahn/mi_clock
 VictorRancesCode/flutter_dialogflow
 VincentJouanne/flutter-bloc-clean-architecture
 Vito0912/abs_flutter
+Voklen/Daily-Diary
 WaledGoba220/Clock_App
 Widle-Studio/Grocery-App
 Wolfteam/Shiori
@@ -1050,6 +1052,7 @@ fleather-editor/fleather
 flet-dev/serious-python
 florent37/Flutter-AssetsAudioPlayer
 florent37/Flutter-ShapeOfView
+florent37/movie_android_flutter
 flow-mn/flow
 flschweiger/reply
 flutter-devs/flutter_Ecommerce_UI_clone
@@ -1166,6 +1169,7 @@ gemini-cli-extensions/flutter
 gerfagerfa/real_estate
 gerfagerfa/recipe
 getsentry/sentry-dart
+gildaswise/flutter_phone_auth
 githubliruiyuan/HybridFlutter
 glorylab/wave
 go-flutter-desktop/examples
@@ -1249,6 +1253,7 @@ hukusuke1007/flutter_app_template
 humazed/google_map_location_picker
 hungps/flutter_pokedex
 huobiapp/flutter-candlesticks
+hupo376787/ginkgo_tv
 hurshi/dio-http-cache
 hurshi/wanandroid
 huskyjp/flutter-mvvp-riverpod-architecture
@@ -1334,6 +1339,7 @@ janoodleFTW/timy-messenger
 javico2609/flutter-challenges
 javiercbk/json_to_dart
 jayden320/flutter_shuqi
+jaydenxiao2016/order_app
 jaysavsani07/math-metrix
 jellyflix-app/jellyflix
 jenow/flutter-ble
@@ -1501,6 +1507,7 @@ mabDc/eso
 macosui/macos_ui
 madeye/meow
 maheshj01/searchfield
+mahmoudBens/flutter-laundry-template
 mahmudahsan/flutter
 manishmeganathan/metronome
 manudevcode/flutter_alarm_app
@@ -1510,6 +1517,7 @@ maplibre/flutter-maplibre-gl
 marcglasberg/async_redux
 marcglasberg/i18n_extension
 marcglasberg/indexed_list_view
+marchdev-tk/flutter_google_maps
 marchellodev/sharik
 marcoedomingos/pixel_watch_flutter
 marcos930807/awesomeDialogs
@@ -1667,6 +1675,7 @@ openfoodfacts/smooth-app
 openimsdk/open-im-sdk-flutter
 openimsdk/openim-flutter-demo
 opxica/modular-ui
+orailnoor/private-agent
 orthros/dart-epub
 osociety/vernet
 otakoyi/flutter_ddd_riverpod_example
