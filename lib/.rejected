@@ -207,6 +207,7 @@ Felix-Seip/ArduinoWordClock
 Ferry-200/coriander_player
 FilledStacks/flutter-tutorials
 FilledStacks/responsive_builder
+FirebaseExtended/codelab-friendlyeats-flutter
 FirebaseExtended/compass-ai-travel-planning-sample-flutter
 FirebaseExtended/flutterfire_desktop
 Flutter-Bounty-Hunters/super_editor
@@ -245,6 +246,7 @@ GerryDush/Linx-Music
 GetDutchie/brick
 GetStream/flutter-samples
 GetStream/stream-chat-flutter
+GetStream/stream-video-flutter
 GhostenEditor/Ghosten-Player
 GiancarloCode/form_bloc
 GiddyNaya/clockee
@@ -400,7 +402,9 @@ MeandNi/flutter_zhihu
 Medformatik/CrossDrop
 Merrit/nyrna
 MertSaygili/Clock-Project
+MewsSystems/mews-flutter
 MichaelFenwick/Clock
+MicroPyramid/flutter-crm
 MikeAfegbua/clockapp
 Milad-Akarie/auto_route_library
 Milad-Akarie/smooth_page_indicator
@@ -467,6 +471,7 @@ PhilipsHue/flutter_reactive_ble
 PicGo/flutter-picgo
 Piwigo/piwigo-flutter-app
 Playboy-Player/Playboy
+Polidea/blemulator_flutter
 PoojaB26/FlutterBasicWidgets
 PoojaB26/ParsingJSON-Flutter
 PostHog/posthog-flutter
@@ -1317,6 +1322,7 @@ gerfagerfa/real_estate
 gerfagerfa/recipe
 gerry-momo/flutter_startup
 getsentry/sentry-dart
+gi097/flutter_clickable_regions
 gildaswise/flutter_phone_auth
 githubliruiyuan/HybridFlutter
 glorylab/wave
@@ -1376,6 +1382,7 @@ hekaiyou/talk_casually
 hemanta212/Flutter-Inventory-App
 hep-mh/flounder
 heroiclabs/nakama-dart
+herowws/flutter_popup
 heruijun/FlutterFrom0To1
 heruijun/flutter_boss
 herzhenr/simple-wake-on-lan
@@ -1990,6 +1997,7 @@ retromp3/retro
 retroportalstudio/focused_menu
 retroportalstudio/foldable_sidebar
 retroportalstudio/spincircle_bottom_bar
+retroportalstudio/swipe_deck
 reven-erlangga/android-clock
 ricardodalarme/flutter_card_swiper
 rickywen911/custom_bubble_navigation_bar
@@ -2186,6 +2194,7 @@ tejasbadone/flutterzon_bloc
 tekartik/sqflite
 telsacoin/telsavideo
 tensorflow/flutter-tflite
+terrabythia/flutter_chromecast_example
 tharwatsamy/Flutter-Beginners-Projects
 theSoberSobber/Docker-Manager
 theTaoTeam/snuze_app
