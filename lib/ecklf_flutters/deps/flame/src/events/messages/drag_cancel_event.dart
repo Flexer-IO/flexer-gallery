@@ -1,0 +1,17 @@
+import './drag_end_event.dart';
+import './drag_start_event.dart';
+import './event.dart';
+import 'package:flutter/gestures.dart';
+
+class DragCancelEvent extends Event<void> {
+  DragCancelEvent(this.pointerId) : super(raw: null);
+
+  /// The id of the event that has been cancelled. This id corresponds to the
+  /// id of the previous [DragStartEvent].
+  final int pointerId;
+
+  DragEndEvent toDragEnd() => DragEndEvent(pointerId, DragEndDetails());
+
+  @override
+  String toString() => 'DragCancelEvent(pointerId: $pointerId)';
+}
