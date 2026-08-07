@@ -6,6 +6,50 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  flutter_svg:
+    path: lib/abuanwar072_ev_car_dashboard_flutter/deps/flutter_svg
+  vector_graphics:
+    path: lib/abuanwar072_ev_car_dashboard_flutter/deps/vector_graphics
+  http:
+    path: lib/abuanwar072_ev_car_dashboard_flutter/deps/http
+  async:
+    path: lib/abuanwar072_ev_car_dashboard_flutter/deps/async
+  web:
+    path: lib/abuanwar072_ev_car_dashboard_flutter/deps/web
+  http_parser:
+    path: lib/abuanwar072_ev_car_dashboard_flutter/deps/http_parser
+  typed_data:
+    path: lib/abuanwar072_ev_car_dashboard_flutter/deps/typed_data
+  string_scanner:
+    path: lib/abuanwar072_ev_car_dashboard_flutter/deps/string_scanner
+  source_span:
+    path: lib/abuanwar072_ev_car_dashboard_flutter/deps/source_span
+  term_glyph:
+    path: lib/abuanwar072_ev_car_dashboard_flutter/deps/term_glyph
+  vector_graphics_compiler:
+    path:
+    path: lib/abuanwar072_ev_car_dashboard_flutter/deps/path
+  path_parsing:
+    path:
+    path: lib/abuanwar072_ev_car_dashboard_flutter/deps/path
+  vector_math:
+    path:
+    path: lib/abuanwar072_ev_car_dashboard_flutter/deps/path
+  xml:
+    path:
+    path: lib/abuanwar072_ev_car_dashboard_flutter/deps/path
+  petitparser:
+    path:
+    path: lib/abuanwar072_ev_car_dashboard_flutter/deps/path
+  collection:
+    path:
+    path: lib/abuanwar072_ev_car_dashboard_flutter/deps/path
+  meta:
+    path:
+    path: lib/abuanwar072_ev_car_dashboard_flutter/deps/path
+  vector_graphics_codec:
+    path:
+    path: lib/abuanwar072_ev_car_dashboard_flutter/deps/path
   intl: ^0.20.2
   flutter:
     sdk: flutter
@@ -13,6 +57,12 @@ dependencies:
   auto_size_text: ^3.0.0
 flutter:
   assets:
+    - assets/abuanwar072_ev_car_dashboard_flutter/icons/dipper.svg
+    - assets/abuanwar072_ev_car_dashboard_flutter/icons/head_light.svg
+    - assets/abuanwar072_ev_car_dashboard_flutter/icons/left_indicator.svg
+    - assets/abuanwar072_ev_car_dashboard_flutter/icons/right_indicator.svg
+    - assets/abuanwar072_ev_car_dashboard_flutter/icons/speed_miter.svg
+    - assets/abuanwar072_ev_car_dashboard_flutter/icons/sun.svg
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
 
