@@ -215,6 +215,7 @@ FirebaseExtended/codelab-friendlyeats-flutter
 FirebaseExtended/compass-ai-travel-planning-sample-flutter
 FirebaseExtended/flutterfire_desktop
 Flutter-Bounty-Hunters/super_editor
+Flutter-Bounty-Hunters/swift_ui
 Flutter-ui-dev/Flutter-ui-dev
 FlutterEurope/conference2020
 FlutterFlow/flutterflow-ui
@@ -405,6 +406,7 @@ MarcusNg/flutter_spotify_ui
 MarcusNg/flutter_travel_ui
 MarcusNg/flutter_voice
 MariaMelnik/flutter_date_pickers
+MasteerRui/WeatherApp-Flutter
 Maximgbb/clock_app
 MayLau-CbL/flutter_horizontal_data_table
 Mayandev/morec
@@ -896,6 +898,7 @@ axross/aqua
 aydozy/popcorn
 ayham95/Custom-navigator
 azihsoyn/flutter_mlkit
+azlaan95/Flutter-Clean-Architecture
 babakcode/flutter_gemini
 badjio/skeletons
 bahrie127/flutter_grocery_app
@@ -981,10 +984,12 @@ brianegan/scoped_model
 brij-digital/espresso-cash-public
 brilliantlabsAR/noa-flutter
 brinesoftwares/Flutter-AI-Rubik-cube-Solver
+brinesoftwares/online_food_app
 britannio/in_app_review
 brocodev/flutter_projects
 brownboycodes/HADWIN
 btwld/mix
+bugudiramu/e-Bazaar
 buhuiming/flutter_nb
 buijs-dev/klutter-dart
 buildwithmalik/ounotes
@@ -1136,6 +1141,7 @@ ditclear/tiktok_gestures
 dletion/AlarmClock
 dlutton/flutter_tts
 dnfield/flutter_svg
+dnys1/grpc_demo
 doen1el/calibre-web-companion
 dominikmuellr/trudido
 doo/scanbot-barcode-scanner-sdk-example-flutter
@@ -1350,6 +1356,7 @@ fujidaiti/exprollable_page_view
 fujidaiti/smooth_sheets
 funwithflutter/flutter_confetti
 funwithflutter/flutter_ui_tips
+funwithflutter/lit_firebase_auth
 furkantektas/analog_clock
 furkantektas/timeline_list
 fuseio/fuse-wallet
@@ -1442,6 +1449,7 @@ heshamerfan97/flutter_google_maps_example
 hetu-script/hetu-script
 hhtokpinar/sqfEntity
 hi-manshu/Flutter-Apps-Collection
+highpeaksw/flutter_date_picker
 himanshuchauhan981/E-commerce-app-using-flutter-and-firebase
 himanshusharma89/Flutter-Blog-App
 himanshusharma89/relic_bazaar
@@ -2134,6 +2142,7 @@ saber-notes/saber
 sabinbajracharya/fluttery-todo
 sagarpansare21/smart_home
 sahanpasindu/Flutter-Sinhalen-Video-Series
+saiful86/FlutterTutorials
 sail-tunnel/sail
 saket-shetty/Post-it
 saldanaj97/Child-Friendly-Clock
@@ -2357,6 +2366,7 @@ videosdk-live/videosdk-rtc-flutter-sdk-example
 vilisimo/sink
 vince-nyanga/flutter_bloc_authentication
 vineeshvk/chat-app-flutter
+vinothvino42/Mobile-Banking-App-UI
 vinothvino42/SwiggyUI
 vinothvino42/smart-home-neomorphism-app
 vintage/party_flutter
