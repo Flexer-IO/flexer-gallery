@@ -6,6 +6,10 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  carousel_slider:
+    path: lib/whatsupcoders_flutter_nested_tabs/deps/carousel_slider
+  font_awesome_flutter:
+    path: lib/whatsupcoders_flutter_nested_tabs/deps/font_awesome_flutter
   intl: ^0.20.2
   flutter:
     sdk: flutter
