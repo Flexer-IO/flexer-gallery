@@ -6,6 +6,8 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  fluro:
+    path: lib/ihorklimov_flutterprogressbutton/deps/fluro
   intl: ^0.20.2
   flutter:
     sdk: flutter
