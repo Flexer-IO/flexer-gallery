@@ -11,8 +11,15 @@ dependencies:
     sdk: flutter
   shared_preferences: ^2.5.3
   auto_size_text: ^3.0.0
+  auto_animated: ^1.2.3
+  cached_network_image: ^2.0.0-rc
+  flare_flutter: ^1.8.0
+  flutter_staggered_animations: ^0.1.2
+  page_transition: "^1.1.5"
+  responsive_widgets: ^0.1.10
 flutter:
   assets:
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
+
 
