@@ -6,6 +6,14 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  flutter_spinkit:
+    path: lib/gjj2019_flutter_teddy_signin/deps/flutter_spinkit
+  flare_flutter:
+    path: lib/gjj2019_flutter_teddy_signin/deps/flare_flutter
+  meta:
+    path: lib/gjj2019_flutter_teddy_signin/deps/meta
+  collection:
+    path: lib/gjj2019_flutter_teddy_signin/deps/collection
   intl: ^0.20.2
   flutter:
     sdk: flutter
