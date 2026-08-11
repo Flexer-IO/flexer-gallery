@@ -6,6 +6,30 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  url_launcher:
+    path: lib/rydmike_squircle_study/deps/url_launcher
+  url_launcher_platform_interface:
+    path: lib/rydmike_squircle_study/deps/url_launcher_platform_interface
+  plugin_platform_interface:
+    path: lib/rydmike_squircle_study/deps/plugin_platform_interface
+  flex_color_picker:
+    path: lib/rydmike_squircle_study/deps/flex_color_picker
+  flex_seed_scheme:
+    path: lib/rydmike_squircle_study/deps/flex_seed_scheme
+  material_color_utilities:
+    path: lib/rydmike_squircle_study/deps/material_color_utilities
+  collection:
+    path: lib/rydmike_squircle_study/deps/collection
+  meta:
+    path: lib/rydmike_squircle_study/deps/meta
+  superellipse_shape:
+    path: lib/rydmike_squircle_study/deps/superellipse_shape
+  smooth_corner:
+    path: lib/rydmike_squircle_study/deps/smooth_corner
+  figma_squircle:
+    path: lib/rydmike_squircle_study/deps/figma_squircle
+  cupertino_rounded_corners:
+    path: lib/rydmike_squircle_study/deps/cupertino_rounded_corners
   intl: ^0.20.2
   flutter:
     sdk: flutter

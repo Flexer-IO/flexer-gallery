@@ -1,0 +1,40 @@
+name: flex_seed_scheme
+description: A more flexible and powerful version of Flutter's ColorScheme.fromSeed. Use multiple seed colors, custom chroma and tone mapping.
+version: 4.0.1
+homepage: https://github.com/rydmike/flex_seed_scheme
+repository: https://github.com/rydmike/flex_seed_scheme
+issue_tracker: https://github.com/rydmike/flex_seed_scheme/issues
+documentation: https://github.com/rydmike/flex_seed_scheme/blob/master/README.md
+screenshots:
+  - description: 'Using 1 seed colors to make M3 ColorScheme with candy pop strategy'
+    path: example/screenshots/candy_pop_light_1.png
+  - description: 'Using 4 seed colors to make M3 ColorScheme with candy pop strategy'
+    path: example/screenshots/candy_pop_light_4.png
+  - description: 'Using 4 seed colors to make M3 ColorScheme with custom seed strategy'
+    path: example/screenshots/custom_light_4.png
+  - description: 'Example of light mode widgets with the custom seed strategy'
+    path: example/screenshots/custom_light_4_widgets.png
+  - description: 'Example of light mode widgets with the candy pop seed strategy'
+    path: example/screenshots/candy_pop_light_4_widgets.png
+  - description: 'Example of dark mode widgets with the custom seed strategy'
+    path: example/screenshots/custom_dark_4_widgets.png
+  - description: 'Example of dark mode widgets with the candy pop seed strategy'
+    path: example/screenshots/candy_pop_dark_4_widgets.png
+topics:
+  - theme
+  - colorscheme
+  - material3
+  - color
+  - materialdesign
+
+environment:
+  sdk: '>=3.6.0 <4.0.0'
+  flutter: '>=3.38.0'
+
+dev_dependencies:
+  coverage: ^1.15.0
+  flutter_test:
+    sdk: flutter
+  # Used by color_matcher.dart in tests.
+  matcher: ^0.12.16+1
+  test:

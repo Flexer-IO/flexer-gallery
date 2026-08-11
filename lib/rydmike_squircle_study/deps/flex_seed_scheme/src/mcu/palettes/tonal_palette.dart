@@ -1,0 +1,196 @@
+// Copyright 2021 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+import 'package:collection/collection.dart' show ListEquality;
+import 'package:meta/meta.dart';
+
+import '../hct/hct.dart';
+import 'key_color.dart';
+
+/// A convenience class for retrieving colors that are constant in hue and
+/// chroma, but vary in tone.
+///
+/// This class can be instantiated in two ways:
+/// 1. [of] From hue and chroma. (preferred)
+/// 2. [fromList] From a fixed-size ([TonalPalette.commonSize]) list of ints
+/// representing ARBG colors. Correctness (constant hue and chroma) of the input
+/// is not enforced. [get] will only return the input colors, corresponding to
+/// [commonTones]. This also initializes the key color to black.
+@immutable
+class TonalPalette {
+  /// Commonly-used tone values.
+  static const List<int> commonTones = <int>[
+    0,
+    10,
+    20,
+    30,
+    40,
+    50,
+    60,
+    70,
+    80,
+    90,
+    95,
+    99,
+    100,
+  ];
+
+  /// The number of common tones.
+  static final int commonSize = commonTones.length;
+
+  /// The hue of the palette.
+  final double hue;
+
+  /// The chroma of the palette.
+  final double chroma;
+
+  /// The key color of the palette.
+  final Hct keyColor;
+
+  /// A cache containing keys-value pairs where:
+  /// - keys are integers that represent tones, and
+  /// - values are colors in ARGB format.
+  final Map<int, int> _cache;
+  final bool _isFromCache;
+
+  // ignore: sort_constructors_first, we prefer this order.
+  TonalPalette._fromHct(Hct hct)
+      : _cache = <int, int>{},
+        hue = hct.hue,
+        chroma = hct.chroma,
+        keyColor = hct,
+        _isFromCache = false;
+
+  // ignore: sort_constructors_first, we prefer this order.
+  TonalPalette._fromHueAndChroma(this.hue, this.chroma)
+      : _cache = <int, int>{},
+        keyColor = KeyColor(hue, chroma).create(),
+        _isFromCache = false;
+
+  // ignore: sort_constructors_first, we prefer this order.
+  TonalPalette._fromCache(Map<int, int> cache, this.hue, this.chroma)
+      : _cache = cache,
+        keyColor = KeyColor(hue, chroma).create(),
+        _isFromCache = true;
+
+  /// Create colors using [hue] and [chroma].
+  static TonalPalette of(double hue, double chroma) {
+    return TonalPalette._fromHueAndChroma(hue, chroma);
+  }
+
+  /// Create a Tonal Palette from hue and chroma of [hct].
+  static TonalPalette fromHct(Hct hct) {
+    return TonalPalette._fromHct(hct);
+  }
+
+  /// Create colors from a fixed-size list of ARGB color ints.
+  ///
+  /// Inverse of [TonalPalette.asList].
+  static TonalPalette fromList(List<int> colors) {
+    assert(colors.length == commonSize,
+        'colors length must be equal to commonSize');
+    final Map<int, int> cache = <int, int>{};
+    commonTones.asMap().forEach(
+        (int index, int toneValue) => cache[toneValue] = colors[index]);
+
+    // Approximately deduces the original hue and chroma that generated this
+    // list of colors.
+    // Uses the hue and chroma of the provided color with the highest chroma.
+    double bestHue = 0.0;
+    double bestChroma = 0.0;
+    for (final int argb in colors) {
+      final Hct hct = Hct.fromInt(argb);
+
+      // If the color is too close to white, its chroma may have been
+      // affected by a known issue, so we ignore it.
+      // https://github.com/material-foundation/material-color-utilities/issues/140
+      if (hct.tone > 98.0) continue;
+
+      if (hct.chroma > bestChroma) {
+        bestHue = hct.hue;
+        bestChroma = hct.chroma;
+      }
+    }
+    return TonalPalette._fromCache(cache, bestHue, bestChroma);
+  }
+
+  /// Returns a fixed-size list of ARGB color ints for common tone values.
+  ///
+  /// Inverse of [fromList].
+  List<int> get asList => commonTones.map(get).toList();
+
+  /// Returns the ARGB representation of an HCT color at the given [tone].
+  ///
+  /// If the palette is constructed from a list of colors
+  /// (i.e. using [fromList]), the color provided at construction is returned
+  /// if possible; otherwise the result is generated from the deduced
+  /// [hue] and [chroma].
+  ///
+  /// If the palette is constructed from a hue and chroma (i.e. using [of] or
+  /// [fromHct]), the result is generated from the given [hue] and [chroma].
+  int get(int tone) {
+    return _cache.putIfAbsent(
+      tone,
+      () => Hct.from(hue, chroma, tone.toDouble()).toInt(),
+    );
+  }
+
+  /// Returns the HCT color at the given [tone].
+  ///
+  /// If the palette is constructed from a list of colors
+  /// (i.e. using [fromList]), the color provided at construction is returned
+  /// if possible; otherwise the result is generated from the deduced
+  /// [hue] and [chroma].
+  ///
+  /// If the palette is constructed from a hue and chroma (i.e. using [of] or
+  /// [fromHct]), the result is generated from the given [hue] and [chroma].
+  Hct getHct(double tone) {
+    if (_cache.containsKey(tone)) {
+      return Hct.fromInt(_cache[tone]!);
+    } else {
+      return Hct.from(hue, chroma, tone);
+    }
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (other is TonalPalette) {
+      if (!_isFromCache && !other._isFromCache) {
+        // Both created with .of or .fromHct
+        return hue == other.hue && chroma == other.chroma;
+      } else {
+        return const ListEquality<int>().equals(asList, other.asList);
+      }
+    }
+    return false;
+  }
+
+  @override
+  int get hashCode {
+    if (!_isFromCache) {
+      return Object.hash(hue, chroma);
+    } else {
+      return Object.hashAll(asList);
+    }
+  }
+
+  @override
+  String toString() {
+    if (!_isFromCache) {
+      return 'TonalPalette.of($hue, $chroma)';
+    } else {
+      return 'TonalPalette.fromList($asList)';
+    }
+  }
+}
