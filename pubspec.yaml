@@ -6,13 +6,19 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  window_size:
+    path: lib/retroportalstudio_flutter_jardinains/deps/window_size
   intl: ^0.20.2
   flutter:
     sdk: flutter
   shared_preferences: ^2.5.3
   auto_size_text: ^3.0.0
+  get_it: ^7.2.0
+  google_fonts: ^2.1.0
+  rive: ^0.7.22
 flutter:
   assets:
     - assets/miickel_flutter_particle_clock/palettes.json
   uses-material-design: true
+
 
