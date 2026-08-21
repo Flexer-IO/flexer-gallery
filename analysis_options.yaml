@@ -1,3 +1,10 @@
 analyzer:
   exclude:
     - lib/*/deps/**
+    - build/**
+    - android/**
+    - ios/**
+    - web/**
+    - windows/**
+    - macos/**
+    - linux/**
