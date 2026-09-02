@@ -6,6 +6,72 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  insta_assets_crop:
+    path: lib/legoffmael_insta_assets_picker/deps/insta_assets_crop
+  fraction:
+    path: lib/legoffmael_insta_assets_picker/deps/fraction
+  wechat_assets_picker:
+    path: lib/legoffmael_insta_assets_picker/deps/wechat_assets_picker
+  visibility_detector:
+    path: lib/legoffmael_insta_assets_picker/deps/visibility_detector
+  video_player:
+    path: lib/legoffmael_insta_assets_picker/deps/video_player
+  html:
+    path: lib/legoffmael_insta_assets_picker/deps/html
+  csslib:
+    path: lib/legoffmael_insta_assets_picker/deps/csslib
+  video_player_platform_interface:
+    path: lib/legoffmael_insta_assets_picker/deps/video_player_platform_interface
+  wechat_picker_library:
+    path: lib/legoffmael_insta_assets_picker/deps/wechat_picker_library
+  provider:
+    path: lib/legoffmael_insta_assets_picker/deps/provider
+  nested:
+    path: lib/legoffmael_insta_assets_picker/deps/nested
+  photo_manager_image_provider:
+    path: lib/legoffmael_insta_assets_picker/deps/photo_manager_image_provider
+  extended_image:
+    path: lib/legoffmael_insta_assets_picker/deps/extended_image
+  vector_math:
+    path: lib/legoffmael_insta_assets_picker/deps/vector_math
+  extended_image_library:
+    path: lib/legoffmael_insta_assets_picker/deps/extended_image_library
+  crypto:
+    path: lib/legoffmael_insta_assets_picker/deps/crypto
+  path_provider:
+    path: lib/legoffmael_insta_assets_picker/deps/path_provider
+  path_provider_platform_interface:
+    path: lib/legoffmael_insta_assets_picker/deps/path_provider_platform_interface
+  platform:
+    path: lib/legoffmael_insta_assets_picker/deps/platform
+  plugin_platform_interface:
+    path: lib/legoffmael_insta_assets_picker/deps/plugin_platform_interface
+  http_client_helper:
+    path: lib/legoffmael_insta_assets_picker/deps/http_client_helper
+  http:
+    path: lib/legoffmael_insta_assets_picker/deps/http
+  async:
+    path: lib/legoffmael_insta_assets_picker/deps/async
+  web:
+    path: lib/legoffmael_insta_assets_picker/deps/web
+  http_parser:
+    path: lib/legoffmael_insta_assets_picker/deps/http_parser
+  string_scanner:
+    path: lib/legoffmael_insta_assets_picker/deps/string_scanner
+  typed_data:
+    path: lib/legoffmael_insta_assets_picker/deps/typed_data
+  source_span:
+    path: lib/legoffmael_insta_assets_picker/deps/source_span
+  term_glyph:
+    path: lib/legoffmael_insta_assets_picker/deps/term_glyph
+  collection:
+    path: lib/legoffmael_insta_assets_picker/deps/collection
+  meta:
+    path: lib/legoffmael_insta_assets_picker/deps/meta
+  photo_manager:
+    path: lib/legoffmael_insta_assets_picker/deps/photo_manager
+  path:
+    path: lib/legoffmael_insta_assets_picker/deps/path
   intl: ^0.20.2
   flutter:
     sdk: flutter
