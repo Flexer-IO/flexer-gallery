@@ -1,0 +1,18 @@
+name: wechat_picker_library
+description: "A foundation library for wechat_*_picker, provides extensions, themes, and widgets."
+version: 1.0.7
+topics:
+  - picker
+  - wechat
+
+repository: https://github.com/fluttercandies/flutter_wechat_picker_library
+issue_tracker: https://github.com/fluttercandies/flutter_wechat_picker_library/issues
+
+environment:
+  sdk: ^3.4.0
+  flutter: '>=3.22.0'
+
+dev_dependencies:
+  flutter_lints: any
+  flutter_localizations:
+    sdk: flutter
